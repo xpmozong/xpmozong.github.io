@@ -4,7 +4,7 @@
     <title>寞踪的技术博客</title>
     <link href="http://xpmozong.github.io/" rel="self"/>
     <link href="http://xpmozong.github.io"/>
-    <updated>2013-11-27T20:40:03+08:00</updated>
+    <updated>2013-11-27T20:58:53+08:00</updated>
     <id>http://xpmozong.github.io</id>
     <author>
     <name>寞踪</name>
@@ -62,7 +62,12 @@ $ rake page name=&amp;quot;pages/about&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;
     三、域名绑定，这里有
     &lt;a href='https://help.github.com/articles/setting-up-a-custom-domain-with-pages' target='_blank'&gt;详细介绍&lt;/a&gt;
-&lt;/p&gt;</content>
+&lt;/p&gt;&lt;p&gt;四、一点小补充&lt;/p&gt;&lt;p&gt;git 命令&lt;/p&gt;&lt;p&gt;1、推送&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git add .
+git commit -m &amp;#39;test&amp;#39;
+git push -u origin master&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;2、更新&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git pull origin master&lt;/code&gt;&lt;/pre&gt;</content>
     </entry>
  
     <entry>
