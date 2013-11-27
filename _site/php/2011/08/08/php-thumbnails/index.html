@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>PHP按比例缩放图</title>
+        <meta name="description" content="PHP按比例缩放图">
+        <meta name="author" content="寞踪">
+
+        <!-- Enable responsive viewport -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <!-- Le styles -->
+        <link href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+        <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+        <script src="/assets/themes/twitter/google-code-prettify/jquery.js"></script>
+        <script src="/assets/themes/twitter/google-code-prettify/prettify.js"></script>
+        <link href="/assets/themes/twitter/google-code-prettify/sunburst.css" rel="stylesheet" type="text/css" media="all">
+        <script type="text/javascript">
+            $(function(){
+                $("pre").addClass("prettyprint");
+                prettyPrint();
+            });
+        </script>
+        <!-- Le fav and touch icons -->
+    <!-- Update these with your own images
+        <link rel="shortcut icon" href="images/favicon.ico">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    -->
+
+        <!-- atom & rss feed -->
+        <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+        <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+    </head>
+
+    <body>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container-narrow">
+                    <a class="brand" href="/">寞踪的技术博客</a>
+                    <ul class="nav">
+                        
+                        
+                        
+
+
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/aboutMe.html">About Me</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-narrow">
+
+            <div class="content">
+                
+<div class="page-header">
+    <h1>PHP按比例缩放图 </h1>
+</div>
+
+<div class="row-fluid post-full">
+    <div class="span12">
+        <div class="date">
+            <span>08 August 2011</span>
+        </div>
+        <div class="content">
+            <pre><code>// upload.php文件内容
+$uid = 3;
+$time = time();
+// 图片目录
+$img_dir = &quot;upload/&quot;;
+// 把图片传到服务器
+// 初始化变量
+$uploaded = 0;
+$unuploaded = 0;
+$imgname = $uid.$time;
+//只允许三张图片上传
+for ($i=0; $i&lt;=2; $i++) {
+    //获取当前图片的信息
+    $is_file = $_FILES[&#39;imgfile&#39;][&#39;name&#39;][$i];
+    //如果当前图片不为空
+    if (!empty($is_file)) {
+        // 判断上传的图片的类型是不是jpg,gif,png,bmp中的一种，同时判断是否上传成功
+        $imgtypearr = array(&#39;image/jpeg&#39;,&#39;image/gif&#39;,&#39;image/png&#39;,&#39;image/bmp&#39;);
+        $imgtype = $_FILES[&#39;imgfile&#39;][&#39;type&#39;][$i];
+        if (in_array($imgtype,$imgtypearr)) {
+            move_uploaded_file($_FILES[&#39;imgfile&#39;][&#39;tmp_name&#39;][$i], $img_dir.$imgname.$is_file);
+            //按比例缩放图片
+            if(resizeImage($img_dir.$imgname.$is_file,330,380,$img_dir.$imgname.$is_file)){
+                echo $is_file.&quot;缩小图片成功！&quot;;
+            }else{
+                echo $is_file.&quot;上传图片失败！&quot;;
+            }
+        }else{
+            echo $is_file.&#39;图片格式不对！&#39;;
+        }
+    }
+}
+
+/**
+* 按比例缩小图片
+*
+* @param string $im 源文件
+* @param int $maxwidth 规定图片宽 324px
+* @param int $maxhidth 规定图片高 343px
+* @param int $maxwidth 输出文件
+*
+* 返回文件
+*
+*/
+function resizeImage($im,$maxwidth,$maxheight,$to)
+{
+    // 载入图像到php到变量中
+    $suffix = substr(strrchr($im,&#39;.&#39;),1); //strrchr返回最后的.jpg 或者.jpeg
+    $style = strtolower($suffix);
+    if($style==&#39;jpg&#39; || $style==&#39;jpeg&#39;){
+        $originail = imagecreatefromjpeg($im); //jpg
+    }elseif($style==&#39;png&#39;){
+        $originail = imagecreatefrompng($im); //png
+    }elseif($style==&#39;gif&#39;){
+        $originail = imagecreatefromgif($im); //gif
+    }
+    $dims = getimagesize($im); //获取图片大小；
+    //Array ( [0] =&gt; 800 [1] =&gt; 600 
+    [2] =&gt; 2 [3] =&gt; width=&quot;800&quot; height=&quot;600&quot; 
+    [bits] =&gt; 8 [channels] =&gt; 3 [mime] =&gt; image/jpeg )
+    $pic_width = $dims[&#39;0&#39;];
+    $pic_height = $dims[&#39;1&#39;];
+    if(($maxwidth &amp;&amp; $pic_width &gt; $maxwidth) || ($maxheight &amp;&amp; $pic_height &gt; $maxheight))
+    {
+        $resizewidth_tag = false;
+        $resizeheight_tag = false;
+
+        if($maxwidth &amp;&amp; $pic_width&gt;$maxwidth){
+            $widthratio = $maxwidth/$pic_width;
+            $resizewidth_tag = true;
+        }
+
+        if($maxheight &amp;&amp; $pic_height&gt;$maxheight){
+            $heightratio = $maxheight/$pic_height;
+            $resizeheight_tag = true;
+        }
+
+        if($resizewidth_tag &amp;&amp; $resizeheight_tag){
+            if($widthratio&lt;$heightratio)
+                $ratio = $widthratio;
+            else
+                $ratio = $heightratio;
+        }
+
+        if($resizewidth_tag &amp;&amp; !$resizeheight_tag)
+            $ratio = $widthratio;
+        if($resizeheight_tag &amp;&amp; !$resizewidth_tag)
+            $ratio = $heightratio;
+
+        $newwidth = $pic_width * $ratio;
+        $newheight = $pic_height * $ratio;
+
+        //创建空白图像
+        $newim = imagecreatetruecolor($newwidth,$newheight);
+
+        //重采样拷贝部分图像并调整大小
+        imagecopyresampled($newim,$originail ,0,0,0,0,$newwidth,$newheight,$dims[&#39;0&#39;],$dims[&#39;1&#39;]);
+        
+    }else{
+        //创建空白图像
+        $newim = imagecreatetruecolor($dims[&#39;0&#39;],$dims[&#39;1&#39;]);
+        //重采样拷贝部分图像并调整大小
+        imagecopyresampled($newim,$originail,0,0,0,0,$dims[&#39;0&#39;],$dims[&#39;1&#39;],$dims[&#39;0&#39;],$dims[&#39;1&#39;]);
+    }
+
+    return imagejpeg($newim,$to);
+}</code></pre>
+
+<p>PHP 按比例缩放图片</p>
+        </div>
+
+    
+        <ul class="tag_box inline">
+            <li><i class="icon-folder-open"></i></li>
+            
+            
+
+
+  
+     
+    	<li><a href="/categories.html#php-ref">
+    		php <span>10</span>
+    	</a></li>
+    
+  
+
+
+        </ul>
+        
+
+    
+        <ul class="tag_box inline">
+            <li><i class="icon-tags"></i></li>
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#PHP-ref">PHP <span>10</span></a></li>
+    
+  
+
+
+
+        </ul>
+        
+
+        <hr>
+        <div class="pagination">
+            <ul>
+            
+                <li class="prev disabled"><a>&larr; Previous</a></li>
+            
+                <li><a href="/archive.html">Archive</a></li>
+            
+                <li class="next"><a href="/redis/2011/08/19/redis-humble-opinion" title="redis 浅见">Next &rarr;</a></li>
+            
+            </ul>
+        </div>
+        <hr>
+        
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'jekyllbootstrap'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+    </div>
+</div>
+
+
+            </div>
+            <hr>
+            <footer>
+                <p>&copy; 2013 寞踪
+                    with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+                    and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+                </p>
+            </footer>
+
+        </div>
+
+        
+    </body>
+</html>
+

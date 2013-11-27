@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>saltstack 学习小记</title>
+        <meta name="description" content="saltstack 学习小记">
+        <meta name="author" content="寞踪">
+
+        <!-- Enable responsive viewport -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <!-- Le styles -->
+        <link href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+        <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+        <script src="/assets/themes/twitter/google-code-prettify/jquery.js"></script>
+        <script src="/assets/themes/twitter/google-code-prettify/prettify.js"></script>
+        <link href="/assets/themes/twitter/google-code-prettify/sunburst.css" rel="stylesheet" type="text/css" media="all">
+        <script type="text/javascript">
+            $(function(){
+                $("pre").addClass("prettyprint");
+                prettyPrint();
+            });
+        </script>
+        <!-- Le fav and touch icons -->
+    <!-- Update these with your own images
+        <link rel="shortcut icon" href="images/favicon.ico">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    -->
+
+        <!-- atom & rss feed -->
+        <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+        <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+    </head>
+
+    <body>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container-narrow">
+                    <a class="brand" href="/">寞踪的技术博客</a>
+                    <ul class="nav">
+                        
+                        
+                        
+
+
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/aboutMe.html">About Me</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-narrow">
+
+            <div class="content">
+                
+<div class="page-header">
+    <h1>saltstack 学习小记 </h1>
+</div>
+
+<div class="row-fluid post-full">
+    <div class="span12">
+        <div class="date">
+            <span>05 September 2013</span>
+        </div>
+        <div class="content">
+            <p>saltstack的基本介绍</p><p>salt是一个新的基础平台管理工具。很短的时间即可运行并使用起来, 扩展性足以支撑管理上万台服务器，数秒钟即可完成数据传递. 经常被描述为 Func加强版+Puppet精简版。</p><p>salt的安装</p><p>首先添加RPM源:</p>
+<pre><code>rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm</code></pre>
+<p>1、安装服务端</p>
+<pre><code>yum install salt-master</code></pre>
+<p>可以修改配置文件，vim /etc/salt/master 将auto_accept 改为 True，这样可以自动接收客户端</p>
+<pre><code>file_roots:
+    base:
+        - /srv/salt</code></pre>
+<p>这个是可以控制上传的路径</p><p>启动服务端： /etc/init.d/salt-minion start</p><p>2、安装客户端</p>
+<pre><code>yum install salt-minion</code></pre>
+<p>修改配置文件，vim /etc/salt/minion master:xxxxxxx   id:xxxxxx</p><p>启动客户端：/etc/init.d/salt-minion start</p><p>3、salt命令</p><p>salt-key -L  列表</p><p>salt '*' grains.ls  查看grains分类</p><p>salt '*' grains.items 查看grains所有信息</p><p>salt '*' grains.item osrelease 查看grains某个信息</p><p>命令啥的，就不解释了，参考<a href='http://wiki.saltstack.cn/modules/all' target='_blank'>salt内置执行模块列表</a></p><p>4、相关文档 </p><p><a href='http://wiki.saltstack.cn/' target='_blank'>saltstack社区</a></p><p>5、salt开发</p><p>python开发</p>
+<pre><code>import salt.client
+client = salt.client.LocalClient()
+ret = client.cmd(&#39;*&#39;, &#39;cmd.run&#39;, [&#39;ls -l&#39;])
+print ret</code></pre>
+<p>6、<a href='http://www.ituring.com.cn/article/41632'>SaltStack中的文件服务器</a></p><p>最近在开发一个salt管理系统，敬请期待！</p>
+        </div>
+
+    
+        <ul class="tag_box inline">
+            <li><i class="icon-folder-open"></i></li>
+            
+            
+
+
+  
+     
+    	<li><a href="/categories.html#python-ref">
+    		python <span>3</span>
+    	</a></li>
+    
+  
+
+
+        </ul>
+        
+
+    
+        <ul class="tag_box inline">
+            <li><i class="icon-tags"></i></li>
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#python-ref">python <span>3</span></a></li>
+     
+    	<li><a href="/tags.html#saltstack-ref">saltstack <span>1</span></a></li>
+    
+  
+
+
+
+        </ul>
+        
+
+        <hr>
+        <div class="pagination">
+            <ul>
+            
+                <li class="prev"><a href="/php/2013/08/09/php-libvirt" title="libvirt-php 学习小记">&larr; Previous</a></li>
+            
+                <li><a href="/archive.html">Archive</a></li>
+            
+                <li class="next"><a href="/ruby/2013/11/27/jekyll" title="利用github jekyll 创建 blog">Next &rarr;</a></li>
+            
+            </ul>
+        </div>
+        <hr>
+        
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'jekyllbootstrap'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+    </div>
+</div>
+
+
+            </div>
+            <hr>
+            <footer>
+                <p>&copy; 2013 寞踪
+                    with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+                    and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+                </p>
+            </footer>
+
+        </div>
+
+        
+    </body>
+</html>
+

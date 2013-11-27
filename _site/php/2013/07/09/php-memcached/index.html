@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Windows下安装配置PHP Memcached</title>
+        <meta name="description" content="Windows下安装配置PHP Memcached">
+        <meta name="author" content="寞踪">
+
+        <!-- Enable responsive viewport -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <!-- Le styles -->
+        <link href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+        <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+        <script src="/assets/themes/twitter/google-code-prettify/jquery.js"></script>
+        <script src="/assets/themes/twitter/google-code-prettify/prettify.js"></script>
+        <link href="/assets/themes/twitter/google-code-prettify/sunburst.css" rel="stylesheet" type="text/css" media="all">
+        <script type="text/javascript">
+            $(function(){
+                $("pre").addClass("prettyprint");
+                prettyPrint();
+            });
+        </script>
+        <!-- Le fav and touch icons -->
+    <!-- Update these with your own images
+        <link rel="shortcut icon" href="images/favicon.ico">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    -->
+
+        <!-- atom & rss feed -->
+        <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+        <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+    </head>
+
+    <body>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container-narrow">
+                    <a class="brand" href="/">寞踪的技术博客</a>
+                    <ul class="nav">
+                        
+                        
+                        
+
+
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/aboutMe.html">About Me</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-narrow">
+
+            <div class="content">
+                
+<div class="page-header">
+    <h1>Windows下安装配置PHP Memcached </h1>
+</div>
+
+<div class="row-fluid post-full">
+    <div class="span12">
+        <div class="date">
+            <span>09 July 2013</span>
+        </div>
+        <div class="content">
+            <p>安装前准备：</p><p>
+    1. memcached 1.2.1 for Win32 binaries，这个是 Win32 服务器端的 memcached 最新版本，下载
+    <a href='http://code.jellycan.com/files/memcached-1.2.6-win32-bin.zip' target='_blank'>附件</a>
+</p><p>2. php 所需的 PECL 扩展，即 php_memcache 扩展 http://windows.php.net/downloads/pecl/releases/memcache/2.2.7/</p><p>win7 64 位</p><p>php-5.3.4-x64 php_memcache.dll <a href='http://blog.hexu.org/wp-content/uploads/2012/05/php_memcache.zip'>下载</a></p><p>Memcache-win64 下载：</p><p>a. 下载最新版：http://blog.couchbase.com/memcached-windows-64-bit-pre-release-available</p><p>b. 直接下载： http://s3.amazonaws.com/downloads.northscale.com/memcached-win64-1.4.4-14.zip</p><p>安装步骤：</p><p>1. 将第一个包解压放某个盘下面，比如在c:\memcached</p><p>2. 在终端下输入 'c:\memcached\memcached.exe -d install' , memcached将作为windows的一个服务</p><p>3. 再输入 'c:\memcached\memcached.exe -d start' , 这样服务器端已经安装完毕了</p><p>4. 解压第二个包包，里面会只有一个 php_memcache.dll 文件，把它放入 php5/ext/ 中</p><p>5. 在C:\WINDOWS\php.ini 加入一行'extension=php_memcache.dll'</p><p>6.接着在 php.ini 文件里加上以下带代码，最好就放在刚才写 "extension=php_memcache.dll" 的下面:</p>
+<pre><code>[Memcache]
+memcache.allow_failover = 1
+memcache.max_failover_attempts=20
+memcache.chunk_size =8192
+memcache.default_port = 11211</code></pre>
+<p>试运行：</p><p>写一个 test.php 文件：（更多使用方法可以参看 PHP 手册里的 Memcache Functions 使用说明） </p><p>复制代码 代码如下:</p>
+<pre><code>header(&#39;Content-Type:text/html;charset=utf-8&#39;);
+$memcache = new Memcache;
+$memcache-&gt;connect(&#39;localhost&#39;, 11211) or die (&quot;Could not connect&quot;);
+
+$version = $memcache-&gt;getVersion();
+echo &quot;Server&#39;s version: &quot;.$version.&quot;&lt;br/&gt;\n&quot;;
+
+$tmp_object = new stdClass;
+$tmp_object-&gt;str_attr = &#39;test&#39;;
+$tmp_object-&gt;int_attr = 123;
+
+$memcache-&gt;set(&#39;key&#39;, $tmp_object, false, 10) or die (&quot;Failed to save data at the server&quot;);
+echo &quot;Store data in the cache (data will expire in 10 seconds)&lt;br/&gt;\n&quot;;
+
+$get_result = $memcache-&gt;get(&#39;key&#39;);
+echo &quot;Data from the cache:&lt;br/&gt;\n&quot;;
+print_r($get_result);</code></pre>
+<p>如果有输出：</p>
+<pre><code>Server&#39;s version: 1.2.6
+Store data in the cache (data will expire in 10 seconds)
+Data from the cache:
+stdClass Object ( [str_attr] =&gt; test [int_attr] =&gt; 123 ) </code></pre>
+        </div>
+
+    
+        <ul class="tag_box inline">
+            <li><i class="icon-folder-open"></i></li>
+            
+            
+
+
+  
+     
+    	<li><a href="/categories.html#php-ref">
+    		php <span>10</span>
+    	</a></li>
+    
+  
+
+
+        </ul>
+        
+
+    
+        <ul class="tag_box inline">
+            <li><i class="icon-tags"></i></li>
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#PHP-ref">PHP <span>10</span></a></li>
+     
+    	<li><a href="/tags.html#Memcached-ref">Memcached <span>1</span></a></li>
+    
+  
+
+
+
+        </ul>
+        
+
+        <hr>
+        <div class="pagination">
+            <ul>
+            
+                <li class="prev"><a href="/nginx/2013/05/10/crontab" title="crontab 定时执行某个域名">&larr; Previous</a></li>
+            
+                <li><a href="/archive.html">Archive</a></li>
+            
+                <li class="next"><a href="/php/2013/08/09/php-libvirt" title="libvirt-php 学习小记">Next &rarr;</a></li>
+            
+            </ul>
+        </div>
+        <hr>
+        
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'jekyllbootstrap'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+    </div>
+</div>
+
+
+            </div>
+            <hr>
+            <footer>
+                <p>&copy; 2013 寞踪
+                    with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+                    and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+                </p>
+            </footer>
+
+        </div>
+
+        
+    </body>
+</html>
+

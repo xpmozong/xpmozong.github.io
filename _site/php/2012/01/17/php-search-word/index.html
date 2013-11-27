@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>php查找一个单词在一个文件中的第几行第几列</title>
+        <meta name="description" content="php查找一个单词在一个文件中的第几行第几列">
+        <meta name="author" content="寞踪">
+
+        <!-- Enable responsive viewport -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <!-- Le styles -->
+        <link href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+        <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+        <script src="/assets/themes/twitter/google-code-prettify/jquery.js"></script>
+        <script src="/assets/themes/twitter/google-code-prettify/prettify.js"></script>
+        <link href="/assets/themes/twitter/google-code-prettify/sunburst.css" rel="stylesheet" type="text/css" media="all">
+        <script type="text/javascript">
+            $(function(){
+                $("pre").addClass("prettyprint");
+                prettyPrint();
+            });
+        </script>
+        <!-- Le fav and touch icons -->
+    <!-- Update these with your own images
+        <link rel="shortcut icon" href="images/favicon.ico">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    -->
+
+        <!-- atom & rss feed -->
+        <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+        <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+    </head>
+
+    <body>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container-narrow">
+                    <a class="brand" href="/">寞踪的技术博客</a>
+                    <ul class="nav">
+                        
+                        
+                        
+
+
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/aboutMe.html">About Me</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-narrow">
+
+            <div class="content">
+                
+<div class="page-header">
+    <h1>php查找一个单词在一个文件中的第几行第几列 </h1>
+</div>
+
+<div class="row-fluid post-full">
+    <div class="span12">
+        <div class="date">
+            <span>17 January 2012</span>
+        </div>
+        <div class="content">
+            <p>在写这个程序之前，先回忆相关的代码。</p>
+<p>1、</p>
+
+<pre><code>$file = &quot;aa.txt &quot;; 
+$file_array = file($file); 
+$file_line_num = count($file_array); 
+echo $file_line_num;die;    //获得这个文件有多少行</code></pre>
+
+<p>2、</p>
+
+<pre><code>$txt = file(&#39;aa.txt&#39;);
+echo $txt[2];die;   //输出第三行</code></pre>
+<p>3、有一个很大的日志文件，要读出最后100行，怎么办？</p>
+<pre><code>$commandstr=&quot;tail -n 100 aa.txt&gt;online.txt&quot;; //把server.log的最后100行重定向到online.txt中
+system($commandstr); //调用系统命令
+$file_handle = fopen(&quot;online.txt&quot;, &quot;r+&quot;); //以只读的方式打开online.txt文件
+while (!feof($file_handle)) {
+   $line = fgets($file_handle);
+        echo nl2br($line); //输出文件
+}
+fclose($file_handle); //关闭文件</code></pre>
+<p>注意，要把online.txt文件的属性设为777，还有上面程序只对linux系统下有效。</p><p>4、现在开始标题的程序吧</p>
+<pre><code>$txt = file(&#39;aa.txt&#39;);
+foreach($txt as $key=&gt;$value) {
+    if(preg_match(&#39;/heaven/&#39;,$value)) {
+        $strarr = explode(&#39; &#39;,$value);
+        foreach($strarr as $k =&gt; $v) {
+            if(preg_match(&#39;/heaven/&#39;,$v)) {
+                echo ($key+1).&#39;,&#39;.($k+1).&#39; &#39;;
+            }
+        }
+    }
+}</code></pre>
+        </div>
+
+    
+        <ul class="tag_box inline">
+            <li><i class="icon-folder-open"></i></li>
+            
+            
+
+
+  
+     
+    	<li><a href="/categories.html#php-ref">
+    		php <span>10</span>
+    	</a></li>
+    
+  
+
+
+        </ul>
+        
+
+    
+        <ul class="tag_box inline">
+            <li><i class="icon-tags"></i></li>
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#PHP-ref">PHP <span>10</span></a></li>
+    
+  
+
+
+
+        </ul>
+        
+
+        <hr>
+        <div class="pagination">
+            <ul>
+            
+                <li class="prev"><a href="/php/2012/01/09/php-call_user_func_array" title="PHP之call_user_func_array用法">&larr; Previous</a></li>
+            
+                <li><a href="/archive.html">Archive</a></li>
+            
+                <li class="next"><a href="/linux/2012/01/29/linux-ddos" title="实战DoS Deflate">Next &rarr;</a></li>
+            
+            </ul>
+        </div>
+        <hr>
+        
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'jekyllbootstrap'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+    </div>
+</div>
+
+
+            </div>
+            <hr>
+            <footer>
+                <p>&copy; 2013 寞踪
+                    with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+                    and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+                </p>
+            </footer>
+
+        </div>
+
+        
+    </body>
+</html>
+

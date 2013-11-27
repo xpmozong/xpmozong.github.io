@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>实战DoS Deflate</title>
+        <meta name="description" content="实战DoS Deflate">
+        <meta name="author" content="寞踪">
+
+        <!-- Enable responsive viewport -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <!-- Le styles -->
+        <link href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+        <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+        <script src="/assets/themes/twitter/google-code-prettify/jquery.js"></script>
+        <script src="/assets/themes/twitter/google-code-prettify/prettify.js"></script>
+        <link href="/assets/themes/twitter/google-code-prettify/sunburst.css" rel="stylesheet" type="text/css" media="all">
+        <script type="text/javascript">
+            $(function(){
+                $("pre").addClass("prettyprint");
+                prettyPrint();
+            });
+        </script>
+        <!-- Le fav and touch icons -->
+    <!-- Update these with your own images
+        <link rel="shortcut icon" href="images/favicon.ico">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    -->
+
+        <!-- atom & rss feed -->
+        <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+        <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+    </head>
+
+    <body>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container-narrow">
+                    <a class="brand" href="/">寞踪的技术博客</a>
+                    <ul class="nav">
+                        
+                        
+                        
+
+
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/aboutMe.html">About Me</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-narrow">
+
+            <div class="content">
+                
+<div class="page-header">
+    <h1>实战DoS Deflate </h1>
+</div>
+
+<div class="row-fluid post-full">
+    <div class="span12">
+        <div class="date">
+            <span>29 January 2012</span>
+        </div>
+        <div class="content">
+            <p>DDoS deflate是一款免费的用来防御和减轻DDoS攻击的脚本。它通过netstat监测跟踪创建大量网络连接的IP地址，在检测到某个结点超过预设的限 制时，该程序会通过APF或IPTABLES禁止或阻挡这些IP.</p><p>DDoS deflate官方网站：http://deflate.medialayer.com/</p>
+<pre><code>netstat -ntu | awk &#39;{print $5}&#39; | cut -d: -f1 | sort | uniq -c | sort -n</code></pre>
+<p>执行上面的命令后，</p>
+<pre><code>1 Address
+1 servers)
+2 123.113.152.60
+4 59.151.36.148
+................................</code></pre>
+<p>每个IP几个、十几个或几十个连接数都还算比较正常，如果像上面成百上千肯定就不正常了。</p><p>好了，下面就安装DDoS deflate吧。</p><p>第一步：安装DDoS deflate</p><p>wget http://www.inetbase.com/scripts/ddos/install.sh</p><p>chmod 0700 install.sh</p><p>./install.sh    //安装</p><p>卸载：</p><p>wget http://www.inetbase.com/scripts/ddos/uninstall.ddos</p><p>chmod 0700 uninstall.ddos</p><p>./uninstall.ddos</p><p>第二步：配置DDoS deflate</p><p>下面是DDoS deflate的默认配置位于/usr/local/ddos/ddos.conf ，内容如下：</p>
+<pre><code>##### Paths of the script and other files
+PROGDIR=&quot;/usr/local/ddos&quot;
+PROG=&quot;/usr/local/ddos/ddos.sh&quot;
+IGNORE_IP_LIST=&quot;/usr/local/ddos/ignore.ip.list&quot;  //IP地址白名单
+CRON=&quot;/etc/cron.d/ddos.cron&quot;    //定时执行程序
+APF=&quot;/etc/apf/apf&quot;
+IPT=&quot;/sbin/iptables&quot;
+
+##### frequency in minutes for running the script
+##### Caution: Every time this setting is changed, run the script with --cron
+#####          option so that the new frequency takes effect
+FREQ=1   //检查时间间隔，默认1分钟
+
+##### How many connections define a bad IP? Indicate that below.
+NO_OF_CONNECTIONS=150     //最大连接数，超过这个数IP就会被屏蔽，一般默认即可
+
+##### APF_BAN=1 (Make sure your APF version is atleast 0.96)
+##### APF_BAN=0 (Uses iptables for banning ips instead of APF)
+APF_BAN=1        //使用APF还是iptables。推荐使用iptables,将APF_BAN的值改为0即可。
+
+##### KILL=0 (Bad IPs are&#39;nt banned, good for interactive execution of script)
+##### KILL=1 (Recommended setting)
+KILL=1   //是否屏蔽IP，默认即可
+
+##### An email is sent to the following address when an IP is banned.
+##### Blank would suppress sending of mails
+EMAIL_TO=&quot;root&quot;   //当IP被屏蔽时给指定邮箱发送邮件，推荐使用，换成自己的邮箱即可
+
+##### Number of seconds the banned ip should remain in blacklist.
+BAN_PERIOD=600    //禁用IP时间，默认600秒，可根据情况调整</code></pre>
+<p>用户可根据给默认配置文件加上的注释提示内容，修改配置文件。</p><p>第三步：查看/usr/local/ddos/ddos.sh文件的第117行</p>
+<pre><code>netstat -ntu | awk ‘{print $5}’ | cut -d: -f1 | sort | uniq -c | sort -nr &gt; $BAD_IP_LIST</code></pre>
+<p>修改为以下代码即可！</p>
+<pre><code>netstat -ntu | awk ‘{print $5}’ | cut -d: -f1 | sed -n &#39;/[0-9]/p&#39; | sort | uniq -c | sort -nr &gt; $BAD_IP_LIST</code></pre>
+<p>OK了！</p>
+        </div>
+
+    
+        <ul class="tag_box inline">
+            <li><i class="icon-folder-open"></i></li>
+            
+            
+
+
+  
+     
+    	<li><a href="/categories.html#linux-ref">
+    		linux <span>1</span>
+    	</a></li>
+    
+  
+
+
+        </ul>
+        
+
+    
+        <ul class="tag_box inline">
+            <li><i class="icon-tags"></i></li>
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#Linux-ref">Linux <span>1</span></a></li>
+    
+  
+
+
+
+        </ul>
+        
+
+        <hr>
+        <div class="pagination">
+            <ul>
+            
+                <li class="prev"><a href="/php/2012/01/17/php-search-word" title="php查找一个单词在一个文件中的第几行第几列">&larr; Previous</a></li>
+            
+                <li><a href="/archive.html">Archive</a></li>
+            
+                <li class="next"><a href="/nginx/2012/01/30/nginx" title="Nginx实现HTTP负载均衡">Next &rarr;</a></li>
+            
+            </ul>
+        </div>
+        <hr>
+        
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'jekyllbootstrap'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+    </div>
+</div>
+
+
+            </div>
+            <hr>
+            <footer>
+                <p>&copy; 2013 寞踪
+                    with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+                    and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+                </p>
+            </footer>
+
+        </div>
+
+        
+    </body>
+</html>
+

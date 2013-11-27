@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>10+ 字符串相关的 PHP 代码片段</title>
+        <meta name="description" content="10+ 字符串相关的 PHP 代码片段">
+        <meta name="author" content="寞踪">
+
+        <!-- Enable responsive viewport -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <!-- Le styles -->
+        <link href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+        <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+        <script src="/assets/themes/twitter/google-code-prettify/jquery.js"></script>
+        <script src="/assets/themes/twitter/google-code-prettify/prettify.js"></script>
+        <link href="/assets/themes/twitter/google-code-prettify/sunburst.css" rel="stylesheet" type="text/css" media="all">
+        <script type="text/javascript">
+            $(function(){
+                $("pre").addClass("prettyprint");
+                prettyPrint();
+            });
+        </script>
+        <!-- Le fav and touch icons -->
+    <!-- Update these with your own images
+        <link rel="shortcut icon" href="images/favicon.ico">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    -->
+
+        <!-- atom & rss feed -->
+        <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+        <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+    </head>
+
+    <body>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container-narrow">
+                    <a class="brand" href="/">寞踪的技术博客</a>
+                    <ul class="nav">
+                        
+                        
+                        
+
+
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/aboutMe.html">About Me</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-narrow">
+
+            <div class="content">
+                
+<div class="page-header">
+    <h1>10+ 字符串相关的 PHP 代码片段 </h1>
+</div>
+
+<div class="row-fluid post-full">
+    <div class="span12">
+        <div class="date">
+            <span>23 September 2011</span>
+        </div>
+        <div class="content">
+            <p>1、自动移除字符串中的 HTML 标记</p><p>在用户表单中，你可能希望移除所有不必要的 HTML 标记。使用 strip_tags() 函数可以简单地做到这一点：</p>
+<pre><code>$text = strip_tags($input, &quot;&quot;);</code></pre>
+<p>2、获取 $start 和 $end 之间的文本</p><p>这是一种每个网站开发人员应该收纳在开发工具箱的功能：给定一个字符串，一个起始位置，一个结束为止，并返回包含在 $start 和 $end 两者之间的文本。</p>
+<pre><code>function GetBetween($content,$start,$end){
+    $r = explode($start, $content);
+    if (isset($r[1])){
+        $r = explode($end, $r[1]);
+        return $r[0];
+    }
+    return &#39;&#39;;
+}</code></pre>
+<p>3、将 URL 转换为超链接</p><p>如果你在 WordPress 博客的评论表单中添加了 URL，它会被自动转换为超级链接。如果你想要在网站上实现同样的功能，可以使用以下代码：</p>
+<pre><code>$url = &quot;芒果 (http://www.mangguo.org)&quot;;
+$url = preg_replace(&quot;#http://([A-z0-9./-]+)#&quot;, &#39;$0&#39;, $url);</code></pre>
+<p>4、将文本分割为 140 字符的数组</p><p>大家都知道，Twitter 仅仅接受 140 字符以内的消息。如果你希望与这个流行的即时信息网站交互，肯定会喜欢这个功能，这将允许对留言截断为 140 个字符。</p>
+<pre><code>function split_to_chunks($to,$text){
+    $total_length = (140 - strlen($to));
+    $text_arr = explode(&quot; &quot;,$text);
+    $i=0;
+    $message[0]=&quot;&quot;;
+    foreach ($text_arr as $word){
+        if ( strlen($message[$i] . $word . &#39; &#39;) &lt;= $total_length ){
+            if ($text_arr[count($text_arr)-1] == $word){
+                $message[$i] .= $word;
+            } else {
+                $message[$i] .= $word . &#39; &#39;;
+            }
+        } else {
+            $i++;
+            if ($text_arr[count($text_arr)-1] == $word){
+                $message[$i] = $word;
+            } else {
+                $message[$i] = $word . &#39; &#39;;
+            }
+        }
+    }
+    return $message;
+}</code></pre>
+<p>5、从字符串中移除 URL</p><p>为了获得流量或者反向链接，很多访客会发布大量含有网址信息的博客评论，这个代码片段可以对其进行有效防范：</p>
+<pre><code>$string = preg_replace(&#39;/\b(https?|ftp|file):\/\/[-A-Z0-9+&amp;@#\/%?=~_|$!:,.;]*[A-Z0-9+&amp;@#\/%=~_|$]/i&#39;, &#39;&#39;, $string);</code></pre>
+<p>6、转换字符串为缩略标题</p><p>创建缩略标题（通常称之为 permalink，即固定链接）有利于 SEO，以下函数以一个字符串作为参数，并返回良好的缩略字符串。简洁有效，值得尝试！</p>
+<pre><code>function slug($str){
+    $str = strtolower(trim($str));
+    $str = preg_replace(&#39;/[^a-z0-9-]/&#39;, &#39;-&#39;, $str);
+    $str = preg_replace(&#39;/-+/&#39;, &quot;-&quot;, $str);
+    return $str;
+}</code></pre>
+<p>7、解析 CSV 文件</p><p>CSV（逗号分隔的值文件）是存储数据的简单方式，使用 PHP 解析也很容易。不信你可以动手试试以下代码片段。</p>
+<pre><code>$fh = fopen(&quot;contacts.csv&quot;, &quot;r&quot;);
+while($line = fgetcsv($fh, 1000, &quot;,&quot;)) {
+    echo &quot;Contact: {$line[1]}&quot;;
+}</code></pre>
+<p>8、检索字符串中的另一个字符串</p><p>如果某个字符串包含在另一个字符串中，并且必须检索出来，这里有一个绝妙的方法：</p>
+<pre><code>function contains($str, $content, $ignorecase=true){
+    if ($ignorecase){
+        $str = strtolower($str);
+        $content = strtolower($content);
+    }
+    return strpos($content,$str) ? true : false;
+}</code></pre>
+<p>9、检测某个字符串是否以指定的模式开始</p><p>有些语言比如 Java 具有一个 startWith 方法，允许你检测某个字符串是否以指定的模式开始。不幸的是，PHP 不具备这种内建函数。但我们可以自己动手丰衣足食，实现也很简单：</p>
+<pre><code>function String_Begins_With($needle, $haystack {
+    return (substr($haystack, 0, strlen($needle))==$needle);
+}</code></pre>
+<p>10、从字符串中提取电子邮件地址</p><p>有没有想过那些发垃圾邮件的人是如何得到邮件地址的？这很简单，他们只需对网页进行简单的 HTML 解析即可提取电子邮件。此代码需要一个字符串作为参数，并打印所包含的电子邮件地址。芒果告诫：请勿使用此代码制造垃圾邮件！</p>
+<pre><code>function extract_emails($str){
+    // This regular expression extracts all emails from a string:
+    $regexp = &#39;/([a-z0-9_\.\-])+\@(([a-z0-9\-])+\.)+([a-z0-9]{2,4})+/i&#39;;
+    preg_match_all($regexp, $str, $m);
+
+    return isset($m[0]) ? $m[0] : array();
+}
+
+$test_string = &#39;This is a test string...
+
+        test1@example.org
+
+        Test different formats:
+        test2@example.org;
+        &lt;a href=&quot;test3@example.org&quot;&gt;foobar&lt;/a&gt;
+        &lt;test4@example.org&gt;
+
+        strange formats:
+        test5@example.org
+        test6[at]example.org
+        test7@example.net.org.com
+        test8@ example.org
+        test9@!foo!.org
+
+        foobar
+&#39;;
+
+print_r(extract_emails($test_string));</code></pre>
+        </div>
+
+    
+        <ul class="tag_box inline">
+            <li><i class="icon-folder-open"></i></li>
+            
+            
+
+
+  
+     
+    	<li><a href="/categories.html#php-ref">
+    		php <span>10</span>
+    	</a></li>
+    
+  
+
+
+        </ul>
+        
+
+    
+        <ul class="tag_box inline">
+            <li><i class="icon-tags"></i></li>
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#PHP-ref">PHP <span>10</span></a></li>
+    
+  
+
+
+
+        </ul>
+        
+
+        <hr>
+        <div class="pagination">
+            <ul>
+            
+                <li class="prev"><a href="/html/2011/09/23/div-flash" title="DIV层遇到FLASH不显示的问题">&larr; Previous</a></li>
+            
+                <li><a href="/archive.html">Archive</a></li>
+            
+                <li class="next"><a href="/html/2011/09/26/htaceess-speed" title="前端优化，利用.htaceess控制图片，js，css缓存时间提升加载速度">Next &rarr;</a></li>
+            
+            </ul>
+        </div>
+        <hr>
+        
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'jekyllbootstrap'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+    </div>
+</div>
+
+
+            </div>
+            <hr>
+            <footer>
+                <p>&copy; 2013 寞踪
+                    with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+                    and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+                </p>
+            </footer>
+
+        </div>
+
+        
+    </body>
+</html>
+
