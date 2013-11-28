@@ -4,7 +4,7 @@
     <title>寞踪的技术博客</title>
     <link href="http://xpmozong.github.io/" rel="self"/>
     <link href="http://xpmozong.github.io"/>
-    <updated>2013-11-28T16:23:39+08:00</updated>
+    <updated>2013-11-28T17:08:45+08:00</updated>
     <id>http://xpmozong.github.io</id>
     <author>
     <name>寞踪</name>
@@ -12,6 +12,169 @@
     </author>
 
 
+    <entry>
+        <title>linux 小总结</title>
+        <link href="http://xpmozong.github.io/linux/2013/11/29/linux-summary"/>
+        <updated>2013-11-29T00:00:00+08:00</updated>
+        <id>http://xpmozong.github.io/linux/2013/11/29/linux-summary</id>
+        <content type="html">&lt;p&gt;1、初始安装&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yum install make apr* autoconf automake gcc gcc-c++ zlib-devel openssl openssl-devel pcre-devel gd  kernel keyutils  patch  perl kernel-headers compat* mpfr cpp glibc libgomp libstdc++-devel ppl cloog-ppl keyutils-libs-devel libcom_err-devel libsepol-devel libselinux-devel krb5-devel zlib-devel libXpm* freetype libjpeg* libpng* php-common php-gd ncurses* libtool* libxml2 libxml2-devel patch&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;2、日志20行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cat error.log | awk &amp;#39;{print $1}&amp;#39;|sort|uniq -c|sort -nr|head -20&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;3、运行C程序&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yum -y install gcc
+yum -y install gcc-c++ 
+yum install make
+// 编译 
+gcc hello.c -o hello&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;4、加全局变量&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;编辑： vim /root/.bash_profile
+添加： export PATH=$PATH:/usr/local/go/bin
+运行： source /root/.bash_profile
+可以通过 echo $PATH 来查看环境变量
+vim .bashrc
+source .bashrc&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;5、Centos查看端口占用情况命令，比如查看80端口占用情况使用如下命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;lsof -i tcp:80&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;6、列出所有端口&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;netstat -ntlp&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;7、查看进程&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ps -ef | grep nginx&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;8、按照这个步骤启动uwsgi&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ps aux | grep uwsgi
+pkill uwsg
+screen
+uwsgi -x /data/funny/uwsgi.xml
+chown -R www:www /tmp/funny.sock&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;9、列出文件夹下文件夹大小&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;du -sh /data/*  &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;10、定时执行修改&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;crontab -e
+/etc/init.d/crond restart&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;11、复制&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 复制指定目录的文件到当前目录，并重命名
+cp ~/.bashrc bashrc_bak
+
+// 强制复制指定目录的文件到当前目录，而不管当前目录是否含有该文件
+cp -f ~/.bashrc bashrc
+
+// 复制指定目录到当前目录
+cp -r /root/test .
+cp -r /root/test/ .
+
+// 复制指定目录的文件到指定目录
+cp ~/.bashrc /bak/.bashrc
+// 若提示：
+cp: omitting directory
+// 则采用：
+cp -r ~/.bashrc /bak/.bashrc
+// 若提示：
+cp:overwrite
+// 则采用加斜杠：
+/cp -r -f ~/.bashrc /bak/.bashrc
+
+// 在复制时将源文件的全部属性也复制过来。若不指定参数，则目标文件与源文件属性可能不一致。
+cp -a ~/.bashrc /bak/.bashrc
+
+// 若两个文件夹要保证同步，一个文件的改了，另一个文件也跟着改，但是要保证两个文件的文件都是最新的。
+cp -u /src/.bashrc /bak_src/bashrc&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;12、重命名文件夹&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mv oldfilename newfilename&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;13、防火墙&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 关闭
+/etc/init.d/iptables stop
+// 添加例外端口 
+vim /etc/sysconfig/iptables
+-A INPUT -p tcp -m tcp --dport 55 -j ACCEPT&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;14、查找文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;find / -name access_log&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;15、网桥&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;brctl show&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;16、noVNC&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yum install python-devel
+nohup /data/noVNC/utils/launch.sh &amp;amp;
+// 普通访问
+/data/noVNC/utils/websockify.py -D 8000 192.168.1.1:5900
+http://192.168.1.1:6080/vnc_auto.html?host=192.168.1.1&amp;amp;port=8000
+// proxy访问
+/data/noVNC/utils/websockify --target-config=/data/noVNC/vnc_tokens 29876
+http://192.168.1.1:6080/vnc_auto.html?host=192.168.1.1&amp;amp;port=29876&amp;amp;token=212oukhdvszujihzqvm&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;17、virsh、qemu命令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 远程连接
+virsh -c qemu+tls://192.168.1.1:23/system list --all
+// 创建磁盘
+qemu-img create -f qcow2 -o preallocation=metadata /data/vm/test2.qcow2 8G
+// 编辑虚拟机文件
+virt-edit -d 912-2 /root/meta.js
+// 挂载虚拟机磁盘
+guestmount --rw -a /data/qyinstances/instance-11354/disk.qcow2 -m /dev/sda1 /mnt/qyvms/
+
+fusermount -u /mnt/tmp1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;18、将文件转成镜像&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mkisofs -r -o meta.iso meta.js&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;19、挂载文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mount /dev/sr0 /media/&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;20、查看硬盘还剩多少容量&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;df -h
+fdisk -l&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;21、获取IP地址&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;dhclient -d eth0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;22、随机生成mac地址&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;MACADDR=&amp;quot;52:54:$(dd if=/dev/urandom count=1 2&amp;gt;/dev/null | md5sum | sed &amp;#39;s/^\(..\)\(..\)\(..\)\(..\).*$/\1:\2:\3:\4/&amp;#39;)&amp;quot;; echo $MACADDR&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;23、更改文件或文件夹所属&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;chown qemu.qemu /dev/kvm&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;24、修改ip&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /etc/sysconfig/network-scripts/ifcfg-em1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;25、查看网线有没有连接&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mii-tool em2&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;26、获得掩码&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cat /etc/sysconfig/network-scripts/ifcfg-public | grep -i netmask  &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;27、获得网关&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;route -n | awk &amp;#39;{print $2}&amp;#39; | tail -1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;28、salt学习&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;salt-key -L
+salt-key -d opstest
+salt &amp;quot;*&amp;quot; grains.items
+salt &amp;quot;*&amp;quot; grains.item id
+salt &amp;quot;*&amp;quot; grains.item ipv4
+// 分发文件 
+salt &amp;#39;hadoop1&amp;#39; cp.get_file salt://test.txt /data/test.txt&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;29、SCP&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 从本地复制到远程
+scp -P 22 /data/iso/test.txt admin@192.168.1.1:/data/iso/
+// 从远程复制到本地
+scp -P 22 root@192.168.1.1:/data/vm/test.txt /data/iso/test.txt&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;30、判断一文件是否存在&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;test -f /data/iso/centos6.3.qcow2;echo $?
+// 0为有文件，其他为无文件&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;31、ssh 登录&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ssh -p 22 -i id_rsa admin@192.168.1.1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;32、rpm删不掉的话 用这个&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rpm -e opennebula-sunstone-4.0.0-1.x86_64 --noscripts&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;33、添加用户并登陆&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;useradd opsvmadmin
+groupadd opsvmadmin
+usermod -a -G opsvmadmin opsvmadmin
+vim /etc/ssh/sshd_config
+// 加入 AllowGroups opsvmadmin
+/etc/init.d/sshd restart&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;34、检测某段内ip是否可用&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;fping -t 500 -g  192.168.1.1 192.168.1.128&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;35、ll 不可用的时候&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim ~/.bashrc  alias ll=&amp;#39;ls -l --color=auto&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;36、看某个文件逐渐增加的&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;watch &amp;quot;ls -l&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;37、打包&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tar zcvf noVNC.tar.gz noVNC/&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;38、证书使用包&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yum install -y gnutls-utils&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;39、查看iptables 列表&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;iptables -L -n&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;40、输出CPU使用率、输出内存使用率&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cat /proc/stat | grep cpu | head -1 | awk &amp;#39;{sum=$2+$3+$4+$5+$6+$7+$8;use=$2+$3+$4+$6+$7+$8;printf &amp;quot;%s\t%.2f%%\n&amp;quot;,$1,(use*100/sum)}&amp;#39;
+free | grep Mem: | awk &amp;#39;{use=$3-$6-$7;printf &amp;quot;%s\t%.2f%%\n&amp;quot;,$1,(use*100/$2)}&amp;#39;&lt;/code&gt;&lt;/pre&gt;</content>
+    </entry>
+ 
     <entry>
         <title>mysql 小总结</title>
         <link href="http://xpmozong.github.io/mysql/2013/11/28/mysql-summary"/>

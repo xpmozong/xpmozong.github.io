@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 寞踪
+title: 自由自在
 tagline: free as wind
 ---
 {% include JB/setup %}

@@ -3,6 +3,7 @@ body {
   font-size: 16px;
 }
 .page-header h1 small{
+  margin-left: 25px;
   font-family: 'Tangerine', serif;
   font-size: 56px;
   text-shadow: 4px 4px 4px #aaa;
