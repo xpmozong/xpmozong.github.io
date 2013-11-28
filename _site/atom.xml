@@ -4,7 +4,7 @@
     <title>寞踪的技术博客</title>
     <link href="http://xpmozong.github.io/" rel="self"/>
     <link href="http://xpmozong.github.io"/>
-    <updated>2013-11-28T17:08:45+08:00</updated>
+    <updated>2013-11-28T18:23:27+08:00</updated>
     <id>http://xpmozong.github.io</id>
     <author>
     <name>寞踪</name>
@@ -206,7 +206,7 @@ WHERE cn.file_id=628 GROUP BY cn.id&lt;/code&gt;&lt;/pre&gt;
         <link href="http://xpmozong.github.io/ruby/2013/11/27/jekyll"/>
         <updated>2013-11-27T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/ruby/2013/11/27/jekyll</id>
-        <content type="html">&lt;p&gt;一、准备工作&lt;/p&gt;&lt;p&gt;1、安装ruby，windows下推荐安装&lt;a href='http://rubyinstaller.org/downloads/' target='_blank'&gt;rubyinstaller&lt;/a&gt;&lt;/p&gt;&lt;p&gt;2、windows安装&lt;a href='http://rubyinstaller.org/downloads/' target='_blank'&gt;DevKit&lt;/a&gt;&lt;/p&gt;&lt;p&gt;进入D:\DevKit,执行&lt;/p&gt;
+        <content type="html">&lt;p&gt;一、准备工作&lt;/p&gt;&lt;p&gt;1、安装ruby，windows下推荐安装&lt;a href='http://rubyinstaller.org/downloads/' target='_blank'&gt;rubyinstaller&lt;/a&gt;&lt;/p&gt;&lt;p&gt;2、windows安装&lt;a href='http://rubyinstaller.org/downloads/' target='_blank'&gt;DevKit&lt;/a&gt;&lt;/p&gt;&lt;p&gt;命令行进入刚刚安装的目录，我安装在这个目录：D:\DevKit,执行&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ruby dk.rb init
 ruby dk.rb install
 gem install rdiscount --platform=ruby&lt;/code&gt;&lt;/pre&gt;
