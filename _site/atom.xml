@@ -4,7 +4,7 @@
     <title>寞踪的技术博客</title>
     <link href="http://xpmozong.github.io/" rel="self"/>
     <link href="http://xpmozong.github.io"/>
-    <updated>2013-11-28T15:59:02+08:00</updated>
+    <updated>2013-11-28T16:23:39+08:00</updated>
     <id>http://xpmozong.github.io</id>
     <author>
     <name>寞踪</name>
@@ -12,6 +12,32 @@
     </author>
 
 
+    <entry>
+        <title>mysql 小总结</title>
+        <link href="http://xpmozong.github.io/mysql/2013/11/28/mysql-summary"/>
+        <updated>2013-11-28T00:00:00+08:00</updated>
+        <id>http://xpmozong.github.io/mysql/2013/11/28/mysql-summary</id>
+        <content type="html">&lt;p&gt;1、两个关联表的字段的数据需相同，这么同步&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;UPDATE tb1 f left join tb2 m on f.uid=m.uid set f.images_ischeck = m.images_ischeck where f.images_ischeck != m.images_ischeck
+UPDATE server_message m left join server_message_schedule s on m.server_id=s.server_id set s.server_cost = m.server_cost&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;2、给两个关联表的相关字段加索引&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CREATE INDEX idx_origin_id_id ON en_sentence_translated(origin_id,id)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;3、两个关联表，其中一个表示一对多的关系，用max、group by&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT cn.content cn_content,en.content en_content,MAX(en.id) FROM `cn_sentence_origin` cn
+LEFT JOIN en_sentence_translated en ON cn.id=en.origin_id 
+WHERE cn.file_id=628 GROUP BY cn.id&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;4、给数据库加权限&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GRANT ALL ON weblog.* TO wqylog@127.0.0.1 IDENTIFIED BY &amp;quot;xuping890327&amp;quot;;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;用户名：wqylog  密码：xuping890327&lt;/p&gt;&lt;p&gt;5、mysql 清空表&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;truncate table 表名;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;6、utf-8字符排序&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT * FROM `origin_file` WHERE parentid=0 ORDER BY CONVERT( name USING gbk ) COLLATE gbk_chinese_ci ASC&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;7、根据IP排序&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT FROM server_message ORDER BY INET_ATON(server_message.server_ip1)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;8、根据ids 排序&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;select * from server_message m  where m.server_id in(4,5,2,8) order by field(m.server_id,&amp;#39;4,5,2,8&amp;#39;)&lt;/code&gt;&lt;/pre&gt;</content>
+    </entry>
+ 
     <entry>
         <title>利用github jekyll 创建 blog</title>
         <link href="http://xpmozong.github.io/ruby/2013/11/27/jekyll"/>
