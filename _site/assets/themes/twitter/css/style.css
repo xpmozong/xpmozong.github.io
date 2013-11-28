@@ -1,3 +1,14 @@
+body {
+  font-family: 'Inconsolata', serif;
+  font-size: 16px;
+}
+.page-header h1 small{
+  font-family: 'Tangerine', serif;
+  font-size: 56px;
+  text-shadow: 4px 4px 4px #aaa;
+  letter-spacing: 6px;
+}
+
 /* Custom container */
 .container-narrow {
   margin: 0 auto;
