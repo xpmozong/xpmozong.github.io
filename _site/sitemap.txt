@@ -1,5 +1,6 @@
 
 http://xpmozong.github.io/aboutMe.html
+http://xpmozong.github.io/archive.html
 http://xpmozong.github.io/atom.xml
 http://xpmozong.github.io/categories.html
 http://xpmozong.github.io/index.html
