@@ -1,10 +1,10 @@
 
 http://xpmozong.github.io/aboutMe.html
-http://xpmozong.github.io/archive.html
 http://xpmozong.github.io/atom.xml
 http://xpmozong.github.io/categories.html
 http://xpmozong.github.io/index.html
 http://xpmozong.github.io/pages.html
+http://xpmozong.github.io/public.html
 http://xpmozong.github.io/rss.xml
 http://xpmozong.github.io/sitemap.txt
 http://xpmozong.github.io/tags.html

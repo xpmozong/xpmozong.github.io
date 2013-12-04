@@ -1,6 +1,7 @@
 ---
 layout: page
-title: "About Me"
+title: "关于我"
+header: "关于我"
 description: "关于我"
 group: navigation
 ---
