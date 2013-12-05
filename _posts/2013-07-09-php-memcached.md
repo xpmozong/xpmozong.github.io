@@ -7,6 +7,12 @@ tags: [PHP,Memcached]
 ---
 {% include JB/setup %}
 
+<ul>
+    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
+    <li>本文地址：http://xpmozong.github.io/php/2013/07/09/php-memcached/</li>
+    <li>转载请注明出处</li>
+</ul>
+
 <p>安装前准备：</p>
 <p>
     1. memcached 1.2.1 for Win32 binaries，这个是 Win32 服务器端的 memcached 最新版本，下载

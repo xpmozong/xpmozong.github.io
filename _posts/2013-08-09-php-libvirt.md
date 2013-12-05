@@ -7,6 +7,12 @@ tags: [PHP,Libvirt]
 ---
 {% include JB/setup %}
 
+<ul>
+    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
+    <li>本文地址：http://xpmozong.github.io/php/2013/08/09/php-libvirt/</li>
+    <li>转载请注明出处</li>
+</ul>
+
 <p>Libvirt 库是一种实现 Linux 虚拟化功能的 Linux® API，它支持各种虚拟机监控程序，包括 Xen 和 KVM，以及 QEMU 和用于其他操作系统的一些虚拟产品。</p>
 
 <p>一、安装libvirt环境</p>

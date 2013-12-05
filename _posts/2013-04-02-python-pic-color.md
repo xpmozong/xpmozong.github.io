@@ -7,6 +7,12 @@ tags: [python]
 ---
 {% include JB/setup %}
 
+<ul>
+    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
+    <li>本文地址：http://xpmozong.github.io/python/2013/04/02/python-pic-color/</li>
+    <li>转载请注明出处</li>
+</ul>
+
 <p>python判断一张图片的主色调，多个颜色</p>
 
     #!/usr/bin/env python

@@ -7,6 +7,12 @@ tags: [PHP]
 ---
 {% include JB/setup %}
 
+<ul>
+    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
+    <li>本文地址：http://xpmozong.github.io/php/2012/01/17/php-search-word/</li>
+    <li>转载请注明出处</li>
+</ul>
+
 <p>在写这个程序之前，先回忆相关的代码。</p>
 1、
 

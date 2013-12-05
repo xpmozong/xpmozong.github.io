@@ -7,6 +7,12 @@ tags: [PHP]
 ---
 {% include JB/setup %}
 
+<ul>
+    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
+    <li>本文地址：http://xpmozong.github.io/php/2013/12/05/php-extension/</li>
+    <li>转载请注明出处</li>
+</ul>
+
 学习PHP扩展开发，是PHPer的必学课程。接着上一节课程，<a href="/php/2013/12/05/lnmp/" target="_blank">Linux + Nginx + Mysql + PHP 编译安装</a>。
 
 需求：比如开发一个叫做 hello_world 的扩展，扩展里就一个函数 hello_world_test()，输入一个字符串，函数返回：Your input string: xxxxx! 。
@@ -78,9 +84,9 @@ PHP为了扩展开发的方便，提供了一个类似代码生成器的工具ex
 现在看看是不是有个 /usr/local/php/lib/php/extensions/no-debug-non-zts-20090626/hello_world.so
 
 编辑php.ini配置文件，把扩展加入进去：
-
-添加模块：
-
+    
+    // 扩展路径
+    extension_dir = "/usr/local/php/lib/php/extensions/no-debug-non-zts-20090626/"
     extension = hello_world.so
 
 保存退出。

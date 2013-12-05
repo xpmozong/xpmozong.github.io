@@ -7,6 +7,12 @@ tags: [python,saltstack]
 ---
 {% include JB/setup %}
 
+<ul>
+    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
+    <li>本文地址：http://xpmozong.github.io/python/2013/09/05/python-saltstack/</li>
+    <li>转载请注明出处</li>
+</ul>
+
 <p>saltstack的基本介绍</p>
 <p>salt是一个新的基础平台管理工具。很短的时间即可运行并使用起来, 扩展性足以支撑管理上万台服务器，数秒钟即可完成数据传递. 经常被描述为 Func加强版+Puppet精简版。</p>
 

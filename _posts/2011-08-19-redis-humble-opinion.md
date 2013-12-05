@@ -7,11 +7,20 @@ tags: [redis]
 ---
 {% include JB/setup %}
 
+<ul>
+    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
+    <li>本文地址：http://xpmozong.github.io/redis/2011/08/19/redis-humble-opinion/</li>
+    <li>转载请注明出处</li>
+</ul>
+
 以前只会安装redis，和使用string类型，这个星期，为了使自己更懂一点，所以看了很多关于redis的文章。所以写了这篇浅谈博客，有观点不准确的地方，可以纠正我。
+
 在NoSql领域中，redis占据着重要位置。她小儿精悍，被比喻作AK-47。
+
 下面要讨论的是redis的数据类型，关于aof日志文件，以及rediska的使用。
 
 一、Redis的数据类型Strings, integers, lists, hashes, sets, sorted sets
+
 他们的用法如下：
 
     1、Strings

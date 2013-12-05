@@ -7,6 +7,12 @@ tags: [HTML]
 ---
 {% include JB/setup %}
 
+<ul>
+    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
+    <li>本文地址：http://xpmozong.github.io/html/2011/09/26/htaceess-speed/</li>
+    <li>转载请注明出处</li>
+</ul>
+
 <p>前端优化，利用.htaceess控制图片，js，css缓存时间提升网页加载速度。</p>
 
 <p>Add an Expires or a Cache-Control Header：</p>

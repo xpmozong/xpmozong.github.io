@@ -4,7 +4,7 @@
     <title>寞踪的技术博客</title>
     <link href="http://xpmozong.github.io/" rel="self"/>
     <link href="http://xpmozong.github.io"/>
-    <updated>2013-12-05T21:30:43+08:00</updated>
+    <updated>2013-12-05T21:58:23+08:00</updated>
     <id>http://xpmozong.github.io</id>
     <author>
     <name>寞踪</name>
@@ -17,7 +17,12 @@
         <link href="http://xpmozong.github.io/php/2013/12/05/php-extension"/>
         <updated>2013-12-05T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/php/2013/12/05/php-extension</id>
-        <content type="html">&lt;p&gt;学习PHP扩展开发，是PHPer的必学课程。接着上一节课程，&lt;a href='/php/2013/12/05/lnmp/' target='_blank'&gt;Linux + Nginx + Mysql + PHP 编译安装&lt;/a&gt;。&lt;/p&gt;
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/php/2013/12/05/php-extension/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;学习PHP扩展开发，是PHPer的必学课程。接着上一节课程，&lt;a href='/php/2013/12/05/lnmp/' target='_blank'&gt;Linux + Nginx + Mysql + PHP 编译安装&lt;/a&gt;。&lt;/p&gt;
 
 &lt;p&gt;需求：比如开发一个叫做 hello_world 的扩展，扩展里就一个函数 hello_world_test()，输入一个字符串，函数返回：Your input string: xxxxx! 。&lt;/p&gt;
 
@@ -79,9 +84,9 @@ make install&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;编辑php.ini配置文件，把扩展加入进去：&lt;/p&gt;
 
-&lt;p&gt;添加模块：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;extension = hello_world.so&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;// 扩展路径
+extension_dir = &amp;quot;/usr/local/php/lib/php/extensions/no-debug-non-zts-20090626/&amp;quot;
+extension = hello_world.so&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;保存退出。&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;第六步，检查安装结果&lt;/b&gt;&lt;/p&gt;
@@ -103,7 +108,12 @@ echo hello_world_test(&amp;#39;My first php extension! &amp;#39;);&lt;/code&gt;&
         <link href="http://xpmozong.github.io/php/2013/12/05/lnmp"/>
         <updated>2013-12-05T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/php/2013/12/05/lnmp</id>
-        <content type="html">&lt;p&gt;首先准备安装包&lt;/p&gt;
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/php/2013/12/05/lnmp/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;首先准备安装包&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;nginx-1.0.15.tar.gz
 php-5.3.16.tar.gz
@@ -486,7 +496,11 @@ ln -s /usr/local/lib/libpcre.so.1 /lib64&lt;/code&gt;&lt;/pre&gt;
         <link href="http://xpmozong.github.io/linux/2013/11/29/linux-summary"/>
         <updated>2013-11-29T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/linux/2013/11/29/linux-summary</id>
-        <content type="html">&lt;p&gt;1、初始安装&lt;/p&gt;
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/linux/2013/11/29/linux-summary/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;1、初始安装&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;yum install make apr* autoconf automake gcc gcc-c++ openssl openssl-devel pcre-devel gd  kernel keyutils perl kernel-headers compat* mpfr cpp glibc libgomp libstdc++-devel ppl cloog-ppl keyutils-libs-devel libcom_err-devel libsepol-devel libselinux-devel krb5-devel zlib-devel libXpm* freetype libjpeg* libpng* ncurses* libtool* libxml2 libxml2-devel patch&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;2、日志20行&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;cat error.log | awk &amp;#39;{print $1}&amp;#39;|sort|uniq -c|sort -nr|head -20&lt;/code&gt;&lt;/pre&gt;
@@ -649,7 +663,11 @@ free | grep Mem: | awk &amp;#39;{use=$3-$6-$7;printf &amp;quot;%s\t%.2f%%\n&amp;
         <link href="http://xpmozong.github.io/mysql/2013/11/28/mysql-summary"/>
         <updated>2013-11-28T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/mysql/2013/11/28/mysql-summary</id>
-        <content type="html">&lt;p&gt;1、两个关联表的字段的数据需相同，这么同步&lt;/p&gt;
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/mysql/2013/11/28/mysql-summary/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;1、两个关联表的字段的数据需相同，这么同步&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;UPDATE tb1 f left join tb2 m on f.uid=m.uid set f.images_ischeck = m.images_ischeck where f.images_ischeck != m.images_ischeck
 UPDATE server_message m left join server_message_schedule s on m.server_id=s.server_id set s.server_cost = m.server_cost&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;2、给两个关联表的相关字段加索引&lt;/p&gt;
@@ -675,7 +693,11 @@ WHERE cn.file_id=628 GROUP BY cn.id&lt;/code&gt;&lt;/pre&gt;
         <link href="http://xpmozong.github.io/ruby/2013/11/27/jekyll"/>
         <updated>2013-11-27T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/ruby/2013/11/27/jekyll</id>
-        <content type="html">&lt;p&gt;一、准备工作&lt;/p&gt;&lt;p&gt;1、安装ruby，windows下推荐安装&lt;a href='http://rubyinstaller.org/downloads/' target='_blank'&gt;rubyinstaller&lt;/a&gt;&lt;/p&gt;&lt;p&gt;2、windows安装&lt;a href='http://rubyinstaller.org/downloads/' target='_blank'&gt;DevKit&lt;/a&gt;&lt;/p&gt;&lt;p&gt;命令行进入刚刚安装的目录，我安装在这个目录：D:\DevKit,执行&lt;/p&gt;
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/ruby/2013/11/27/jekyll/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;一、准备工作&lt;/p&gt;&lt;p&gt;1、安装ruby，windows下推荐安装&lt;a href='http://rubyinstaller.org/downloads/' target='_blank'&gt;rubyinstaller&lt;/a&gt;&lt;/p&gt;&lt;p&gt;2、windows安装&lt;a href='http://rubyinstaller.org/downloads/' target='_blank'&gt;DevKit&lt;/a&gt;&lt;/p&gt;&lt;p&gt;命令行进入刚刚安装的目录，我安装在这个目录：D:\DevKit,执行&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ruby dk.rb init
 ruby dk.rb install
 gem install rdiscount --platform=ruby&lt;/code&gt;&lt;/pre&gt;
@@ -733,7 +755,11 @@ git push -u origin master&lt;/code&gt;&lt;/pre&gt;
         <link href="http://xpmozong.github.io/python/2013/09/05/python-saltstack"/>
         <updated>2013-09-05T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/python/2013/09/05/python-saltstack</id>
-        <content type="html">&lt;p&gt;saltstack的基本介绍&lt;/p&gt;&lt;p&gt;salt是一个新的基础平台管理工具。很短的时间即可运行并使用起来, 扩展性足以支撑管理上万台服务器，数秒钟即可完成数据传递. 经常被描述为 Func加强版+Puppet精简版。&lt;/p&gt;&lt;p&gt;salt的安装&lt;/p&gt;&lt;p&gt;首先添加RPM源:&lt;/p&gt;
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/python/2013/09/05/python-saltstack/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;saltstack的基本介绍&lt;/p&gt;&lt;p&gt;salt是一个新的基础平台管理工具。很短的时间即可运行并使用起来, 扩展性足以支撑管理上万台服务器，数秒钟即可完成数据传递. 经常被描述为 Func加强版+Puppet精简版。&lt;/p&gt;&lt;p&gt;salt的安装&lt;/p&gt;&lt;p&gt;首先添加RPM源:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;1、安装服务端&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;yum install salt-master&lt;/code&gt;&lt;/pre&gt;
@@ -756,7 +782,11 @@ print ret&lt;/code&gt;&lt;/pre&gt;
         <link href="http://xpmozong.github.io/php/2013/08/09/php-libvirt"/>
         <updated>2013-08-09T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/php/2013/08/09/php-libvirt</id>
-        <content type="html">&lt;p&gt;Libvirt 库是一种实现 Linux 虚拟化功能的 Linux® API，它支持各种虚拟机监控程序，包括 Xen 和 KVM，以及 QEMU 和用于其他操作系统的一些虚拟产品。&lt;/p&gt;&lt;p&gt;一、安装libvirt环境&lt;/p&gt;&lt;p&gt;(1)、yum install virt-manager libvirt libvirt-python python-virtinst -y&lt;/p&gt;&lt;p&gt;(2)、升级&lt;/p&gt;
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/php/2013/08/09/php-libvirt/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;Libvirt 库是一种实现 Linux 虚拟化功能的 Linux® API，它支持各种虚拟机监控程序，包括 Xen 和 KVM，以及 QEMU 和用于其他操作系统的一些虚拟产品。&lt;/p&gt;&lt;p&gt;一、安装libvirt环境&lt;/p&gt;&lt;p&gt;(1)、yum install virt-manager libvirt libvirt-python python-virtinst -y&lt;/p&gt;&lt;p&gt;(2)、升级&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;yum -y install gcc gcc-c++
 yum install libxml2-devel gnutls-devel device-mapper-devel python-devel libnl-devel -y
 wget http://libvirt.org/sources/libvirt-1.1.1.tar.gz
@@ -890,7 +920,11 @@ tar -zxvf libvirt-php-0.4.8.tar.gz&lt;/code&gt;&lt;/pre&gt;
         <link href="http://xpmozong.github.io/php/2013/07/09/php-memcached"/>
         <updated>2013-07-09T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/php/2013/07/09/php-memcached</id>
-        <content type="html">&lt;p&gt;安装前准备：&lt;/p&gt;&lt;p&gt;
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/php/2013/07/09/php-memcached/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;安装前准备：&lt;/p&gt;&lt;p&gt;
     1. memcached 1.2.1 for Win32 binaries，这个是 Win32 服务器端的 memcached 最新版本，下载
     &lt;a href='http://code.jellycan.com/files/memcached-1.2.6-win32-bin.zip' target='_blank'&gt;附件&lt;/a&gt;
 &lt;/p&gt;&lt;p&gt;2. php 所需的 PECL 扩展，即 php_memcache 扩展 http://windows.php.net/downloads/pecl/releases/memcache/2.2.7/&lt;/p&gt;&lt;p&gt;win7 64 位&lt;/p&gt;&lt;p&gt;php-5.3.4-x64 php_memcache.dll &lt;a href='http://blog.hexu.org/wp-content/uploads/2012/05/php_memcache.zip'&gt;下载&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Memcache-win64 下载：&lt;/p&gt;&lt;p&gt;a. 下载最新版：http://blog.couchbase.com/memcached-windows-64-bit-pre-release-available&lt;/p&gt;&lt;p&gt;b. 直接下载： http://s3.amazonaws.com/downloads.northscale.com/memcached-win64-1.4.4-14.zip&lt;/p&gt;&lt;p&gt;安装步骤：&lt;/p&gt;&lt;p&gt;1. 将第一个包解压放某个盘下面，比如在c:\memcached&lt;/p&gt;&lt;p&gt;2. 在终端下输入 'c:\memcached\memcached.exe -d install' , memcached将作为windows的一个服务&lt;/p&gt;&lt;p&gt;3. 再输入 'c:\memcached\memcached.exe -d start' , 这样服务器端已经安装完毕了&lt;/p&gt;&lt;p&gt;4. 解压第二个包包，里面会只有一个 php_memcache.dll 文件，把它放入 php5/ext/ 中&lt;/p&gt;&lt;p&gt;5. 在C:\WINDOWS\php.ini 加入一行'extension=php_memcache.dll'&lt;/p&gt;&lt;p&gt;6.接着在 php.ini 文件里加上以下带代码，最好就放在刚才写 &quot;extension=php_memcache.dll&quot; 的下面:&lt;/p&gt;
@@ -929,7 +963,11 @@ stdClass Object ( [str_attr] =&amp;gt; test [int_attr] =&amp;gt; 123 ) &lt;/code
         <link href="http://xpmozong.github.io/nginx/2013/05/10/crontab"/>
         <updated>2013-05-10T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/nginx/2013/05/10/crontab</id>
-        <content type="html">&lt;p&gt;crontab 可以定时执行某个PHP文件，但是在实际项目中，我们用的是框架，因为不能破坏项目整体架构，所以不能定时执行某个PHP文件。&lt;/p&gt;&lt;p&gt;OK，我们换个角度来考虑，crontab可以执行linux命令啊，所以可以这么写&lt;/p&gt;
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/nginx/2013/05/10/crontab/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;crontab 可以定时执行某个PHP文件，但是在实际项目中，我们用的是框架，因为不能破坏项目整体架构，所以不能定时执行某个PHP文件。&lt;/p&gt;&lt;p&gt;OK，我们换个角度来考虑，crontab可以执行linux命令啊，所以可以这么写&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;#crontab -e
 
 */1 * * * *     curl  http://xxx.com/index.php/cron/send&lt;/code&gt;&lt;/pre&gt;
@@ -941,7 +979,11 @@ stdClass Object ( [str_attr] =&amp;gt; test [int_attr] =&amp;gt; 123 ) &lt;/code
         <link href="http://xpmozong.github.io/python/2013/04/02/python-pic-color"/>
         <updated>2013-04-02T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/python/2013/04/02/python-pic-color</id>
-        <content type="html">&lt;p&gt;python判断一张图片的主色调，多个颜色&lt;/p&gt;
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/python/2013/04/02/python-pic-color/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;python判断一张图片的主色调，多个颜色&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;#!/usr/bin/env python
 #encoding:utf8
 
@@ -1009,7 +1051,12 @@ if __name__ == &amp;#39;__main__&amp;#39;:
         <link href="http://xpmozong.github.io/python/2012/11/11/django-blog-admin"/>
         <updated>2012-11-11T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/python/2012/11/11/django-blog-admin</id>
-        <content type="html">&lt;p&gt;先django-admin startproject mysite创建一个项目 cd mysite manage.py startapp blog 创建一个blog&lt;/p&gt;
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/python/2012/11/11/django-blog-admin/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;先django-admin startproject mysite创建一个项目 cd mysite manage.py startapp blog 创建一个blog&lt;/p&gt;
 
 &lt;p&gt;1、设置数据库 settings.py&lt;/p&gt;
 
@@ -1061,7 +1108,11 @@ admin.site.register(BlogPost)&lt;/code&gt;&lt;/pre&gt;
         <link href="http://xpmozong.github.io/nginx/2012/01/30/nginx"/>
         <updated>2012-01-30T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/nginx/2012/01/30/nginx</id>
-        <content type="html">&lt;p&gt;下面是配置nginx负载均衡的简单示例文件,主要作用是:&lt;/p&gt;&lt;p&gt;www.s135.com 和 blog.s135.com 域名均指向 Nginx 所在的服务器IP。用户访问http://www.s135.com，将其负载均衡到192.168.1.2:80、92.168.1.3:80、192.168.1.4:80、192.168.1.5:80四台服务器。用户访问http://blog.s135.com，将其负载均衡到192.168.1.7服务器的8080、8081、8082端口。获取用户真实IP.&lt;/p&gt;
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/nginx/2012/01/30/nginx/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;下面是配置nginx负载均衡的简单示例文件,主要作用是:&lt;/p&gt;&lt;p&gt;www.s135.com 和 blog.s135.com 域名均指向 Nginx 所在的服务器IP。用户访问http://www.s135.com，将其负载均衡到192.168.1.2:80、92.168.1.3:80、192.168.1.4:80、192.168.1.5:80四台服务器。用户访问http://blog.s135.com，将其负载均衡到192.168.1.7服务器的8080、8081、8082端口。获取用户真实IP.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;user  www www;
  
 worker_processes 10;
@@ -1148,7 +1199,11 @@ http
         <link href="http://xpmozong.github.io/linux/2012/01/29/linux-ddos"/>
         <updated>2012-01-29T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/linux/2012/01/29/linux-ddos</id>
-        <content type="html">&lt;p&gt;DDoS deflate是一款免费的用来防御和减轻DDoS攻击的脚本。它通过netstat监测跟踪创建大量网络连接的IP地址，在检测到某个结点超过预设的限 制时，该程序会通过APF或IPTABLES禁止或阻挡这些IP.&lt;/p&gt;&lt;p&gt;DDoS deflate官方网站：http://deflate.medialayer.com/&lt;/p&gt;
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/linux/2012/01/29/linux-ddos/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;DDoS deflate是一款免费的用来防御和减轻DDoS攻击的脚本。它通过netstat监测跟踪创建大量网络连接的IP地址，在检测到某个结点超过预设的限 制时，该程序会通过APF或IPTABLES禁止或阻挡这些IP.&lt;/p&gt;&lt;p&gt;DDoS deflate官方网站：http://deflate.medialayer.com/&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;netstat -ntu | awk &amp;#39;{print $5}&amp;#39; | cut -d: -f1 | sort | uniq -c | sort -n&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;执行上面的命令后，&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;1 Address
@@ -1199,7 +1254,11 @@ BAN_PERIOD=600    //禁用IP时间，默认600秒，可根据情况调整&lt;/co
         <link href="http://xpmozong.github.io/php/2012/01/17/php-search-word"/>
         <updated>2012-01-17T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/php/2012/01/17/php-search-word</id>
-        <content type="html">&lt;p&gt;在写这个程序之前，先回忆相关的代码。&lt;/p&gt;
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/php/2012/01/17/php-search-word/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;在写这个程序之前，先回忆相关的代码。&lt;/p&gt;
 &lt;p&gt;1、&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$file = &amp;quot;aa.txt &amp;quot;; 
@@ -1239,7 +1298,11 @@ foreach($txt as $key=&amp;gt;$value) {
         <link href="http://xpmozong.github.io/php/2012/01/09/php-call_user_func_array"/>
         <updated>2012-01-09T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/php/2012/01/09/php-call_user_func_array</id>
-        <content type="html">&lt;p&gt;直接上最简单的&lt;/p&gt;
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/php/2012/01/09/php-call_user_func_array/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;直接上最简单的&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;header(&amp;#39;Content-Type:text/html;charset=utf-8&amp;#39;);
 class call_func{
     function func0() {
@@ -1274,7 +1337,11 @@ otest(1,1,1);&lt;/code&gt;&lt;/pre&gt;
         <link href="http://xpmozong.github.io/php/2012/01/06/php-mysql"/>
         <updated>2012-01-06T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/php/2012/01/06/php-mysql</id>
-        <content type="html">&lt;p&gt;mysql.php类&lt;/p&gt;
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/php/2012/01/06/php-mysql/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;mysql.php类&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;/*
  * 定义一个连接类,可以访问建立多个数据库连接对象
  *
@@ -1459,7 +1526,11 @@ $db1-&amp;gt;close();&lt;/code&gt;&lt;/pre&gt;</content>
         <link href="http://xpmozong.github.io/php/2011/11/25/php-smarty"/>
         <updated>2011-11-25T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/php/2011/11/25/php-smarty</id>
-        <content type="html">&lt;p&gt;静态化网页，是个基本技能。下面是smarty静态化。&lt;/p&gt;&lt;p&gt;打开Smarty.class.php 文件&lt;/p&gt;&lt;p&gt;加入以下代码&lt;/p&gt;
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/php/2011/11/25/php-smarty/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;静态化网页，是个基本技能。下面是smarty静态化。&lt;/p&gt;&lt;p&gt;打开Smarty.class.php 文件&lt;/p&gt;&lt;p&gt;加入以下代码&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 循环创建目录 
 function mk_dir($dir, $mode = 0777) 
 { 
@@ -1511,7 +1582,12 @@ $smarty-&amp;gt;makeHtmlFile(&amp;#39;html/index.html&amp;#39;,$content);//生�
         <link href="http://xpmozong.github.io/php/2011/10/20/php-xml"/>
         <updated>2011-10-20T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/php/2011/10/20/php-xml</id>
-        <content type="html">&lt;pre&gt;&lt;code&gt;/**
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/php/2011/10/20/php-xml/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;/**
  * 把XML转化为数组
  *
  */
@@ -1583,7 +1659,11 @@ print_r(xmlToArray($string));&lt;/code&gt;&lt;/pre&gt;</content>
         <link href="http://xpmozong.github.io/php/2011/10/20/php-mem"/>
         <updated>2011-10-20T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/php/2011/10/20/php-mem</id>
-        <content type="html">&lt;p&gt;先来一个test1.php&lt;/p&gt;
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/php/2011/10/20/php-mem/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;先来一个test1.php&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;class ABC{
     public $numBox = array();
     public function ddd(){
@@ -1652,7 +1732,11 @@ Now memory_get_usage: 422712
         <link href="http://xpmozong.github.io/c/2011/10/06/c"/>
         <updated>2011-10-06T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/c/2011/10/06/c</id>
-        <content type="html">&lt;p&gt;1.单击“开始”，指向“所有程序”、“Microsoft Visual Studio 2010”和“Visual Studio 工具”，然后单击“Visual Studio 2010 命令提示”。&lt;/p&gt;&lt;p&gt;根据计算机上的 Windows 版本和系统安全配置，可能必须右击“Visual Studio 2008 命令提示”，然后单击“以管理员身份运行”，才能成功运行按下列步骤创建的应用程序。&lt;/p&gt;&lt;p&gt;2.在命令提示符下，键入 notepad simple.c，并按 Enter。&lt;/p&gt;&lt;p&gt;在系统提示是否创建文件时，单击“是”。&lt;/p&gt;&lt;p&gt;3.在记事本中，键入下列各行。&lt;/p&gt;
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/c/2011/10/06/c/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;1.单击“开始”，指向“所有程序”、“Microsoft Visual Studio 2010”和“Visual Studio 工具”，然后单击“Visual Studio 2010 命令提示”。&lt;/p&gt;&lt;p&gt;根据计算机上的 Windows 版本和系统安全配置，可能必须右击“Visual Studio 2008 命令提示”，然后单击“以管理员身份运行”，才能成功运行按下列步骤创建的应用程序。&lt;/p&gt;&lt;p&gt;2.在命令提示符下，键入 notepad simple.c，并按 Enter。&lt;/p&gt;&lt;p&gt;在系统提示是否创建文件时，单击“是”。&lt;/p&gt;&lt;p&gt;3.在记事本中，键入下列各行。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;#include &amp;lt;stdio.h&amp;gt;
 int main()
 {
@@ -1677,7 +1761,11 @@ simple.obj&lt;/code&gt;&lt;/pre&gt;
         <link href="http://xpmozong.github.io/html/2011/09/26/htaceess-speed"/>
         <updated>2011-09-26T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/html/2011/09/26/htaceess-speed</id>
-        <content type="html">&lt;p&gt;前端优化，利用.htaceess控制图片，js，css缓存时间提升网页加载速度。&lt;/p&gt;&lt;p&gt;Add an Expires or a Cache-Control Header：&lt;/p&gt;&lt;p&gt;简单点说：就是缓存一下不常修改的文件，提升访问速度。&lt;/p&gt;&lt;p&gt;再简单点说：就是在.htaccess文件中写入以下内容：&lt;/p&gt;
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/html/2011/09/26/htaceess-speed/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;前端优化，利用.htaceess控制图片，js，css缓存时间提升网页加载速度。&lt;/p&gt;&lt;p&gt;Add an Expires or a Cache-Control Header：&lt;/p&gt;&lt;p&gt;简单点说：就是缓存一下不常修改的文件，提升访问速度。&lt;/p&gt;&lt;p&gt;再简单点说：就是在.htaccess文件中写入以下内容：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;IfModule mod_expires.c&amp;gt;
     ExpiresActive On
     ExpiresDefault A600
@@ -1702,7 +1790,11 @@ simple.obj&lt;/code&gt;&lt;/pre&gt;
         <link href="http://xpmozong.github.io/php/2011/09/23/php-string"/>
         <updated>2011-09-23T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/php/2011/09/23/php-string</id>
-        <content type="html">&lt;p&gt;1、自动移除字符串中的 HTML 标记&lt;/p&gt;&lt;p&gt;在用户表单中，你可能希望移除所有不必要的 HTML 标记。使用 strip_tags() 函数可以简单地做到这一点：&lt;/p&gt;
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/php/2011/09/23/php-string/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;1、自动移除字符串中的 HTML 标记&lt;/p&gt;&lt;p&gt;在用户表单中，你可能希望移除所有不必要的 HTML 标记。使用 strip_tags() 函数可以简单地做到这一点：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$text = strip_tags($input, &amp;quot;&amp;quot;);&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;2、获取 $start 和 $end 之间的文本&lt;/p&gt;&lt;p&gt;这是一种每个网站开发人员应该收纳在开发工具箱的功能：给定一个字符串，一个起始位置，一个结束为止，并返回包含在 $start 和 $end 两者之间的文本。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;function GetBetween($content,$start,$end){
@@ -1802,7 +1894,11 @@ print_r(extract_emails($test_string));&lt;/code&gt;&lt;/pre&gt;</content>
         <link href="http://xpmozong.github.io/html/2011/09/23/div-flash"/>
         <updated>2011-09-23T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/html/2011/09/23/div-flash</id>
-        <content type="html">&lt;p&gt;经常遇到 Flash 插入到网页 Div 层后就不显示了。解决方法是将插入到网页中的 Flash 设置为透明 flash，将 wmode 赋值为 transparent，以下为旧式插入方式：&lt;/p&gt;
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/html/2011/09/23/div-flash/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;经常遇到 Flash 插入到网页 Div 层后就不显示了。解决方法是将插入到网页中的 Flash 设置为透明 flash，将 wmode 赋值为 transparent，以下为旧式插入方式：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;object classid=clsid:D27CDB6E-AE6D-11cf-96B8-444553540000 codebase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0 width=550 height=400&amp;gt;
 &amp;lt;param name=movie value=test.swf&amp;gt;
 &amp;lt;param name=quality value=high&amp;gt;
@@ -1816,9 +1912,20 @@ print_r(extract_emails($test_string));&lt;/code&gt;&lt;/pre&gt;</content>
         <link href="http://xpmozong.github.io/redis/2011/08/19/redis-humble-opinion"/>
         <updated>2011-08-19T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/redis/2011/08/19/redis-humble-opinion</id>
-        <content type="html">&lt;p&gt;以前只会安装redis，和使用string类型，这个星期，为了使自己更懂一点，所以看了很多关于redis的文章。所以写了这篇浅谈博客，有观点不准确的地方，可以纠正我。 在NoSql领域中，redis占据着重要位置。她小儿精悍，被比喻作AK-47。 下面要讨论的是redis的数据类型，关于aof日志文件，以及rediska的使用。&lt;/p&gt;
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/redis/2011/08/19/redis-humble-opinion/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以前只会安装redis，和使用string类型，这个星期，为了使自己更懂一点，所以看了很多关于redis的文章。所以写了这篇浅谈博客，有观点不准确的地方，可以纠正我。&lt;/p&gt;
 
-&lt;p&gt;一、Redis的数据类型Strings, integers, lists, hashes, sets, sorted sets 他们的用法如下：&lt;/p&gt;
+&lt;p&gt;在NoSql领域中，redis占据着重要位置。她小儿精悍，被比喻作AK-47。&lt;/p&gt;
+
+&lt;p&gt;下面要讨论的是redis的数据类型，关于aof日志文件，以及rediska的使用。&lt;/p&gt;
+
+&lt;p&gt;一、Redis的数据类型Strings, integers, lists, hashes, sets, sorted sets&lt;/p&gt;
+
+&lt;p&gt;他们的用法如下：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;1、Strings
 
@@ -1935,7 +2042,12 @@ echo $rediska -&amp;gt;get(&amp;#39;test&amp;#39;);
         <link href="http://xpmozong.github.io/php/2011/08/08/php-thumbnails"/>
         <updated>2011-08-08T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/php/2011/08/08/php-thumbnails</id>
-        <content type="html">&lt;pre&gt;&lt;code&gt;// upload.php文件内容
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/php/2011/08/08/php-thumbnails/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;// upload.php文件内容
 $uid = 3;
 $time = time();
 // 图片目录

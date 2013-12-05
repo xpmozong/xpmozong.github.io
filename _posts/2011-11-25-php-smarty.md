@@ -7,6 +7,12 @@ tags: [PHP,smarty]
 ---
 {% include JB/setup %}
 
+<ul>
+    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
+    <li>本文地址：http://xpmozong.github.io/php/2011/11/25/php-smarty/</li>
+    <li>转载请注明出处</li>
+</ul>
+
 <p>静态化网页，是个基本技能。下面是smarty静态化。</p>
 <p>打开Smarty.class.php 文件</p>
 <p>加入以下代码</p>

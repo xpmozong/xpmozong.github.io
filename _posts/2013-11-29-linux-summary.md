@@ -7,6 +7,12 @@ tags: [LINUX]
 ---
 {% include JB/setup %}
 
+<ul>
+    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
+    <li>本文地址：http://xpmozong.github.io/linux/2013/11/29/linux-summary/</li>
+    <li>转载请注明出处</li>
+</ul>
+
 <p>1、初始安装</p>
     yum install make apr* autoconf automake gcc gcc-c++ openssl openssl-devel pcre-devel gd  kernel keyutils perl kernel-headers compat* mpfr cpp glibc libgomp libstdc++-devel ppl cloog-ppl keyutils-libs-devel libcom_err-devel libsepol-devel libselinux-devel krb5-devel zlib-devel libXpm* freetype libjpeg* libpng* ncurses* libtool* libxml2 libxml2-devel patch
     

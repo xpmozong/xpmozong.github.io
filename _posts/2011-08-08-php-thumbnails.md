@@ -7,6 +7,13 @@ tags: [PHP]
 ---
 {% include JB/setup %}
 
+<ul>
+    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
+    <li>本文地址：http://xpmozong.github.io/php/2011/08/08/php-thumbnails/</li>
+    <li>转载请注明出处</li>
+</ul>
+
+
     // upload.php文件内容
     $uid = 3;
     $time = time();

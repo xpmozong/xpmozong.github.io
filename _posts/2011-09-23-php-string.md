@@ -7,6 +7,12 @@ tags: [PHP]
 ---
 {% include JB/setup %}
 
+<ul>
+    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
+    <li>本文地址：http://xpmozong.github.io/php/2011/09/23/php-string/</li>
+    <li>转载请注明出处</li>
+</ul>
+
 <p>1、自动移除字符串中的 HTML 标记</p>
 
 <p>在用户表单中，你可能希望移除所有不必要的 HTML 标记。使用 strip_tags() 函数可以简单地做到这一点：</p>
