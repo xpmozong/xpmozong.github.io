@@ -5,15 +5,484 @@
         <description>寞踪的技术博客 - 寞踪</description>
         <link>http://xpmozong.github.io</link>
         <link>http://xpmozong.github.io</link>
-        <lastBuildDate>2013-12-04T20:58:26+08:00</lastBuildDate>
-        <pubDate>2013-12-04T20:58:26+08:00</pubDate>
+        <lastBuildDate>2013-12-05T21:23:50+08:00</lastBuildDate>
+        <pubDate>2013-12-05T21:23:50+08:00</pubDate>
         <ttl>1800</ttl>
 
 
         <item>
+                <title>PHP扩展开发 - 第一个扩展</title>
+                <description>&lt;p&gt;学习PHP扩展开发，是PHPer的必学课程。接着上一节课程，&lt;a href='/php/2013/12/05/lnmp/' target='_blank'&gt;Linux + Nginx + Mysql + PHP 编译安装&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;需求：比如开发一个叫做 hello_world 的扩展，扩展里就一个函数 hello_world_test()，输入一个字符串，函数返回：Your input string: xxxxx! 。&lt;/p&gt;
+
+&lt;p&gt;环境： php-5.3.16&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;第一步、生成代码&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;PHP为了扩展开发的方便，提供了一个类似代码生成器的工具ext_skel&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd /opt/php-5.3.16/ext/
+./ext_skel --extname=hello_world --proto=hello_world.skel
+cd hello_world/&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;生成代码啦&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;第二步，修改配置&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;然后修改config.m4文件将10、11、12三行最前面的dnl删除掉，就是将&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;dnl PHP_ARG_WITH(ccvita, for ccvita support,
+dnl Make sure that the comment is aligned:
+dnl [  --with-ccvita             Include ccvita support])&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;修改为&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PHP_ARG_WITH(ccvita, for ccvita support,
+Make sure that the comment is aligned:
+[  --with-ccvita             Include ccvita support])&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;b&gt;第三步，实现功能&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;修改源码php_hello_world.h文件&lt;/p&gt;
+
+&lt;p&gt;添加&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PHP_FUNCTION(hello_world_test);&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后修改源码 hello_world.c 文件&lt;/p&gt;
+
+&lt;p&gt;添加&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PHP_FUNCTION(hello_world_test)
+{
+        char *arg = NULL;
+        int arg_len, len;
+        char *strg;
+
+        if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, &amp;quot;s&amp;quot;, &amp;amp;arg, &amp;amp;arg_len) == FAILURE) {
+                return;
+        }
+
+        len = spprintf(&amp;amp;strg, 0, &amp;quot;Hello World! Your input string: %s\n&amp;quot;, arg);
+        RETURN_STRINGL(strg, len, 0);
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;b&gt;第四步，编译扩展&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;保存后，开始编译&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/usr/local/php/bin/phpize
+./configure --with-php-config=/usr/local/php/bin/php-config
+make
+make test
+make install&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;b&gt;第五步，添加扩展&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;现在看看是不是有个 /usr/local/php/lib/php/extensions/no-debug-non-zts-20090626/hello_world.so&lt;/p&gt;
+
+&lt;p&gt;编辑php.ini配置文件，把扩展加入进去：&lt;/p&gt;
+
+&lt;p&gt;添加模块：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;extension = hello_world.so&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;保存退出。&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;第六步，检查安装结果&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;编辑test.php文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;echo &amp;quot;&amp;lt;pre&amp;gt;&amp;quot;;
+$str = confirm_hello_world_compiled(hello_world);
+echo $str.&amp;quot;&amp;lt;br&amp;gt;&amp;quot;;
+
+print_r(get_loaded_extensions());
+print_r(get_extension_funcs(&amp;#39;hello_world&amp;#39;));
+echo hello_world_test(&amp;#39;My first php extension! &amp;#39;);&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;看看有没有结果输出！&lt;/p&gt;</description>
+                <link>http://xpmozong.github.io/php/2013/12/05/php-extension</link>
+                <guid>http://xpmozong.github.io/php/2013/12/05/php-extension</guid>
+                <pubDate>2013-12-05T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>Linux + Nginx + Mysql + PHP 编译安装</title>
+                <description>&lt;p&gt;首先准备安装包&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nginx-1.0.15.tar.gz
+php-5.3.16.tar.gz
+libaio-0.3.93-4.i386.rpm
+MySQL-server-5.5.14-1.rhel5.x64.rpm
+MySQL-client-5.5.14-1.rhel5.x64.rpm
+MySQL-shared-5.5.14-1.rhel5.x64.rpm
+MySQL-devel-5.5.14-1.rhel5.x64.rpm
+libmcrypt-2.5.7.tar.gz
+mhash-0.9.9.9.tar.gz
+mcrypt-2.6.8.tar.gz
+pcre-8.33.tar.gz&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;先yum一些必要的 yum -y install gcc-c++ openssl-devel libjpeg-devel libpng-devel libXpm-devel ImageMagick ImageMagick-devel freetype freetype-devel&lt;/p&gt;
+
+&lt;p&gt;然后安装各个库，依次是libmcrypt，mhash， mcrypt 和pcre&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tar zxvf libmcrypt-2.5.8.tar.gz
+cd libmcrypt-2.5.8/
+./configure
+make
+make install
+/sbin/ldconfig
+cd libltdl/
+./configure --enable-ltdl-install
+make
+make install
+cd ../../
+
+tar zxvf mhash-0.9.9.9.tar.gz
+cd mhash-0.9.9.9/
+./configure
+make
+make install
+cd ../
+ 
+ln -s /usr/local/lib/libmcrypt.la /usr/lib/libmcrypt.la
+ln -s /usr/local/lib/libmcrypt.so /usr/lib/libmcrypt.so
+ln -s /usr/local/lib/libmcrypt.so.4 /usr/lib/libmcrypt.so.4
+ln -s /usr/local/lib/libmcrypt.so.4.4.8 /usr/lib/libmcrypt.so.4.4.8
+ln -s /usr/local/lib/libmhash.a /usr/lib/libmhash.a
+ln -s /usr/local/lib/libmhash.la /usr/lib/libmhash.la
+ln -s /usr/local/lib/libmhash.so /usr/lib/libmhash.so
+ln -s /usr/local/lib/libmhash.so.2 /usr/lib/libmhash.so.2
+ln -s /usr/local/lib/libmhash.so.2.0.1 /usr/lib/libmhash.so.2.0.1
+
+tar zxvf mcrypt-2.6.8.tar.gz
+cd mcrypt-2.6.8/
+/sbin/ldconfig
+./configure
+make
+make install
+cd ../
+
+tar zxvf pcre-8.33.tar.gz
+cd pcre-8.30
+./configure
+make
+make install
+cd ../&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;一、安装MySQL&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rpm -ivh libaio-0.3.93-4.x64.rpm
+rpm -ivh MySQL-server-5.5.14-1.rhel5.x64.rpm
+rpm -ivh MySQL-client-5.5.14-1.rhel5.x64.rpm
+rpm -ivh MySQL-shared-5.5.14-1.rhel5.x64.rpm
+rpm -ivh MySQL-devel-5.5.14-1.rhel5.x64.rpm
+
+service mysql start
+//修改密码
+mysql_secure_installation&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;二、安装PHP&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tar zxvf php-5.3.16.tar.gz
+cd php-5.3.16
+mkdir -p /usr/local/php
+// 很多的模块
+./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --with-mysql=/usr/bin/ --with-libdir=lib64 --with-mysqli=/usr/bin/mysql_config --with-iconv-dir=/usr/local --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr --enable-xml --disable-rpath --enable-safe-mode --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --with-curl --with-curlwrappers --enable-mbregex --enable-fpm --enable-mbstring --with-mcrypt --with-gd --enable-gd-native-ttf --with-openssl --with-mhash --enable-pcntl --enable-sockets  --with-xmlrpc --enable-zip --enable-soap --with-pdo-mysql=/usr/bin/mysql --with-mysql-sock=/var/lib/mysql/mysql.sock
+// 简单的模块
+./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --with-mysql=/usr/bin/ --with-libdir=lib64 --enable-xml --enable-fpm --with-pdo-mysql=/usr/bin/mysql --with-mysql-sock=/var/lib/mysql/mysql.sock
+
+// 如果有这个错误
+configure: error: Cannot find libmysqlclient under /usr.
+Note that the MySQL client library is not bundled anymore!
+// 就加上
+--with-libdir=lib64
+
+make
+make install
+
+cp php.ini-production /usr/local/php/etc/php.ini
+cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm #因为php5.3开始自带fpm，使用自带的管理脚本
+chmod +x /etc/init.d/php-fpm
+chkconfig php-fpm on #设置开机自启动
+cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf
+
+// 然后修改php-fpm.conf，将pid改成以下，并将user和group改成www
+pid = run/php-fpm.pid
+user = www
+group = www&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;三、安装NGINX&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;groupadd www
+useradd -s /sbin/nologin -g www www #www用户不能login
+mkdir -p /home/www #此路径是用于存放各域名的root路径
+chmod +w /home/www
+mkdir -p /home/wwwlogs
+chmod 755 /home/wwwlogs
+chown -R www:www /home/www
+
+tar zxvf nginx-1.0.15.tar.gz
+cd nginx-1.0.15/
+./configure --user=www --group=www --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-http_gzip_static_module
+make &amp;amp;&amp;amp; make install
+mkdir /usr/local/nginx/conf/vhosts/ #用于配置各域名
+
+// 修改Nginx的配置文件
+mv /usr/local/nginx/conf/nginx.conf /usr/local/nginx/conf/nginx_bak.conf
+vi /usr/local/nginx/conf/nginx.conf
+
+
+user  www;
+group www;
+worker_processes  1;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  &amp;#39;$remote_addr - $remote_user [$time_local] &amp;quot;$request&amp;quot; &amp;#39;
+    #                  &amp;#39;$status $body_bytes_sent &amp;quot;$http_referer&amp;quot; &amp;#39;
+    #                  &amp;#39;&amp;quot;$http_user_agent&amp;quot; &amp;quot;$http_x_forwarded_for&amp;quot;&amp;#39;;
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    #gzip  on;
+
+    server {
+        listen 80;
+        index index.php index.html index.htm;
+        root /home/www;
+        access_log /home/wwwlogs/localhost.log combined;
+        error_log /home/wwwlogs/localhost.log;
+        
+        #expires
+        location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$
+        {
+            expires 30d;
+        }
+        
+        location ~ .*\.(js|css)?$
+        {
+            expires 24h;
+        }
+        
+        location ~ .*\.php?$
+        {
+            fastcgi_pass 127.0.0.1:9000;
+            #fastcgi_pass unix:/tmp/php-fcgi.sock;
+            #fastcgi_pass php;
+            fastcgi_index index.php;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            include fastcgi_params;
+        }
+    }
+
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    #server {
+    #    listen       443;
+    #    server_name  localhost;
+
+    #    ssl                  on;
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_timeout  5m;
+
+    #    ssl_protocols  SSLv2 SSLv3 TLSv1;
+    #    ssl_ciphers  HIGH:!aNULL:!MD5;
+    #    ssl_prefer_server_ciphers   on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;因为默认是没有nginx管理脚本的，在此先新建一个，运行vi /etc/init.d/nginx，输入&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/bin/sh
+#
+# nginx - this script starts and stops the nginx daemin
+#
+# chkconfig:   - 85 15 
+# description:  Nginx is an HTTP(S) server, HTTP(S) reverse \
+#               proxy and IMAP/POP3 proxy server
+# processname: nginx
+# config:      /usr/local/nginx/conf/nginx.conf
+# pidfile:     /usr/local/nginx/logs/nginx.pid
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+# Check that networking is up.
+[ &amp;quot;$NETWORKING&amp;quot; = &amp;quot;no&amp;quot; ] &amp;amp;&amp;amp; exit 0
+
+nginx=&amp;quot;/usr/local/nginx/sbin/nginx&amp;quot;
+prog=$(basename $nginx)
+
+NGINX_CONF_FILE=&amp;quot;/usr/local/nginx/conf/nginx.conf&amp;quot;
+
+lockfile=/var/lock/subsys/nginx
+
+start() {
+    [ -x $nginx ] || exit 5
+    [ -f $NGINX_CONF_FILE ] || exit 6
+    echo -n $&amp;quot;Starting $prog: &amp;quot;
+    daemon $nginx -c $NGINX_CONF_FILE
+    retval=$?
+    echo
+    [ $retval -eq 0 ] &amp;amp;&amp;amp; touch $lockfile
+    return $retval
+}
+
+stop() {
+    echo -n $&amp;quot;Stopping $prog: &amp;quot;
+    killproc $prog -QUIT
+    retval=$?
+    echo
+    [ $retval -eq 0 ] &amp;amp;&amp;amp; rm -f $lockfile
+    return $retval
+}
+
+restart() {
+    configtest || return $?
+    stop
+    start
+}
+
+reload() {
+    configtest || return $?
+    echo -n $&amp;quot;Reloading $prog: &amp;quot;
+    killproc $nginx -HUP
+    RETVAL=$?
+    echo
+}
+
+force_reload() {
+    restart
+}
+
+configtest() {
+  $nginx -t -c $NGINX_CONF_FILE
+}
+
+rh_status() {
+    status $prog
+}
+
+rh_status_q() {
+    rh_status &amp;gt;/dev/null 2&amp;gt;&amp;amp;1
+}
+
+case &amp;quot;$1&amp;quot; in
+    start)
+        rh_status_q &amp;amp;&amp;amp; exit 0
+        $1
+        ;;
+    stop)
+        rh_status_q || exit 0
+        $1
+        ;;
+    restart|configtest)
+        $1
+        ;;
+    reload)
+        rh_status_q || exit 7
+        $1
+        ;;
+    force-reload)
+        force_reload
+        ;;
+    status)
+        rh_status
+        ;;
+    condrestart|try-restart)
+        rh_status_q || exit 0
+            ;;
+    *)
+        echo $&amp;quot;Usage: $0 {start|stop|status|restart|condrestart|try-restart|reload|force-reload|configtest}&amp;quot;
+        exit 2
+esac&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;为该文件增加执行权限，并设置为自启动&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;chmod +x /etc/init.d/nginx
+chkconfig nginx on&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;环境说明&lt;/p&gt;
+
+&lt;p&gt;直接输入以下命令，会得到相应的结果&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;service nginx restart 重启nginx
+service mysql restart 重启mysql
+service php-fpm restart 重启php-fpm
+service php-fpm stop 停止php-fpm
+service php-fpm start 启动php-fpm&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;各站点的根目录是/home/www/&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;php: /usr/local/php/etc/
+nginx: /usr/local/nginx/conf/
+find / -name &amp;quot;my.ini&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;启动nginx的时候遇到 error while loading shared libraries: libpcre.so.1:&lt;/p&gt;
+
+&lt;p&gt;答：增加以下软连接，注意，如果是64位系统，对应目录是/lib64&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# cd /lib64
+cd /lib
+ln -s /usr/local/lib/libpcre.so.1 /lib64&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Centos查看端口占用情况命令，比如查看80端口占用情况使用如下命令：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;lsof -i tcp:80&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;列出所有端口&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;netstat -ntlp&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;查看进程&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ps -ef | grep nginx&lt;/code&gt;&lt;/pre&gt;</description>
+                <link>http://xpmozong.github.io/php/2013/12/05/lnmp</link>
+                <guid>http://xpmozong.github.io/php/2013/12/05/lnmp</guid>
+                <pubDate>2013-12-05T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
                 <title>linux 小总结</title>
                 <description>&lt;p&gt;1、初始安装&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;yum install make apr* autoconf automake gcc gcc-c++ zlib-devel openssl openssl-devel pcre-devel gd  kernel keyutils  patch  perl kernel-headers compat* mpfr cpp glibc libgomp libstdc++-devel ppl cloog-ppl keyutils-libs-devel libcom_err-devel libsepol-devel libselinux-devel krb5-devel zlib-devel libXpm* freetype libjpeg* libpng* php-common php-gd ncurses* libtool* libxml2 libxml2-devel patch&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;yum install make apr* autoconf automake gcc gcc-c++ openssl openssl-devel pcre-devel gd  kernel keyutils perl kernel-headers compat* mpfr cpp glibc libgomp libstdc++-devel ppl cloog-ppl keyutils-libs-devel libcom_err-devel libsepol-devel libselinux-devel krb5-devel zlib-devel libXpm* freetype libjpeg* libpng* ncurses* libtool* libxml2 libxml2-devel patch&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;2、日志20行&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;cat error.log | awk &amp;#39;{print $1}&amp;#39;|sort|uniq -c|sort -nr|head -20&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;3、运行C程序&lt;/p&gt;

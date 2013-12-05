@@ -10,6 +10,8 @@ http://xpmozong.github.io/rss.xml
 http://xpmozong.github.io/sitemap.txt
 http://xpmozong.github.io/tags.html
 
+http://xpmozong.github.io/php/2013/12/05/php-extension
+http://xpmozong.github.io/php/2013/12/05/lnmp
 http://xpmozong.github.io/linux/2013/11/29/linux-summary
 http://xpmozong.github.io/mysql/2013/11/28/mysql-summary
 http://xpmozong.github.io/ruby/2013/11/27/jekyll

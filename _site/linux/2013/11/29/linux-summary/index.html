@@ -142,7 +142,7 @@
         </div>
         <div class="content">
             <p>1、初始安装</p>
-<pre><code>yum install make apr* autoconf automake gcc gcc-c++ zlib-devel openssl openssl-devel pcre-devel gd  kernel keyutils  patch  perl kernel-headers compat* mpfr cpp glibc libgomp libstdc++-devel ppl cloog-ppl keyutils-libs-devel libcom_err-devel libsepol-devel libselinux-devel krb5-devel zlib-devel libXpm* freetype libjpeg* libpng* php-common php-gd ncurses* libtool* libxml2 libxml2-devel patch</code></pre>
+<pre><code>yum install make apr* autoconf automake gcc gcc-c++ openssl openssl-devel pcre-devel gd  kernel keyutils perl kernel-headers compat* mpfr cpp glibc libgomp libstdc++-devel ppl cloog-ppl keyutils-libs-devel libcom_err-devel libsepol-devel libselinux-devel krb5-devel zlib-devel libXpm* freetype libjpeg* libpng* ncurses* libtool* libxml2 libxml2-devel patch</code></pre>
 <p>2、日志20行</p>
 <pre><code>cat error.log | awk &#39;{print $1}&#39;|sort|uniq -c|sort -nr|head -20</code></pre>
 <p>3、运行C程序</p>
@@ -344,7 +344,7 @@ free | grep Mem: | awk &#39;{use=$3-$6-$7;printf &quot;%s\t%.2f%%\n&quot;,$1,(us
             
                 <li><a href="/archive.html">Archive</a></li>
             
-                <li class="next disabled"><a>Next &rarr;</a>
+                <li class="next"><a href="/php/2013/12/05/lnmp" title="Linux + Nginx + Mysql + PHP 编译安装">Next &rarr;</a></li>
             
             </ul>
         </div>
