@@ -5,8 +5,8 @@
         <description>寞踪的技术博客 - 寞踪</description>
         <link>http://xpmozong.github.io</link>
         <link>http://xpmozong.github.io</link>
-        <lastBuildDate>2013-12-05T21:23:50+08:00</lastBuildDate>
-        <pubDate>2013-12-05T21:23:50+08:00</pubDate>
+        <lastBuildDate>2013-12-05T21:30:43+08:00</lastBuildDate>
+        <pubDate>2013-12-05T21:30:43+08:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -28,15 +28,15 @@ cd hello_world/&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;b&gt;第二步，修改配置&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;然后修改config.m4文件将10、11、12三行最前面的dnl删除掉，就是将&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;dnl PHP_ARG_WITH(ccvita, for ccvita support,
+&lt;pre&gt;&lt;code&gt;dnl PHP_ARG_WITH(hello_world, for hello_world support,
 dnl Make sure that the comment is aligned:
-dnl [  --with-ccvita             Include ccvita support])&lt;/code&gt;&lt;/pre&gt;
+dnl [  --with-hello_world             Include hello_world support])&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;修改为&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;PHP_ARG_WITH(ccvita, for ccvita support,
+&lt;pre&gt;&lt;code&gt;PHP_ARG_WITH(hello_world, for hello_world support,
 Make sure that the comment is aligned:
-[  --with-ccvita             Include ccvita support])&lt;/code&gt;&lt;/pre&gt;
+[  --with-hello_world             Include hello_world support])&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;b&gt;第三步，实现功能&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;修改源码php_hello_world.h文件&lt;/p&gt;
 

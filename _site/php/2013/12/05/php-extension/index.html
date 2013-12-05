@@ -157,15 +157,15 @@ cd hello_world/</code></pre>
 <p><b>第二步，修改配置</b></p>
 <p>然后修改config.m4文件将10、11、12三行最前面的dnl删除掉，就是将</p>
 
-<pre><code>dnl PHP_ARG_WITH(ccvita, for ccvita support,
+<pre><code>dnl PHP_ARG_WITH(hello_world, for hello_world support,
 dnl Make sure that the comment is aligned:
-dnl [  --with-ccvita             Include ccvita support])</code></pre>
+dnl [  --with-hello_world             Include hello_world support])</code></pre>
 
 <p>修改为</p>
 
-<pre><code>PHP_ARG_WITH(ccvita, for ccvita support,
+<pre><code>PHP_ARG_WITH(hello_world, for hello_world support,
 Make sure that the comment is aligned:
-[  --with-ccvita             Include ccvita support])</code></pre>
+[  --with-hello_world             Include hello_world support])</code></pre>
 <p><b>第三步，实现功能</b></p>
 <p>修改源码php_hello_world.h文件</p>
 

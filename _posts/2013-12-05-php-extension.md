@@ -27,15 +27,15 @@ PHP为了扩展开发的方便，提供了一个类似代码生成器的工具ex
 
 然后修改config.m4文件将10、11、12三行最前面的dnl删除掉，就是将
 
-    dnl PHP_ARG_WITH(ccvita, for ccvita support,
+    dnl PHP_ARG_WITH(hello_world, for hello_world support,
     dnl Make sure that the comment is aligned:
-    dnl [  --with-ccvita             Include ccvita support])
+    dnl [  --with-hello_world             Include hello_world support])
 
 修改为
 
-    PHP_ARG_WITH(ccvita, for ccvita support,
+    PHP_ARG_WITH(hello_world, for hello_world support,
     Make sure that the comment is aligned:
-    [  --with-ccvita             Include ccvita support])
+    [  --with-hello_world             Include hello_world support])
 
 <p><b>第三步，实现功能</b></p>
 
