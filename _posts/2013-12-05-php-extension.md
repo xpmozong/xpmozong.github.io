@@ -47,7 +47,11 @@ PHP为了扩展开发的方便，提供了一个类似代码生成器的工具ex
 
 修改源码php_hello_world.h文件
 
-添加
+在
+
+    PHP_FUNCTION(confirm_hello_world_compiled);
+
+后，添加
 
     PHP_FUNCTION(hello_world_test);
 

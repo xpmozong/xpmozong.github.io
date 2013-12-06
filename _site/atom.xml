@@ -4,7 +4,7 @@
     <title>寞踪的技术博客</title>
     <link href="http://xpmozong.github.io/" rel="self"/>
     <link href="http://xpmozong.github.io"/>
-    <updated>2013-12-05T21:58:23+08:00</updated>
+    <updated>2013-12-06T09:46:27+08:00</updated>
     <id>http://xpmozong.github.io</id>
     <author>
     <name>寞踪</name>
@@ -50,7 +50,11 @@ Make sure that the comment is aligned:
 &lt;p&gt;&lt;b&gt;第三步，实现功能&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;修改源码php_hello_world.h文件&lt;/p&gt;
 
-&lt;p&gt;添加&lt;/p&gt;
+&lt;p&gt;在&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PHP_FUNCTION(confirm_hello_world_compiled);&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;后，添加&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;PHP_FUNCTION(hello_world_test);&lt;/code&gt;&lt;/pre&gt;
 
