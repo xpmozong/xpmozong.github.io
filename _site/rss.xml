@@ -5,8 +5,8 @@
         <description>寞踪的技术博客 - 寞踪</description>
         <link>http://xpmozong.github.io</link>
         <link>http://xpmozong.github.io</link>
-        <lastBuildDate>2013-12-12T11:08:56+08:00</lastBuildDate>
-        <pubDate>2013-12-12T11:08:56+08:00</pubDate>
+        <lastBuildDate>2013-12-12T11:41:08+08:00</lastBuildDate>
+        <pubDate>2013-12-12T11:41:08+08:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -289,15 +289,21 @@ http {
             expires 24h;
         }
         
-        location ~ .*\.php?$
-        {
-            fastcgi_pass 127.0.0.1:9000;
-            #fastcgi_pass unix:/tmp/php-fcgi.sock;
-            #fastcgi_pass php;
-            fastcgi_index index.php;
-            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-            include fastcgi_params;
+        if ($request_filename !~ (index\.php|images|min|robots\.txt|.*\.css|.*\.js|.*\.png|.*\.jpg|.*\.jpeg|.*\.gif|.*\.swf|.*\.ocx|.*\.cab)){
+            rewrite ^/(.*)$ /index.php/$1 last;
         }
+
+        location ~ .*\.php {
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+            fastcgi_index  index.php;
+            fastcgi_split_path_info ^(.+\.php)(.*)$;                                            
+            fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;                 
+            fastcgi_param   PATH_INFO $fastcgi_path_info;                                       
+            fastcgi_param   PATH_TRANSLATED $document_root$fastcgi_path_info;                   
+            include fastcgi_params;  
+        }
+        
     }
 
 
