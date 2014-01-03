@@ -9,7 +9,6 @@ http://xpmozong.github.io/pages.html
 http://xpmozong.github.io/rss.xml
 http://xpmozong.github.io/sitemap.txt
 http://xpmozong.github.io/tags.html
-http://xpmozong.github.io/vegetables.html
 
 http://xpmozong.github.io/php/2013/12/05/php-extension
 http://xpmozong.github.io/php/2013/12/05/lnmp
