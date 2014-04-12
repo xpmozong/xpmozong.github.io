@@ -165,11 +165,13 @@
             <span>2011-10-20</span>
         </div>
         <div class="content">
-            <ul>
-    <li>作者：<a href='http://weibo.com/xpmozong' target='blank'>寞踪</a></li>
+            
+<ul>
+    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
     <li>本文地址：http://xpmozong.github.io/php/2011/10/20/php-xml/</li>
     <li>转载请注明出处</li>
 </ul>
+
 <pre><code>/**
  * 把XML转化为数组
  *
@@ -203,38 +205,41 @@ function arraytoxml($array, $tag)
 {
     function ia2xml($array)
     {
-        $xml = &#39;&#39;;
+        $xml = '';
         foreach ($array as $key=&gt;$value) {
             if (is_array($value)) {
-                $xml.=&quot;&lt;$key&gt;&quot;.ia2xml($value).&quot;&lt;/$key&gt;&quot;;
+                $xml.="&lt;$key&gt;".ia2xml($value)."&lt;/$key&gt;";
             } else {
-                $xml.=&quot;&lt;$key&gt;&quot;.$value.&quot;&lt;/$key&gt;&quot;;
+                $xml.="&lt;$key&gt;".$value."&lt;/$key&gt;";
             }
         }
         return $xml;
     }
 
-    return simplexml_load_string(&quot;&lt;$tag&gt;&quot;.ia2xml($array).&quot;&lt;/$tag&gt;&quot;);
+    return simplexml_load_string("&lt;$tag&gt;".ia2xml($array)."&lt;/$tag&gt;");
 }
 
-$test[&#39;type&#39;]=&#39;lunch&#39;;
-$test[&#39;time&#39;]=&#39;12:30&#39;;
-$test[&#39;menu&#39;]=array(&#39;entree&#39;=&gt;&#39;salad&#39;, &#39;maincourse&#39;=&gt;&#39;steak&#39;);
+$test['type']='lunch';
+$test['time']='12:30';
+$test['menu']=array('entree'=&gt;'salad', 'maincourse'=&gt;'steak');
 
-//  header(&#39;Content-type:text/xml; charset=utf-8&#39;);
-//  echo arraytoxml($test,&quot;meal&quot;)-&gt;asXML();
-$string = &quot;&lt;?xml version=&#39;1.0&#39;?&gt; 
+//  header('Content-type:text/xml; charset=utf-8');
+//  echo arraytoxml($test,"meal")-&gt;asXML();
+$string = "&lt;?xml version='1.0'?&gt; 
 &lt;document&gt;
 &lt;title&gt;Forty What?&lt;/title&gt;
 &lt;from&gt;Joe&lt;/from&gt;
 &lt;to&gt;Jane&lt;/to&gt;
 &lt;body&gt;
-I know that&#39;s the answer -- but what&#39;s the question?
+I know that's the answer -- but what's the question?
 &lt;/body&gt;
-&lt;/document&gt;&quot;;
+&lt;/document&gt;";
 
 //echo $string;
-print_r(xmlToArray($string));</code></pre>
+print_r(xmlToArray($string));
+</code></pre>
+
+
         </div>
 
     

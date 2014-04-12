@@ -165,11 +165,13 @@
             <span>2014-04-12</span>
         </div>
         <div class="content">
-            <ul>
-    <li>作者：<a href='http://weibo.com/xpmozong' target='blank'>寞踪</a></li>
+            
+<ul>
+    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
     <li>本文地址：http://xpmozong.github.io/ios/2014/04/12/oc-extension/</li>
     <li>转载请注明出处</li>
 </ul>
+
 <p>OC Extension 的主要作用是为类添加“私有”方法，外部不能调用。</p>
 
 <p>Category 和 Extension 的区别：</p>
@@ -188,7 +190,7 @@
 
 <p>Extension 用法如下：</p>
 
-<pre><code>#import &quot;Person.h&quot;
+<pre><code>#import "Person.h"
 @interface Person ()
 - (void)sayHello;
 @end
@@ -196,16 +198,19 @@
 @implementation Person
 - (void)sayHello
 {
-    NSLog(@&quot;Hello&quot;);
+    NSLog(@"Hello");
 }
 - (void)say
 {
-    NSLog(@&quot;hi&quot;);
+    NSLog(@"hi");
     [self sayHello];
 }
-@end</code></pre>
+@end
+</code></pre>
 
 <p>在Person.m文件添加私有方法sayHello，内部调用。</p>
+
+
         </div>
 
     

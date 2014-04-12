@@ -165,16 +165,18 @@
             <span>2011-08-08</span>
         </div>
         <div class="content">
-            <ul>
-    <li>作者：<a href='http://weibo.com/xpmozong' target='blank'>寞踪</a></li>
+            
+<ul>
+    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
     <li>本文地址：http://xpmozong.github.io/php/2011/08/08/php-thumbnails/</li>
     <li>转载请注明出处</li>
 </ul>
+
 <pre><code>// upload.php文件内容
 $uid = 3;
 $time = time();
 // 图片目录
-$img_dir = &quot;upload/&quot;;
+$img_dir = "upload/";
 // 把图片传到服务器
 // 初始化变量
 $uploaded = 0;
@@ -183,22 +185,22 @@ $imgname = $uid.$time;
 //只允许三张图片上传
 for ($i=0; $i&lt;=2; $i++) {
     //获取当前图片的信息
-    $is_file = $_FILES[&#39;imgfile&#39;][&#39;name&#39;][$i];
+    $is_file = $_FILES['imgfile']['name'][$i];
     //如果当前图片不为空
     if (!empty($is_file)) {
         // 判断上传的图片的类型是不是jpg,gif,png,bmp中的一种，同时判断是否上传成功
-        $imgtypearr = array(&#39;image/jpeg&#39;,&#39;image/gif&#39;,&#39;image/png&#39;,&#39;image/bmp&#39;);
-        $imgtype = $_FILES[&#39;imgfile&#39;][&#39;type&#39;][$i];
+        $imgtypearr = array('image/jpeg','image/gif','image/png','image/bmp');
+        $imgtype = $_FILES['imgfile']['type'][$i];
         if (in_array($imgtype,$imgtypearr)) {
-            move_uploaded_file($_FILES[&#39;imgfile&#39;][&#39;tmp_name&#39;][$i], $img_dir.$imgname.$is_file);
+            move_uploaded_file($_FILES['imgfile']['tmp_name'][$i], $img_dir.$imgname.$is_file);
             //按比例缩放图片
             if(resizeImage($img_dir.$imgname.$is_file,330,380,$img_dir.$imgname.$is_file)){
-                echo $is_file.&quot;缩小图片成功！&quot;;
+                echo $is_file."缩小图片成功！";
             }else{
-                echo $is_file.&quot;上传图片失败！&quot;;
+                echo $is_file."上传图片失败！";
             }
         }else{
-            echo $is_file.&#39;图片格式不对！&#39;;
+            echo $is_file.'图片格式不对！';
         }
     }
 }
@@ -217,21 +219,21 @@ for ($i=0; $i&lt;=2; $i++) {
 function resizeImage($im,$maxwidth,$maxheight,$to)
 {
     // 载入图像到php到变量中
-    $suffix = substr(strrchr($im,&#39;.&#39;),1); //strrchr返回最后的.jpg 或者.jpeg
+    $suffix = substr(strrchr($im,'.'),1); //strrchr返回最后的.jpg 或者.jpeg
     $style = strtolower($suffix);
-    if($style==&#39;jpg&#39; || $style==&#39;jpeg&#39;){
+    if($style=='jpg' || $style=='jpeg'){
         $originail = imagecreatefromjpeg($im); //jpg
-    }elseif($style==&#39;png&#39;){
+    }elseif($style=='png'){
         $originail = imagecreatefrompng($im); //png
-    }elseif($style==&#39;gif&#39;){
+    }elseif($style=='gif'){
         $originail = imagecreatefromgif($im); //gif
     }
     $dims = getimagesize($im); //获取图片大小；
     //Array ( [0] =&gt; 800 [1] =&gt; 600 
-    [2] =&gt; 2 [3] =&gt; width=&quot;800&quot; height=&quot;600&quot; 
+    [2] =&gt; 2 [3] =&gt; width="800" height="600" 
     [bits] =&gt; 8 [channels] =&gt; 3 [mime] =&gt; image/jpeg )
-    $pic_width = $dims[&#39;0&#39;];
-    $pic_height = $dims[&#39;1&#39;];
+    $pic_width = $dims['0'];
+    $pic_height = $dims['1'];
     if(($maxwidth &amp;&amp; $pic_width &gt; $maxwidth) || ($maxheight &amp;&amp; $pic_height &gt; $maxheight))
     {
         $resizewidth_tag = false;
@@ -266,19 +268,21 @@ function resizeImage($im,$maxwidth,$maxheight,$to)
         $newim = imagecreatetruecolor($newwidth,$newheight);
 
         //重采样拷贝部分图像并调整大小
-        imagecopyresampled($newim,$originail ,0,0,0,0,$newwidth,$newheight,$dims[&#39;0&#39;],$dims[&#39;1&#39;]);
+        imagecopyresampled($newim,$originail ,0,0,0,0,$newwidth,$newheight,$dims['0'],$dims['1']);
         
     }else{
         //创建空白图像
-        $newim = imagecreatetruecolor($dims[&#39;0&#39;],$dims[&#39;1&#39;]);
+        $newim = imagecreatetruecolor($dims['0'],$dims['1']);
         //重采样拷贝部分图像并调整大小
-        imagecopyresampled($newim,$originail,0,0,0,0,$dims[&#39;0&#39;],$dims[&#39;1&#39;],$dims[&#39;0&#39;],$dims[&#39;1&#39;]);
+        imagecopyresampled($newim,$originail,0,0,0,0,$dims['0'],$dims['1'],$dims['0'],$dims['1']);
     }
 
     return imagejpeg($newim,$to);
-}</code></pre>
+}
+</code></pre>
 
 <p>PHP 按比例缩放图片</p>
+
         </div>
 
     

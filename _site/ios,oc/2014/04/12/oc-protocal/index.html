@@ -165,11 +165,13 @@
             <span>2014-04-12</span>
         </div>
         <div class="content">
-            <ul>
-    <li>作者：<a href='http://weibo.com/xpmozong' target='blank'>寞踪</a></li>
+            
+<ul>
+    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
     <li>本文地址：http://xpmozong.github.io/ios/2014/04/12/oc-protocal/</li>
     <li>转载请注明出处</li>
 </ul>
+
 <p>Protocal又名协议，协议是一套标准（一堆方法的声明），只有.h文件。</p>
 
 <p>接受协议的对象，实现协议中定义的方法。</p>
@@ -183,7 +185,8 @@
 - (void)makeMoney;
 @optional
 - (void)washcloth;
-@end</code></pre>
+@end
+</code></pre>
 
 <p>@required后的方法是必须实现的，@required可写可不写。</p>
 
@@ -191,7 +194,7 @@
 
 <p>协议定义好之后，需要有类去遵守这个协议，实现协议里的方法。</p>
 
-<p>遵守协议，即在.h文件的父类名后写上&lt;协议名&gt;。实现协议里的方法即在.m文件中实现协议中的方法。相当于给这个类添加了若干个方法。这个类的实例就可以调用这些方法。</p>
+<p>遵守协议，即在.h文件的父类名后写上<协议名>。实现协议里的方法即在.m文件中实现协议中的方法。相当于给这个类添加了若干个方法。这个类的实例就可以调用这些方法。</协议名></p>
 
 <p>如何使用代理呢？通常情况下，我们用delegate，新建文件，选择Objective-C protocal，名字为 MarrayDelegate</p>
 
@@ -202,15 +205,17 @@
 - (void)makeMoney;
 @optional
 - (void)washcloth;
-@end</code></pre>
+@end
+</code></pre>
 
 <p>之前的MarrayProtocol.h文件不要了。</p>
 
 <p>创建Husband类， Husband.h内容如下：</p>
 
-<pre><code>#import &quot;MarrayDelegate.h&quot;
+<pre><code>#import "MarrayDelegate.h"
 @interface Husband : NSObject &lt;MarrayDelegate&gt;
-@end</code></pre>
+@end
+</code></pre>
 
 <p>MarrayDelegate 遵守协议。</p>
 
@@ -219,19 +224,21 @@
 <pre><code>@implementation Husband
 - (void)makeMoney
 {
-    NSLog(@&quot;给老婆挣钱！&quot;);
+    NSLog(@"给老婆挣钱！");
 }
-@end</code></pre>
+@end
+</code></pre>
 
 <p>实现代理里面的方法。</p>
 
 <p>创建Wife类，Wife.h文件内容如下：</p>
 
-<pre><code>#import &quot;MarrayDelegate.h&quot;
+<pre><code>#import "MarrayDelegate.h"
 @interface Wife : NSObject
 @property (nonatomic, assign) id&lt;MarrayDelegate&gt;delegate;
 - (void)shopping;
-@end</code></pre>
+@end
+</code></pre>
 
 <p>将代理名称设为delegate，添加一个方法。</p>
 
@@ -244,10 +251,11 @@
 }
 - (void)shopping
 {
-    NSLog(@&quot;老公，我要购物！&quot;);
+    NSLog(@"老公，我要购物！");
     [_delegate makeMoney];
 }
-@end</code></pre>
+@end
+</code></pre>
 
 <p>设置代理，和实现方法。</p>
 
@@ -258,11 +266,18 @@ Wife *wife = [[Wife alloc] init];
 [wife setDelegate:husband];
 [wife shopping];
 [wife release];
-[husband release];</code></pre>
+[husband release];
+</code></pre>
 
-<p>输出： 老公，我要购物！ 给老婆挣钱！</p>
+<p>输出：</p>
+
+<pre><code>老公，我要购物！
+给老婆挣钱！
+</code></pre>
 
 <p>整个过程就是实现协议代理的过程。</p>
+
+
         </div>
 
     

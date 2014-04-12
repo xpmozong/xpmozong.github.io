@@ -165,11 +165,15 @@
             <span>2012-01-06</span>
         </div>
         <div class="content">
-            <ul>
-    <li>作者：<a href='http://weibo.com/xpmozong' target='blank'>寞踪</a></li>
+            
+<ul>
+    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
     <li>本文地址：http://xpmozong.github.io/php/2012/01/06/php-mysql/</li>
     <li>转载请注明出处</li>
-</ul><p>mysql.php类</p>
+</ul>
+
+<p>mysql.php类</p>
+
 <pre><code>/*
  * 定义一个连接类,可以访问建立多个数据库连接对象
  *
@@ -189,20 +193,20 @@ class mysql{
     var $errno;             //错误信息
  
     function connect($dbConfig) {
-        $this-&gt;dbhost = $dbConfig[&#39;dbhost&#39;];
-        $this-&gt;dbuser = $dbConfig[&#39;dbuser&#39;];
-        $this-&gt;dbpasswd = $dbConfig[&#39;dbpasswd&#39;];
-        $this-&gt;dbpconnect = $dbConfig[&#39;dbpconnect&#39;];
-        $this-&gt;dbname = $dbConfig[&#39;dbname&#39;];
-        $this-&gt;dbchart = $dbConfig[&#39;dbchart&#39;];
+        $this-&gt;dbhost = $dbConfig['dbhost'];
+        $this-&gt;dbuser = $dbConfig['dbuser'];
+        $this-&gt;dbpasswd = $dbConfig['dbpasswd'];
+        $this-&gt;dbpconnect = $dbConfig['dbpconnect'];
+        $this-&gt;dbname = $dbConfig['dbname'];
+        $this-&gt;dbchart = $dbConfig['dbchart'];
         if($this-&gt;dbpconnect) {
             $this-&gt;dblink = mysql_pconnect($this-&gt;dbhost,$this-&gt;dbuser,$this-&gt;dbpasswd,1) 
-            or die(&#39;can not connect to mysql database!&#39;);
+            or die('can not connect to mysql database!');
         } else {
             $this-&gt;dblink = mysql_connect($this-&gt;dbhost,$this-&gt;dbuser,$this-&gt;dbpasswd,1) 
-            or die(&#39;can not connect to mysql database!&#39;);
+            or die('can not connect to mysql database!');
         }
-        mysql_query(&#39;set names &#39;.$this-&gt;dbchart, $this-&gt;dblink);
+        mysql_query('set names '.$this-&gt;dbchart, $this-&gt;dblink);
         mysql_select_db($this-&gt;dbname, $this-&gt;dblink);
         unset($dbConfig);
     }
@@ -282,7 +286,7 @@ class mysql{
      */
     function getInsertID() {
         return ($id = mysql_insert_id($this-&gt;dblink)) &gt;= 0 ? $id : 
-        $this-&gt;result($this-&gt;query(&#39;SELECT last_insert_id()&#39;), 0);
+        $this-&gt;result($this-&gt;query('SELECT last_insert_id()'), 0);
     }
  
     /**
@@ -303,18 +307,18 @@ class mysql{
         if($this-&gt;errno) {
             //可以根据错误ID，配置好一些友好的错误信息提示语句
             $msgArr = array();
-            $msgArr[&#39;1062&#39;] = &quot;唯一性索引有重复值插入&quot;;
+            $msgArr['1062'] = "唯一性索引有重复值插入";
             /*...更多错误代码根据实际业务再添加...*/
             if($msgArr[$this-&gt;errno]) {
                 $errMsg = $msgArr[$this-&gt;errno];//已定义的错误
             }else{
                 $errMsg = mysql_error();//未定义的错误，由默认的错误信息决定
             }
-            echo &quot;&lt;div style=&#39;color:red;&#39;&gt;\n&quot;;
-                echo &quot;&lt;h4&gt;数据库操作错误&lt;/h4&gt;\n&quot;;
-                echo &quot;&lt;h5&gt;错误代码：&quot;.$this-&gt;errno.&quot;&lt;/h5&gt;\n&quot;;
-                echo &quot;&lt;h5&gt;错误信息：&quot;.$errMsg.&quot;&lt;/h5&gt;\n&quot;;
-            echo &quot;&lt;/div&gt;&quot;;
+            echo "&lt;div style='color:red;'&gt;\n";
+                echo "&lt;h4&gt;数据库操作错误&lt;/h4&gt;\n";
+                echo "&lt;h5&gt;错误代码：".$this-&gt;errno."&lt;/h5&gt;\n";
+                echo "&lt;h5&gt;错误信息：".$errMsg."&lt;/h5&gt;\n";
+            echo "&lt;/div&gt;";
             unset($msgArr);
             die;
         }
@@ -332,21 +336,26 @@ class mysql{
         $this-&gt;res;
         $this-&gt;errno;
     }
-}</code></pre>
+}
+</code></pre>
+
 <p>测试连接</p>
-<pre><code>$dbConfig1 = array( &#39;dbhost&#39;     =&gt; &#39;localhost&#39;,
-                    &#39;dbuser&#39;     =&gt; &#39;root&#39;,
-                    &#39;dbpasswd&#39;   =&gt; &#39;&#39;,
-                    &#39;dbname&#39;     =&gt; &#39;server&#39;,
-                    &#39;dbpconnect&#39; =&gt; 0,
-                    &#39;dbchart&#39;    =&gt; &#39;utf8&#39;);
+
+<pre><code>$dbConfig1 = array( 'dbhost'     =&gt; 'localhost',
+                    'dbuser'     =&gt; 'root',
+                    'dbpasswd'   =&gt; '',
+                    'dbname'     =&gt; 'server',
+                    'dbpconnect' =&gt; 0,
+                    'dbchart'    =&gt; 'utf8');
 $db1 = new mysql();
 $db1-&gt;connect($dbConfig1);
 
-$arr = $db1-&gt;getOne(&quot;select * from user&quot;);
+$arr = $db1-&gt;getOne("select * from user");
 print_r($arr);
 
-$db1-&gt;close();</code></pre>
+$db1-&gt;close();
+</code></pre>
+
         </div>
 
     
