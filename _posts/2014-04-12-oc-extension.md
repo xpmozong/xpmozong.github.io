@@ -1,0 +1,59 @@
+---
+layout: post
+title: "OC extension 的使用"
+description: "OC extension 的使用"
+category: "IOS,OC"
+tags: [IOS,OC]
+---
+{% include JB/setup %}
+
+<ul>
+    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
+    <li>本文地址：http://xpmozong.github.io/ios/2014/04/12/oc-extension/</li>
+    <li>转载请注明出处</li>
+</ul>
+
+OC Extension 的主要作用是为类添加“私有”方法，外部不能调用。
+
+Category 和 Extension 的区别：
+
+一、作用：
+
+Category 为没有源代码的类添加方法。
+
+Extension 管理类的私有方法。
+
+二、格式
+
+Category 定义一对.h和.m 文件
+
+Extension 把代码写到原有类的.m文件中
+
+
+Extension 用法如下：
+
+    #import "Person.h"
+    @interface Person ()
+    - (void)sayHello;
+    @end
+
+    @implementation Person
+    - (void)sayHello
+    {
+        NSLog(@"Hello");
+    }
+    - (void)say
+    {
+        NSLog(@"hi");
+        [self sayHello];
+    }
+    @end
+
+在Person.m文件添加私有方法sayHello，内部调用。
+
+
+
+
+
+
+

@@ -3,8 +3,8 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>django1.0.4 blog Admin管理界面的激活方法</title>
-        <meta name="description" content="django1.0.4 blog Admin管理界面的激活方法">
+        <title>OC protocal 的使用</title>
+        <meta name="description" content="OC protocal 的使用">
         <meta name="author" content="寞踪">
 
         <!-- Enable responsive viewport -->
@@ -156,65 +156,113 @@
             <div class="content">
                 
 <div class="page-header">
-    <h1>django1.0.4 blog Admin管理界面的激活方法 </h1>
+    <h1>OC protocal 的使用 </h1>
 </div>
 
 <div class="row-fluid post-full">
     <div class="span12">
         <div class="date">
-            <span>2012-11-11</span>
+            <span>2014-04-12</span>
         </div>
         <div class="content">
             <ul>
     <li>作者：<a href='http://weibo.com/xpmozong' target='blank'>寞踪</a></li>
-    <li>本文地址：http://xpmozong.github.io/python/2012/11/11/django-blog-admin/</li>
+    <li>本文地址：http://xpmozong.github.io/ios/2014/04/12/oc-protocal/</li>
     <li>转载请注明出处</li>
 </ul>
-<p>先django-admin startproject mysite创建一个项目 cd mysite manage.py startapp blog 创建一个blog</p>
+<p>Protocal又名协议，协议是一套标准（一堆方法的声明），只有.h文件。</p>
 
-<p>1、设置数据库 settings.py</p>
+<p>接受协议的对象，实现协议中定义的方法。</p>
 
-<pre><code>DATABASE_ENGINE = &#39;mysql&#39;
-DATABASE_NAME = &#39;djangodb&#39;
-DATABASE_USER = &#39;root&#39;
-DATABASE_PASSWORD = &#39;&#39;
-DATABASE_HOST = &#39;localhost&#39;
-DATABASE_PORT = &#39;&#39;</code></pre>
+<p>新建文件，选择Objective-C protocal，名字为 MarrayProtocol</p>
 
-<p>2、建表 命令行 manage.py syncdb ……..</p>
+<p>Protocal 以 @protocal，以@end结束，例如：</p>
 
-<p>3、设置自动admin应用 settings.py 在django.contrib.auth下添加django.contrib.admin,mysite.blog</p>
+<pre><code>@protocol MarrayProtocol &lt;NSObject&gt;
+@required
+- (void)makeMoney;
+@optional
+- (void)washcloth;
+@end</code></pre>
 
-<p>4、再次 命令行 manage.py syncdb ……..</p>
+<p>@required后的方法是必须实现的，@required可写可不写。</p>
 
-<p>5、urls.py内容为</p>
+<p>@optional后方法是可选实现的，可实现，可不实现。</p>
 
-<pre><code>from django.conf.urls.defaults import *
+<p>协议定义好之后，需要有类去遵守这个协议，实现协议里的方法。</p>
 
-# Uncomment the next two lines to enable the admin:
-from django.contrib import admin
-admin.autodiscover()
+<p>遵守协议，即在.h文件的父类名后写上&lt;协议名&gt;。实现协议里的方法即在.m文件中实现协议中的方法。相当于给这个类添加了若干个方法。这个类的实例就可以调用这些方法。</p>
 
-urlpatterns = patterns(&#39;&#39;,
-    # Uncomment the next line to enable the admin:
-    (r&#39;^admin/(.*)&#39;, admin.site.root),
-)</code></pre>
+<p>如何使用代理呢？通常情况下，我们用delegate，新建文件，选择Objective-C protocal，名字为 MarrayDelegate</p>
 
-<p>注意，这和老版本不太一样，当出现No module named urls时，仔细检查下此文件。</p>
+<p>内容如下：</p>
 
-<p>6、然后models.py内容为</p>
+<pre><code>@protocol MarrayDelegate &lt;NSObject&gt;
+@required
+- (void)makeMoney;
+@optional
+- (void)washcloth;
+@end</code></pre>
 
-<pre><code>from django.db import models
-from django.contrib import admin
+<p>之前的MarrayProtocol.h文件不要了。</p>
 
-class BlogPost(models.Model):
-    title = models.CharField(max_length=150)
-    body = models.TextField()
-    timestamp = models.DateTimeField()
+<p>创建Husband类， Husband.h内容如下：</p>
 
-admin.site.register(BlogPost)</code></pre>
+<pre><code>#import &quot;MarrayDelegate.h&quot;
+@interface Husband : NSObject &lt;MarrayDelegate&gt;
+@end</code></pre>
 
-<p>7、最后在浏览器运行，http://127.0.0.1:8888/admin/，就可以看到登录页面了。 发布文章的时候，如果发现blog_blogpost表不存在，就再执行下manage.py syncdb</p>
+<p>MarrayDelegate 遵守协议。</p>
+
+<p>Husband.m文件内容如下：</p>
+
+<pre><code>@implementation Husband
+- (void)makeMoney
+{
+    NSLog(@&quot;给老婆挣钱！&quot;);
+}
+@end</code></pre>
+
+<p>实现代理里面的方法。</p>
+
+<p>创建Wife类，Wife.h文件内容如下：</p>
+
+<pre><code>#import &quot;MarrayDelegate.h&quot;
+@interface Wife : NSObject
+@property (nonatomic, assign) id&lt;MarrayDelegate&gt;delegate;
+- (void)shopping;
+@end</code></pre>
+
+<p>将代理名称设为delegate，添加一个方法。</p>
+
+<p>Wife.m文件内容如下：</p>
+
+<pre><code>@implementation Wife
+- (void)setDelegate:(id&lt;MarrayDelegate&gt;)delegate
+{
+    _delegate = delegate;   // 不能写成self.delegate = delegate
+}
+- (void)shopping
+{
+    NSLog(@&quot;老公，我要购物！&quot;);
+    [_delegate makeMoney];
+}
+@end</code></pre>
+
+<p>设置代理，和实现方法。</p>
+
+<p>在主函数import husband.h 和 wife.h 文件</p>
+
+<pre><code>Husband *husband = [[Husband alloc] init];
+Wife *wife = [[Wife alloc] init];
+[wife setDelegate:husband];
+[wife shopping];
+[wife release];
+[husband release];</code></pre>
+
+<p>输出： 老公，我要购物！ 给老婆挣钱！</p>
+
+<p>整个过程就是实现协议代理的过程。</p>
         </div>
 
     
@@ -226,8 +274,8 @@ admin.site.register(BlogPost)</code></pre>
 
   
      
-    	<li><a href="/categories.html#python-ref">
-    		python <span>3</span>
+    	<li><a href="/categories.html#ios,oc-ref">
+    		ios,oc <span>5</span>
     	</a></li>
     
   
@@ -245,7 +293,9 @@ admin.site.register(BlogPost)</code></pre>
 
   
      
-    	<li><a href="/tags.html#python-ref">python <span>3</span></a></li>
+    	<li><a href="/tags.html#IOS-ref">IOS <span>5</span></a></li>
+     
+    	<li><a href="/tags.html#OC-ref">OC <span>5</span></a></li>
     
   
 
@@ -258,11 +308,11 @@ admin.site.register(BlogPost)</code></pre>
         <div class="pagination">
             <ul>
             
-                <li class="prev"><a href="/nginx/2012/01/30/nginx" title="Nginx实现HTTP负载均衡">&larr; Previous</a></li>
+                <li class="prev"><a href="/ios,oc/2014/04/12/oc-property" title="OC property 属性介绍">&larr; Previous</a></li>
             
                 <li><a href="/archive.html">Archive</a></li>
             
-                <li class="next"><a href="/python/2013/04/02/python-pic-color" title="python判断一张图片的主色调">Next &rarr;</a></li>
+                <li class="next disabled"><a>Next &rarr;</a>
             
             </ul>
         </div>

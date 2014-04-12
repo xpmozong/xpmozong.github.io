@@ -293,9 +293,7 @@ tar -zxvf libvirt-php-0.4.8.tar.gz</code></pre>
 <pre><code>make &amp;&amp; make install</code></pre>
 <p>建一个测试php文件</p>
 <pre><code>print_r( libvirt_version() );  有结果，就表示，安装成功啦</code></pre>
-<p>可能有人不喜欢apache，ok，就安装nginx呗，顺便 yum -y install php-fpm</p><p>启动service php-fpm start</p><p>这里就不详细说啦</p><p>从 https://github.com/xpmozong/libvirt-php-examples 下载例子</p>
-<p><p>[root@localhost examples]# php create.php  创建</p> <p>[root@localhost examples]# php test.php    列出虚拟机列表</p> <p>其中libvirt.php 里有很多函数，没写全，要添加的话参考http://libvirt.org/php/api-reference.html</p></p>
-<p>php有执行libvirt的权限，但是apache、nginx没有这个权限，所以要赋予权限。</p><p>还有通过web访问，要设置libvirt的认证，vim /etc/libvirt/libvirtd.conf 文件 auth_tcp = "none"</p><p>brctl show 查看网桥</p><p>跟重要的是，要有VNC啊，推荐 <a href='http://kanaka.github.io/noVNC/' target='_blank'>noVNC</a></p>
+<p>可能有人不喜欢apache，ok，就安装nginx呗，顺便 yum -y install php-fpm</p><p>启动service php-fpm start</p><p>这里就不详细说啦</p><p>从 https://github.com/xpmozong/libvirt-php-examples 下载例子</p><p>[root@localhost examples]# php create.php  创建</p><p>[root@localhost examples]# php test.php    列出虚拟机列表</p><p>其中libvirt.php 里有很多函数，没写全，要添加的话参考http://libvirt.org/php/api-reference.html</p><p>php有执行libvirt的权限，但是apache、nginx没有这个权限，所以要赋予权限。</p><p>还有通过web访问，要设置libvirt的认证，vim /etc/libvirt/libvirtd.conf 文件 auth_tcp = "none"</p><p>brctl show 查看网桥</p><p>跟重要的是，要有VNC啊，推荐 <a href='http://kanaka.github.io/noVNC/' target='_blank'>noVNC</a></p>
         </div>
 
     

@@ -3,8 +3,8 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>django1.0.4 blog Admin管理界面的激活方法</title>
-        <meta name="description" content="django1.0.4 blog Admin管理界面的激活方法">
+        <title>OC extension 的使用</title>
+        <meta name="description" content="OC extension 的使用">
         <meta name="author" content="寞踪">
 
         <!-- Enable responsive viewport -->
@@ -156,65 +156,56 @@
             <div class="content">
                 
 <div class="page-header">
-    <h1>django1.0.4 blog Admin管理界面的激活方法 </h1>
+    <h1>OC extension 的使用 </h1>
 </div>
 
 <div class="row-fluid post-full">
     <div class="span12">
         <div class="date">
-            <span>2012-11-11</span>
+            <span>2014-04-12</span>
         </div>
         <div class="content">
             <ul>
     <li>作者：<a href='http://weibo.com/xpmozong' target='blank'>寞踪</a></li>
-    <li>本文地址：http://xpmozong.github.io/python/2012/11/11/django-blog-admin/</li>
+    <li>本文地址：http://xpmozong.github.io/ios/2014/04/12/oc-extension/</li>
     <li>转载请注明出处</li>
 </ul>
-<p>先django-admin startproject mysite创建一个项目 cd mysite manage.py startapp blog 创建一个blog</p>
+<p>OC Extension 的主要作用是为类添加“私有”方法，外部不能调用。</p>
 
-<p>1、设置数据库 settings.py</p>
+<p>Category 和 Extension 的区别：</p>
 
-<pre><code>DATABASE_ENGINE = &#39;mysql&#39;
-DATABASE_NAME = &#39;djangodb&#39;
-DATABASE_USER = &#39;root&#39;
-DATABASE_PASSWORD = &#39;&#39;
-DATABASE_HOST = &#39;localhost&#39;
-DATABASE_PORT = &#39;&#39;</code></pre>
+<p>一、作用：</p>
 
-<p>2、建表 命令行 manage.py syncdb ……..</p>
+<p>Category 为没有源代码的类添加方法。</p>
 
-<p>3、设置自动admin应用 settings.py 在django.contrib.auth下添加django.contrib.admin,mysite.blog</p>
+<p>Extension 管理类的私有方法。</p>
 
-<p>4、再次 命令行 manage.py syncdb ……..</p>
+<p>二、格式</p>
 
-<p>5、urls.py内容为</p>
+<p>Category 定义一对.h和.m 文件</p>
 
-<pre><code>from django.conf.urls.defaults import *
+<p>Extension 把代码写到原有类的.m文件中</p>
 
-# Uncomment the next two lines to enable the admin:
-from django.contrib import admin
-admin.autodiscover()
+<p>Extension 用法如下：</p>
 
-urlpatterns = patterns(&#39;&#39;,
-    # Uncomment the next line to enable the admin:
-    (r&#39;^admin/(.*)&#39;, admin.site.root),
-)</code></pre>
+<pre><code>#import &quot;Person.h&quot;
+@interface Person ()
+- (void)sayHello;
+@end
 
-<p>注意，这和老版本不太一样，当出现No module named urls时，仔细检查下此文件。</p>
+@implementation Person
+- (void)sayHello
+{
+    NSLog(@&quot;Hello&quot;);
+}
+- (void)say
+{
+    NSLog(@&quot;hi&quot;);
+    [self sayHello];
+}
+@end</code></pre>
 
-<p>6、然后models.py内容为</p>
-
-<pre><code>from django.db import models
-from django.contrib import admin
-
-class BlogPost(models.Model):
-    title = models.CharField(max_length=150)
-    body = models.TextField()
-    timestamp = models.DateTimeField()
-
-admin.site.register(BlogPost)</code></pre>
-
-<p>7、最后在浏览器运行，http://127.0.0.1:8888/admin/，就可以看到登录页面了。 发布文章的时候，如果发现blog_blogpost表不存在，就再执行下manage.py syncdb</p>
+<p>在Person.m文件添加私有方法sayHello，内部调用。</p>
         </div>
 
     
@@ -226,8 +217,8 @@ admin.site.register(BlogPost)</code></pre>
 
   
      
-    	<li><a href="/categories.html#python-ref">
-    		python <span>3</span>
+    	<li><a href="/categories.html#ios,oc-ref">
+    		ios,oc <span>5</span>
     	</a></li>
     
   
@@ -245,7 +236,9 @@ admin.site.register(BlogPost)</code></pre>
 
   
      
-    	<li><a href="/tags.html#python-ref">python <span>3</span></a></li>
+    	<li><a href="/tags.html#IOS-ref">IOS <span>5</span></a></li>
+     
+    	<li><a href="/tags.html#OC-ref">OC <span>5</span></a></li>
     
   
 
@@ -258,11 +251,11 @@ admin.site.register(BlogPost)</code></pre>
         <div class="pagination">
             <ul>
             
-                <li class="prev"><a href="/nginx/2012/01/30/nginx" title="Nginx实现HTTP负载均衡">&larr; Previous</a></li>
+                <li class="prev"><a href="/ios,oc/2014/04/12/oc-category" title="OC category 类目的使用">&larr; Previous</a></li>
             
                 <li><a href="/archive.html">Archive</a></li>
             
-                <li class="next"><a href="/python/2013/04/02/python-pic-color" title="python判断一张图片的主色调">Next &rarr;</a></li>
+                <li class="next"><a href="/ios,oc/2014/04/12/oc-jicheng" title="OC 继承">Next &rarr;</a></li>
             
             </ul>
         </div>

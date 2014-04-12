@@ -1,23 +1,30 @@
 ---
 layout: post
-title: "IOS property 属性介绍"
-description: "IOS property 属性介绍"
-category: "IOS"
-tags: [IOS]
+title: "OC property 属性介绍"
+description: "OC property 属性介绍"
+category: "IOS,OC"
+tags: [IOS,OC]
 ---
 {% include JB/setup %}
 
 <ul>
     <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-    <li>本文地址：http://xpmozong.github.io/ios/2014/04/12/ios-property/</li>
+    <li>本文地址：http://xpmozong.github.io/ios/2014/04/12/oc-property/</li>
     <li>转载请注明出处</li>
 </ul>
 
-@property (nonatomic, retain) NSString *subject;
+    @property (nonatomic, retain) NSString *subject;
 
 @propery属性有 atomic, nonatomic, assign, retain, copy, 作用和系统内部实现如下
 
-1、 atomic, nonatomic 原子性和非原子性，使用多线程时用atomic，加锁，其他时候用nonatomic。atomic执行效率比nonatomic低。
+1、 atomic, nonatomic 原子性和非原子性。
+    
+在原子性控制上，我们通常设置为nonatomic。
+
+程序开发过程中，setter、getter处处都在用，如果使用atomic，需要不断的对setter、getter加锁解锁以保证线程访问安全，会很占用系统资源，降低系统性能。
+
+通常设置为nonatomic，某些属性需要线程安全的时候，才定义为atomic。
+
 
 2、 assign 内部实现
 

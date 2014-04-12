@@ -4,7 +4,7 @@
     <title>寞踪的技术博客</title>
     <link href="http://xpmozong.github.io/" rel="self"/>
     <link href="http://xpmozong.github.io"/>
-    <updated>2014-01-03T15:19:48+08:00</updated>
+    <updated>2014-04-12T18:04:08+08:00</updated>
     <id>http://xpmozong.github.io</id>
     <author>
     <name>寞踪</name>
@@ -13,16 +13,351 @@
 
 
     <entry>
+        <title>OC protocal 的使用</title>
+        <link href="http://xpmozong.github.io/ios,oc/2014/04/12/oc-protocal"/>
+        <updated>2014-04-12T00:00:00+08:00</updated>
+        <id>http://xpmozong.github.io/ios,oc/2014/04/12/oc-protocal</id>
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/ios/2014/04/12/oc-protocal/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Protocal又名协议，协议是一套标准（一堆方法的声明），只有.h文件。&lt;/p&gt;
+
+&lt;p&gt;接受协议的对象，实现协议中定义的方法。&lt;/p&gt;
+
+&lt;p&gt;新建文件，选择Objective-C protocal，名字为 MarrayProtocol&lt;/p&gt;
+
+&lt;p&gt;Protocal 以 @protocal，以@end结束，例如：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@protocol MarrayProtocol &amp;lt;NSObject&amp;gt;
+@required
+- (void)makeMoney;
+@optional
+- (void)washcloth;
+@end&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;@required后的方法是必须实现的，@required可写可不写。&lt;/p&gt;
+
+&lt;p&gt;@optional后方法是可选实现的，可实现，可不实现。&lt;/p&gt;
+
+&lt;p&gt;协议定义好之后，需要有类去遵守这个协议，实现协议里的方法。&lt;/p&gt;
+
+&lt;p&gt;遵守协议，即在.h文件的父类名后写上&amp;lt;协议名&amp;gt;。实现协议里的方法即在.m文件中实现协议中的方法。相当于给这个类添加了若干个方法。这个类的实例就可以调用这些方法。&lt;/p&gt;
+
+&lt;p&gt;如何使用代理呢？通常情况下，我们用delegate，新建文件，选择Objective-C protocal，名字为 MarrayDelegate&lt;/p&gt;
+
+&lt;p&gt;内容如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@protocol MarrayDelegate &amp;lt;NSObject&amp;gt;
+@required
+- (void)makeMoney;
+@optional
+- (void)washcloth;
+@end&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;之前的MarrayProtocol.h文件不要了。&lt;/p&gt;
+
+&lt;p&gt;创建Husband类， Husband.h内容如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#import &amp;quot;MarrayDelegate.h&amp;quot;
+@interface Husband : NSObject &amp;lt;MarrayDelegate&amp;gt;
+@end&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;MarrayDelegate 遵守协议。&lt;/p&gt;
+
+&lt;p&gt;Husband.m文件内容如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@implementation Husband
+- (void)makeMoney
+{
+    NSLog(@&amp;quot;给老婆挣钱！&amp;quot;);
+}
+@end&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;实现代理里面的方法。&lt;/p&gt;
+
+&lt;p&gt;创建Wife类，Wife.h文件内容如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#import &amp;quot;MarrayDelegate.h&amp;quot;
+@interface Wife : NSObject
+@property (nonatomic, assign) id&amp;lt;MarrayDelegate&amp;gt;delegate;
+- (void)shopping;
+@end&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;将代理名称设为delegate，添加一个方法。&lt;/p&gt;
+
+&lt;p&gt;Wife.m文件内容如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@implementation Wife
+- (void)setDelegate:(id&amp;lt;MarrayDelegate&amp;gt;)delegate
+{
+    _delegate = delegate;   // 不能写成self.delegate = delegate
+}
+- (void)shopping
+{
+    NSLog(@&amp;quot;老公，我要购物！&amp;quot;);
+    [_delegate makeMoney];
+}
+@end&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;设置代理，和实现方法。&lt;/p&gt;
+
+&lt;p&gt;在主函数import husband.h 和 wife.h 文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Husband *husband = [[Husband alloc] init];
+Wife *wife = [[Wife alloc] init];
+[wife setDelegate:husband];
+[wife shopping];
+[wife release];
+[husband release];&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;输出： 老公，我要购物！ 给老婆挣钱！&lt;/p&gt;
+
+&lt;p&gt;整个过程就是实现协议代理的过程。&lt;/p&gt;</content>
+    </entry>
+ 
+    <entry>
+        <title>OC property 属性介绍</title>
+        <link href="http://xpmozong.github.io/ios,oc/2014/04/12/oc-property"/>
+        <updated>2014-04-12T00:00:00+08:00</updated>
+        <id>http://xpmozong.github.io/ios,oc/2014/04/12/oc-property</id>
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/ios/2014/04/12/oc-property/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;@property (nonatomic, retain) NSString *subject;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;@propery属性有 atomic, nonatomic, assign, retain, copy, 作用和系统内部实现如下&lt;/p&gt;
+
+&lt;p&gt;1、 atomic, nonatomic 原子性和非原子性。&lt;/p&gt;
+
+&lt;p&gt;在原子性控制上，我们通常设置为nonatomic。&lt;/p&gt;
+
+&lt;p&gt;程序开发过程中，setter、getter处处都在用，如果使用atomic，需要不断的对setter、getter加锁解锁以保证线程访问安全，会很占用系统资源，降低系统性能。&lt;/p&gt;
+
+&lt;p&gt;通常设置为nonatomic，某些属性需要线程安全的时候，才定义为atomic。&lt;/p&gt;
+
+&lt;p&gt;2、 assign 内部实现&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;- (void)setSubject:(NSString *)subject
+{
+    _subject = subject;
+}
+- (NSString *)subject
+{
+    return _subject;
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3、 retain 内部实现&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;- (void)setSubject:(NSString *)subject
+{
+    if (_subject != subject) {
+        [_subject release];
+        _subject = [subject retain];
+    }
+}
+
+- (NSString *)subject
+{
+    return [[_subject retain] autorelease];
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;4、 copy 内部实现&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;- (void)setSubject:(NSString *)subject
+{
+    if (_subject != subject) {
+        [_subject release];
+        _subject = [subject copy];
+    }
+}
+
+- (NSString *)subject
+{
+    return [[_subject retain] autorelease];
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;总结： 基本数据类型等用assign，其他对象用retain或者copy，当用MRC时，需要在dealloc中release。&lt;/p&gt;
+
+&lt;p&gt;用self和不用self时，引用计数的区别&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    NSArray * array = [[NSArray alloc] initWithObjects:@&amp;quot;Luke&amp;quot;, @&amp;quot;Leia&amp;quot;, @&amp;quot;Han&amp;quot;, @&amp;quot;Chewbacca&amp;quot;, @&amp;quot;Artoo&amp;quot;, @&amp;quot;Threepio&amp;quot;, @&amp;quot;Lando&amp;quot;, nil];
+    self.pickerData= array;
+    [array release]; // 如果不加self.就会在这里把array直接完全释放，结果array就没法用了。
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;简述内存管理的原则.&lt;/p&gt;
+
+&lt;p&gt;答: 凡是你通过retain、alloc、copy等获得了所有权的对象，都必须在你不再使用它的时候，由你来release、autorelease等手段来释放对它的所有权。retain、alloc、copy的操作次数应该与release、autorelease操作的次数相等。可以在类的dealloc方法中释放你所占有的实例变量。对于便利构造器和访问器来说，你没有通过retain、alloc、copy获得对象的所有权，因此在这些情况下你无须对获得对象进行额外的释放操作。autorelease只不过意味着“预定延迟发送一条release”，当前引用计数并没有变。&lt;/p&gt;</content>
+    </entry>
+ 
+    <entry>
+        <title>OC 继承</title>
+        <link href="http://xpmozong.github.io/ios,oc/2014/04/12/oc-jicheng"/>
+        <updated>2014-04-12T00:00:00+08:00</updated>
+        <id>http://xpmozong.github.io/ios,oc/2014/04/12/oc-jicheng</id>
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/ios/2014/04/12/oc-jicheng/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;OC中的继承是单向的，继承具有传递性，子类继承父类的特征和行为，子类扩展父类，更具体。&lt;/p&gt;
+
+&lt;p&gt;OC中的继承,即⼀个类继承另一个类。&lt;/p&gt;
+
+&lt;p&gt;被继承的类称为⽗父类或超类。&lt;/p&gt;
+
+&lt;p&gt;继承的类称为⼦子类。&lt;/p&gt;
+
+&lt;p&gt;继承的实现如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#import &amp;quot;Person.h&amp;quot;
+@interface Student : Person
+@end&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;冒号前为子类名称，冒号后为父类名称&lt;/p&gt;
+
+&lt;p&gt;继承的特点&lt;/p&gt;
+
+&lt;p&gt;OC中只允许单继承。&lt;/p&gt;
+
+&lt;p&gt;没有⽗类的类称为根类,OC中的根类是NSObject(祖宗)。 继承的内容:除了私有变量之外的所有实例变量和方法。&lt;/p&gt;
+
+&lt;p&gt;⼦类可以重写⽗类的方法。&lt;/p&gt;</content>
+    </entry>
+ 
+    <entry>
+        <title>OC extension 的使用</title>
+        <link href="http://xpmozong.github.io/ios,oc/2014/04/12/oc-extension"/>
+        <updated>2014-04-12T00:00:00+08:00</updated>
+        <id>http://xpmozong.github.io/ios,oc/2014/04/12/oc-extension</id>
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/ios/2014/04/12/oc-extension/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;OC Extension 的主要作用是为类添加“私有”方法，外部不能调用。&lt;/p&gt;
+
+&lt;p&gt;Category 和 Extension 的区别：&lt;/p&gt;
+
+&lt;p&gt;一、作用：&lt;/p&gt;
+
+&lt;p&gt;Category 为没有源代码的类添加方法。&lt;/p&gt;
+
+&lt;p&gt;Extension 管理类的私有方法。&lt;/p&gt;
+
+&lt;p&gt;二、格式&lt;/p&gt;
+
+&lt;p&gt;Category 定义一对.h和.m 文件&lt;/p&gt;
+
+&lt;p&gt;Extension 把代码写到原有类的.m文件中&lt;/p&gt;
+
+&lt;p&gt;Extension 用法如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#import &amp;quot;Person.h&amp;quot;
+@interface Person ()
+- (void)sayHello;
+@end
+
+@implementation Person
+- (void)sayHello
+{
+    NSLog(@&amp;quot;Hello&amp;quot;);
+}
+- (void)say
+{
+    NSLog(@&amp;quot;hi&amp;quot;);
+    [self sayHello];
+}
+@end&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在Person.m文件添加私有方法sayHello，内部调用。&lt;/p&gt;</content>
+    </entry>
+ 
+    <entry>
+        <title>OC category 类目的使用</title>
+        <link href="http://xpmozong.github.io/ios,oc/2014/04/12/oc-category"/>
+        <updated>2014-04-12T00:00:00+08:00</updated>
+        <id>http://xpmozong.github.io/ios,oc/2014/04/12/oc-category</id>
+        <content type="html">&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/ios/2014/04/12/oc-category/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;OC 有个很重要的特性，Category，类目，类目的主要作用是为 没有源代码的类添加方法。&lt;/p&gt;
+
+&lt;p&gt;通过Category添加的方法会成为原类的一部分，从而达到扩展一个类的功能。&lt;/p&gt;
+
+&lt;p&gt;当你使用 NSString 这个类，想要一个 sayHello 的方法，但是NSString类没有这个方法，就需要为这个类添加方法。&lt;/p&gt;
+
+&lt;p&gt;如下操作：&lt;/p&gt;
+
+&lt;p&gt;新建文件，选择Objective-C category， 文件名Hello, Category on 选择 NSString。&lt;/p&gt;
+
+&lt;p&gt;自动生成 NSString+Hello.h 和 NSString+Hello.m 文件。&lt;/p&gt;
+
+&lt;p&gt;在 NSString+Hello.h 文件写上&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@interface NSString (Hello)
+- (void)sayHello;
+@end&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在 NSString+Hello.m 文件写上&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@implementation NSString (Hello)
+- (void)sayHello
+{
+    NSLog(@&amp;quot;Hello %@&amp;quot;, self);
+}
+@end&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;你自定义的类，做好了。&lt;/p&gt;
+
+&lt;p&gt;在main.m中，#import “NSString+Hello.h” 自定义类文件，调用代码如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;NSString *str = @&amp;quot;Ellen&amp;quot;;
+[str sayHello];&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果输出 Hello Ellen , 那你拓展 NSString 类就成功了。&lt;/p&gt;
+
+&lt;p&gt;Category类目 与 Subclass子类 的区别&lt;/p&gt;
+
+&lt;p&gt;一、功能&lt;/p&gt;
+
+&lt;p&gt;Category只能为类添加方法&lt;/p&gt;
+
+&lt;p&gt;Subclass既能为类添加方法也能添加变量&lt;/p&gt;
+
+&lt;p&gt;二、特点&lt;/p&gt;
+
+&lt;p&gt;Category新添加的方法会成为原始类的一部分，能被子类继承。&lt;/p&gt;
+
+&lt;p&gt;Subclass新添加的方法只有子类才有，父类不具有&lt;/p&gt;
+
+&lt;p&gt;三、使用&lt;/p&gt;
+
+&lt;p&gt;Category，（如果是-方法）使用原有类的实例 或者（如果是+方法）原始类调用方法&lt;/p&gt;
+
+&lt;p&gt;Subclass子类才能调用，如果项目开发到尾声的时候，使用子类添加了方法，需要对已写代码做类型替换（将父类替换为子类。）&lt;/p&gt;</content>
+    </entry>
+ 
+    <entry>
         <title>PHP扩展开发 - 第一个扩展</title>
         <link href="http://xpmozong.github.io/php/2013/12/05/php-extension"/>
         <updated>2013-12-05T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/php/2013/12/05/php-extension</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/php/2013/12/05/php-extension/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;学习PHP扩展开发，是PHPer的必学课程。接着上一节课程，&lt;a href='/php/2013/12/05/lnmp/' target='_blank'&gt;Linux + Nginx + Mysql + PHP 编译安装&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;学习PHP扩展开发，是PHPer的必学课程。接着上一节课程，&lt;a href=&#39;/php/2013/12/05/lnmp/&#39; target=&#39;_blank&#39;&gt;Linux + Nginx + Mysql + PHP 编译安装&lt;/a&gt;。&lt;/p&gt;
 
 &lt;p&gt;需求：比如开发一个叫做 hello_world 的扩展，扩展里就一个函数 hello_world_test()，输入一个字符串，函数返回：Your input string: xxxxx! 。&lt;/p&gt;
 
@@ -113,7 +448,7 @@ echo hello_world_test(&amp;#39;My first php extension! &amp;#39;);&lt;/code&gt;&
         <updated>2013-12-05T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/php/2013/12/05/lnmp</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/php/2013/12/05/lnmp/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;
@@ -507,7 +842,7 @@ ln -s /usr/local/lib/libpcre.so.1 /lib64&lt;/code&gt;&lt;/pre&gt;
         <updated>2013-11-29T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/linux/2013/11/29/linux-summary</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/linux/2013/11/29/linux-summary/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;1、初始安装&lt;/p&gt;
@@ -674,7 +1009,7 @@ free | grep Mem: | awk &amp;#39;{use=$3-$6-$7;printf &amp;quot;%s\t%.2f%%\n&amp;
         <updated>2013-11-28T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/mysql/2013/11/28/mysql-summary</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/mysql/2013/11/28/mysql-summary/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;1、两个关联表的字段的数据需相同，这么同步&lt;/p&gt;
@@ -704,14 +1039,14 @@ WHERE cn.file_id=628 GROUP BY cn.id&lt;/code&gt;&lt;/pre&gt;
         <updated>2013-11-27T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/ruby/2013/11/27/jekyll</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/ruby/2013/11/27/jekyll/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;一、准备工作&lt;/p&gt;&lt;p&gt;1、安装ruby，windows下推荐安装&lt;a href='http://rubyinstaller.org/downloads/' target='_blank'&gt;rubyinstaller&lt;/a&gt;&lt;/p&gt;&lt;p&gt;2、windows安装&lt;a href='http://rubyinstaller.org/downloads/' target='_blank'&gt;DevKit&lt;/a&gt;&lt;/p&gt;&lt;p&gt;命令行进入刚刚安装的目录，我安装在这个目录：D:\DevKit,执行&lt;/p&gt;
+&lt;/ul&gt;&lt;p&gt;一、准备工作&lt;/p&gt;&lt;p&gt;1、安装ruby，windows下推荐安装&lt;a href=&#39;http://rubyinstaller.org/downloads/&#39; target=&#39;_blank&#39;&gt;rubyinstaller&lt;/a&gt;&lt;/p&gt;&lt;p&gt;2、windows安装&lt;a href=&#39;http://rubyinstaller.org/downloads/&#39; target=&#39;_blank&#39;&gt;DevKit&lt;/a&gt;&lt;/p&gt;&lt;p&gt;命令行进入刚刚安装的目录，我安装在这个目录：D:\DevKit,执行&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ruby dk.rb init
 ruby dk.rb install
 gem install rdiscount --platform=ruby&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;如果能安装rdiscount成功说明安装DevKit成功。&lt;/p&gt;&lt;p&gt;3、安装jekyll  gem install jekyll&lt;/p&gt;&lt;p&gt;windows下会有编码问题，修改这个文件E:\soft\Ruby193\lib\ruby\gems\1.9.1\gems\jekyll-1.3.0\lib\jekyll&lt;/p&gt;
+&lt;p&gt;如果能安装rdiscount成功说明安装DevKit成功。&lt;/p&gt;&lt;p&gt;3、安装jekyll  &lt;/p&gt;&lt;p&gt;执行 gem install jekyll  命令&lt;/p&gt;&lt;p&gt;windows下会有编码问题，修改这个文件E:\soft\Ruby193\lib\ruby\gems\1.9.1\gems\jekyll-1.3.0\lib\jekyll&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;def read_yaml(base, name, opts = {})
   begin
     # self.content = File.read_with_options(File.join(base, name),
@@ -729,7 +1064,7 @@ gem install rdiscount --platform=ruby&lt;/code&gt;&lt;/pre&gt;
 
   self.data ||= {}
 end&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;self.content = File.read(File.join(base, name), :encoding =&gt; &quot;utf-8&quot;) 把原来的注释，加上这行代码。&lt;/p&gt;&lt;p&gt;二、创建github账户&lt;/p&gt;&lt;p&gt;1、windows下操作，下载windows github，并在github上创建项目，名字是USERNAME.github.io。打开windows github，下载刚创建的项目，然后进入目录。&lt;/p&gt;&lt;p&gt;下载&lt;a href='https://github.com/plusjade/jekyll-bootstrap' target='_blank'&gt;jekyll-bootstrap&lt;/a&gt;&lt;/p&gt;&lt;p&gt;解压后把.gitignore删掉，然后把文件夹里的内容，复制到自己的文件里。&lt;/p&gt;&lt;p&gt;修改 _config.yml文件，这一行改成自己的production_url : http://USERNAME.github.io&lt;/p&gt;
+&lt;p&gt;self.content = File.read(File.join(base, name), :encoding =&gt; &quot;utf-8&quot;) 把原来的注释，加上这行代码。&lt;/p&gt;&lt;p&gt;二、创建github账户&lt;/p&gt;&lt;p&gt;1、windows下操作，下载windows github，并在github上创建项目，名字是USERNAME.github.io。打开windows github，下载刚创建的项目，然后进入目录。&lt;/p&gt;&lt;p&gt;下载&lt;a href=&#39;https://github.com/plusjade/jekyll-bootstrap&#39; target=&#39;_blank&#39;&gt;jekyll-bootstrap&lt;/a&gt;&lt;/p&gt;&lt;p&gt;解压后把.gitignore删掉，然后把文件夹里的内容，复制到自己的文件里。&lt;/p&gt;&lt;p&gt;修改 _config.yml文件，这一行改成自己的production_url : http://USERNAME.github.io&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;jekyll serve&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;本地运行，访问http://127.0.0.1:4000/&lt;/p&gt;&lt;p&gt;推送到github上&lt;/p&gt;&lt;p&gt;2、linux下，yum install rubygems ，gem install rdiscount --platform=ruby，gem install jekyll&lt;/p&gt;&lt;p&gt;先要在github上添加ssh key，https://help.github.com/articles/generating-ssh-keys#platform-linux&lt;/p&gt;&lt;p&gt;先创建项目USERNAME.github.io，不要点生成README&lt;/p&gt;&lt;p&gt;在命令下，创建USERNAME.github.io文件夹，并进入&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;touch README.md
@@ -751,7 +1086,7 @@ $ rake page name=&amp;quot;pages/about.md&amp;quot;
 $ rake page name=&amp;quot;pages/about&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;
     三、域名绑定，这里有
-    &lt;a href='https://help.github.com/articles/setting-up-a-custom-domain-with-pages' target='_blank'&gt;详细介绍&lt;/a&gt;
+    &lt;a href=&#39;https://help.github.com/articles/setting-up-a-custom-domain-with-pages&#39; target=&#39;_blank&#39;&gt;详细介绍&lt;/a&gt;
 &lt;/p&gt;&lt;p&gt;四、一点小补充&lt;/p&gt;&lt;p&gt;git 命令&lt;/p&gt;&lt;p&gt;1、推送&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;git add .
 git commit -m &amp;#39;test&amp;#39;
@@ -766,7 +1101,7 @@ git push -u origin master&lt;/code&gt;&lt;/pre&gt;
         <updated>2013-09-05T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/python/2013/09/05/python-saltstack</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/python/2013/09/05/python-saltstack/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;saltstack的基本介绍&lt;/p&gt;&lt;p&gt;salt是一个新的基础平台管理工具。很短的时间即可运行并使用起来, 扩展性足以支撑管理上万台服务器，数秒钟即可完成数据传递. 经常被描述为 Func加强版+Puppet精简版。&lt;/p&gt;&lt;p&gt;salt的安装&lt;/p&gt;&lt;p&gt;首先添加RPM源:&lt;/p&gt;
@@ -779,12 +1114,12 @@ git push -u origin master&lt;/code&gt;&lt;/pre&gt;
         - /srv/salt&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;这个是可以控制上传的路径&lt;/p&gt;&lt;p&gt;启动服务端： /etc/init.d/salt-minion start&lt;/p&gt;&lt;p&gt;2、安装客户端&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;yum install salt-minion&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;修改配置文件，vim /etc/salt/minion master:xxxxxxx   id:xxxxxx&lt;/p&gt;&lt;p&gt;启动客户端：/etc/init.d/salt-minion start&lt;/p&gt;&lt;p&gt;3、salt命令&lt;/p&gt;&lt;p&gt;salt-key -L  列表&lt;/p&gt;&lt;p&gt;salt '*' grains.ls  查看grains分类&lt;/p&gt;&lt;p&gt;salt '*' grains.items 查看grains所有信息&lt;/p&gt;&lt;p&gt;salt '*' grains.item osrelease 查看grains某个信息&lt;/p&gt;&lt;p&gt;命令啥的，就不解释了，参考&lt;a href='http://wiki.saltstack.cn/modules/all' target='_blank'&gt;salt内置执行模块列表&lt;/a&gt;&lt;/p&gt;&lt;p&gt;4、相关文档 &lt;/p&gt;&lt;p&gt;&lt;a href='http://wiki.saltstack.cn/' target='_blank'&gt;saltstack社区&lt;/a&gt;&lt;/p&gt;&lt;p&gt;5、salt开发&lt;/p&gt;&lt;p&gt;python开发&lt;/p&gt;
+&lt;p&gt;修改配置文件，vim /etc/salt/minion master:xxxxxxx   id:xxxxxx&lt;/p&gt;&lt;p&gt;启动客户端：/etc/init.d/salt-minion start&lt;/p&gt;&lt;p&gt;3、salt命令&lt;/p&gt;&lt;p&gt;salt-key -L  列表&lt;/p&gt;&lt;p&gt;salt &#39;*&#39; grains.ls  查看grains分类&lt;/p&gt;&lt;p&gt;salt &#39;*&#39; grains.items 查看grains所有信息&lt;/p&gt;&lt;p&gt;salt &#39;*&#39; grains.item osrelease 查看grains某个信息&lt;/p&gt;&lt;p&gt;命令啥的，就不解释了，参考&lt;a href=&#39;http://wiki.saltstack.cn/modules/all&#39; target=&#39;_blank&#39;&gt;salt内置执行模块列表&lt;/a&gt;&lt;/p&gt;&lt;p&gt;4、相关文档 &lt;/p&gt;&lt;p&gt;&lt;a href=&#39;http://wiki.saltstack.cn/&#39; target=&#39;_blank&#39;&gt;saltstack社区&lt;/a&gt;&lt;/p&gt;&lt;p&gt;5、salt开发&lt;/p&gt;&lt;p&gt;python开发&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;import salt.client
 client = salt.client.LocalClient()
 ret = client.cmd(&amp;#39;*&amp;#39;, &amp;#39;cmd.run&amp;#39;, [&amp;#39;ls -l&amp;#39;])
 print ret&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;6、&lt;a href='http://www.ituring.com.cn/article/41632'&gt;SaltStack中的文件服务器&lt;/a&gt;&lt;/p&gt;&lt;p&gt;最近在开发一个salt管理系统，敬请期待！&lt;/p&gt;</content>
+&lt;p&gt;6、&lt;a href=&#39;http://www.ituring.com.cn/article/41632&#39;&gt;SaltStack中的文件服务器&lt;/a&gt;&lt;/p&gt;&lt;p&gt;最近在开发一个salt管理系统，敬请期待！&lt;/p&gt;</content>
     </entry>
  
     <entry>
@@ -793,7 +1128,7 @@ print ret&lt;/code&gt;&lt;/pre&gt;
         <updated>2013-08-09T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/php/2013/08/09/php-libvirt</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/php/2013/08/09/php-libvirt/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;Libvirt 库是一种实现 Linux 虚拟化功能的 Linux® API，它支持各种虚拟机监控程序，包括 Xen 和 KVM，以及 QEMU 和用于其他操作系统的一些虚拟产品。&lt;/p&gt;&lt;p&gt;一、安装libvirt环境&lt;/p&gt;&lt;p&gt;(1)、yum install virt-manager libvirt libvirt-python python-virtinst -y&lt;/p&gt;&lt;p&gt;(2)、升级&lt;/p&gt;
@@ -806,9 +1141,9 @@ cd libvirt-0.9.4
 make &amp;amp;&amp;amp; make install
 
 [root@localhost ~]# service libvirtd start&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;virsh -version 可能会报错&lt;/p&gt;&lt;p&gt;1、error: Failed to connect socket to '/usr/local/var/run/libvirt/libvirt-sock': No such file or directory&lt;/p&gt;&lt;p&gt;做个链接：&lt;/p&gt;
+&lt;p&gt;virsh -version 可能会报错&lt;/p&gt;&lt;p&gt;1、error: Failed to connect socket to &#39;/usr/local/var/run/libvirt/libvirt-sock&#39;: No such file or directory&lt;/p&gt;&lt;p&gt;做个链接：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ln -s /var/run/libvirt/libvirt-sock /usr/local/var/run/libvirt/libvirt-sock&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;2、libvirt: Remote error : unable to connect to '/usr/local/var/run/libvirt/libvirt-sock-ro': No such file or directory&lt;/p&gt;&lt;p&gt;再做个链接&lt;/p&gt;
+&lt;p&gt;2、libvirt: Remote error : unable to connect to &#39;/usr/local/var/run/libvirt/libvirt-sock-ro&#39;: No such file or directory&lt;/p&gt;&lt;p&gt;再做个链接&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ln -s /var/run/libvirt/libvirt-sock-ro /usr/local/var/run/libvirt/libvirt-sock-ro
 
 [root@localhost ~]# virsh -version
@@ -920,9 +1255,7 @@ tar -zxvf libvirt-php-0.4.8.tar.gz&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;make &amp;amp;&amp;amp; make install&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;建一个测试php文件&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;print_r( libvirt_version() );  有结果，就表示，安装成功啦&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;可能有人不喜欢apache，ok，就安装nginx呗，顺便 yum -y install php-fpm&lt;/p&gt;&lt;p&gt;启动service php-fpm start&lt;/p&gt;&lt;p&gt;这里就不详细说啦&lt;/p&gt;&lt;p&gt;从 https://github.com/xpmozong/libvirt-php-examples 下载例子&lt;/p&gt;
-&lt;p&gt;&lt;p&gt;[root@localhost examples]# php create.php  创建&lt;/p&gt; &lt;p&gt;[root@localhost examples]# php test.php    列出虚拟机列表&lt;/p&gt; &lt;p&gt;其中libvirt.php 里有很多函数，没写全，要添加的话参考http://libvirt.org/php/api-reference.html&lt;/p&gt;&lt;/p&gt;
-&lt;p&gt;php有执行libvirt的权限，但是apache、nginx没有这个权限，所以要赋予权限。&lt;/p&gt;&lt;p&gt;还有通过web访问，要设置libvirt的认证，vim /etc/libvirt/libvirtd.conf 文件 auth_tcp = &quot;none&quot;&lt;/p&gt;&lt;p&gt;brctl show 查看网桥&lt;/p&gt;&lt;p&gt;跟重要的是，要有VNC啊，推荐 &lt;a href='http://kanaka.github.io/noVNC/' target='_blank'&gt;noVNC&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;可能有人不喜欢apache，ok，就安装nginx呗，顺便 yum -y install php-fpm&lt;/p&gt;&lt;p&gt;启动service php-fpm start&lt;/p&gt;&lt;p&gt;这里就不详细说啦&lt;/p&gt;&lt;p&gt;从 https://github.com/xpmozong/libvirt-php-examples 下载例子&lt;/p&gt;&lt;p&gt;[root@localhost examples]# php create.php  创建&lt;/p&gt;&lt;p&gt;[root@localhost examples]# php test.php    列出虚拟机列表&lt;/p&gt;&lt;p&gt;其中libvirt.php 里有很多函数，没写全，要添加的话参考http://libvirt.org/php/api-reference.html&lt;/p&gt;&lt;p&gt;php有执行libvirt的权限，但是apache、nginx没有这个权限，所以要赋予权限。&lt;/p&gt;&lt;p&gt;还有通过web访问，要设置libvirt的认证，vim /etc/libvirt/libvirtd.conf 文件 auth_tcp = &quot;none&quot;&lt;/p&gt;&lt;p&gt;brctl show 查看网桥&lt;/p&gt;&lt;p&gt;跟重要的是，要有VNC啊，推荐 &lt;a href=&#39;http://kanaka.github.io/noVNC/&#39; target=&#39;_blank&#39;&gt;noVNC&lt;/a&gt;&lt;/p&gt;</content>
     </entry>
  
     <entry>
@@ -931,13 +1264,13 @@ tar -zxvf libvirt-php-0.4.8.tar.gz&lt;/code&gt;&lt;/pre&gt;
         <updated>2013-07-09T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/php/2013/07/09/php-memcached</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/php/2013/07/09/php-memcached/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;安装前准备：&lt;/p&gt;&lt;p&gt;
     1. memcached 1.2.1 for Win32 binaries，这个是 Win32 服务器端的 memcached 最新版本，下载
-    &lt;a href='http://code.jellycan.com/files/memcached-1.2.6-win32-bin.zip' target='_blank'&gt;附件&lt;/a&gt;
-&lt;/p&gt;&lt;p&gt;2. php 所需的 PECL 扩展，即 php_memcache 扩展 http://windows.php.net/downloads/pecl/releases/memcache/2.2.7/&lt;/p&gt;&lt;p&gt;win7 64 位&lt;/p&gt;&lt;p&gt;php-5.3.4-x64 php_memcache.dll &lt;a href='http://blog.hexu.org/wp-content/uploads/2012/05/php_memcache.zip'&gt;下载&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Memcache-win64 下载：&lt;/p&gt;&lt;p&gt;a. 下载最新版：http://blog.couchbase.com/memcached-windows-64-bit-pre-release-available&lt;/p&gt;&lt;p&gt;b. 直接下载： http://s3.amazonaws.com/downloads.northscale.com/memcached-win64-1.4.4-14.zip&lt;/p&gt;&lt;p&gt;安装步骤：&lt;/p&gt;&lt;p&gt;1. 将第一个包解压放某个盘下面，比如在c:\memcached&lt;/p&gt;&lt;p&gt;2. 在终端下输入 'c:\memcached\memcached.exe -d install' , memcached将作为windows的一个服务&lt;/p&gt;&lt;p&gt;3. 再输入 'c:\memcached\memcached.exe -d start' , 这样服务器端已经安装完毕了&lt;/p&gt;&lt;p&gt;4. 解压第二个包包，里面会只有一个 php_memcache.dll 文件，把它放入 php5/ext/ 中&lt;/p&gt;&lt;p&gt;5. 在C:\WINDOWS\php.ini 加入一行'extension=php_memcache.dll'&lt;/p&gt;&lt;p&gt;6.接着在 php.ini 文件里加上以下带代码，最好就放在刚才写 &quot;extension=php_memcache.dll&quot; 的下面:&lt;/p&gt;
+    &lt;a href=&#39;http://code.jellycan.com/files/memcached-1.2.6-win32-bin.zip&#39; target=&#39;_blank&#39;&gt;附件&lt;/a&gt;
+&lt;/p&gt;&lt;p&gt;2. php 所需的 PECL 扩展，即 php_memcache 扩展 http://windows.php.net/downloads/pecl/releases/memcache/2.2.7/&lt;/p&gt;&lt;p&gt;win7 64 位&lt;/p&gt;&lt;p&gt;php-5.3.4-x64 php_memcache.dll &lt;a href=&#39;http://blog.hexu.org/wp-content/uploads/2012/05/php_memcache.zip&#39;&gt;下载&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Memcache-win64 下载：&lt;/p&gt;&lt;p&gt;a. 下载最新版：http://blog.couchbase.com/memcached-windows-64-bit-pre-release-available&lt;/p&gt;&lt;p&gt;b. 直接下载： http://s3.amazonaws.com/downloads.northscale.com/memcached-win64-1.4.4-14.zip&lt;/p&gt;&lt;p&gt;安装步骤：&lt;/p&gt;&lt;p&gt;1. 将第一个包解压放某个盘下面，比如在c:\memcached&lt;/p&gt;&lt;p&gt;2. 在终端下输入 &#39;c:\memcached\memcached.exe -d install&#39; , memcached将作为windows的一个服务&lt;/p&gt;&lt;p&gt;3. 再输入 &#39;c:\memcached\memcached.exe -d start&#39; , 这样服务器端已经安装完毕了&lt;/p&gt;&lt;p&gt;4. 解压第二个包包，里面会只有一个 php_memcache.dll 文件，把它放入 php5/ext/ 中&lt;/p&gt;&lt;p&gt;5. 在C:\WINDOWS\php.ini 加入一行&#39;extension=php_memcache.dll&#39;&lt;/p&gt;&lt;p&gt;6.接着在 php.ini 文件里加上以下带代码，最好就放在刚才写 &quot;extension=php_memcache.dll&quot; 的下面:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;[Memcache]
 memcache.allow_failover = 1
 memcache.max_failover_attempts=20
@@ -974,7 +1307,7 @@ stdClass Object ( [str_attr] =&amp;gt; test [int_attr] =&amp;gt; 123 ) &lt;/code
         <updated>2013-05-10T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/nginx/2013/05/10/crontab</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/nginx/2013/05/10/crontab/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;crontab 可以定时执行某个PHP文件，但是在实际项目中，我们用的是框架，因为不能破坏项目整体架构，所以不能定时执行某个PHP文件。&lt;/p&gt;&lt;p&gt;OK，我们换个角度来考虑，crontab可以执行linux命令啊，所以可以这么写&lt;/p&gt;
@@ -990,7 +1323,7 @@ stdClass Object ( [str_attr] =&amp;gt; test [int_attr] =&amp;gt; 123 ) &lt;/code
         <updated>2013-04-02T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/python/2013/04/02/python-pic-color</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/python/2013/04/02/python-pic-color/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;python判断一张图片的主色调，多个颜色&lt;/p&gt;
@@ -1062,7 +1395,7 @@ if __name__ == &amp;#39;__main__&amp;#39;:
         <updated>2012-11-11T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/python/2012/11/11/django-blog-admin</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/python/2012/11/11/django-blog-admin/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;
@@ -1077,11 +1410,11 @@ DATABASE_PASSWORD = &amp;#39;&amp;#39;
 DATABASE_HOST = &amp;#39;localhost&amp;#39;
 DATABASE_PORT = &amp;#39;&amp;#39;&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;2、建表 命令行 manage.py syncdb &amp;#8230;&amp;#8230;..&lt;/p&gt;
+&lt;p&gt;2、建表 命令行 manage.py syncdb ……..&lt;/p&gt;
 
 &lt;p&gt;3、设置自动admin应用 settings.py 在django.contrib.auth下添加django.contrib.admin,mysite.blog&lt;/p&gt;
 
-&lt;p&gt;4、再次 命令行 manage.py syncdb &amp;#8230;&amp;#8230;..&lt;/p&gt;
+&lt;p&gt;4、再次 命令行 manage.py syncdb ……..&lt;/p&gt;
 
 &lt;p&gt;5、urls.py内容为&lt;/p&gt;
 
@@ -1119,7 +1452,7 @@ admin.site.register(BlogPost)&lt;/code&gt;&lt;/pre&gt;
         <updated>2012-01-30T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/nginx/2012/01/30/nginx</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/nginx/2012/01/30/nginx/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;下面是配置nginx负载均衡的简单示例文件,主要作用是:&lt;/p&gt;&lt;p&gt;www.s135.com 和 blog.s135.com 域名均指向 Nginx 所在的服务器IP。用户访问http://www.s135.com，将其负载均衡到192.168.1.2:80、92.168.1.3:80、192.168.1.4:80、192.168.1.5:80四台服务器。用户访问http://blog.s135.com，将其负载均衡到192.168.1.7服务器的8080、8081、8082端口。获取用户真实IP.&lt;/p&gt;
@@ -1210,7 +1543,7 @@ http
         <updated>2012-01-29T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/linux/2012/01/29/linux-ddos</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/linux/2012/01/29/linux-ddos/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;DDoS deflate是一款免费的用来防御和减轻DDoS攻击的脚本。它通过netstat监测跟踪创建大量网络连接的IP地址，在检测到某个结点超过预设的限 制时，该程序会通过APF或IPTABLES禁止或阻挡这些IP.&lt;/p&gt;&lt;p&gt;DDoS deflate官方网站：http://deflate.medialayer.com/&lt;/p&gt;
@@ -1265,7 +1598,7 @@ BAN_PERIOD=600    //禁用IP时间，默认600秒，可根据情况调整&lt;/co
         <updated>2012-01-17T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/php/2012/01/17/php-search-word</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/php/2012/01/17/php-search-word/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;在写这个程序之前，先回忆相关的代码。&lt;/p&gt;
@@ -1309,7 +1642,7 @@ foreach($txt as $key=&amp;gt;$value) {
         <updated>2012-01-09T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/php/2012/01/09/php-call_user_func_array</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/php/2012/01/09/php-call_user_func_array/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;直接上最简单的&lt;/p&gt;
@@ -1348,7 +1681,7 @@ otest(1,1,1);&lt;/code&gt;&lt;/pre&gt;
         <updated>2012-01-06T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/php/2012/01/06/php-mysql</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/php/2012/01/06/php-mysql/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;mysql.php类&lt;/p&gt;
@@ -1537,7 +1870,7 @@ $db1-&amp;gt;close();&lt;/code&gt;&lt;/pre&gt;</content>
         <updated>2011-11-25T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/php/2011/11/25/php-smarty</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/php/2011/11/25/php-smarty/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;静态化网页，是个基本技能。下面是smarty静态化。&lt;/p&gt;&lt;p&gt;打开Smarty.class.php 文件&lt;/p&gt;&lt;p&gt;加入以下代码&lt;/p&gt;
@@ -1593,7 +1926,7 @@ $smarty-&amp;gt;makeHtmlFile(&amp;#39;html/index.html&amp;#39;,$content);//生�
         <updated>2011-10-20T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/php/2011/10/20/php-xml</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/php/2011/10/20/php-xml/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;
@@ -1670,7 +2003,7 @@ print_r(xmlToArray($string));&lt;/code&gt;&lt;/pre&gt;</content>
         <updated>2011-10-20T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/php/2011/10/20/php-mem</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/php/2011/10/20/php-mem/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;先来一个test1.php&lt;/p&gt;
@@ -1743,7 +2076,7 @@ Now memory_get_usage: 422712
         <updated>2011-10-06T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/c/2011/10/06/c</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/c/2011/10/06/c/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;1.单击“开始”，指向“所有程序”、“Microsoft Visual Studio 2010”和“Visual Studio 工具”，然后单击“Visual Studio 2010 命令提示”。&lt;/p&gt;&lt;p&gt;根据计算机上的 Windows 版本和系统安全配置，可能必须右击“Visual Studio 2008 命令提示”，然后单击“以管理员身份运行”，才能成功运行按下列步骤创建的应用程序。&lt;/p&gt;&lt;p&gt;2.在命令提示符下，键入 notepad simple.c，并按 Enter。&lt;/p&gt;&lt;p&gt;在系统提示是否创建文件时，单击“是”。&lt;/p&gt;&lt;p&gt;3.在记事本中，键入下列各行。&lt;/p&gt;
@@ -1772,7 +2105,7 @@ simple.obj&lt;/code&gt;&lt;/pre&gt;
         <updated>2011-09-26T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/html/2011/09/26/htaceess-speed</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/html/2011/09/26/htaceess-speed/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;前端优化，利用.htaceess控制图片，js，css缓存时间提升网页加载速度。&lt;/p&gt;&lt;p&gt;Add an Expires or a Cache-Control Header：&lt;/p&gt;&lt;p&gt;简单点说：就是缓存一下不常修改的文件，提升访问速度。&lt;/p&gt;&lt;p&gt;再简单点说：就是在.htaccess文件中写入以下内容：&lt;/p&gt;
@@ -1801,7 +2134,7 @@ simple.obj&lt;/code&gt;&lt;/pre&gt;
         <updated>2011-09-23T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/php/2011/09/23/php-string</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/php/2011/09/23/php-string/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;1、自动移除字符串中的 HTML 标记&lt;/p&gt;&lt;p&gt;在用户表单中，你可能希望移除所有不必要的 HTML 标记。使用 strip_tags() 函数可以简单地做到这一点：&lt;/p&gt;
@@ -1905,7 +2238,7 @@ print_r(extract_emails($test_string));&lt;/code&gt;&lt;/pre&gt;</content>
         <updated>2011-09-23T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/html/2011/09/23/div-flash</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/html/2011/09/23/div-flash/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;经常遇到 Flash 插入到网页 Div 层后就不显示了。解决方法是将插入到网页中的 Flash 设置为透明 flash，将 wmode 赋值为 transparent，以下为旧式插入方式：&lt;/p&gt;
@@ -1923,7 +2256,7 @@ print_r(extract_emails($test_string));&lt;/code&gt;&lt;/pre&gt;</content>
         <updated>2011-08-19T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/redis/2011/08/19/redis-humble-opinion</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/redis/2011/08/19/redis-humble-opinion/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;
@@ -2037,14 +2370,13 @@ OK
 &amp;quot;2&amp;quot;
 &amp;quot;mar&amp;quot;
 &amp;quot;3&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;由上可知，我觉得理想的存储数据类型是lists和hashes。&lt;/p&gt;&lt;p&gt;昨天晚上翻了一遍算法导论的数据结构那一张。Lists相当于队列，可以lpush，rpush，lpop，rpop。Hashes相当于指针指向一块，这一块里可以包含很多数据。&lt;/p&gt;&lt;p&gt;二、Redis进阶教程-aof(append only file)日志文件&lt;/p&gt;&lt;p&gt;原文出处:http://lgone.com/html/y2010/757.html&lt;/p&gt;&lt;p&gt;今天看了Redis源码两个多小时,搞清楚了append only file(AOF)日志的rotate原理.官方文档里面对这部分做了单独的说明,但是就我看来,作者不够优美的用词,完全会让人理解错误.(PS:我要不是觉得文档有问题也不至于看源码)&lt;/p&gt;&lt;p&gt;何为AOF?&lt;/p&gt;&lt;p&gt;在Redis配置文件中有一个叫appendonly的选项,可以写yes或no.这个选项就是负责是否开启AOF日志的开关.AOF日志,你可以简单理解为MySQL binlog一样的东西,作用就是记录每次的写操作,在遇到断电等问题时可以用它来恢复数据库状态.但是他不是bin的,而是text的.一行一行,写得很规范.如果你是一台redis,那你也能人肉通过它恢复数据.&lt;/p&gt;&lt;p&gt;扩展知识:&lt;/p&gt;&lt;p&gt;Redis有三种类型的落地文件:&lt;/p&gt;&lt;p&gt;数据文件-在配置中可设置其位置及文件名,默认文件名dump.rdb&lt;/p&gt;&lt;p&gt;日志文件-在配置中也可以配置.当然,在你是以daemon方式运行的时候,这个值就不要设置为stdout了,这么设置会自动被换成/dev/null&lt;/p&gt;&lt;p&gt;AOF文件-也就是我们这篇文章的主角,他的作用是用于数据恢复.他除了设置是否开启外,还可以设置开启后以何种方式写日志.这个何种一共是三种,1是每次写操作都保证将fsync()来完成的,2是每秒调用一次fsync(),3是从不调用,让操作系统自己来同步.当然,设置为不同,效率会不同,你的数据损失风险也不同.&lt;/p&gt;&lt;p&gt;运行流程&lt;/p&gt;&lt;p&gt;既然是log文件,而且是要用于恢复的,那么我们动动脚趾都能想到,这玩意肯定会越来越大,不管你的应用是大是小,如果AOF文件只增不减的话,那文件将会无限长大,这个问题是所有binlog都会遇到的.而通常遇到这种问题都会有一个rotate方案.就是当日志达到一定大小或者每隔一段时间将日志写到新的一个文件中,旧日志文件可以用来备份或其它.&lt;/p&gt;&lt;p&gt;而Redis的AOF还和rotate略有不同,他用了一种比较简单的方法,就是先给当前的所有数据做一个快照.然后再在这个快照的基础上写接下来的日志.&lt;/p&gt;&lt;p&gt;照快照的好处是,你之前可能用了10w次操作共改变了100条数据(比如在一条数据上进行了多次操作).那这时你AOF中的10w条写操作记录就变成了100条记录.相当于将前面的执行全部合并了.原本很大AOF变小了.&lt;/p&gt;&lt;p&gt;执行这个操作的命令是:BGREWRITEAOF (background rewrite append only file)&lt;/p&gt;&lt;p&gt;这个快照长什么样呢?基本和一般的写日志没什么两样,也是一条一条的写记录..比如现在Redis中总共存了3条string类型的数据a=&gt;1,b=&gt;2,c=&gt;3.那这个快照的基本内容就是写入a=&gt;1,写入b=&gt;2,写入c=&gt;3.&lt;/p&gt;&lt;p&gt;这时候要用AOF进行恢复的时候,只要先执行了前面几条,就能够恢复当前状态,然后再执行之后来的写操作,就能完全重现数据了.&lt;/p&gt;&lt;p&gt;内部实现&lt;/p&gt;&lt;p&gt;我们大概知道了执行BGREWRITEAOF时都发生了什么,下面来说一下Redis是如何实现的.分下面几步:&lt;/p&gt;&lt;p&gt;fork! Redis通过fork产生子进程.&lt;/p&gt;&lt;p&gt;子进程对当前数据执行遍历操作,将当前所有数据都生成一条写入日志,将这些日志写入一个临时文件.(其实是子进程写了一个临时文件,又再rename成了另一个临时文件)&lt;/p&gt;&lt;p&gt;父子进程是并行执行的,在子进程遍历并写临时文件的时候,父进程在照常接收请求,处理请求,写AOF,不过这时他是把新来的AOF写在一个缓冲区中.&lt;/p&gt;&lt;p&gt;当子进程完成遍历操作,写完临时文件后,就会退出.这时父进程的wait3函数会接收到子进程退出的消息,他会把自己现在收集在缓冲区中的所有AOF追加在临时文件中.&lt;/p&gt;&lt;p&gt;最后一步,把临时文件rename一下,改名为appendonly.aof,这时原来的aof文件被覆盖.整个过程完成.&lt;/p&gt;&lt;p&gt;如果你的AOF文件稍微大点,你可以在一个终端执行BGREWRITEAOF,然后立刻ls 连着查看几次redis的data目录,就可以看到,先生成了一个临时文件,临时文件比原来的appendonly.aof小一些,然后临时文件消失,而原来的appendonly.aof变小了,其实就是临时文件rename成了appendonly.aof..覆盖了原来的大文件.看起来像是临时文件消失了.&lt;/p&gt;&lt;p&gt;其它&lt;/p&gt;&lt;p&gt;可能你要说,随着数据的增多,aof文件肯定也是越来越大的啊..这个没错,因为当你有10w条记录的时候,你至少要有10w条纯添加日志.然而这时候你的数据文件也应该够大了吧..更何况这日志文件呢.&lt;/p&gt;&lt;p&gt;三、在windows环境下，phper想使用php操作redis，那怎么办呢？&lt;/p&gt;&lt;p&gt;给大家推荐一个rediska，使用rediska来代替phpredis模块。&lt;/p&gt;&lt;p&gt;用法很简单，如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;---
-require &amp;#39;Rediska.php&amp;#39;;
+&lt;p&gt;由上可知，我觉得理想的存储数据类型是lists和hashes。&lt;/p&gt;&lt;p&gt;昨天晚上翻了一遍算法导论的数据结构那一张。Lists相当于队列，可以lpush，rpush，lpop，rpop。Hashes相当于指针指向一块，这一块里可以包含很多数据。&lt;/p&gt;&lt;p&gt;二、Redis进阶教程-aof(append only file)日志文件&lt;/p&gt;&lt;p&gt;原文出处:http://lgone.com/html/y2010/757.html&lt;/p&gt;&lt;p&gt;今天看了Redis源码两个多小时,搞清楚了append only file(AOF)日志的rotate原理.官方文档里面对这部分做了单独的说明,但是就我看来,作者不够优美的用词,完全会让人理解错误.(PS:我要不是觉得文档有问题也不至于看源码)&lt;/p&gt;&lt;p&gt;何为AOF?&lt;/p&gt;&lt;p&gt;在Redis配置文件中有一个叫appendonly的选项,可以写yes或no.这个选项就是负责是否开启AOF日志的开关.AOF日志,你可以简单理解为MySQL binlog一样的东西,作用就是记录每次的写操作,在遇到断电等问题时可以用它来恢复数据库状态.但是他不是bin的,而是text的.一行一行,写得很规范.如果你是一台redis,那你也能人肉通过它恢复数据.&lt;/p&gt;&lt;p&gt;扩展知识:&lt;/p&gt;&lt;p&gt;Redis有三种类型的落地文件:&lt;/p&gt;&lt;p&gt;数据文件-在配置中可设置其位置及文件名,默认文件名dump.rdb&lt;/p&gt;&lt;p&gt;日志文件-在配置中也可以配置.当然,在你是以daemon方式运行的时候,这个值就不要设置为stdout了,这么设置会自动被换成/dev/null&lt;/p&gt;&lt;p&gt;AOF文件-也就是我们这篇文章的主角,他的作用是用于数据恢复.他除了设置是否开启外,还可以设置开启后以何种方式写日志.这个何种一共是三种,1是每次写操作都保证将fsync()来完成的,2是每秒调用一次fsync(),3是从不调用,让操作系统自己来同步.当然,设置为不同,效率会不同,你的数据损失风险也不同.&lt;/p&gt;&lt;p&gt;运行流程&lt;/p&gt;&lt;p&gt;既然是log文件,而且是要用于恢复的,那么我们动动脚趾都能想到,这玩意肯定会越来越大,不管你的应用是大是小,如果AOF文件只增不减的话,那文件将会无限长大,这个问题是所有binlog都会遇到的.而通常遇到这种问题都会有一个rotate方案.就是当日志达到一定大小或者每隔一段时间将日志写到新的一个文件中,旧日志文件可以用来备份或其它.&lt;/p&gt;&lt;p&gt;而Redis的AOF还和rotate略有不同,他用了一种比较简单的方法,就是先给当前的所有数据做一个快照.然后再在这个快照的基础上写接下来的日志.&lt;/p&gt;&lt;p&gt;照快照的好处是,你之前可能用了10w次操作共改变了100条数据(比如在一条数据上进行了多次操作).那这时你AOF中的10w条写操作记录就变成了100条记录.相当于将前面的执行全部合并了.原本很大AOF变小了.&lt;/p&gt;&lt;p&gt;执行这个操作的命令是:BGREWRITEAOF (background rewrite append only file)&lt;/p&gt;&lt;p&gt;这个快照长什么样呢?基本和一般的写日志没什么两样,也是一条一条的写记录..比如现在Redis中总共存了3条string类型的数据a=&gt;1,b=&gt;2,c=&gt;3.那这个快照的基本内容就是写入a=&gt;1,写入b=&gt;2,写入c=&gt;3.&lt;/p&gt;&lt;p&gt;这时候要用AOF进行恢复的时候,只要先执行了前面几条,就能够恢复当前状态,然后再执行之后来的写操作,就能完全重现数据了.&lt;/p&gt;&lt;p&gt;内部实现&lt;/p&gt;&lt;p&gt;我们大概知道了执行BGREWRITEAOF时都发生了什么,下面来说一下Redis是如何实现的.分下面几步:&lt;/p&gt;&lt;p&gt;fork! Redis通过fork产生子进程.&lt;/p&gt;&lt;p&gt;子进程对当前数据执行遍历操作,将当前所有数据都生成一条写入日志,将这些日志写入一个临时文件.(其实是子进程写了一个临时文件,又再rename成了另一个临时文件)&lt;/p&gt;&lt;p&gt;父子进程是并行执行的,在子进程遍历并写临时文件的时候,父进程在照常接收请求,处理请求,写AOF,不过这时他是把新来的AOF写在一个缓冲区中.&lt;/p&gt;&lt;p&gt;当子进程完成遍历操作,写完临时文件后,就会退出.这时父进程的wait3函数会接收到子进程退出的消息,他会把自己现在收集在缓冲区中的所有AOF追加在临时文件中.&lt;/p&gt;&lt;p&gt;最后一步,把临时文件rename一下,改名为appendonly.aof,这时原来的aof文件被覆盖.整个过程完成.&lt;/p&gt;&lt;p&gt;如果你的AOF文件稍微大点,你可以在一个终端执行BGREWRITEAOF,然后立刻ls 连着查看几次redis的data目录,就可以看到,先生成了一个临时文件,临时文件比原来的appendonly.aof小一些,然后临时文件消失,而原来的appendonly.aof变小了,其实就是临时文件rename成了appendonly.aof..覆盖了原来的大文件.看起来像是临时文件消失了.&lt;/p&gt;&lt;p&gt;其它&lt;/p&gt;&lt;p&gt;可能你要说,随着数据的增多,aof文件肯定也是越来越大的啊..这个没错,因为当你有10w条记录的时候,你至少要有10w条纯添加日志.然而这时候你的数据文件也应该够大了吧..更何况这日志文件呢.&lt;/p&gt;&lt;p&gt;三、在windows环境下，phper想使用php操作redis，那怎么办呢？&lt;/p&gt;&lt;p&gt;给大家推荐一个rediska，使用rediska来代替phpredis模块。&lt;/p&gt;&lt;p&gt;用法很简单，如下：&lt;/p&gt;&lt;hr /&gt;
+&lt;pre&gt;&lt;code&gt;require &amp;#39;Rediska.php&amp;#39;;
 $rediska = new Rediska();
 $rediska -&amp;gt;connect(&amp;#39;127.0.0.1&amp;#39;,6379);
 $rediska -&amp;gt;set(&amp;#39;test&amp;#39;,&amp;#39;hello world!&amp;#39;);
-echo $rediska -&amp;gt;get(&amp;#39;test&amp;#39;);
----&lt;/code&gt;&lt;/pre&gt;</content>
+echo $rediska -&amp;gt;get(&amp;#39;test&amp;#39;);&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;</content>
     </entry>
  
     <entry>
@@ -2053,7 +2385,7 @@ echo $rediska -&amp;gt;get(&amp;#39;test&amp;#39;);
         <updated>2011-08-08T00:00:00+08:00</updated>
         <id>http://xpmozong.github.io/php/2011/08/08/php-thumbnails</id>
         <content type="html">&lt;ul&gt;
-    &lt;li&gt;作者：&lt;a href='http://weibo.com/xpmozong' target='blank'&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;作者：&lt;a href=&#39;http://weibo.com/xpmozong&#39; target=&#39;blank&#39;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;本文地址：http://xpmozong.github.io/php/2011/08/08/php-thumbnails/&lt;/li&gt;
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;
