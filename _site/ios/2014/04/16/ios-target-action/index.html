@@ -3,8 +3,8 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>OC 继承</title>
-        <meta name="description" content="OC 继承">
+        <title>IOS target/action设计模式</title>
+        <meta name="description" content="IOS target/action设计模式">
         <meta name="author" content="寞踪">
 
         <!-- Enable responsive viewport -->
@@ -156,46 +156,90 @@
             <div class="content">
                 
 <div class="page-header">
-    <h1>OC 继承 </h1>
+    <h1>IOS target/action设计模式 </h1>
 </div>
 
 <div class="row-fluid post-full">
     <div class="span12">
         <div class="date">
-            <span>2014-04-12</span>
+            <span>2014-04-16</span>
         </div>
         <div class="content">
             
 <ul>
     <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-    <li>本文地址：http://xpmozong.github.io/ios,oc/2014/04/12/oc-jicheng/</li>
+    <li>本文地址：http://xpmozong.github.io/ios/2014/04/16/ios-target-action/</li>
     <li>转载请注明出处</li>
 </ul>
 
-<p>OC中的继承是单向的，继承具有传递性，子类继承父类的特征和行为，子类扩展父类，更具体。</p>
+<p>IOS中，有一种target/action设计模式，可以是代码高聚合，低耦合。</p>
 
-<p>OC中的继承,即⼀个类继承另一个类。</p>
+<p>创建一个ActionView类</p>
 
-<p>被继承的类称为⽗父类或超类。</p>
+<p>ActionView.h的文件内容为</p>
 
-<p>继承的类称为⼦子类。</p>
-
-<p>继承的实现如下：</p>
-
-<pre><code>#import "Person.h"
-@interface Student : Person
+<pre><code>@interface ActionView : UIView
+@property (nonatomic, assign) id  target;
+@property (nonatomic, assign) SEL action;
+- (id)initWithFrame:(CGRect)frame target:(id)target action:(SEL)action;
 @end
 </code></pre>
 
-<p>冒号前为子类名称，冒号后为父类名称</p>
+<p>ActionView.m的文件内容为</p>
 
-<p>继承的特点</p>
+<pre><code>- (id)initWithFrame:(CGRect)frame target:(id)target action:(SEL)action
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.target = target;
+        self.action = action;
+    }
+    return self;
+}
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [_target performSelector:_action withObject:self];
+}
+</code></pre>
 
-<p>OC中只允许单继承。</p>
+<p>控制层引入ActionView.h文件</p>
 
-<p>没有⽗类的类称为根类,OC中的根类是NSObject(祖宗)。 继承的内容:除了私有变量之外的所有实例变量和方法。</p>
+<pre><code>ActionView *actionView = [[ActionView alloc] initWithFrame:CGRectMake(100, 100, 100, 100) target:self action:@selector(changeColor:)];
+actionView.backgroundColor = [UIColor blueColor];
+[self.view addSubview:actionView];
+[actionView release];
+</code></pre>
 
-<p>⼦类可以重写⽗类的方法。</p>
+<p>实现自定义的changeColor方法。</p>
+
+<p>此过程就是target/action设计模式的实现过程。</p>
+
+<p><b>target/action和delegate对比</b></p>
+
+<p>target…action</p>
+
+<p>作用：降低耦合性（解耦）</p>
+
+<p>机制：类内部target去执行action方法，参数self</p>
+
+<p>特点：外界指定target和action</p>
+
+<p>注意事项：如果action没实现，程序会crash</p>
+
+<p>专注点：通常仅仅是为了触发target的action事件</p>
+
+<p>delegate</p>
+
+<p>作用：降低耦合性（解耦）</p>
+
+<p>机制：delegate去执行协议中的方法，参数self</p>
+
+<p>特点：外界仅能指定delegate，不能指定action，action在协议中已经声明</p>
+
+<p>注意事项：如果request方法没实现，程序会crash，如果@optional方法没实现，程序不会crash。</p>
+
+<p>专注点：一系列相关事件的处理（多个事件）</p>
+
 
         </div>
 
@@ -208,8 +252,8 @@
 
   
      
-    	<li><a href="/categories.html#ios,oc-ref">
-    		ios,oc <span>5</span>
+    	<li><a href="/categories.html#ios-ref">
+    		ios <span>1</span>
     	</a></li>
     
   
@@ -228,8 +272,6 @@
   
      
     	<li><a href="/tags.html#IOS-ref">IOS <span>6</span></a></li>
-     
-    	<li><a href="/tags.html#OC-ref">OC <span>5</span></a></li>
     
   
 
@@ -242,11 +284,11 @@
         <div class="pagination">
             <ul>
             
-                <li class="prev"><a href="/ios,oc/2014/04/12/oc-extension" title="OC extension 的使用">&larr; Previous</a></li>
+                <li class="prev"><a href="/ios,oc/2014/04/12/oc-protocal" title="OC protocal 的使用">&larr; Previous</a></li>
             
                 <li><a href="/archive.html">Archive</a></li>
             
-                <li class="next"><a href="/ios,oc/2014/04/12/oc-property" title="OC property 属性介绍">Next &rarr;</a></li>
+                <li class="next disabled"><a>Next &rarr;</a>
             
             </ul>
         </div>

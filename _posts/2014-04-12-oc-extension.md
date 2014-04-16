@@ -9,7 +9,7 @@ tags: [IOS,OC]
 
 <ul>
     <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-    <li>本文地址：http://xpmozong.github.io/ios/2014/04/12/oc-extension/</li>
+    <li>本文地址：http://xpmozong.github.io/ios,oc/2014/04/12/oc-extension/</li>
     <li>转载请注明出处</li>
 </ul>
 

@@ -10,11 +10,13 @@ http://xpmozong.github.io/rss.xml
 http://xpmozong.github.io/sitemap.txt
 http://xpmozong.github.io/tags.html
 
+http://xpmozong.github.io/ios/2014/04/16/ios-target-action
 http://xpmozong.github.io/ios,oc/2014/04/12/oc-protocal
 http://xpmozong.github.io/ios,oc/2014/04/12/oc-property
 http://xpmozong.github.io/ios,oc/2014/04/12/oc-jicheng
 http://xpmozong.github.io/ios,oc/2014/04/12/oc-extension
 http://xpmozong.github.io/ios,oc/2014/04/12/oc-category
+http://xpmozong.github.io/c/2014/03/20/c-zhizhen
 http://xpmozong.github.io/php/2013/12/05/php-extension
 http://xpmozong.github.io/php/2013/12/05/lnmp
 http://xpmozong.github.io/linux/2013/11/29/linux-summary
