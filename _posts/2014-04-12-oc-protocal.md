@@ -72,15 +72,18 @@ Husband.m文件内容如下：
 
 创建Wife类，Wife.h文件内容如下：
 
+
     #import "MarrayDelegate.h"
     @interface Wife : NSObject
     @property (nonatomic, assign) id<MarrayDelegate>delegate;
     - (void)shopping;
     @end
 
+
 将代理名称设为delegate，添加一个方法。
 
 Wife.m文件内容如下：
+
 
     @implementation Wife
     - (void)shopping
@@ -89,6 +92,7 @@ Wife.m文件内容如下：
         [_delegate makeMoney];
     }
     @end
+
 
 设置代理，和实现方法。
 
