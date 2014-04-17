@@ -4,7 +4,7 @@
     <title>寞踪的技术博客</title>
     <link href="http://xpmozong.github.io/" rel="self"/>
     <link href="http://xpmozong.github.io"/>
-    <updated>2014-04-16T20:03:52+08:00</updated>
+    <updated>2014-04-17T08:56:08+08:00</updated>
     <id>http://xpmozong.github.io</id>
     <author>
     <name>寞踪</name>
@@ -180,10 +180,6 @@ actionView.backgroundColor = [UIColor blueColor];
 &lt;p&gt;Wife.m文件内容如下：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;@implementation Wife
-- (void)setDelegate:(id&amp;lt;MarrayDelegate&amp;gt;)delegate
-{
-    _delegate = delegate;   // 不能写成self.delegate = delegate
-}
 - (void)shopping
 {
     NSLog(@&quot;老公，我要购物！&quot;);
@@ -198,7 +194,7 @@ actionView.backgroundColor = [UIColor blueColor];
 
 &lt;pre&gt;&lt;code&gt;Husband *husband = [[Husband alloc] init];
 Wife *wife = [[Wife alloc] init];
-[wife setDelegate:husband];
+wife.delegate = husband;
 [wife shopping];
 [wife release];
 [husband release];

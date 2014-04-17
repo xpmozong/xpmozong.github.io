@@ -83,10 +83,6 @@ Husband.m文件内容如下：
 Wife.m文件内容如下：
 
     @implementation Wife
-    - (void)setDelegate:(id<MarrayDelegate>)delegate
-    {
-        _delegate = delegate;   // 不能写成self.delegate = delegate
-    }
     - (void)shopping
     {
         NSLog(@"老公，我要购物！");
@@ -100,7 +96,7 @@ Wife.m文件内容如下：
     
     Husband *husband = [[Husband alloc] init];
     Wife *wife = [[Wife alloc] init];
-    [wife setDelegate:husband];
+    wife.delegate = husband;
     [wife shopping];
     [wife release];
     [husband release];
