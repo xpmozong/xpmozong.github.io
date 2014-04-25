@@ -14,7 +14,7 @@ tags: [IOS]
 </ul>
 
 
-IOS中，有一种target/action设计模式，可以是代码高聚合，低耦合。
+IOS中，有一种target/action设计模式，可以使代码高聚合，低耦合。
 
 创建一个ActionView类
 

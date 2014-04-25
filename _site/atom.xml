@@ -4,7 +4,7 @@
     <title>寞踪的技术博客</title>
     <link href="http://xpmozong.github.io/" rel="self"/>
     <link href="http://xpmozong.github.io"/>
-    <updated>2014-04-17T09:01:05+08:00</updated>
+    <updated>2014-04-25T14:03:05+08:00</updated>
     <id>http://xpmozong.github.io</id>
     <author>
     <name>寞踪</name>
@@ -12,6 +12,58 @@
     </author>
 
 
+    <entry>
+        <title>IOS 单例设计模式</title>
+        <link href="http://xpmozong.github.io/ios/2014/04/25/danli"/>
+        <updated>2014-04-25T00:00:00+08:00</updated>
+        <id>http://xpmozong.github.io/ios/2014/04/25/danli</id>
+        <content type="html">
+&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href=&quot;http://weibo.com/xpmozong&quot; target=&quot;blank&quot;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/ios/2014/04/25/danli/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;IOS中，单例设计模式的应用场景为，有多个页面，第一个页面往后面的页面传值，超过2个页面以上，就是用单例设计模式。&lt;/p&gt;
+
+&lt;p&gt;创建Singleton类，继承NSObject，Singleton.h的内容为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@interface Singleton : NSObject
+// 单例， 类只有唯一的一个实例
++ (Singleton *)sharedSingleton;
+@property (nonatomic, retain) UIButton *b;
+@end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Singleton.m的内容为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@implementation Singleton
+static Singleton *s = nil;
++ (Singleton *)sharedSingleton
+{
+    if (s == nil) {
+        s = [[Singleton alloc] init];
+    }
+    return s;
+}
+@end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注意：单例中的alloc是不能释放的。&lt;/p&gt;
+
+&lt;p&gt;调用：第一个页面：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[Singleton sharedSingleton].b = _btn1;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;第n个页面：使用：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[[Singleton sharedSingleton].b setTitle:_textField.text forState:UIControlStateNormal];
+&lt;/code&gt;&lt;/pre&gt;
+
+</content>
+    </entry>
+ 
     <entry>
         <title>IOS target/action设计模式</title>
         <link href="http://xpmozong.github.io/ios/2014/04/16/ios-target-action"/>
@@ -24,7 +76,7 @@
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;IOS中，有一种target/action设计模式，可以是代码高聚合，低耦合。&lt;/p&gt;
+&lt;p&gt;IOS中，有一种target/action设计模式，可以使代码高聚合，低耦合。&lt;/p&gt;
 
 &lt;p&gt;创建一个ActionView类&lt;/p&gt;
 
@@ -481,29 +533,23 @@ wife.delegate = husband;
 
 &lt;p&gt;C语言指针&lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;指针变量定义&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;一、指针变量定义&lt;/b&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;int *p = NULL;
+&lt;pre&gt;&lt;code&gt;int *p = NULL;  // p 为变量名，NULL初始值，NULL恒等于0。
 &lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;p 为变量名，NULL初始值，NULL恒等于0。&lt;/p&gt;
 
 &lt;p&gt;与普通变量不同的是，定义指针变量的时候，前面需要加 * 。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;int a = 3;
-int *p = &amp;amp;a;
+int *p = &amp;amp;a;    // 指针取地址
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;指针取地址&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;二、指针重新赋值&lt;/b&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;指针重新赋值&lt;/b&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;*p = 100;
+&lt;pre&gt;&lt;code&gt;*p = 100;   // (*p) 代表 a，p代表a的地址
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;*p 代表 a，p代表a的地址&lt;/p&gt;
-
-&lt;p&gt;&lt;b&gt;指针数组&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;三、指针数组&lt;/b&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;int arr[3] = {1,3,8};
 &lt;/code&gt;&lt;/pre&gt;
@@ -512,31 +558,28 @@ int *p = &amp;amp;a;
 
 &lt;p&gt;arr 恒等于 &amp;amp;arr[0]。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;int *p = arr; 保存数组首地址
+&lt;pre&gt;&lt;code&gt;int *p = arr; // 保存数组首地址  此时p与arr相同，均指向数组的首地址。
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;此时p与arr相同，均指向数组的首地址。&lt;/p&gt;
-
-&lt;p&gt;p[1] = 3;&lt;/p&gt;
-
-&lt;p&gt;恒等于a[1]
+&lt;p&gt;p[1] = 3; 
+恒等于a[1]
 恒等于&lt;em&gt;(p+1)
 恒等于&lt;/em&gt;(a+1)&lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;指针与字符串&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;四、指针与字符串&lt;/b&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;char string[] = &quot;iPhone&quot;;
 char *p = string;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;b&gt;指针数组&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;五、指针数组&lt;/b&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;char *strings[3] = {&quot;iPhone&quot;, &quot;Android&quot;, &quot;win8&quot;};
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;注意可以通过指针来修改字符数组，但不可以修改字符串。修改用strcopy。&lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;结构体指针&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;六、结构体指针&lt;/b&gt;&lt;/p&gt;
 
 &lt;p&gt;定义一个结构体&lt;/p&gt;
 
@@ -548,32 +591,36 @@ char *p = string;
 
 &lt;p&gt;结构体指针定义&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;Student stu = {0};
+&lt;pre&gt;&lt;code&gt;Student stu = {&quot;Ellen&quot;, &#39;f&#39;};
 Student *p = &amp;amp;stu;
 
-//  访问
+//  修改
 (*p).sex = &#39;m&#39;;
 p-&amp;gt;sex = &#39;m&#39;;
 
+//  访问
 printf(&quot;%c\n&quot;, p-&amp;gt;sex); 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;b&gt;结构体数组&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;七、结构体数组&lt;/b&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;Student stus[3] = {0};
+&lt;pre&gt;&lt;code&gt;Student stus[3] = {
+    {&quot;Ellen&quot;, &#39;f&#39;},
+    {&quot;Albert&quot;, &#39;m&#39;}
+};
+
 Student *p = stus;
-
 for(int i = 0, i &amp;lt; 3, i++){
     printf(&quot;%c &quot;, (p+i)-&amp;gt;sex);
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;b&gt;结构体指针为函数参数&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;八、结构体指针为函数参数&lt;/b&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;void printStudents(const Student * pstu, int count);
+&lt;pre&gt;&lt;code&gt;void printStudents(const Student *pStu, int count);
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;b&gt;函数指针定义&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;九、函数指针定义&lt;/b&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;int maxValue(int a, int b)
 {
@@ -585,7 +632,7 @@ p = maxValue;   // 赋值函数名
 int m = p(3,5); // 指针可当函数用
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;b&gt;回调函数&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;十、函数指针回调函数&lt;/b&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;int getValue(int a, int b, int (*p)(int,int))
 {
@@ -598,49 +645,149 @@ int m = p(3,5); // 指针可当函数用
 &lt;pre&gt;&lt;code&gt;int value = getValue(3,5, maxValue);
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;b&gt;int数组动态排序&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;十一、用函数指针回调函数的案例&lt;/b&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;typedef bool(*PFUN)(int,int); // 为函数指针类型类型起名为PFUN
+&lt;p&gt;新建 Student.h 和 Student.m 文件&lt;/p&gt;
 
-void sortArray(int *arr, int count, PFUN p);
+&lt;p&gt;在Student.h文件里&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// 声明一个学生结构体
+typedef struct {
+    char  name[30]; // 名字
+    int   age;      // 年龄
+    float score;    // 成绩
+} Student;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;b&gt;定义结构体，存名称和指针函数&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;main.m主函数文件&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;typedef struct nameFunctionPair
-{
-    char funcName[30];
-    PFUN pFun;
-} NameFunctionPair;
+&lt;pre&gt;&lt;code&gt;// 目标是对学生数组的名字或者年龄或者成绩排序
+// 用回调指针函数排序
+Student stus[] = {
+    {&quot;Ellen2&quot;, 23, 88},
+    {&quot;Ellen1&quot;, 20, 99},
+    {&quot;Ellen4&quot;, 18, 77},
+    {&quot;Ellen3&quot;, 22, 66}
+};
+
+int count = sizeof(stus) / sizeof(*stus);
+// 实现下面的函数
+sortArray(stus, count, &quot;score&quot;);
+printArray(stus, count);
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;b&gt;返回值为函数指针&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;如何完成上面的目标？&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;PFUNC getFunctionByName(const char *fname)
+&lt;p&gt;Student.h 文件 引入 &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;string.h&amp;gt;
+#include &amp;lt;stdbool.h&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;剩下的内容：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// 比较名字
+bool compareName(const Student *pStu1, const Student *pStu2);
+// 比较年龄
+bool compareAge(const Student *pStu1, const Student *pStu2);
+// 比较成绩
+bool compareScore(const Student *pStu1, const Student *pStu2);
+// 定义一个指针函数
+typedef bool (*PFUNC)(const Student *, const Student *);
+// 声明一个函数名结构体
+typedef struct{
+    char name[20];  // 函数名
+    PFUNC p;        // 指针函数
+} FuncName;
+// 交换位置
+void swap(Student *pStu1, Student *pStu2);
+// 冒泡排序
+void bubbleSort(Student *pArr, const int count, PFUNC p);
+// 根据传入的参数，返回哪种函数
+PFUNC getFuncName(const char *pName);
+// 排序，pName 传入参数，选择根据XX排序
+void sortArray(Student *pArr, const int count, const char *pName);
+// 遍历数组
+void printArray(const Student *pArr, const int count);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Student.m 文件实现.h里声明的函数&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// 比较名字
+bool compareName(const Student *pStu1, const Student *pStu2)
 {
-    NameFunctionPair funcs[] = {
-        {&quot;max&quot;, maxValue},
-        {&quot;min&quot;, minValue},
-        {&quot;avg&quot;, avgValue}
+    return strcmp(pStu1-&amp;gt;name, pStu2-&amp;gt;name) &amp;gt; 0;
+}
+// 比较年龄
+bool compareAge(const Student *pStu1, const Student *pStu2)
+{
+    return pStu1-&amp;gt;age &amp;gt; pStu2-&amp;gt;age;
+}
+// 比较成绩
+bool compareScore(const Student *pStu1, const Student *pStu2)
+{
+    return pStu1-&amp;gt;score &amp;gt; pStu2-&amp;gt;score;
+}
+// 交换位置
+void swap(Student *pStu1, Student *pStu2)
+{
+    Student temp = *pStu1;
+    *pStu1 = *pStu2;
+    *pStu2 = temp;
+}
+// 冒泡排序
+void bubbleSort(Student *pArr, const int count, PFUNC p)
+{
+    for (int i = 0; i &amp;lt; count; i++) {
+        for (int j = 0; j &amp;lt; count - i - 1; j++) {
+            if (p(pArr + j, pArr + j + 1)) {
+                swap(pArr + j, pArr + j + 1);
+            }
+        }
+    }
+}
+// 根据传入的参数，返回哪种函数
+PFUNC getFuncName(const char *pName)
+{
+    FuncName funcNames[] = {
+        {&quot;name&quot;, compareName},
+        {&quot;age&quot;, compareAge},
+        {&quot;score&quot;, compareScore}
     };
-    
-    PFUN pFun = NULL;
-    for (int i = 0; i &amp;lt; sizeof(funcs) / sizeof(*funcs); i++) {
-        if (strcmp(fname, funcs[i].funcName) == 0) {
-            pFun = funcs[i].pFun;
+    PFUNC p = NULL;
+    for (int i = 0; i &amp;lt; sizeof(funcNames) / sizeof(*funcNames); i++) {
+        if (strcmp(funcNames[i].name, pName) == 0) {
+            p = funcNames[i].p;
             break;
         }
     }
-
-    return pFun;
+    return p;
+}
+// 排序，pName 传入参数，选择根据XX排序
+void sortArray(Student *pArr, const int count, const char *pName)
+{
+    PFUNC p = NULL;
+    p = getFuncName(pName);
+    if (p != NULL) {
+        bubbleSort(pArr, count, p);
+    }else{
+        printf(&quot;函数名输入错误!\n&quot;);
+    }
+}
+// 遍历数组
+void printArray(const Student *pArr, const int count)
+{
+    for (int i = 0; i &amp;lt; count; i++) {
+        printf(&quot;%s %d %.2f\n&quot;, pArr[i].name, pArr[i].age, pArr[i].score);
+    }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;通过功能名称查找对应的函数&lt;/p&gt;
+&lt;p&gt;main.m主函数文件只需要指定，根据XX排序，就可以了。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;PFUN fun = NULL;
-fun = getFunctionByName(&quot;min&quot;);
-int value = fun(3,5);   // 使用返回的函数指针调用函数，完成动态调用
+&lt;p&gt;比如按照 年龄 排序&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sortArray(stus, count, &quot;age&quot;);
 &lt;/code&gt;&lt;/pre&gt;
 
 </content>

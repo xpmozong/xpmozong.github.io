@@ -10,6 +10,7 @@ http://xpmozong.github.io/rss.xml
 http://xpmozong.github.io/sitemap.txt
 http://xpmozong.github.io/tags.html
 
+http://xpmozong.github.io/ios/2014/04/25/danli
 http://xpmozong.github.io/ios/2014/04/16/ios-target-action
 http://xpmozong.github.io/ios,oc/2014/04/12/oc-protocal
 http://xpmozong.github.io/ios,oc/2014/04/12/oc-property
