@@ -5,8 +5,8 @@
         <description>寞踪的技术博客 - 寞踪</description>
         <link>http://xpmozong.github.io</link>
         <link>http://xpmozong.github.io</link>
-        <lastBuildDate>2014-04-25T14:03:05+08:00</lastBuildDate>
-        <pubDate>2014-04-25T14:03:05+08:00</pubDate>
+        <lastBuildDate>2014-05-07T17:03:02+08:00</lastBuildDate>
+        <pubDate>2014-05-07T17:03:02+08:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -19,7 +19,7 @@
     &lt;li&gt;转载请注明出处&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;IOS中，单例设计模式的应用场景为，有多个页面，第一个页面往后面的页面传值，超过2个页面以上，就是用单例设计模式。&lt;/p&gt;
+&lt;p&gt;IOS单例设计模式，多个页面共用数据。&lt;/p&gt;
 
 &lt;p&gt;创建Singleton类，继承NSObject，Singleton.h的内容为：&lt;/p&gt;
 
