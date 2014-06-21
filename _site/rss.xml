@@ -5,10 +5,55 @@
         <description>寞踪的技术博客 - 寞踪</description>
         <link>http://xpmozong.github.io</link>
         <link>http://xpmozong.github.io</link>
-        <lastBuildDate>2014-05-07T17:03:02+08:00</lastBuildDate>
-        <pubDate>2014-05-07T17:03:02+08:00</pubDate>
+        <lastBuildDate>2014-06-21T15:43:28+08:00</lastBuildDate>
+        <pubDate>2014-06-21T15:43:28+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>IOS 正则表达式</title>
+                <description>
+&lt;ul&gt;
+    &lt;li&gt;作者：&lt;a href=&quot;http://weibo.com/xpmozong&quot; target=&quot;blank&quot;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;本文地址：http://xpmozong.github.io/ios/2014/06/21/ios-zhengze/&lt;/li&gt;
+    &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;熟悉php的都知道preg_match_all是一个超级强大的正则表达式函数。在数据采集的世界里，有了她，几乎是所向披靡，神挡杀神，佛挡杀佛。&lt;/p&gt;
+
+&lt;p&gt;由于Object-C有没有类似preg_match_all的函数。 NSPredicate 不是很理想。而RegexKit很强大。&lt;/p&gt;
+
+&lt;p&gt;下载地址：&lt;a href=&quot;https://github.com/wezm/RegexKitLite&quot;&gt;RegexKit&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;需要添加一个依懒库：libicucore.dylib&lt;/p&gt;
+
+&lt;p&gt;具体用法，首先引入头文件：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#import &quot;RegexKitLite.h&quot;
+
+ASIHTTPRequest *htmlRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:str]];
+[htmlRequest setRequestMethod:@&quot;GET&quot;];
+[htmlRequest setTimeOutSeconds:30];
+[htmlRequest setCompletionBlock:^{
+    NSString *resultStr = [[[NSString alloc] initWithData:htmlRequest.responseData encoding:NSUTF8StringEncoding] autorelease];
+    NSString *parten = @&quot;&amp;lt;a class=\&quot;v-link\&quot; href=\&quot;(.*)\&quot; target=\&quot;video\&quot; title=\&quot;(.*)\&quot;&amp;gt;&amp;lt;/a&amp;gt;&quot;;
+    NSArray *resultArray = [resultStr arrayOfCaptureComponentsMatchedByRegex:parten];
+    NSLog(@&quot;%@&quot;, resultArray);
+}];
+[htmlRequest startSynchronous];
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可根据自己的需要 重写 &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;NSString *parten = @&quot;&amp;lt;a class=\&quot;v-link\&quot; href=\&quot;(.*)\&quot; target=\&quot;video\&quot; title=\&quot;(.*)\&quot;&amp;gt;&amp;lt;/a&amp;gt;&quot;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;好了，就说到这里。&lt;/p&gt;
+</description>
+                <link>http://xpmozong.github.io/ios/2014/06/21/ios-zhengze</link>
+                <guid>http://xpmozong.github.io/ios/2014/06/21/ios-zhengze</guid>
+                <pubDate>2014-06-21T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>IOS 单例设计模式</title>
