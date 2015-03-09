@@ -3,8 +3,8 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>OC protocal 的使用</title>
-        <meta name="description" content="OC protocal 的使用">
+        <title>iOS 图文混排</title>
+        <meta name="description" content="iOS 图文混排 M80AttributedLabel的一些修改">
         <meta name="author" content="寞踪">
 
         <!-- Enable responsive viewport -->
@@ -156,122 +156,148 @@
             <div class="content">
                 
 <div class="page-header">
-    <h1>OC protocal 的使用 </h1>
+    <h1>iOS 图文混排 </h1>
 </div>
 
 <div class="row-fluid post-full">
     <div class="span12">
         <div class="date">
-            <span>2014-04-12</span>
+            <span>2014-12-21</span>
         </div>
         <div class="content">
             
 <ul>
     <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-    <li>本文地址：http://xpmozong.github.io/ios,oc/2014/04/12/oc-protocal/</li>
+    <li>本文地址：http://xpmozong.github.io/ios/2014/12/21/ios-tuwenhunpai/</li>
     <li>转载请注明出处</li>
 </ul>
 
-<p>Protocal又名协议，协议是一套标准（一堆方法的声明），只有.h文件。</p>
+<p>1、M80AttributedLabel的URL、号码、邮箱的正则匹配不是很好，我做了一些修改。</p>
 
-<p>接受协议的对象，实现协议中定义的方法。</p>
-
-<p>新建文件，选择Objective-C protocal，名字为 MarrayProtocol</p>
-
-<p>Protocal 以 @protocal，以@end结束，例如：</p>
-
-<pre><code>@protocol MarrayProtocol &lt;NSObject&gt;
-@required
-- (void)makeMoney;
-@optional
-- (void)washcloth;
-@end
-</code></pre>
-
-<p>@required后的方法是必须实现的，@required可写可不写。</p>
-
-<p>@optional后方法是可选实现的，可实现，可不实现。</p>
-
-<p>协议定义好之后，需要有类去遵守这个协议，实现协议里的方法。</p>
-
-<p>遵守协议，即在.h文件的父类名后写上<协议名>。实现协议里的方法即在.m文件中实现协议中的方法。相当于给这个类添加了若干个方法。这个类的实例就可以调用这些方法。</协议名></p>
-
-<p>如何使用代理呢？通常情况下，我们用delegate，新建文件，选择Objective-C protocal，名字为 MarrayDelegate</p>
-
-<p>内容如下：</p>
-
-<pre><code>@protocol MarrayDelegate &lt;NSObject&gt;
-@required
-- (void)makeMoney;
-@optional
-- (void)washcloth;
-@end
-</code></pre>
-
-<p>之前的MarrayProtocol.h文件不要了。</p>
-
-<p>创建Husband类， Husband.h内容如下：</p>
-
-<pre><code>#import "MarrayDelegate.h"
-@interface Husband : NSObject &lt;MarrayDelegate&gt;
-@end
-</code></pre>
-
-<p>MarrayDelegate 遵守协议。</p>
-
-<p>Husband.m文件内容如下：</p>
-
-<pre><code>@implementation Husband
-- (void)makeMoney
+<pre><code>#pragma mark - 正则匹配电话号码，网址链接，Email地址
++ (NSArray *)addRexArr:(NSString *)text
 {
-    NSLog(@"给老婆挣钱！");
+    NSString *parten = @"\\d{3}-\\d{8}|\\d{3}-\\d{7}|\\d{4}-\\d{8}|\\d{4}-\\d{7}|1+[358]+\\d{9}|\\d{8}|\\d{7}";
+    NSArray *resultArray = [text componentsMatchedByRegex:parten];
+    NSMutableArray *phoneArray = [[NSMutableArray alloc] initWithArray:resultArray];
+    NSMutableArray *urlArray = [[NSMutableArray alloc] init];
+    NSMutableArray *emailArray = [[NSMutableArray alloc] init];
+    
+    NSString *parten4 = @"[^\\s]*(\\.)(com|cn|net|org|biz|info|cc|tv|name|中国|mobi|me|asia|co|so|tel)[a-zA-Z\\d\\/]*";
+    NSArray *resultArray4 = [text componentsMatchedByRegex:parten4];
+    for (NSString *str in resultArray4) {
+        BOOL isMatch = NO;
+        
+        NSString *parten3 = @"(https?)+://[^\\s]*[a-zA-Z\\d\\.]*(\\.)(com|cn|net)[a-zA-Z\\d\\/]*";
+        NSArray *resultArray3 = [str componentsMatchedByRegex:parten3];
+        for (NSString *s in resultArray3) {
+            isMatch = YES;
+            [urlArray addObject:s];
+        }
+        
+        NSString *parten2 = @"(www\\.)[^\\s]*(\\.)(com|cn|net|org|biz|info|cc|tv|name|中国|mobi|me|asia|co|so|tel)[a-zA-Z\\d\\/]*";
+        NSArray *resultArray2 = [str componentsMatchedByRegex:parten2];
+        for (NSString *s in resultArray2) {
+            isMatch = YES;
+            [urlArray addObject:s];
+        }
+        
+        NSString *parten4 = @"[^\\s]*[a-zA-Z\\d\\.]*(@)[a-z\\d]*(\\.)(com|cn|net|org|biz|info|cc|tv|name|mobi|me|asia|co|so|tel)";
+        NSArray *resultArray4 = [str componentsMatchedByRegex:parten4];
+        for (NSString *s in resultArray4) {
+            isMatch = YES;
+            [emailArray addObject:s];
+        }
+        
+        if (isMatch == NO) {
+            [urlArray addObject:str];
+        }
+        
+        for (NSString *p in resultArray) {
+            NSArray *resultArray3 = [str componentsMatchedByRegex:p];
+            if ([resultArray3 count] &gt; 0) {
+                [phoneArray removeObject:p];
+            }
+        }
+    }
+
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    [array addObject:urlArray];
+    [array addObject:phoneArray];
+    [array addObject:emailArray];
+    
+    return array;
 }
-@end
 </code></pre>
 
-<p>实现代理里面的方法。</p>
+<p>调用的时候，如下</p>
 
-<p>创建Wife类，Wife.h文件内容如下：</p>
-
-<pre><code>#import "MarrayDelegate.h"
-@interface Wife : NSObject
-@property (nonatomic, assign) id&lt;MarrayDelegate&gt;delegate;
-- (void)shopping;
-@end
-</code></pre>
-
-<p>将代理名称设为delegate，添加一个方法。</p>
-
-<p>Wife.m文件内容如下：</p>
-
-<pre><code>@implementation Wife
-- (void)shopping
-{
-    NSLog(@"老公，我要购物！");
-    [_delegate makeMoney];
+<pre><code>NSArray *rexArray = [M80AttributedLabel addRexArr:label.labelText];
+NSArray *httpArr = [rexArray objectAtIndex:0];
+NSArray *phoneNumArr = [rexArray objectAtIndex:1];
+NSArray *emailArr = [rexArray objectAtIndex:2];
+if ([emailArr count]) {
+    for (NSString *emailStr in emailArr) {
+        [label addCustomLink:[NSURL URLWithString:emailStr] forRange:[label.labelText rangeOfString:emailStr] linkType:LinkTypeEmail];
+    }
 }
-@end
+if ([phoneNumArr count]) {
+    for (NSString *phoneNum in phoneNumArr) {
+        [label addCustomLink:[NSURL URLWithString:phoneNum] forRange:[label.labelText rangeOfString:phoneNum] linkType:LinkTypePhone];
+    }
+}
+if ([httpArr count]) {
+    for (NSString *httpStr in httpArr) {
+        [label addCustomLink:[NSURL URLWithString:httpStr] forRange:[label.labelText rangeOfString:httpStr] linkType:LinkTypeURL];
+    }
+}
 </code></pre>
 
-<p>设置代理，和实现方法。</p>
+<p>2、还有表情的添加，原来只能单个加图片，如果图文都有，比如：开心哦[大笑]，哦也！   其中[大笑]是一个笑的图片。如何分割显示呢？</p>
 
-<p>在主函数import husband.h 和 wife.h 文件</p>
-
-<pre><code>Husband *husband = [[Husband alloc] init];
-Wife *wife = [[Wife alloc] init];
-wife.delegate = husband;
-[wife shopping];
-[wife release];
-[husband release];
+<pre><code>NSRegularExpression *regex = [[NSRegularExpression alloc]
+                              initWithPattern:@"(.*?)(\\[*+\\]|\\Z)"
+                              options:NSRegularExpressionCaseInsensitive|NSRegularExpressionDotMatchesLineSeparators
+                              error:nil];
+NSArray* chunks = [regex matchesInString:text options:0
+                                   range:NSMakeRange(0, [text length])];
+for (NSTextCheckingResult *b in chunks) {
+    NSString *bstr = [text substringWithRange:b.range];
+    if (bstr.length &gt; 0) {
+        NSString *imgName = [_m_emojiDictionary objectForKey:bstr];
+        if (imgName) {
+            UIImage *image = [UIImage imageNamed:imgName];
+            [label appendImage:image
+                       maxSize:CGSizeMake(24, 24)
+                        margin:UIEdgeInsetsZero
+                     alignment:M80ImageAlignmentCenter];
+        }else{
+            NSArray *array = [bstr componentsSeparatedByString:@"["];
+            int i = 0;
+            for (NSString *str in array) {
+                if (i == 0) {
+                    [label appendText:str];
+                }else{
+                    NSString *astr = [NSString stringWithFormat:@"[%@", str];
+                    NSString *imgName = [_m_emojiDictionary objectForKey:astr];
+                    if (imgName) {
+                        UIImage *image = [UIImage imageNamed:imgName];
+                        [label appendImage:image
+                                   maxSize:CGSizeMake(24, 24)
+                                    margin:UIEdgeInsetsZero
+                                 alignment:M80ImageAlignmentCenter];
+                    }else{
+                        [label appendText:astr];
+                    }
+                }
+                i++;
+            }
+        }
+    }
+}
 </code></pre>
 
-<p>输出：</p>
-
-<pre><code>老公，我要购物！
-给老婆挣钱！
-</code></pre>
-
-<p>整个过程就是实现协议代理的过程。</p>
+<p>详情代码参考，<a href="https://github.com/xpmozong/Socket" target="_blank">https://github.com/xpmozong/Socket</a>，WeiWei这个项目。</p>
 
 
         </div>
@@ -285,8 +311,8 @@ wife.delegate = husband;
 
   
      
-    	<li><a href="/categories.html#ios,oc-ref">
-    		ios,oc <span>5</span>
+    	<li><a href="/categories.html#ios-ref">
+    		ios <span>4</span>
     	</a></li>
     
   
@@ -304,9 +330,7 @@ wife.delegate = husband;
 
   
      
-    	<li><a href="/tags.html#IOS-ref">IOS <span>6</span></a></li>
-     
-    	<li><a href="/tags.html#OC-ref">OC <span>5</span></a></li>
+    	<li><a href="/tags.html#iOS-ref">iOS <span>3</span></a></li>
     
   
 
@@ -319,11 +343,11 @@ wife.delegate = husband;
         <div class="pagination">
             <ul>
             
-                <li class="prev"><a href="/ios,oc/2014/04/12/oc-property" title="OC property 属性介绍">&larr; Previous</a></li>
+                <li class="prev"><a href="/ios/2014/06/21/ios-zhengze" title="iOS 正则表达式">&larr; Previous</a></li>
             
                 <li><a href="/archive.html">Archive</a></li>
             
-                <li class="next"><a href="/ios/2014/04/16/ios-target-action" title="iOS target/action设计模式">Next &rarr;</a></li>
+                <li class="next disabled"><a>Next &rarr;</a>
             
             </ul>
         </div>

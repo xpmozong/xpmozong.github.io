@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "IOS 正则表达式"
-description: "IOS 正则表达式"
-category: "IOS"
-tags: [IOS]
+title: "iOS 正则表达式"
+description: "iOS 正则表达式"
+category: "iOS"
+tags: [iOS]
 ---
 {% include JB/setup %}
 

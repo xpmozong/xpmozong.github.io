@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "IOS target/action设计模式"
-description: "IOS target/action设计模式"
-category: "IOS"
-tags: [IOS]
+title: "iOS target/action设计模式"
+description: "iOS target/action设计模式"
+category: "iOS"
+tags: [iOS]
 ---
 {% include JB/setup %}
 
@@ -14,7 +14,7 @@ tags: [IOS]
 </ul>
 
 
-IOS中，有一种target/action设计模式，可以使代码高聚合，低耦合。
+iOS中，有一种target/action设计模式，可以使代码高聚合，低耦合。
 
 创建一个ActionView类
 
