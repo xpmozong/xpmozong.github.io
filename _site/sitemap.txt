@@ -11,6 +11,7 @@ http://xpmozong.github.io/sitemap.txt
 http://xpmozong.github.io/tags.html
 
 http://xpmozong.github.io/ios/2014/12/21/ios-tuwenhunpai
+http://xpmozong.github.io/ios/2014/11/05/ios-fmdb-sqlite
 http://xpmozong.github.io/ios/2014/06/21/ios-zhengze
 http://xpmozong.github.io/ios/2014/04/25/oc-danli
 http://xpmozong.github.io/ios/2014/04/16/ios-target-action
