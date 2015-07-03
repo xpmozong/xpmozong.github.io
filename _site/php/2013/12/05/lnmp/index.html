@@ -167,9 +167,9 @@
         <div class="content">
             
 <ul>
-    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-    <li>本文地址：http://xpmozong.github.io/php/2013/12/05/lnmp/</li>
-    <li>转载请注明出处</li>
+  <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
+  <li>本文地址：http://xpmozong.github.io/php/2013/12/05/lnmp/</li>
+  <li>转载请注明出处</li>
 </ul>
 
 <p>首先准备安装包</p>
@@ -187,8 +187,10 @@ mcrypt-2.6.8.tar.gz
 pcre-8.33.tar.gz
 </code></pre>
 
-<p>先yum一些必要的
-    yum -y install gcc-c++ openssl-devel libjpeg-devel libpng-devel libXpm-devel ImageMagick ImageMagick-devel freetype freetype-devel curl-devel</p>
+<p>先yum一些必要的</p>
+
+<pre><code>yum -y install gcc-c++ openssl-devel libjpeg-devel libpng-devel libXpm-devel ImageMagick ImageMagick-devel freetype freetype-devel curl-devel
+</code></pre>
 
 <p>然后安装各个库，依次是libmcrypt，mhash， mcrypt 和pcre</p>
 
@@ -303,8 +305,7 @@ vi /usr/local/nginx/conf/nginx.conf
 
 
 user  www;
-
-worker_processes  1;
+worker_processes  8;
 
 #error_log  logs/error.log;
 #error_log  logs/error.log  notice;
@@ -312,11 +313,9 @@ worker_processes  1;
 
 #pid        logs/nginx.pid;
 
-
 events {
     worker_connections  1024;
 }
-
 
 http {
     include       mime.types;
@@ -337,24 +336,28 @@ http {
     #gzip  on;
 
     server {
-        listen 80;
+        listen       80;
+        server_name  localhost;
         index index.php index.html index.htm;
-        root /home/www;
-        access_log /home/wwwlogs/localhost.log combined;
-        error_log /home/wwwlogs/localhost.log;
-        
-        #expires
+        root D:/xampp/htdocs/enterprise;
+
+        # redirect server error pages to the static page /50x.html
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+             
         location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$
         {
             expires 30d;
         }
-        
+
         location ~ .*\.(js|css)?$
         {
             expires 24h;
         }
-        
-        if ($request_filename !~ (index\.php|images|min|robots\.txt|.*\.css|.*\.js|.*\.png|.*\.jpg|.*\.jpeg|.*\.gif|.*\.swf|.*\.ocx|.*\.cab)){
+    
+        if ($request_filename !~* (\.xml|\.rar|\.html|\.htm|\.php|\.swf|\.css|\.js|\.gif|\.png|\.jpg|\.jpeg|robots\.txt|index\.php|\.jnlp|\.jar|\.eot|\.woff|\.ttf|\.svg)) {
             rewrite ^/(.*)$ /index.php/$1 last;
         }
 
@@ -362,51 +365,13 @@ http {
             fastcgi_pass   127.0.0.1:9000;
             fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
             fastcgi_index  index.php;
-            fastcgi_split_path_info ^(.+\.php)(.*)$;                                            
+            fastcgi_split_path_info ^(.+\.php)(.*)$;                                         
             fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;                 
             fastcgi_param   PATH_INFO $fastcgi_path_info;                                       
             fastcgi_param   PATH_TRANSLATED $document_root$fastcgi_path_info;                   
             include fastcgi_params;  
         }
-        
     }
-
-
-    # another virtual host using mix of IP-, name-, and port-based configuration
-    #
-    #server {
-    #    listen       8000;
-    #    listen       somename:8080;
-    #    server_name  somename  alias  another.alias;
-
-    #    location / {
-    #        root   html;
-    #        index  index.html index.htm;
-    #    }
-    #}
-
-
-    # HTTPS server
-    #
-    #server {
-    #    listen       443;
-    #    server_name  localhost;
-
-    #    ssl                  on;
-    #    ssl_certificate      cert.pem;
-    #    ssl_certificate_key  cert.key;
-
-    #    ssl_session_timeout  5m;
-
-    #    ssl_protocols  SSLv2 SSLv3 TLSv1;
-    #    ssl_ciphers  HIGH:!aNULL:!MD5;
-    #    ssl_prefer_server_ciphers   on;
-
-    #    location / {
-    #        root   html;
-    #        index  index.html index.htm;
-    #    }
-    #}
 
 }
 </code></pre>

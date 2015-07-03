@@ -7,12 +7,9 @@ tags: [IOS,OC]
 ---
 {% include JB/setup %}
 
-<ul>
-    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-    <li>本文地址：http://xpmozong.github.io/ios,oc/2014/04/12/oc-protocal/</li>
-    <li>转载请注明出处</li>
-</ul>
-
+*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
+*	本文地址：http://xpmozong.github.io/ios,oc/2014/04/12/oc-protocal/
+*	转载请注明出处
 
 Protocal又名协议，协议是一套标准（一堆方法的声明），只有.h文件。
 

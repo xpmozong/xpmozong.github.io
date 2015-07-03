@@ -167,38 +167,47 @@
         <div class="content">
             
 <ul>
-    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-    <li>本文地址：http://xpmozong.github.io/linux/2012/01/29/linux-ddos/</li>
-    <li>转载请注明出处</li>
+  <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
+  <li>本文地址：http://xpmozong.github.io/linux/2012/01/29/linux-ddos/</li>
+  <li>转载请注明出处</li>
 </ul>
 
-<p>DDoS deflate是一款免费的用来防御和减轻DDoS攻击的脚本。它通过netstat监测跟踪创建大量网络连接的IP地址，在检测到某个结点超过预设的限 制时，该程序会通过APF或IPTABLES禁止或阻挡这些IP.</p>
+<p>DDoS deflate是一款免费的用来防御和减轻DDoS攻击的脚本。它通过netstat监测跟踪创建大量网络连接的IP地址，在检测到某个结点超过预设的限 制时，该程序会通过APF或IPTABLES禁止或阻挡这些IP.&lt;/p&gt;</p>
+
 <p>DDoS deflate官方网站：http://deflate.medialayer.com/</p>
 
 <pre><code>netstat -ntu | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -n
 </code></pre>
 
 <p>执行上面的命令后，</p>
+
 <pre><code>1 Address
 1 servers)
 2 123.113.152.60
 4 59.151.36.148
 ................................
 </code></pre>
+
 <p>每个IP几个、十几个或几十个连接数都还算比较正常，如果像上面成百上千肯定就不正常了。</p>
 
 <p>好了，下面就安装DDoS deflate吧。</p>
 
 <p>第一步：安装DDoS deflate</p>
-<p>wget http://www.inetbase.com/scripts/ddos/install.sh</p>
-<p>chmod 0700 install.sh</p>
-<p>./install.sh    //安装</p>
+
+<pre><code>wget http://www.inetbase.com/scripts/ddos/install.sh
+chmod 0700 install.sh
+./install.sh    //安装
+</code></pre>
+
 <p>卸载：</p>
-<p>wget http://www.inetbase.com/scripts/ddos/uninstall.ddos</p>
-<p>chmod 0700 uninstall.ddos</p>
-<p>./uninstall.ddos</p>
+
+<pre><code>wget http://www.inetbase.com/scripts/ddos/uninstall.ddos
+chmod 0700 uninstall.ddos
+./uninstall.ddos
+</code></pre>
 
 <p>第二步：配置DDoS deflate</p>
+
 <p>下面是DDoS deflate的默认配置位于/usr/local/ddos/ddos.conf ，内容如下：</p>
 
 <pre><code>##### Paths of the script and other files
@@ -236,6 +245,7 @@ BAN_PERIOD=600    //禁用IP时间，默认600秒，可根据情况调整
 <p>用户可根据给默认配置文件加上的注释提示内容，修改配置文件。</p>
 
 <p>第三步：查看/usr/local/ddos/ddos.sh文件的第117行</p>
+
 <pre><code>netstat -ntu | awk ‘{print $5}’ | cut -d: -f1 | sort | uniq -c | sort -nr &gt; $BAD_IP_LIST
 </code></pre>
 

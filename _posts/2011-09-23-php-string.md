@@ -7,22 +7,20 @@ tags: [PHP]
 ---
 {% include JB/setup %}
 
-<ul>
-    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-    <li>本文地址：http://xpmozong.github.io/php/2011/09/23/php-string/</li>
-    <li>转载请注明出处</li>
-</ul>
+*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
+*	本文地址：http://xpmozong.github.io/php/2011/09/23/php-string/
+*	转载请注明出处
 
-<p>1、自动移除字符串中的 HTML 标记</p>
+1、自动移除字符串中的 HTML 标记
 
-<p>在用户表单中，你可能希望移除所有不必要的 HTML 标记。使用 strip_tags() 函数可以简单地做到这一点：</p>
+在用户表单中，你可能希望移除所有不必要的 HTML 标记。使用 strip_tags() 函数可以简单地做到这一点：
 
     $text = strip_tags($input, "");
 
 
-<p>2、获取 $start 和 $end 之间的文本</p>
+2、获取 $start 和 $end 之间的文本
 
-<p>这是一种每个网站开发人员应该收纳在开发工具箱的功能：给定一个字符串，一个起始位置，一个结束为止，并返回包含在 $start 和 $end 两者之间的文本。</p>
+这是一种每个网站开发人员应该收纳在开发工具箱的功能：给定一个字符串，一个起始位置，一个结束为止，并返回包含在 $start 和 $end 两者之间的文本。
 
     function GetBetween($content,$start,$end){
         $r = explode($start, $content);
@@ -34,17 +32,17 @@ tags: [PHP]
     }
 
 
-<p>3、将 URL 转换为超链接</p>
+3、将 URL 转换为超链接
 
-<p>如果你在 WordPress 博客的评论表单中添加了 URL，它会被自动转换为超级链接。如果你想要在网站上实现同样的功能，可以使用以下代码：</p>
+如果你在 WordPress 博客的评论表单中添加了 URL，它会被自动转换为超级链接。如果你想要在网站上实现同样的功能，可以使用以下代码：
 
     $url = "芒果 (http://www.mangguo.org)";
     $url = preg_replace("#http://([A-z0-9./-]+)#", '$0', $url);
 
 
-<p>4、将文本分割为 140 字符的数组</p>
+4、将文本分割为 140 字符的数组
 
-<p>大家都知道，Twitter 仅仅接受 140 字符以内的消息。如果你希望与这个流行的即时信息网站交互，肯定会喜欢这个功能，这将允许对留言截断为 140 个字符。</p>
+大家都知道，Twitter 仅仅接受 140 字符以内的消息。如果你希望与这个流行的即时信息网站交互，肯定会喜欢这个功能，这将允许对留言截断为 140 个字符。
 
     function split_to_chunks($to,$text){
         $total_length = (140 - strlen($to));
@@ -71,16 +69,16 @@ tags: [PHP]
     }
 
 
-<p>5、从字符串中移除 URL</p>
+5、从字符串中移除 URL
 
-<p>为了获得流量或者反向链接，很多访客会发布大量含有网址信息的博客评论，这个代码片段可以对其进行有效防范：</p>
+为了获得流量或者反向链接，很多访客会发布大量含有网址信息的博客评论，这个代码片段可以对其进行有效防范：
 
     $string = preg_replace('/\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|$!:,.;]*[A-Z0-9+&@#\/%=~_|$]/i', '', $string);
 
 
-<p>6、转换字符串为缩略标题</p>
+6、转换字符串为缩略标题
 
-<p>创建缩略标题（通常称之为 permalink，即固定链接）有利于 SEO，以下函数以一个字符串作为参数，并返回良好的缩略字符串。简洁有效，值得尝试！</p>
+创建缩略标题（通常称之为 permalink，即固定链接）有利于 SEO，以下函数以一个字符串作为参数，并返回良好的缩略字符串。简洁有效，值得尝试！
 
     function slug($str){
         $str = strtolower(trim($str));
@@ -90,9 +88,9 @@ tags: [PHP]
     }
 
 
-<p>7、解析 CSV 文件</p>
+7、解析 CSV 文件
 
-<p>CSV（逗号分隔的值文件）是存储数据的简单方式，使用 PHP 解析也很容易。不信你可以动手试试以下代码片段。</p>
+CSV（逗号分隔的值文件）是存储数据的简单方式，使用 PHP 解析也很容易。不信你可以动手试试以下代码片段。
 
     $fh = fopen("contacts.csv", "r");
     while($line = fgetcsv($fh, 1000, ",")) {
@@ -100,9 +98,9 @@ tags: [PHP]
     }
 
 
-<p>8、检索字符串中的另一个字符串</p>
+8、检索字符串中的另一个字符串
 
-<p>如果某个字符串包含在另一个字符串中，并且必须检索出来，这里有一个绝妙的方法：</p>
+如果某个字符串包含在另一个字符串中，并且必须检索出来，这里有一个绝妙的方法：
 
     function contains($str, $content, $ignorecase=true){
         if ($ignorecase){
@@ -113,18 +111,18 @@ tags: [PHP]
     }
 
 
-<p>9、检测某个字符串是否以指定的模式开始</p>
+9、检测某个字符串是否以指定的模式开始
 
-<p>有些语言比如 Java 具有一个 startWith 方法，允许你检测某个字符串是否以指定的模式开始。不幸的是，PHP 不具备这种内建函数。但我们可以自己动手丰衣足食，实现也很简单：</p>
+有些语言比如 Java 具有一个 startWith 方法，允许你检测某个字符串是否以指定的模式开始。不幸的是，PHP 不具备这种内建函数。但我们可以自己动手丰衣足食，实现也很简单：
 
     function String_Begins_With($needle, $haystack {
         return (substr($haystack, 0, strlen($needle))==$needle);
     }
 
 
-<p>10、从字符串中提取电子邮件地址</p>
+10、从字符串中提取电子邮件地址
 
-<p>有没有想过那些发垃圾邮件的人是如何得到邮件地址的？这很简单，他们只需对网页进行简单的 HTML 解析即可提取电子邮件。此代码需要一个字符串作为参数，并打印所包含的电子邮件地址。芒果告诫：请勿使用此代码制造垃圾邮件！</p>
+有没有想过那些发垃圾邮件的人是如何得到邮件地址的？这很简单，他们只需对网页进行简单的 HTML 解析即可提取电子邮件。此代码需要一个字符串作为参数，并打印所包含的电子邮件地址。芒果告诫：请勿使用此代码制造垃圾邮件！
 
     function extract_emails($str){
         // This regular expression extracts all emails from a string:

@@ -7,15 +7,15 @@ tags: [PHP,smarty]
 ---
 {% include JB/setup %}
 
-<ul>
-    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-    <li>本文地址：http://xpmozong.github.io/php/2011/11/25/php-smarty/</li>
-    <li>转载请注明出处</li>
-</ul>
+*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
+*	本文地址：http://xpmozong.github.io/php/2011/11/25/php-smarty/
+*	转载请注明出处
 
-<p>静态化网页，是个基本技能。下面是smarty静态化。</p>
-<p>打开Smarty.class.php 文件</p>
-<p>加入以下代码</p>
+静态化网页，是个基本技能。下面是smarty静态化。
+
+打开Smarty.class.php 文件
+
+加入以下代码
 
     // 循环创建目录 
     function mk_dir($dir, $mode = 0777) 
@@ -58,11 +58,11 @@ tags: [PHP,smarty]
     }
 
 
-<p>加好了之后，就是调用了。怎么调用呢，看一下代码：</p>
+加好了之后，就是调用了。怎么调用呢，看一下代码：
 
     //  $smarty->display('index.html');
     $content = $smarty->fetch('index.html');
     $smarty->makeHtmlFile('html/index.html',$content);//生成
 
 
-<p>然后到html目录下，查看，就可以看到生成的静态化文件啦！！！</p>
+然后到html目录下，查看，就可以看到生成的静态化文件。

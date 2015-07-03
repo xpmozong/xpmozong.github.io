@@ -7,18 +7,17 @@ tags: [HTML]
 ---
 {% include JB/setup %}
 
-<ul>
-    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-    <li>本文地址：http://xpmozong.github.io/html/2011/09/26/htaceess-speed/</li>
-    <li>转载请注明出处</li>
-</ul>
+*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
+*	本文地址：http://xpmozong.github.io/html/2011/09/26/htaceess-speed/</li>
+*	转载请注明出处
 
-<p>前端优化，利用.htaceess控制图片，js，css缓存时间提升网页加载速度。</p>
+前端优化，利用.htaceess控制图片，js，css缓存时间提升网页加载速度。
 
-<p>Add an Expires or a Cache-Control Header：</p>
+Add an Expires or a Cache-Control Header：
 
-<p>简单点说：就是缓存一下不常修改的文件，提升访问速度。</p>
-<p>再简单点说：就是在.htaccess文件中写入以下内容：</p>
+简单点说：就是缓存一下不常修改的文件，提升访问速度。
+
+再简单点说：就是在.htaccess文件中写入以下内容：
 
 
     <IfModule mod_expires.c>
@@ -37,5 +36,5 @@ tags: [HTML]
         ExpiresByType text/html A600
     </IfModule> 
 
-<p>解释一下。ExpiresByType 是通过MIME类型来设置具体文件的缓存时间，A表示访问，A后面的数字表示访问后的缓存时间。AddOutputFilterByType表示根据后面 的MIME类型来压缩文件，这里对css，html，gif，jpeg，png，JavaScript等进行gzip压缩。
-更多选项请参考apache手册吧。</p>
+解释一下。ExpiresByType 是通过MIME类型来设置具体文件的缓存时间，A表示访问，A后面的数字表示访问后的缓存时间。AddOutputFilterByType表示根据后面 的MIME类型来压缩文件，这里对css，html，gif，jpeg，png，JavaScript等进行gzip压缩。
+更多选项请参考apache手册吧。

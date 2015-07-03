@@ -7,12 +7,9 @@ tags: [iOS]
 ---
 {% include JB/setup %}
 
-<ul>
-    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-    <li>本文地址：http://xpmozong.github.io/ios/2014/04/16/ios-target-action/</li>
-    <li>转载请注明出处</li>
-</ul>
-
+*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
+*	本文地址：http://xpmozong.github.io/ios/2014/04/16/ios-target-action/
+*	转载请注明出处
 
 iOS中，有一种target/action设计模式，可以使代码高聚合，低耦合。
 
@@ -81,4 +78,4 @@ delegate
 
 专注点：一系列相关事件的处理（多个事件）
 
-
+</b>

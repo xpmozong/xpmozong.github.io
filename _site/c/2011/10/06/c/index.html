@@ -167,18 +167,21 @@
         <div class="content">
             
 <ul>
-    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-    <li>本文地址：http://xpmozong.github.io/c/2011/10/06/c/</li>
-    <li>转载请注明出处</li>
+  <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
+  <li>本文地址：http://xpmozong.github.io/c/2011/10/06/c/</li>
+  <li>转载请注明出处</li>
 </ul>
 
 <p>1.单击“开始”，指向“所有程序”、“Microsoft Visual Studio 2010”和“Visual Studio 工具”，然后单击“Visual Studio 2010 命令提示”。</p>
+
 <p>根据计算机上的 Windows 版本和系统安全配置，可能必须右击“Visual Studio 2008 命令提示”，然后单击“以管理员身份运行”，才能成功运行按下列步骤创建的应用程序。</p>
 
 <p>2.在命令提示符下，键入 notepad simple.c，并按 Enter。</p>
+
 <p>在系统提示是否创建文件时，单击“是”。</p>
 
 <p>3.在记事本中，键入下列各行。</p>
+
 <pre><code>#include &lt;stdio.h&gt;
 int main()
 {
@@ -188,9 +191,13 @@ int main()
 </code></pre>
 
 <p>4.在“文件”菜单上，单击“保存”，以创建 C 源文件。</p>
+
 <p>5.关闭记事本。</p>
+
 <p>6.在命令提示符下，键入 cl simple.c，并按 Enter。</p>
+
 <p>cl.exe 编译器将生成一个可执行程序 simple.exe。</p>
+
 <p>您可以在编译器显示的多行输出信息中看到可执行程序的名称。</p>
 
 <pre><code>Microsoft (R) 32-bit C/C++ Optimizing Compiler Version 16.00 for 80x86
@@ -215,6 +222,13 @@ simple.obj
 <p>This is a native C program.</p>
 
 <p>9.若要关闭命令提示符窗口，请键入 exit 并按 Enter。</p>
+
+<p>10.多个文件编译</p>
+
+<pre><code>cl /c a.c
+cl /c b.c
+link b.obj a.obj
+</code></pre>
 
         </div>
 

@@ -7,11 +7,9 @@ tags: [python]
 ---
 {% include JB/setup %}
 
-<ul>
-    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-    <li>本文地址：http://xpmozong.github.io/python/2012/11/11/django-blog-admin/</li>
-    <li>转载请注明出处</li>
-</ul>
+*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
+*	本文地址：http://xpmozong.github.io/python/2012/11/11/django-blog-admin/
+*	转载请注明出处
 
 先django-admin startproject mysite创建一个项目
 cd mysite
@@ -28,14 +26,18 @@ manage.py startapp blog  创建一个blog
 
 
 2、建表
+
 命令行
+
 manage.py syncdb
 ........
 
 3、设置自动admin应用 settings.py
+
 在django.contrib.auth下添加django.contrib.admin,mysite.blog
 
 4、再次 命令行
+
 manage.py syncdb
 ........
 

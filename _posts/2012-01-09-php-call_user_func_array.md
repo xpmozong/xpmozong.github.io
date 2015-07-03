@@ -7,13 +7,11 @@ tags: [PHP]
 ---
 {% include JB/setup %}
 
-<ul>
-    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-    <li>本文地址：http://xpmozong.github.io/php/2012/01/09/php-call_user_func_array/</li>
-    <li>转载请注明出处</li>
-</ul>
+*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
+*	本文地址：http://xpmozong.github.io/php/2012/01/09/php-call_user_func_array/
+*	转载请注明出处
 
-<p>直接上最简单的</p>
+直接上最简单的
 
     header('Content-Type:text/html;charset=utf-8');
     class call_func{
@@ -43,6 +41,6 @@ tags: [PHP]
     otest(1,1,1);
 
 
-<p>mixed call_user_func_array ( callback function, array param_arr ) 和 mixed call_user_func ( callback $function [, mixed $parameter [, mixed $... ]] ) 相似</p>
+mixed call_user_func_array ( callback function, array param_arr ) 和 mixed call_user_func ( callback $function [, mixed $parameter [, mixed $... ]] ) 相似
 
-<p>还可以这样实例化类的，厉害吧！！！</p>
+还可以这样实例化类的。

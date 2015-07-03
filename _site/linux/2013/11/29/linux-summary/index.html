@@ -167,20 +167,23 @@
         <div class="content">
             
 <ul>
-    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-    <li>本文地址：http://xpmozong.github.io/linux/2013/11/29/linux-summary/</li>
-    <li>转载请注明出处</li>
+  <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
+  <li>本文地址：http://xpmozong.github.io/linux/2013/11/29/linux-summary/</li>
+  <li>转载请注明出处</li>
 </ul>
 
 <p>1、初始安装</p>
+
 <pre><code>yum install make apr* autoconf automake gcc gcc-c++ openssl openssl-devel pcre-devel gd  kernel keyutils perl kernel-headers compat* mpfr cpp glibc libgomp libstdc++-devel ppl cloog-ppl keyutils-libs-devel libcom_err-devel libsepol-devel libselinux-devel krb5-devel zlib-devel libXpm* freetype libjpeg* libpng* ncurses* libtool* libxml2 libxml2-devel patch
 </code></pre>
 
 <p>2、日志20行</p>
+
 <pre><code>cat error.log | awk '{print $1}'|sort|uniq -c|sort -nr|head -20
 </code></pre>
 
 <p>3、运行C程序</p>
+
 <pre><code>yum -y install gcc
 yum -y install gcc-c++ 
 yum install make
@@ -189,6 +192,7 @@ gcc hello.c -o hello
 </code></pre>
 
 <p>4、加全局变量</p>
+
 <pre><code>编辑： vim /root/.bash_profile
 添加： export PATH=$PATH:/usr/local/go/bin
 运行： source /root/.bash_profile
@@ -198,18 +202,22 @@ source .bashrc
 </code></pre>
 
 <p>5、Centos查看端口占用情况命令，比如查看80端口占用情况使用如下命令：</p>
+
 <pre><code>lsof -i tcp:80
 </code></pre>
 
 <p>6、列出所有端口</p>
+
 <pre><code>netstat -ntlp
 </code></pre>
 
 <p>7、查看进程</p>
+
 <pre><code>ps -ef | grep nginx
 </code></pre>
 
 <p>8、按照这个步骤启动uwsgi</p>
+
 <pre><code>ps aux | grep uwsgi
 pkill uwsg
 screen
@@ -218,15 +226,18 @@ chown -R www:www /tmp/funny.sock
 </code></pre>
 
 <p>9、列出文件夹下文件夹大小</p>
+
 <pre><code>du -sh /data/*  
 </code></pre>
 
 <p>10、定时执行修改</p>
+
 <pre><code>crontab -e
 /etc/init.d/crond restart
 </code></pre>
 
 <p>11、复制</p>
+
 <pre><code>// 复制指定目录的文件到当前目录，并重命名
 cp ~/.bashrc bashrc_bak
 
@@ -256,10 +267,12 @@ cp -u /src/.bashrc /bak_src/bashrc
 </code></pre>
 
 <p>12、重命名文件夹</p>
+
 <pre><code>mv oldfilename newfilename
 </code></pre>
 
 <p>13、防火墙</p>
+
 <pre><code>// 关闭
 /etc/init.d/iptables stop
 // 添加例外端口 
@@ -268,14 +281,17 @@ vim /etc/sysconfig/iptables
 </code></pre>
 
 <p>14、查找文件</p>
+
 <pre><code>find / -name access_log
 </code></pre>
 
 <p>15、网桥</p>
+
 <pre><code>brctl show
 </code></pre>
 
 <p>16、noVNC</p>
+
 <pre><code>yum install python-devel
 nohup /data/noVNC/utils/launch.sh &amp;
 // 普通访问
@@ -287,6 +303,7 @@ http://192.168.1.1:6080/vnc_auto.html?host=192.168.1.1&amp;port=29876&amp;token=
 </code></pre>
 
 <p>17、virsh、qemu命令</p>
+
 <pre><code>// 远程连接
 virsh -c qemu+tls://192.168.1.1:23/system list --all
 // 创建磁盘
@@ -300,47 +317,58 @@ fusermount -u /mnt/tmp1
 </code></pre>
 
 <p>18、将文件转成镜像</p>
+
 <pre><code>mkisofs -r -o meta.iso meta.js
 </code></pre>
 
 <p>19、挂载文件</p>
+
 <pre><code>mount /dev/sr0 /media/
 </code></pre>
 
 <p>20、查看硬盘还剩多少容量</p>
+
 <pre><code>df -h
 fdisk -l
 </code></pre>
 
 <p>21、获取IP地址</p>
+
 <pre><code>dhclient -d eth0
 </code></pre>
 
 <p>22、随机生成mac地址</p>
+
 <pre><code>MACADDR="52:54:$(dd if=/dev/urandom count=1 2&gt;/dev/null | md5sum | sed 's/^\(..\)\(..\)\(..\)\(..\).*$/\1:\2:\3:\4/')"; echo $MACADDR
 </code></pre>
 
 <p>23、更改文件或文件夹所属</p>
+
 <pre><code>chown qemu.qemu /dev/kvm
 </code></pre>
 
 <p>24、修改ip</p>
+
 <pre><code>vim /etc/sysconfig/network-scripts/ifcfg-em1
 </code></pre>
 
 <p>25、查看网线有没有连接</p>
+
 <pre><code>mii-tool em2
 </code></pre>
 
 <p>26、获得掩码</p>
+
 <pre><code>cat /etc/sysconfig/network-scripts/ifcfg-public | grep -i netmask  
 </code></pre>
 
 <p>27、获得网关</p>
+
 <pre><code>route -n | awk '{print $2}' | tail -1
 </code></pre>
 
 <p>28、salt学习</p>
+
 <pre><code>salt-key -L
 salt-key -d opstest
 salt "*" grains.items
@@ -351,6 +379,7 @@ salt 'hadoop1' cp.get_file salt://test.txt /data/test.txt
 </code></pre>
 
 <p>29、SCP</p>
+
 <pre><code>// 从本地复制到远程
 scp -P 22 /data/iso/test.txt admin@192.168.1.1:/data/iso/
 // 从远程复制到本地
@@ -358,19 +387,23 @@ scp -P 22 root@192.168.1.1:/data/vm/test.txt /data/iso/test.txt
 </code></pre>
 
 <p>30、判断一文件是否存在</p>
+
 <pre><code>test -f /data/iso/centos6.3.qcow2;echo $?
 // 0为有文件，其他为无文件
 </code></pre>
 
 <p>31、ssh 登录</p>
+
 <pre><code>ssh -p 22 -i id_rsa admin@192.168.1.1
 </code></pre>
 
 <p>32、rpm删不掉的话 用这个</p>
+
 <pre><code>rpm -e opennebula-sunstone-4.0.0-1.x86_64 --noscripts
 </code></pre>
 
 <p>33、添加用户并登陆</p>
+
 <pre><code>useradd opsvmadmin
 groupadd opsvmadmin
 usermod -a -G opsvmadmin opsvmadmin
@@ -380,30 +413,37 @@ vim /etc/ssh/sshd_config
 </code></pre>
 
 <p>34、检测某段内ip是否可用</p>
+
 <pre><code>fping -t 500 -g  192.168.1.1 192.168.1.128
 </code></pre>
 
 <p>35、ll 不可用的时候</p>
+
 <pre><code>vim ~/.bashrc  alias ll='ls -l --color=auto'
 </code></pre>
 
 <p>36、看某个文件逐渐增加的</p>
+
 <pre><code>watch "ls -l"
 </code></pre>
 
 <p>37、打包</p>
+
 <pre><code>tar zcvf noVNC.tar.gz noVNC/
 </code></pre>
 
 <p>38、证书使用包</p>
+
 <pre><code>yum install -y gnutls-utils
 </code></pre>
 
 <p>39、查看iptables 列表</p>
+
 <pre><code>iptables -L -n
 </code></pre>
 
 <p>40、输出CPU使用率、输出内存使用率</p>
+
 <pre><code>cat /proc/stat | grep cpu | head -1 | awk '{sum=$2+$3+$4+$5+$6+$7+$8;use=$2+$3+$4+$6+$7+$8;printf "%s\t%.2f%%\n",$1,(use*100/sum)}'
 free | grep Mem: | awk '{use=$3-$6-$7;printf "%s\t%.2f%%\n",$1,(use*100/$2)}'
 </code></pre>

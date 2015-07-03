@@ -7,11 +7,9 @@ tags: [IOS,OC]
 ---
 {% include JB/setup %}
 
-<ul>
-    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-    <li>本文地址：http://xpmozong.github.io/ios,oc/2014/04/12/oc-extension/</li>
-    <li>转载请注明出处</li>
-</ul>
+*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
+*	本文地址：http://xpmozong.github.io/ios,oc/2014/04/12/oc-extension/
+*	转载请注明出处
 
 OC Extension 的主要作用是为类添加“私有”方法，外部不能调用。
 
@@ -28,7 +26,6 @@ Extension 管理类的私有方法。
 Category 定义一对.h和.m 文件
 
 Extension 把代码写到原有类的.m文件中
-
 
 Extension 用法如下：
 

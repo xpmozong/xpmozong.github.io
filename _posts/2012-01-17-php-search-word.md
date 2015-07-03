@@ -7,13 +7,12 @@ tags: [PHP]
 ---
 {% include JB/setup %}
 
-<ul>
-    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-    <li>本文地址：http://xpmozong.github.io/php/2012/01/17/php-search-word/</li>
-    <li>转载请注明出处</li>
-</ul>
+*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
+*	本文地址：http://xpmozong.github.io/php/2012/01/17/php-search-word/
+*	转载请注明出处
 
-<p>在写这个程序之前，先回忆相关的代码。</p>
+在写这个程序之前，先回忆相关的代码。
+
 1、
 
     $file = "aa.txt "; 
@@ -26,7 +25,7 @@ tags: [PHP]
     $txt = file('aa.txt');
     echo $txt[2];die;   //输出第三行
 
-<p>3、有一个很大的日志文件，要读出最后100行，怎么办？</p>
+3、有一个很大的日志文件，要读出最后100行，怎么办？
 
     $commandstr="tail -n 100 aa.txt>online.txt"; //把server.log的最后100行重定向到online.txt中
     system($commandstr); //调用系统命令
@@ -37,9 +36,9 @@ tags: [PHP]
     }
     fclose($file_handle); //关闭文件
 
-<p>注意，要把online.txt文件的属性设为777，还有上面程序只对linux系统下有效。</p>
+注意，要把online.txt文件的属性设为777，还有上面程序只对linux系统下有效。
 
-<p>4、现在开始标题的程序吧</p>
+4、现在开始标题的程序吧
 
     $txt = file('aa.txt');
     foreach($txt as $key=>$value) {

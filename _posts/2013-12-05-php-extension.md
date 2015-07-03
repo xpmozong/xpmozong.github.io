@@ -7,11 +7,9 @@ tags: [PHP]
 ---
 {% include JB/setup %}
 
-<ul>
-    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-    <li>本文地址：http://xpmozong.github.io/php/2013/12/05/php-extension/</li>
-    <li>转载请注明出处</li>
-</ul>
+*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
+*	本文地址：http://xpmozong.github.io/php/2013/12/05/php-extension/
+*	转载请注明出处
 
 学习PHP扩展开发，是PHPer的必学课程。接着上一节课程，<a href="/php/2013/12/05/lnmp/" target="_blank">Linux + Nginx + Mysql + PHP 编译安装</a>。
 
@@ -19,7 +17,7 @@ tags: [PHP]
 
 环境： php-5.3.16
 
-<p><b>第一步、生成代码</b></p>
+<b>第一步、生成代码</b>
 
 PHP为了扩展开发的方便，提供了一个类似代码生成器的工具ext_skel
 
@@ -29,7 +27,7 @@ PHP为了扩展开发的方便，提供了一个类似代码生成器的工具ex
 
 生成代码啦
 
-<p><b>第二步，修改配置</b></p>
+<b>第二步，修改配置</b>
 
 然后修改config.m4文件将10、11、12三行最前面的dnl删除掉，就是将
 
@@ -43,7 +41,7 @@ PHP为了扩展开发的方便，提供了一个类似代码生成器的工具ex
     Make sure that the comment is aligned:
     [  --with-hello_world             Include hello_world support])
 
-<p><b>第三步，实现功能</b></p>
+<b>第三步，实现功能</b>
 
 修改源码php_hello_world.h文件
 
@@ -73,7 +71,7 @@ PHP为了扩展开发的方便，提供了一个类似代码生成器的工具ex
             RETURN_STRINGL(strg, len, 0);
     }
 
-<p><b>第四步，编译扩展</b></p>
+<b>第四步，编译扩展</b>
 
 保存后，开始编译
 
@@ -83,7 +81,7 @@ PHP为了扩展开发的方便，提供了一个类似代码生成器的工具ex
     make test
     make install
 
-<p><b>第五步，添加扩展</b></p>
+<b>第五步，添加扩展</b>
 
 现在看看是不是有个 /usr/local/php/lib/php/extensions/no-debug-non-zts-20090626/hello_world.so
 
@@ -95,7 +93,7 @@ PHP为了扩展开发的方便，提供了一个类似代码生成器的工具ex
 
 保存退出。
 
-<p><b>第六步，检查安装结果</b></p>
+<b>第六步，检查安装结果</b>
 
 编辑test.php文件
 

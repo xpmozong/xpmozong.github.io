@@ -7,11 +7,9 @@ tags: [iOS]
 ---
 {% include JB/setup %}
 
-<ul>
-    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-    <li>本文地址：http://xpmozong.github.io/ios/2014/11/05/ios-fmdb-sqlite/</li>
-    <li>转载请注明出处</li>
-</ul>
+*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
+*	本文地址：http://xpmozong.github.io/ios/2014/11/05/ios-fmdb-sqlite/
+*	转载请注明出处
 
 1、在使用FMDB的时候，总是出现崩溃的情况，报错信息总是提示某某表被锁住。为了解决这一问题，我做了封装。
 

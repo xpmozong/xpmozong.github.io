@@ -7,11 +7,9 @@ tags: [IOS,OC]
 ---
 {% include JB/setup %}
 
-<ul>
-    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-    <li>本文地址：http://xpmozong.github.io/ios,oc/2014/04/12/oc-category/</li>
-    <li>转载请注明出处</li>
-</ul>
+*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
+*	本文地址：http://xpmozong.github.io/ios,oc/2014/04/12/oc-category/
+*	转载请注明出处
 
 OC 有个很重要的特性，Category，类目，类目的主要作用是为 没有源代码的类添加方法。
 

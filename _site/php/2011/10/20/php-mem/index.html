@@ -167,12 +167,13 @@
         <div class="content">
             
 <ul>
-    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-    <li>本文地址：http://xpmozong.github.io/php/2011/10/20/php-mem/</li>
-    <li>转载请注明出处</li>
+  <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
+  <li>本文地址：http://xpmozong.github.io/php/2011/10/20/php-mem/</li>
+  <li>转载请注明出处</li>
 </ul>
 
 <p>先来一个test1.php</p>
+
 <pre><code>class ABC{
     public $numBox = array();
     public function ddd(){
@@ -189,6 +190,7 @@ for($i = 0; $i&lt; 50; $i++){
 </code></pre>
 
 <p>这是test1.php的运行结果</p>
+
 <pre><code>Now memory_get_usage: 422728
 Now memory_get_usage: 474824
 Now memory_get_usage: 522824
@@ -206,6 +208,7 @@ Now memory_get_usage: 1027416
 </code></pre>
 
 <p>再来一个test2.php</p>
+
 <pre><code>class ABC{
     public $numBox = array();
     public function ddd(){
@@ -222,6 +225,7 @@ for($i = 0; $i &lt; 50; $i++){
 </code></pre>
 
 <p>这是test2.php的运行结果</p>
+
 <pre><code>Now memory_get_usage: 422728
 Now memory_get_usage: 422712
 Now memory_get_usage: 422712

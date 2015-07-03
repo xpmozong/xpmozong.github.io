@@ -7,11 +7,9 @@ tags: [IOS,OC]
 ---
 {% include JB/setup %}
 
-<ul>
-    <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-    <li>本文地址：http://xpmozong.github.io/ios,oc/2014/04/12/oc-property/</li>
-    <li>转载请注明出处</li>
-</ul>
+*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
+*	本文地址：http://xpmozong.github.io/ios,oc/2014/04/12/oc-property/
+*	转载请注明出处
 
     @property (nonatomic, retain) NSString *subject;
 
@@ -81,7 +79,6 @@ tags: [IOS,OC]
         self.pickerData= array;
         [array release]; // 如果不加self.就会在这里把array直接完全释放，结果array就没法用了。
     }
-
 
 
 简述内存管理的原则.
