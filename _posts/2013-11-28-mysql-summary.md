@@ -47,3 +47,23 @@ tags: [mysql]
 8、根据ids 排序
 
     select * from server_message m  where m.server_id in(4,5,2,8) order by field(m.server_id,'4,5,2,8')
+
+9、重置mysql密码的步骤
+
+    /usr/local/mysql/bin/mysqld_safe --skip-grant-tables &
+    mysql -u root mysql
+        mysql>use mysql;
+        mysql>update user set password=password("gamewave") where user="root";
+        mysql>flush privileges;
+    service mysqld restart
+
+10、导出数据库
+    
+    mysqldump -u 用户名 -p 数据库名 > 导出的文件名
+    例如：mysqldump -u root -p news > news.sql
+
+11、导入数据库
+
+    mysql>use 目标数据库名;
+    mysql>source 导入的文件名;
+

@@ -217,6 +217,29 @@ WHERE cn.file_id=628 GROUP BY cn.id
 <pre><code>select * from server_message m  where m.server_id in(4,5,2,8) order by field(m.server_id,'4,5,2,8')
 </code></pre>
 
+<p>9、重置mysql密码的步骤</p>
+
+<pre><code>/usr/local/mysql/bin/mysqld_safe --skip-grant-tables &amp;
+mysql -u root mysql
+    mysql&gt;use mysql;
+    mysql&gt;update user set password=password("gamewave") where user="root";
+    mysql&gt;flush privileges;
+service mysqld restart
+</code></pre>
+
+<p>10、导出数据库</p>
+
+<pre><code>mysqldump -u 用户名 -p 数据库名 &gt; 导出的文件名
+例如：mysqldump -u root -p news &gt; news.sql
+</code></pre>
+
+<p>11、导入数据库</p>
+
+<pre><code>mysql&gt;use 目标数据库名;
+mysql&gt;source 导入的文件名;
+</code></pre>
+
+
         </div>
 
     

@@ -4,7 +4,7 @@
     <title>寞踪的技术博客</title>
     <link href="http://xpmozong.github.io/" rel="self"/>
     <link href="http://xpmozong.github.io"/>
-    <updated>2015-07-03T16:56:38+08:00</updated>
+    <updated>2015-07-17T10:10:37+08:00</updated>
     <id>http://xpmozong.github.io</id>
     <author>
     <name>寞踪</name>
@@ -2179,6 +2179,29 @@ WHERE cn.file_id=628 GROUP BY cn.id
 
 &lt;pre&gt;&lt;code&gt;select * from server_message m  where m.server_id in(4,5,2,8) order by field(m.server_id,'4,5,2,8')
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;9、重置mysql密码的步骤&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/usr/local/mysql/bin/mysqld_safe --skip-grant-tables &amp;amp;
+mysql -u root mysql
+    mysql&amp;gt;use mysql;
+    mysql&amp;gt;update user set password=password(&quot;gamewave&quot;) where user=&quot;root&quot;;
+    mysql&amp;gt;flush privileges;
+service mysqld restart
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;10、导出数据库&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mysqldump -u 用户名 -p 数据库名 &amp;gt; 导出的文件名
+例如：mysqldump -u root -p news &amp;gt; news.sql
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;11、导入数据库&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mysql&amp;gt;use 目标数据库名;
+mysql&amp;gt;source 导入的文件名;
+&lt;/code&gt;&lt;/pre&gt;
+
 </content>
     </entry>
  
