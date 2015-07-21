@@ -41,7 +41,7 @@ PHP为了扩展开发的方便，提供了一个类似代码生成器的工具ex
     Make sure that the comment is aligned:
     [  --with-hello_world             Include hello_world support])
 
-<b>第三步，实现功能</b>
+**第三步，实现功能**
 
 修改源码php_hello_world.h文件
 
@@ -71,7 +71,7 @@ PHP为了扩展开发的方便，提供了一个类似代码生成器的工具ex
             RETURN_STRINGL(strg, len, 0);
     }
 
-<b>第四步，编译扩展</b>
+**第四步，编译扩展**
 
 保存后，开始编译
 
@@ -81,7 +81,7 @@ PHP为了扩展开发的方便，提供了一个类似代码生成器的工具ex
     make test
     make install
 
-<b>第五步，添加扩展</b>
+**第五步，添加扩展**
 
 现在看看是不是有个 /usr/local/php/lib/php/extensions/no-debug-non-zts-20090626/hello_world.so
 
@@ -93,7 +93,7 @@ PHP为了扩展开发的方便，提供了一个类似代码生成器的工具ex
 
 保存退出。
 
-<b>第六步，检查安装结果</b>
+**第六步，检查安装结果**
 
 编辑test.php文件
 
