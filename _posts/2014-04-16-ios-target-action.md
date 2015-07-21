@@ -52,7 +52,7 @@ ActionView.m的文件内容为
 
 此过程就是target/action设计模式的实现过程。
 
-<b>target/action和delegate对比
+**target/action和delegate对比**
 
 target…action
 
@@ -77,5 +77,3 @@ delegate
 注意事项：如果request方法没实现，程序会crash，如果@optional方法没实现，程序不会crash。
 
 专注点：一系列相关事件的处理（多个事件）
-
-</b>

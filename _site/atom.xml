@@ -4,7 +4,7 @@
     <title>寞踪的技术博客</title>
     <link href="http://xpmozong.github.io/" rel="self"/>
     <link href="http://xpmozong.github.io"/>
-    <updated>2015-07-17T10:10:37+08:00</updated>
+    <updated>2015-07-21T17:06:51+08:00</updated>
     <id>http://xpmozong.github.io</id>
     <author>
     <name>寞踪</name>
@@ -26,12 +26,12 @@
 
 &lt;p&gt;看了1年多的金庸武侠小说，写些读后感，就从我看的第一部金庸小说倚天屠龙记说起。&lt;/p&gt;
 
-&lt;p&gt;武林争端：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;武林争端：&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;武林至尊，宝刀屠龙，号令天下，莫敢不从，倚天不出，谁与争锋。武林的一切纷争，都是由这两把刀剑引起的。
 倚天屠龙记里的大魔头混元霹雳手成昆，为了报私仇，设计让金毛狮王谢逊四处杀人，为明教树下无数武林公敌。说到底，就是为报仇，掺和了一群人。&lt;/p&gt;
 
-&lt;p&gt;人物情感分析：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;人物情感分析：&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;殷素素是个漂亮，任性，聪明，对爱情不顾一切的人，她也不是特别坏，当她和殷野王设计从俞岱岩那夺到屠龙刀之后，殷野王将俞岱岩踢到江里就不管了，但是她却将俞岱岩救起来，重金让镖局的将人送到武当，但是俞岱岩被少林大力金刚指伤到残废。殷素素对张翠山一见钟情，她假扮张翠山，杀了少林很多人，就是为张翠山的三师哥报仇。所以殷素素是个矛盾的人，残忍又好心。张翠山虽然对殷素素那杀人不眨眼的手段不满，但见她对自己情深一片，不忍心看着她受伤不管。我觉得张翠山喜欢殷素素完全是因为不忍心，他不忍心拒绝别人的好意，然后日久生情。&lt;/p&gt;
 
@@ -46,7 +46,7 @@
 
 &lt;p&gt;金庸的多数小说，总是有个悲剧的男二，对女主死心塌地的追，女主却不喜欢他。宋青书为周芷若断指，因为芷若，错手杀死莫声谷，被陈友谅威胁，后被逐出武当，本来前途光明，却因为感情的事一错再错。&lt;/p&gt;
 
-&lt;p&gt;明教：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;明教：&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;光明左右使者（逍遥二使，左使杨逍，右使范遥）&lt;/p&gt;
 
@@ -62,9 +62,7 @@
 
 &lt;p&gt;金花婆婆原来是紫衫龙王黛绮丝，后来爱上来找阳顶天报仇的韩千叶。非得跟灭绝师太一较高下，不惜借屠龙刀，知道灭绝死了，又逼周芷若跟她比武，额，，，非得比出个高下才满意。&lt;/p&gt;
 
-&lt;p&gt;武当七侠宋远桥、俞莲舟、俞岱岩、张松溪、张翠山、殷梨亭、莫声谷，金庸在后记表示武当七侠兄弟般的情义比男女之情更是小说的重点。&lt;/p&gt;
-
-&lt;p&gt;六大派：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;六大派：&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;峨眉派：灭绝师太武功是灭剑式，绝剑式，四象掌，峨嵋九阳功。&lt;/p&gt;
 
@@ -78,7 +76,9 @@
 
 &lt;p&gt;武当派：张三丰太极拳太极剑法，真武七截阵。&lt;/p&gt;
 
-&lt;p&gt;武功秘籍：&lt;/p&gt;
+&lt;p&gt;武当七侠宋远桥、俞莲舟、俞岱岩、张松溪、张翠山、殷梨亭、莫声谷，金庸在后记表示武当七侠兄弟般的情义比男女之情更是小说的重点。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;武功秘籍：&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;九阳神功：源自《九阳真经》，与九阴真经相比，九阴真经偏向外用，九阳神功偏向内功。九阳神功并无明显招式，练成后，内力自生速度奇快，无穷无尽，普通拳脚也能使出绝大攻击力；防御力无可匹敌，自动护体功能反弹外力攻击；习者轻功身法胜过世上所有轻功精妙高手；更是疗伤圣典，百毒不侵，专门克破所有寒性和阴性内力。&lt;/p&gt;
 
@@ -661,7 +661,7 @@ actionView.backgroundColor = [UIColor blueColor];
 
 &lt;p&gt;此过程就是target/action设计模式的实现过程。&lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;target/action和delegate对比&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;target/action和delegate对比&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;target…action&lt;/p&gt;
 
@@ -686,8 +686,6 @@ actionView.backgroundColor = [UIColor blueColor];
 &lt;p&gt;注意事项：如果request方法没实现，程序会crash，如果@optional方法没实现，程序不会crash。&lt;/p&gt;
 
 &lt;p&gt;专注点：一系列相关事件的处理（多个事件）&lt;/p&gt;
-
-&lt;p&gt;&amp;lt;/b&amp;gt;&lt;/p&gt;
 </content>
     </entry>
  
@@ -1078,7 +1076,7 @@ wife.delegate = husband;
 
 &lt;p&gt;C语言指针&lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;一、指针变量定义&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;一、指针变量定义&lt;/strong&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;int *p = NULL;  // p 为变量名，NULL初始值，NULL恒等于0。
 &lt;/code&gt;&lt;/pre&gt;
@@ -1089,12 +1087,12 @@ wife.delegate = husband;
 int *p = &amp;amp;a;    // 指针取地址
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;b&gt;二、指针重新赋值&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;二、指针重新赋值&lt;/strong&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;*p = 100;   // (*p) 代表 a，p代表a的地址
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;b&gt;三、指针数组&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;三、指针数组&lt;/strong&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;int arr[3] = {1,3,8};
 &lt;/code&gt;&lt;/pre&gt;
@@ -1111,20 +1109,20 @@ int *p = &amp;amp;a;    // 指针取地址
 恒等于&lt;em&gt;(p+1)
 恒等于&lt;/em&gt;(a+1)&lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;四、指针与字符串&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;四、指针与字符串&lt;/strong&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;char string[] = &quot;iPhone&quot;;
 char *p = string;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;b&gt;五、指针数组&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;五、指针数组&lt;/strong&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;char *strings[3] = {&quot;iPhone&quot;, &quot;Android&quot;, &quot;win8&quot;};
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;注意可以通过指针来修改字符数组，但不可以修改字符串。修改用strcopy。&lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;六、结构体指针&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;六、结构体指针&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;定义一个结构体&lt;/p&gt;
 
@@ -1147,7 +1145,7 @@ p-&amp;gt;sex = 'm';
 printf(&quot;%c\n&quot;, p-&amp;gt;sex); 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;b&gt;七、结构体数组&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;七、结构体数组&lt;/strong&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;Student stus[3] = {
     {&quot;Ellen&quot;, 'f'},
@@ -1160,12 +1158,12 @@ for(int i = 0, i &amp;lt; 3, i++){
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;b&gt;八、结构体指针为函数参数&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;八、结构体指针为函数参数&lt;/strong&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;void printStudents(const Student *pStu, int count);
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;b&gt;九、函数指针定义&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;九、函数指针定义&lt;/strong&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;int maxValue(int a, int b)
 {
@@ -1177,7 +1175,7 @@ p = maxValue;   // 赋值函数名
 int m = p(3,5); // 指针可当函数用
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;b&gt;十、函数指针回调函数&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;十、函数指针回调函数&lt;/strong&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;int getValue(int a, int b, int (*p)(int,int))
 {
@@ -1190,7 +1188,7 @@ int m = p(3,5); // 指针可当函数用
 &lt;pre&gt;&lt;code&gt;int value = getValue(3,5, maxValue);
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;b&gt;十一、用函数指针回调函数的案例&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;十一、用函数指针回调函数的案例&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;新建 Student.h 和 Student.m 文件&lt;/p&gt;
 
@@ -1356,7 +1354,7 @@ void printArray(const Student *pArr, const int count)
 
 &lt;p&gt;环境： php-5.3.16&lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;第一步、生成代码&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第一步、生成代码&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;PHP为了扩展开发的方便，提供了一个类似代码生成器的工具ext_skel&lt;/p&gt;
 
@@ -1367,7 +1365,7 @@ cd hello_world/
 
 &lt;p&gt;生成代码啦&lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;第二步，修改配置&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第二步，修改配置&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;然后修改config.m4文件将10、11、12三行最前面的dnl删除掉，就是将&lt;/p&gt;
 
