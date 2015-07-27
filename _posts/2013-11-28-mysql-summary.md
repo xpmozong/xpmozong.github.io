@@ -53,7 +53,7 @@ tags: [mysql]
     /usr/local/mysql/bin/mysqld_safe --skip-grant-tables &
     mysql -u root mysql
         mysql>use mysql;
-        mysql>update user set password=password("gamewave") where user="root";
+        mysql>update user set password=password("abcdef") where user="root";
         mysql>flush privileges;
     service mysqld restart
 

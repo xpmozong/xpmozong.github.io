@@ -5,8 +5,8 @@
         <description>寞踪的技术博客 - 寞踪</description>
         <link>http://xpmozong.github.io</link>
         <link>http://xpmozong.github.io</link>
-        <lastBuildDate>2015-07-21T17:06:51+08:00</lastBuildDate>
-        <pubDate>2015-07-21T17:06:51+08:00</pubDate>
+        <lastBuildDate>2015-07-27T16:30:09+08:00</lastBuildDate>
+        <pubDate>2015-07-27T16:30:09+08:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -1376,7 +1376,7 @@ Make sure that the comment is aligned:
 [  --with-hello_world             Include hello_world support])
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;b&gt;第三步，实现功能&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第三步，实现功能&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;修改源码php_hello_world.h文件&lt;/p&gt;
 
@@ -1409,7 +1409,7 @@ Make sure that the comment is aligned:
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;b&gt;第四步，编译扩展&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第四步，编译扩展&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;保存后，开始编译&lt;/p&gt;
 
@@ -1420,7 +1420,7 @@ make test
 make install
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;b&gt;第五步，添加扩展&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第五步，添加扩展&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;现在看看是不是有个 /usr/local/php/lib/php/extensions/no-debug-non-zts-20090626/hello_world.so&lt;/p&gt;
 
@@ -1433,7 +1433,7 @@ extension = hello_world.so
 
 &lt;p&gt;保存退出。&lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;第六步，检查安装结果&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第六步，检查安装结果&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;编辑test.php文件&lt;/p&gt;
 
@@ -2178,7 +2178,7 @@ WHERE cn.file_id=628 GROUP BY cn.id
 &lt;pre&gt;&lt;code&gt;/usr/local/mysql/bin/mysqld_safe --skip-grant-tables &amp;amp;
 mysql -u root mysql
     mysql&amp;gt;use mysql;
-    mysql&amp;gt;update user set password=password(&quot;gamewave&quot;) where user=&quot;root&quot;;
+    mysql&amp;gt;update user set password=password(&quot;abcdef&quot;) where user=&quot;root&quot;;
     mysql&amp;gt;flush privileges;
 service mysqld restart
 &lt;/code&gt;&lt;/pre&gt;

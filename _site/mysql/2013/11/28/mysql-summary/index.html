@@ -222,7 +222,7 @@ WHERE cn.file_id=628 GROUP BY cn.id
 <pre><code>/usr/local/mysql/bin/mysqld_safe --skip-grant-tables &amp;
 mysql -u root mysql
     mysql&gt;use mysql;
-    mysql&gt;update user set password=password("gamewave") where user="root";
+    mysql&gt;update user set password=password("abcdef") where user="root";
     mysql&gt;flush privileges;
 service mysqld restart
 </code></pre>
