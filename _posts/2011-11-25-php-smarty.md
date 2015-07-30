@@ -17,21 +17,31 @@ tags: [PHP,smarty]
 
 加入以下代码
 
-    // 循环创建目录 
+    /** 
+	 * 循环创建目录
+	 * 
+	 * @param string $dir 文件夹
+	 * @param $mode 文件夹权限
+	 * @return bool
+	 * 
+	 */ 
     function mk_dir($dir, $mode = 0777) 
     { 
         if($dir == '') return true;
         if (is_dir($dir) || @mkdir($dir,$mode)) return true; 
-        if (!$this->mk_dir(dirname($dir),$mode)) return false; 
+        if (!$this->mk_dir(dirname($dir),$mode)) return false;
+
         return @mkdir($dir,$mode); 
     } 
 
     /**
      * 页面静态化
      * 
-     * @param string $file_name  
+     * @param string $filedir  
+     * @param string $file_name 
      * @param string $content
-     *
+     * @return bool
+     * 
      */
     function makeHtmlFile($filedir, $file_name, $content)
     {
@@ -62,7 +72,7 @@ tags: [PHP,smarty]
 
     //  $smarty->display('index.html');
     $content = $smarty->fetch('index.html');
-    $smarty->makeHtmlFile('html/index.html',$content);//生成
+    $smarty->makeHtmlFile('html', 'index.html', $content);//生成
 
 
 然后到html目录下，查看，就可以看到生成的静态化文件。

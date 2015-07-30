@@ -4,7 +4,7 @@
     <title>寞踪的技术博客</title>
     <link href="http://xpmozong.github.io/" rel="self"/>
     <link href="http://xpmozong.github.io"/>
-    <updated>2015-07-27T16:30:09+08:00</updated>
+    <updated>2015-07-30T11:36:33+08:00</updated>
     <id>http://xpmozong.github.io</id>
     <author>
     <name>寞踪</name>
@@ -3436,21 +3436,31 @@ $db1-&amp;gt;close();
 
 &lt;p&gt;加入以下代码&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;// 循环创建目录 
+&lt;pre&gt;&lt;code&gt;/** 
+ * 循环创建目录
+ * 
+ * @param string $dir 文件夹
+ * @param $mode 文件夹权限
+ * @return bool
+ * 
+ */ 
 function mk_dir($dir, $mode = 0777) 
 { 
     if($dir == '') return true;
     if (is_dir($dir) || @mkdir($dir,$mode)) return true; 
-    if (!$this-&amp;gt;mk_dir(dirname($dir),$mode)) return false; 
+    if (!$this-&amp;gt;mk_dir(dirname($dir),$mode)) return false;
+
     return @mkdir($dir,$mode); 
 } 
 
 /**
  * 页面静态化
  * 
- * @param string $file_name  
+ * @param string $filedir  
+ * @param string $file_name 
  * @param string $content
- *
+ * @return bool
+ * 
  */
 function makeHtmlFile($filedir, $file_name, $content)
 {
@@ -3481,7 +3491,7 @@ function makeHtmlFile($filedir, $file_name, $content)
 
 &lt;pre&gt;&lt;code&gt;//  $smarty-&amp;gt;display('index.html');
 $content = $smarty-&amp;gt;fetch('index.html');
-$smarty-&amp;gt;makeHtmlFile('html/index.html',$content);//生成
+$smarty-&amp;gt;makeHtmlFile('html', 'index.html', $content);//生成
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;然后到html目录下，查看，就可以看到生成的静态化文件。&lt;/p&gt;
