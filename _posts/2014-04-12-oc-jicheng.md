@@ -2,8 +2,8 @@
 layout: post
 title: "OC 继承"
 description: "OC 继承"
-category: "IOS,OC"
-tags: [IOS,OC]
+category: OC
+tags: [iOS,OC]
 ---
 {% include JB/setup %}
 

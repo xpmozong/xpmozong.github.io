@@ -3,8 +3,8 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>OC category 类目的使用</title>
-        <meta name="description" content="OC category 类目的使用">
+        <title>OC property 属性介绍</title>
+        <meta name="description" content="OC property 属性介绍">
         <meta name="author" content="寞踪">
 
         <!-- Enable responsive viewport -->
@@ -156,7 +156,7 @@
             <div class="content">
                 
 <div class="page-header">
-    <h1>OC category 类目的使用 </h1>
+    <h1>OC property 属性介绍 </h1>
 </div>
 
 <div class="row-fluid post-full">
@@ -168,68 +168,85 @@
             
 <ul>
   <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-  <li>本文地址：http://xpmozong.github.io/ios,oc/2014/04/12/oc-category/</li>
-  <li>转载请注明出处</li>
+  <li>本文地址：http://xpmozong.github.io/ios,oc/2014/04/12/oc-property/</li>
+  <li>
+    <p>转载请注明出处</p>
+
+    <p>@property (nonatomic, retain) NSString *subject;</p>
+  </li>
 </ul>
 
-<p>OC 有个很重要的特性，Category，类目，类目的主要作用是为 没有源代码的类添加方法。</p>
+<p>@propery属性有 atomic, nonatomic, assign, retain, copy, 作用和系统内部实现如下</p>
 
-<p>通过Category添加的方法会成为原类的一部分，从而达到扩展一个类的功能。</p>
+<p>1、 atomic, nonatomic 原子性和非原子性。</p>
 
-<p>当你使用 NSString 这个类，想要一个 sayHello 的方法，但是NSString类没有这个方法，就需要为这个类添加方法。</p>
+<p>在原子性控制上，我们通常设置为nonatomic。</p>
 
-<p>如下操作：</p>
+<p>程序开发过程中，setter、getter处处都在用，如果使用atomic，需要不断的对setter、getter加锁解锁以保证线程访问安全，会很占用系统资源，降低系统性能。</p>
 
-<p>新建文件，选择Objective-C category， 文件名Hello, Category on 选择 NSString。</p>
+<p>通常设置为nonatomic，某些属性需要线程安全的时候，才定义为atomic。</p>
 
-<p>自动生成 NSString+Hello.h 和 NSString+Hello.m 文件。</p>
+<p>2、 assign 内部实现</p>
 
-<p>在 NSString+Hello.h 文件写上</p>
-
-<pre><code>@interface NSString (Hello)
-- (void)sayHello;
-@end
-</code></pre>
-
-<p>在 NSString+Hello.m 文件写上</p>
-
-<pre><code>@implementation NSString (Hello)
-- (void)sayHello
+<pre><code>- (void)setSubject:(NSString *)subject
 {
-    NSLog(@"Hello %@", self);
+    _subject = subject;
 }
-@end
+- (NSString *)subject
+{
+    return _subject;
+}
 </code></pre>
 
-<p>你自定义的类，做好了。</p>
+<p>3、 retain 内部实现</p>
 
-<p>在main.m中，#import “NSString+Hello.h” 自定义类文件，调用代码如下：</p>
+<pre><code>- (void)setSubject:(NSString *)subject
+{
+    if (_subject != subject) {
+        [_subject release];
+        _subject = [subject retain];
+    }
+}
 
-<pre><code>NSString *str = @"Ellen";
-[str sayHello];
+- (NSString *)subject
+{
+    return [[_subject retain] autorelease];
+}
 </code></pre>
 
-<p>如果输出 Hello Ellen , 那你拓展 NSString 类就成功了。</p>
+<p>4、 copy 内部实现</p>
 
-<p>Category类目 与 Subclass子类 的区别</p>
+<pre><code>- (void)setSubject:(NSString *)subject
+{
+    if (_subject != subject) {
+        [_subject release];
+        _subject = [subject copy];
+    }
+}
 
-<p>一、功能</p>
+- (NSString *)subject
+{
+    return [[_subject retain] autorelease];
+}
+</code></pre>
 
-<p>Category只能为类添加方法</p>
+<p>总结：
+    基本数据类型等用assign，其他对象用retain或者copy，当用MRC时，需要在dealloc中release。</p>
 
-<p>Subclass既能为类添加方法也能添加变量</p>
+<p>用self和不用self时，引用计数的区别</p>
 
-<p>二、特点</p>
+<pre><code>- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    NSArray * array = [[NSArray alloc] initWithObjects:@"Luke", @"Leia", @"Han", @"Chewbacca", @"Artoo", @"Threepio", @"Lando", nil];
+    self.pickerData= array;
+    [array release]; // 如果不加self.就会在这里把array直接完全释放，结果array就没法用了。
+}
+</code></pre>
 
-<p>Category新添加的方法会成为原始类的一部分，能被子类继承。</p>
+<p>简述内存管理的原则.</p>
 
-<p>Subclass新添加的方法只有子类才有，父类不具有</p>
-
-<p>三、使用</p>
-
-<p>Category，（如果是-方法）使用原有类的实例 或者（如果是+方法）原始类调用方法</p>
-
-<p>Subclass子类才能调用，如果项目开发到尾声的时候，使用子类添加了方法，需要对已写代码做类型替换（将父类替换为子类。）</p>
+<p>答: 凡是你通过retain、alloc、copy等获得了所有权的对象，都必须在你不再使用它的时候，由你来release、autorelease等手段来释放对它的所有权。retain、alloc、copy的操作次数应该与release、autorelease操作的次数相等。可以在类的dealloc方法中释放你所占有的实例变量。对于便利构造器和访问器来说，你没有通过retain、alloc、copy获得对象的所有权，因此在这些情况下你无须对获得对象进行额外的释放操作。autorelease只不过意味着“预定延迟发送一条release”，当前引用计数并没有变。</p>
 
 
         </div>
@@ -243,8 +260,8 @@
 
   
      
-    	<li><a href="/categories.html#ios,oc-ref">
-    		ios,oc <span>5</span>
+    	<li><a href="/categories.html#oc-ref">
+    		oc <span>6</span>
     	</a></li>
     
   
@@ -262,7 +279,7 @@
 
   
      
-    	<li><a href="/tags.html#IOS-ref">IOS <span>6</span></a></li>
+    	<li><a href="/tags.html#iOS-ref">iOS <span>10</span></a></li>
      
     	<li><a href="/tags.html#OC-ref">OC <span>5</span></a></li>
     
@@ -277,11 +294,11 @@
         <div class="pagination">
             <ul>
             
-                <li class="prev"><a href="/c/2014/03/20/c-zhizhen" title="C语言指针">&larr; Previous</a></li>
+                <li class="prev"><a href="/oc/2014/04/12/oc-jicheng" title="OC 继承">&larr; Previous</a></li>
             
                 <li><a href="/archive.html">Archive</a></li>
             
-                <li class="next"><a href="/ios,oc/2014/04/12/oc-extension" title="OC extension 的使用">Next &rarr;</a></li>
+                <li class="next"><a href="/oc/2014/04/12/oc-protocal" title="OC protocal 的使用">Next &rarr;</a></li>
             
             </ul>
         </div>

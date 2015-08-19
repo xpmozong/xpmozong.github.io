@@ -2,7 +2,7 @@
 layout: post
 title: "倚天屠龙记读后感"
 description: "倚天屠龙记读后感"
-category: "book"
+category: book
 tags: [金庸]
 ---
 {% include JB/setup %}

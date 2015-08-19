@@ -2,8 +2,8 @@
 layout: post
 title: "saltstack 学习小记"
 description: "saltstack 学习小记"
-category: python
-tags: [python,saltstack]
+category: Python
+tags: [Python,saltstack]
 ---
 {% include JB/setup %}
 

@@ -2,8 +2,8 @@
 layout: post
 title: "linux 小总结"
 description: "linux 小总结"
-category: "LINUX"
-tags: [LINUX]
+category: "Linux"
+tags: [Linux]
 ---
 {% include JB/setup %}
 

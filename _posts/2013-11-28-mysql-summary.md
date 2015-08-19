@@ -2,8 +2,8 @@
 layout: post
 title: "mysql 小总结"
 description: "mysql 小总结"
-category: "mysql"
-tags: [mysql]
+category: "Mysql"
+tags: [Mysql]
 ---
 {% include JB/setup %}
 

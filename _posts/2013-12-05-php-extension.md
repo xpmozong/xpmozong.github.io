@@ -2,7 +2,7 @@
 layout: post
 title: "PHP扩展开发 - 第一个扩展"
 description: "PHP扩展开发 - 第一个扩展"
-category: "PHP"
+category: PHP
 tags: [PHP]
 ---
 {% include JB/setup %}

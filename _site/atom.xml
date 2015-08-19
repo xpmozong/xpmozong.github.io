@@ -4,7 +4,7 @@
     <title>寞踪的技术博客</title>
     <link href="http://xpmozong.github.io/" rel="self"/>
     <link href="http://xpmozong.github.io"/>
-    <updated>2015-07-30T11:36:33+08:00</updated>
+    <updated>2015-08-19T16:09:20+08:00</updated>
     <id>http://xpmozong.github.io</id>
     <author>
     <name>寞踪</name>
@@ -12,6 +12,170 @@
     </author>
 
 
+    <entry>
+        <title>php opcache使用</title>
+        <link href="http://xpmozong.github.io/php/2015/08/19/php-opcache"/>
+        <updated>2015-08-19T00:00:00+08:00</updated>
+        <id>http://xpmozong.github.io/php/2015/08/19/php-opcache</id>
+        <content type="html">
+&lt;ul&gt;
+  &lt;li&gt;作者：&lt;a href=&quot;http://weibo.com/xpmozong&quot; target=&quot;blank&quot;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;本文地址：http://xpmozong.github.io/php/2015/08/19/php-opcache/&lt;/li&gt;
+  &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;介绍&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;php opcache的缓存原理，主要是避免php重复编译，减少CPU和内存开销。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;安装&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;到http://pecl.php.net/package/ZendOpcache下载&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tar zxvf zendopcache-7.0.5.tgz
+cd zendopcache-7.0.5
+phpize
+./configure
+make &amp;amp;&amp;amp; make install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;配置&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;修改php.ini，在最后添加&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[Zend Opcache]
+zend_extension = &quot;/usr/local/php-5.4.10/lib/php/extensions/no-debug-non-zts-20100525/opcache.so&quot;
+opcache.force_restart_timeout=3600
+opcache.memory_consumption=1024
+opcache.optimization_level=1
+opcache.interned_strings_buffer=8
+opcache.max_accelerated_files=4096
+opcache.revalidate_freq=60
+opcache.fast_shutdown=1
+opcache.enable=1
+opcache.enable_cli=1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;启动&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;重启php-fpm或者apache/nginx&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;查看&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;phpinfo中，Zend OPcache&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Cache hits 
+Cache misses
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;看这两个值&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;压力测试&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;1、未使用opcache&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;./ab -n 100 -c 100 http://127.0.0.1/phpinfo.php
+
+This is ApacheBench, Version 2.3 &amp;lt;$Revision: 655654 $&amp;gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient).....done
+
+Server Software:        nginx
+Server Hostname:        127.0.0.1
+Server Port:            80
+
+Document Path:          /phpinfo.php
+Document Length:        56203 bytes
+
+Concurrency Level:      100
+Time taken for tests:   1.849 seconds
+Complete requests:      100
+Failed requests:        4
+   (Connect: 0, Receive: 0, Length: 4, Exceptions: 0)
+Write errors:           0
+Total transferred:      5635595 bytes
+HTML transferred:       5620295 bytes
+Requests per second:    54.08 [#/sec] (mean)
+Time per request:       1848.981 [ms] (mean)
+Time per request:       18.490 [ms] (mean, across all concurrent requests)
+Transfer rate:          2976.51 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    3   0.9      3       4
+Processing:    45 1190 312.7   1137    1805
+Waiting:       39 1182 316.0   1137    1805
+Total:         45 1193 312.3   1141    1807
+
+Percentage of the requests served within a certain time (ms)
+  50%   1141
+  66%   1262
+  75%   1403
+  80%   1482
+  90%   1658
+  95%   1726
+  98%   1759
+  99%   1807
+ 100%   1807 (longest request)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2、使用opcache&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;./ab -n 100 -c 100 http://127.0.0.1/phpinfo.php
+ 
+This is ApacheBench, Version 2.3 &amp;lt;$Revision: 655654 $&amp;gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient).....done
+
+Server Software:        nginx
+Server Hostname:        127.0.0.1
+Server Port:            80
+
+Document Path:          /phpinfo.php
+Document Length:        60436 bytes
+
+Concurrency Level:      100
+Time taken for tests:   0.238 seconds
+Complete requests:      100
+Failed requests:        12
+   (Connect: 0, Receive: 0, Length: 12, Exceptions: 0)
+Write errors:           0
+Total transferred:      6058888 bytes
+HTML transferred:       6043588 bytes
+Requests per second:    419.62 [#/sec] (mean)
+Time per request:       238.312 [ms] (mean)
+Time per request:       2.383 [ms] (mean, across all concurrent requests)
+Transfer rate:          24828.30 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    3   0.8      3       5
+Processing:    11  164  70.1    218     228
+Waiting:        5  164  70.3    217     228
+Total:         11  167  69.5    219     231
+
+Percentage of the requests served within a certain time (ms)
+  50%    219
+  66%    224
+  75%    226
+  80%    227
+  90%    229
+  95%    230
+  98%    231
+  99%    231
+ 100%    231 (longest request)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;结论&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;使用opcache使php执行效率提高不少。&lt;/p&gt;
+</content>
+    </entry>
+ 
     <entry>
         <title>倚天屠龙记读后感</title>
         <link href="http://xpmozong.github.io/book/2015/07/03/yitiantulongji"/>
@@ -557,9 +721,9 @@ ASIHTTPRequest *htmlRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithStrin
  
     <entry>
         <title>IOS 单例设计模式</title>
-        <link href="http://xpmozong.github.io/ios/2014/04/25/oc-danli"/>
+        <link href="http://xpmozong.github.io/oc/2014/04/25/oc-danli"/>
         <updated>2014-04-25T00:00:00+08:00</updated>
-        <id>http://xpmozong.github.io/ios/2014/04/25/oc-danli</id>
+        <id>http://xpmozong.github.io/oc/2014/04/25/oc-danli</id>
         <content type="html">
 &lt;ul&gt;
   &lt;li&gt;作者：&lt;a href=&quot;http://weibo.com/xpmozong&quot; target=&quot;blank&quot;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
@@ -691,9 +855,9 @@ actionView.backgroundColor = [UIColor blueColor];
  
     <entry>
         <title>OC protocal 的使用</title>
-        <link href="http://xpmozong.github.io/ios,oc/2014/04/12/oc-protocal"/>
+        <link href="http://xpmozong.github.io/oc/2014/04/12/oc-protocal"/>
         <updated>2014-04-12T00:00:00+08:00</updated>
-        <id>http://xpmozong.github.io/ios,oc/2014/04/12/oc-protocal</id>
+        <id>http://xpmozong.github.io/oc/2014/04/12/oc-protocal</id>
         <content type="html">
 &lt;ul&gt;
   &lt;li&gt;作者：&lt;a href=&quot;http://weibo.com/xpmozong&quot; target=&quot;blank&quot;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
@@ -807,9 +971,9 @@ wife.delegate = husband;
  
     <entry>
         <title>OC property 属性介绍</title>
-        <link href="http://xpmozong.github.io/ios,oc/2014/04/12/oc-property"/>
+        <link href="http://xpmozong.github.io/oc/2014/04/12/oc-property"/>
         <updated>2014-04-12T00:00:00+08:00</updated>
-        <id>http://xpmozong.github.io/ios,oc/2014/04/12/oc-property</id>
+        <id>http://xpmozong.github.io/oc/2014/04/12/oc-property</id>
         <content type="html">
 &lt;ul&gt;
   &lt;li&gt;作者：&lt;a href=&quot;http://weibo.com/xpmozong&quot; target=&quot;blank&quot;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
@@ -898,9 +1062,9 @@ wife.delegate = husband;
  
     <entry>
         <title>OC 继承</title>
-        <link href="http://xpmozong.github.io/ios,oc/2014/04/12/oc-jicheng"/>
+        <link href="http://xpmozong.github.io/oc/2014/04/12/oc-jicheng"/>
         <updated>2014-04-12T00:00:00+08:00</updated>
-        <id>http://xpmozong.github.io/ios,oc/2014/04/12/oc-jicheng</id>
+        <id>http://xpmozong.github.io/oc/2014/04/12/oc-jicheng</id>
         <content type="html">
 &lt;ul&gt;
   &lt;li&gt;作者：&lt;a href=&quot;http://weibo.com/xpmozong&quot; target=&quot;blank&quot;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
@@ -937,9 +1101,9 @@ wife.delegate = husband;
  
     <entry>
         <title>OC extension 的使用</title>
-        <link href="http://xpmozong.github.io/ios,oc/2014/04/12/oc-extension"/>
+        <link href="http://xpmozong.github.io/oc/2014/04/12/oc-extension"/>
         <updated>2014-04-12T00:00:00+08:00</updated>
-        <id>http://xpmozong.github.io/ios,oc/2014/04/12/oc-extension</id>
+        <id>http://xpmozong.github.io/oc/2014/04/12/oc-extension</id>
         <content type="html">
 &lt;ul&gt;
   &lt;li&gt;作者：&lt;a href=&quot;http://weibo.com/xpmozong&quot; target=&quot;blank&quot;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
@@ -990,9 +1154,9 @@ wife.delegate = husband;
  
     <entry>
         <title>OC category 类目的使用</title>
-        <link href="http://xpmozong.github.io/ios,oc/2014/04/12/oc-category"/>
+        <link href="http://xpmozong.github.io/oc/2014/04/12/oc-category"/>
         <updated>2014-04-12T00:00:00+08:00</updated>
-        <id>http://xpmozong.github.io/ios,oc/2014/04/12/oc-category</id>
+        <id>http://xpmozong.github.io/oc/2014/04/12/oc-category</id>
         <content type="html">
 &lt;ul&gt;
   &lt;li&gt;作者：&lt;a href=&quot;http://weibo.com/xpmozong&quot; target=&quot;blank&quot;&gt;寞踪&lt;/a&gt;&lt;/li&gt;

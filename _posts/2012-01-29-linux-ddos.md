@@ -2,7 +2,7 @@
 layout: post
 title: "实战DoS Deflate"
 description: "实战DoS Deflate"
-category: LINUX
+category: Linux
 tags: [Linux]
 ---
 {% include JB/setup %}

@@ -2,8 +2,8 @@
 layout: post
 title: "OC property 属性介绍"
 description: "OC property 属性介绍"
-category: "IOS,OC"
-tags: [IOS,OC]
+category: OC
+tags: [iOS,OC]
 ---
 {% include JB/setup %}
 

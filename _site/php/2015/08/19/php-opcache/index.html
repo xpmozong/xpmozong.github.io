@@ -3,8 +3,8 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>OC property 属性介绍</title>
-        <meta name="description" content="OC property 属性介绍">
+        <title>php opcache使用</title>
+        <meta name="description" content="php opcache使用">
         <meta name="author" content="寞踪">
 
         <!-- Enable responsive viewport -->
@@ -156,98 +156,171 @@
             <div class="content">
                 
 <div class="page-header">
-    <h1>OC property 属性介绍 </h1>
+    <h1>php opcache使用 </h1>
 </div>
 
 <div class="row-fluid post-full">
     <div class="span12">
         <div class="date">
-            <span>2014-04-12</span>
+            <span>2015-08-19</span>
         </div>
         <div class="content">
             
 <ul>
   <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-  <li>本文地址：http://xpmozong.github.io/ios,oc/2014/04/12/oc-property/</li>
-  <li>
-    <p>转载请注明出处</p>
-
-    <p>@property (nonatomic, retain) NSString *subject;</p>
-  </li>
+  <li>本文地址：http://xpmozong.github.io/php/2015/08/19/php-opcache/</li>
+  <li>转载请注明出处</li>
 </ul>
 
-<p>@propery属性有 atomic, nonatomic, assign, retain, copy, 作用和系统内部实现如下</p>
+<p><strong>介绍</strong></p>
 
-<p>1、 atomic, nonatomic 原子性和非原子性。</p>
+<p>php opcache的缓存原理，主要是避免php重复编译，减少CPU和内存开销。</p>
 
-<p>在原子性控制上，我们通常设置为nonatomic。</p>
+<p><strong>安装</strong></p>
 
-<p>程序开发过程中，setter、getter处处都在用，如果使用atomic，需要不断的对setter、getter加锁解锁以保证线程访问安全，会很占用系统资源，降低系统性能。</p>
+<p>到http://pecl.php.net/package/ZendOpcache下载</p>
 
-<p>通常设置为nonatomic，某些属性需要线程安全的时候，才定义为atomic。</p>
-
-<p>2、 assign 内部实现</p>
-
-<pre><code>- (void)setSubject:(NSString *)subject
-{
-    _subject = subject;
-}
-- (NSString *)subject
-{
-    return _subject;
-}
+<pre><code>tar zxvf zendopcache-7.0.5.tgz
+cd zendopcache-7.0.5
+phpize
+./configure
+make &amp;&amp; make install
 </code></pre>
 
-<p>3、 retain 内部实现</p>
+<p><strong>配置</strong></p>
 
-<pre><code>- (void)setSubject:(NSString *)subject
-{
-    if (_subject != subject) {
-        [_subject release];
-        _subject = [subject retain];
-    }
-}
+<p>修改php.ini，在最后添加</p>
 
-- (NSString *)subject
-{
-    return [[_subject retain] autorelease];
-}
+<pre><code>[Zend Opcache]
+zend_extension = "/usr/local/php-5.4.10/lib/php/extensions/no-debug-non-zts-20100525/opcache.so"
+opcache.force_restart_timeout=3600
+opcache.memory_consumption=1024
+opcache.optimization_level=1
+opcache.interned_strings_buffer=8
+opcache.max_accelerated_files=4096
+opcache.revalidate_freq=60
+opcache.fast_shutdown=1
+opcache.enable=1
+opcache.enable_cli=1
 </code></pre>
 
-<p>4、 copy 内部实现</p>
+<p><strong>启动</strong></p>
 
-<pre><code>- (void)setSubject:(NSString *)subject
-{
-    if (_subject != subject) {
-        [_subject release];
-        _subject = [subject copy];
-    }
-}
+<p>重启php-fpm或者apache/nginx</p>
 
-- (NSString *)subject
-{
-    return [[_subject retain] autorelease];
-}
+<p><strong>查看</strong></p>
+
+<p>phpinfo中，Zend OPcache</p>
+
+<pre><code>Cache hits 
+Cache misses
 </code></pre>
 
-<p>总结：
-    基本数据类型等用assign，其他对象用retain或者copy，当用MRC时，需要在dealloc中release。</p>
+<p>看这两个值</p>
 
-<p>用self和不用self时，引用计数的区别</p>
+<p><strong>压力测试</strong></p>
 
-<pre><code>- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    NSArray * array = [[NSArray alloc] initWithObjects:@"Luke", @"Leia", @"Han", @"Chewbacca", @"Artoo", @"Threepio", @"Lando", nil];
-    self.pickerData= array;
-    [array release]; // 如果不加self.就会在这里把array直接完全释放，结果array就没法用了。
-}
+<p>1、未使用opcache</p>
+
+<pre><code>./ab -n 100 -c 100 http://127.0.0.1/phpinfo.php
+
+This is ApacheBench, Version 2.3 &lt;$Revision: 655654 $&gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient).....done
+
+Server Software:        nginx
+Server Hostname:        127.0.0.1
+Server Port:            80
+
+Document Path:          /phpinfo.php
+Document Length:        56203 bytes
+
+Concurrency Level:      100
+Time taken for tests:   1.849 seconds
+Complete requests:      100
+Failed requests:        4
+   (Connect: 0, Receive: 0, Length: 4, Exceptions: 0)
+Write errors:           0
+Total transferred:      5635595 bytes
+HTML transferred:       5620295 bytes
+Requests per second:    54.08 [#/sec] (mean)
+Time per request:       1848.981 [ms] (mean)
+Time per request:       18.490 [ms] (mean, across all concurrent requests)
+Transfer rate:          2976.51 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    3   0.9      3       4
+Processing:    45 1190 312.7   1137    1805
+Waiting:       39 1182 316.0   1137    1805
+Total:         45 1193 312.3   1141    1807
+
+Percentage of the requests served within a certain time (ms)
+  50%   1141
+  66%   1262
+  75%   1403
+  80%   1482
+  90%   1658
+  95%   1726
+  98%   1759
+  99%   1807
+ 100%   1807 (longest request)
 </code></pre>
 
-<p>简述内存管理的原则.</p>
+<p>2、使用opcache</p>
 
-<p>答: 凡是你通过retain、alloc、copy等获得了所有权的对象，都必须在你不再使用它的时候，由你来release、autorelease等手段来释放对它的所有权。retain、alloc、copy的操作次数应该与release、autorelease操作的次数相等。可以在类的dealloc方法中释放你所占有的实例变量。对于便利构造器和访问器来说，你没有通过retain、alloc、copy获得对象的所有权，因此在这些情况下你无须对获得对象进行额外的释放操作。autorelease只不过意味着“预定延迟发送一条release”，当前引用计数并没有变。</p>
+<pre><code>./ab -n 100 -c 100 http://127.0.0.1/phpinfo.php
+ 
+This is ApacheBench, Version 2.3 &lt;$Revision: 655654 $&gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
 
+Benchmarking 127.0.0.1 (be patient).....done
+
+Server Software:        nginx
+Server Hostname:        127.0.0.1
+Server Port:            80
+
+Document Path:          /phpinfo.php
+Document Length:        60436 bytes
+
+Concurrency Level:      100
+Time taken for tests:   0.238 seconds
+Complete requests:      100
+Failed requests:        12
+   (Connect: 0, Receive: 0, Length: 12, Exceptions: 0)
+Write errors:           0
+Total transferred:      6058888 bytes
+HTML transferred:       6043588 bytes
+Requests per second:    419.62 [#/sec] (mean)
+Time per request:       238.312 [ms] (mean)
+Time per request:       2.383 [ms] (mean, across all concurrent requests)
+Transfer rate:          24828.30 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    3   0.8      3       5
+Processing:    11  164  70.1    218     228
+Waiting:        5  164  70.3    217     228
+Total:         11  167  69.5    219     231
+
+Percentage of the requests served within a certain time (ms)
+  50%    219
+  66%    224
+  75%    226
+  80%    227
+  90%    229
+  95%    230
+  98%    231
+  99%    231
+ 100%    231 (longest request)
+</code></pre>
+
+<p><strong>结论</strong></p>
+
+<p>使用opcache使php执行效率提高不少。</p>
 
         </div>
 
@@ -260,8 +333,8 @@
 
   
      
-    	<li><a href="/categories.html#ios,oc-ref">
-    		ios,oc <span>5</span>
+    	<li><a href="/categories.html#php-ref">
+    		php <span>13</span>
     	</a></li>
     
   
@@ -279,9 +352,7 @@
 
   
      
-    	<li><a href="/tags.html#IOS-ref">IOS <span>6</span></a></li>
-     
-    	<li><a href="/tags.html#OC-ref">OC <span>5</span></a></li>
+    	<li><a href="/tags.html#PHP-ref">PHP <span>13</span></a></li>
     
   
 
@@ -294,11 +365,11 @@
         <div class="pagination">
             <ul>
             
-                <li class="prev"><a href="/ios,oc/2014/04/12/oc-jicheng" title="OC 继承">&larr; Previous</a></li>
+                <li class="prev"><a href="/book/2015/07/03/yitiantulongji" title="倚天屠龙记读后感">&larr; Previous</a></li>
             
                 <li><a href="/archive.html">Archive</a></li>
             
-                <li class="next"><a href="/ios,oc/2014/04/12/oc-protocal" title="OC protocal 的使用">Next &rarr;</a></li>
+                <li class="next disabled"><a>Next &rarr;</a>
             
             </ul>
         </div>

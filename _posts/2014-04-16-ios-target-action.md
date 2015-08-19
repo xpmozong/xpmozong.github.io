@@ -2,7 +2,7 @@
 layout: post
 title: "iOS target/action设计模式"
 description: "iOS target/action设计模式"
-category: "iOS"
+category: iOS
 tags: [iOS]
 ---
 {% include JB/setup %}

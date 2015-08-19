@@ -2,8 +2,8 @@
 layout: post
 title: "python判断一张图片的主色调"
 description: "python判断一张图片的主色调"
-category: python
-tags: [python]
+category: Python
+tags: [Python]
 ---
 {% include JB/setup %}
 

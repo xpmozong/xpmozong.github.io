@@ -3,8 +3,8 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>OC 继承</title>
-        <meta name="description" content="OC 继承">
+        <title>OC category 类目的使用</title>
+        <meta name="description" content="OC category 类目的使用">
         <meta name="author" content="寞踪">
 
         <!-- Enable responsive viewport -->
@@ -156,7 +156,7 @@
             <div class="content">
                 
 <div class="page-header">
-    <h1>OC 继承 </h1>
+    <h1>OC category 类目的使用 </h1>
 </div>
 
 <div class="row-fluid post-full">
@@ -168,34 +168,69 @@
             
 <ul>
   <li>作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a></li>
-  <li>本文地址：http://xpmozong.github.io/ios,oc/2014/04/12/oc-jicheng/</li>
+  <li>本文地址：http://xpmozong.github.io/ios,oc/2014/04/12/oc-category/</li>
   <li>转载请注明出处</li>
 </ul>
 
-<p>OC中的继承是单向的，继承具有传递性，子类继承父类的特征和行为，子类扩展父类，更具体。</p>
+<p>OC 有个很重要的特性，Category，类目，类目的主要作用是为 没有源代码的类添加方法。</p>
 
-<p>OC中的继承,即⼀个类继承另一个类。</p>
+<p>通过Category添加的方法会成为原类的一部分，从而达到扩展一个类的功能。</p>
 
-<p>被继承的类称为⽗父类或超类。</p>
+<p>当你使用 NSString 这个类，想要一个 sayHello 的方法，但是NSString类没有这个方法，就需要为这个类添加方法。</p>
 
-<p>继承的类称为⼦子类。</p>
+<p>如下操作：</p>
 
-<p>继承的实现如下：</p>
+<p>新建文件，选择Objective-C category， 文件名Hello, Category on 选择 NSString。</p>
 
-<pre><code>#import "Person.h"
-@interface Student : Person
+<p>自动生成 NSString+Hello.h 和 NSString+Hello.m 文件。</p>
+
+<p>在 NSString+Hello.h 文件写上</p>
+
+<pre><code>@interface NSString (Hello)
+- (void)sayHello;
 @end
 </code></pre>
 
-<p>冒号前为子类名称，冒号后为父类名称</p>
+<p>在 NSString+Hello.m 文件写上</p>
 
-<p>继承的特点</p>
+<pre><code>@implementation NSString (Hello)
+- (void)sayHello
+{
+    NSLog(@"Hello %@", self);
+}
+@end
+</code></pre>
 
-<p>OC中只允许单继承。</p>
+<p>你自定义的类，做好了。</p>
 
-<p>没有父类的类称为根类,OC中的根类是NSObject(祖宗)。 继承的内容:除了私有变量之外的所有实例变量和方法。</p>
+<p>在main.m中，#import “NSString+Hello.h” 自定义类文件，调用代码如下：</p>
 
-<p>子类可以重写父类的方法。</p>
+<pre><code>NSString *str = @"Ellen";
+[str sayHello];
+</code></pre>
+
+<p>如果输出 Hello Ellen , 那你拓展 NSString 类就成功了。</p>
+
+<p>Category类目 与 Subclass子类 的区别</p>
+
+<p>一、功能</p>
+
+<p>Category只能为类添加方法</p>
+
+<p>Subclass既能为类添加方法也能添加变量</p>
+
+<p>二、特点</p>
+
+<p>Category新添加的方法会成为原始类的一部分，能被子类继承。</p>
+
+<p>Subclass新添加的方法只有子类才有，父类不具有</p>
+
+<p>三、使用</p>
+
+<p>Category，（如果是-方法）使用原有类的实例 或者（如果是+方法）原始类调用方法</p>
+
+<p>Subclass子类才能调用，如果项目开发到尾声的时候，使用子类添加了方法，需要对已写代码做类型替换（将父类替换为子类。）</p>
+
 
         </div>
 
@@ -208,8 +243,8 @@
 
   
      
-    	<li><a href="/categories.html#ios,oc-ref">
-    		ios,oc <span>5</span>
+    	<li><a href="/categories.html#oc-ref">
+    		oc <span>6</span>
     	</a></li>
     
   
@@ -227,7 +262,7 @@
 
   
      
-    	<li><a href="/tags.html#IOS-ref">IOS <span>6</span></a></li>
+    	<li><a href="/tags.html#iOS-ref">iOS <span>10</span></a></li>
      
     	<li><a href="/tags.html#OC-ref">OC <span>5</span></a></li>
     
@@ -242,11 +277,11 @@
         <div class="pagination">
             <ul>
             
-                <li class="prev"><a href="/ios,oc/2014/04/12/oc-extension" title="OC extension 的使用">&larr; Previous</a></li>
+                <li class="prev"><a href="/c/2014/03/20/c-zhizhen" title="C语言指针">&larr; Previous</a></li>
             
                 <li><a href="/archive.html">Archive</a></li>
             
-                <li class="next"><a href="/ios,oc/2014/04/12/oc-property" title="OC property 属性介绍">Next &rarr;</a></li>
+                <li class="next"><a href="/oc/2014/04/12/oc-extension" title="OC extension 的使用">Next &rarr;</a></li>
             
             </ul>
         </div>

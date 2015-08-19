@@ -2,8 +2,8 @@
 layout: post
 title: "OC protocal 的使用"
 description: "OC protocal 的使用"
-category: "IOS,OC"
-tags: [IOS,OC]
+category: OC
+tags: [iOS,OC]
 ---
 {% include JB/setup %}
 

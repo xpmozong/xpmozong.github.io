@@ -2,8 +2,8 @@
 layout: post
 title: "django1.0.4 blog Admin管理界面的激活方法"
 description: "django1.0.4 blog Admin管理界面的激活方法"
-category: python
-tags: [python]
+category: Python
+tags: [Python]
 ---
 {% include JB/setup %}
 

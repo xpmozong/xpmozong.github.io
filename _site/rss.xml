@@ -5,10 +5,174 @@
         <description>寞踪的技术博客 - 寞踪</description>
         <link>http://xpmozong.github.io</link>
         <link>http://xpmozong.github.io</link>
-        <lastBuildDate>2015-07-30T11:36:33+08:00</lastBuildDate>
-        <pubDate>2015-07-30T11:36:33+08:00</pubDate>
+        <lastBuildDate>2015-08-19T16:09:20+08:00</lastBuildDate>
+        <pubDate>2015-08-19T16:09:20+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>php opcache使用</title>
+                <description>
+&lt;ul&gt;
+  &lt;li&gt;作者：&lt;a href=&quot;http://weibo.com/xpmozong&quot; target=&quot;blank&quot;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;本文地址：http://xpmozong.github.io/php/2015/08/19/php-opcache/&lt;/li&gt;
+  &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;介绍&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;php opcache的缓存原理，主要是避免php重复编译，减少CPU和内存开销。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;安装&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;到http://pecl.php.net/package/ZendOpcache下载&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tar zxvf zendopcache-7.0.5.tgz
+cd zendopcache-7.0.5
+phpize
+./configure
+make &amp;amp;&amp;amp; make install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;配置&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;修改php.ini，在最后添加&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[Zend Opcache]
+zend_extension = &quot;/usr/local/php-5.4.10/lib/php/extensions/no-debug-non-zts-20100525/opcache.so&quot;
+opcache.force_restart_timeout=3600
+opcache.memory_consumption=1024
+opcache.optimization_level=1
+opcache.interned_strings_buffer=8
+opcache.max_accelerated_files=4096
+opcache.revalidate_freq=60
+opcache.fast_shutdown=1
+opcache.enable=1
+opcache.enable_cli=1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;启动&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;重启php-fpm或者apache/nginx&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;查看&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;phpinfo中，Zend OPcache&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Cache hits 
+Cache misses
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;看这两个值&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;压力测试&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;1、未使用opcache&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;./ab -n 100 -c 100 http://127.0.0.1/phpinfo.php
+
+This is ApacheBench, Version 2.3 &amp;lt;$Revision: 655654 $&amp;gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient).....done
+
+Server Software:        nginx
+Server Hostname:        127.0.0.1
+Server Port:            80
+
+Document Path:          /phpinfo.php
+Document Length:        56203 bytes
+
+Concurrency Level:      100
+Time taken for tests:   1.849 seconds
+Complete requests:      100
+Failed requests:        4
+   (Connect: 0, Receive: 0, Length: 4, Exceptions: 0)
+Write errors:           0
+Total transferred:      5635595 bytes
+HTML transferred:       5620295 bytes
+Requests per second:    54.08 [#/sec] (mean)
+Time per request:       1848.981 [ms] (mean)
+Time per request:       18.490 [ms] (mean, across all concurrent requests)
+Transfer rate:          2976.51 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    3   0.9      3       4
+Processing:    45 1190 312.7   1137    1805
+Waiting:       39 1182 316.0   1137    1805
+Total:         45 1193 312.3   1141    1807
+
+Percentage of the requests served within a certain time (ms)
+  50%   1141
+  66%   1262
+  75%   1403
+  80%   1482
+  90%   1658
+  95%   1726
+  98%   1759
+  99%   1807
+ 100%   1807 (longest request)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2、使用opcache&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;./ab -n 100 -c 100 http://127.0.0.1/phpinfo.php
+ 
+This is ApacheBench, Version 2.3 &amp;lt;$Revision: 655654 $&amp;gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient).....done
+
+Server Software:        nginx
+Server Hostname:        127.0.0.1
+Server Port:            80
+
+Document Path:          /phpinfo.php
+Document Length:        60436 bytes
+
+Concurrency Level:      100
+Time taken for tests:   0.238 seconds
+Complete requests:      100
+Failed requests:        12
+   (Connect: 0, Receive: 0, Length: 12, Exceptions: 0)
+Write errors:           0
+Total transferred:      6058888 bytes
+HTML transferred:       6043588 bytes
+Requests per second:    419.62 [#/sec] (mean)
+Time per request:       238.312 [ms] (mean)
+Time per request:       2.383 [ms] (mean, across all concurrent requests)
+Transfer rate:          24828.30 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    3   0.8      3       5
+Processing:    11  164  70.1    218     228
+Waiting:        5  164  70.3    217     228
+Total:         11  167  69.5    219     231
+
+Percentage of the requests served within a certain time (ms)
+  50%    219
+  66%    224
+  75%    226
+  80%    227
+  90%    229
+  95%    230
+  98%    231
+  99%    231
+ 100%    231 (longest request)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;结论&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;使用opcache使php执行效率提高不少。&lt;/p&gt;
+</description>
+                <link>http://xpmozong.github.io/php/2015/08/19/php-opcache</link>
+                <guid>http://xpmozong.github.io/php/2015/08/19/php-opcache</guid>
+                <pubDate>2015-08-19T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>倚天屠龙记读后感</title>
@@ -600,8 +764,8 @@ static Singleton *s = nil;
 &lt;/code&gt;&lt;/pre&gt;
 
 </description>
-                <link>http://xpmozong.github.io/ios/2014/04/25/oc-danli</link>
-                <guid>http://xpmozong.github.io/ios/2014/04/25/oc-danli</guid>
+                <link>http://xpmozong.github.io/oc/2014/04/25/oc-danli</link>
+                <guid>http://xpmozong.github.io/oc/2014/04/25/oc-danli</guid>
                 <pubDate>2014-04-25T00:00:00+08:00</pubDate>
         </item>
 
@@ -798,8 +962,8 @@ wife.delegate = husband;
 &lt;p&gt;整个过程就是实现协议代理的过程。&lt;/p&gt;
 
 </description>
-                <link>http://xpmozong.github.io/ios,oc/2014/04/12/oc-protocal</link>
-                <guid>http://xpmozong.github.io/ios,oc/2014/04/12/oc-protocal</guid>
+                <link>http://xpmozong.github.io/oc/2014/04/12/oc-protocal</link>
+                <guid>http://xpmozong.github.io/oc/2014/04/12/oc-protocal</guid>
                 <pubDate>2014-04-12T00:00:00+08:00</pubDate>
         </item>
 
@@ -889,8 +1053,8 @@ wife.delegate = husband;
 &lt;p&gt;答: 凡是你通过retain、alloc、copy等获得了所有权的对象，都必须在你不再使用它的时候，由你来release、autorelease等手段来释放对它的所有权。retain、alloc、copy的操作次数应该与release、autorelease操作的次数相等。可以在类的dealloc方法中释放你所占有的实例变量。对于便利构造器和访问器来说，你没有通过retain、alloc、copy获得对象的所有权，因此在这些情况下你无须对获得对象进行额外的释放操作。autorelease只不过意味着“预定延迟发送一条release”，当前引用计数并没有变。&lt;/p&gt;
 
 </description>
-                <link>http://xpmozong.github.io/ios,oc/2014/04/12/oc-property</link>
-                <guid>http://xpmozong.github.io/ios,oc/2014/04/12/oc-property</guid>
+                <link>http://xpmozong.github.io/oc/2014/04/12/oc-property</link>
+                <guid>http://xpmozong.github.io/oc/2014/04/12/oc-property</guid>
                 <pubDate>2014-04-12T00:00:00+08:00</pubDate>
         </item>
 
@@ -928,8 +1092,8 @@ wife.delegate = husband;
 
 &lt;p&gt;子类可以重写父类的方法。&lt;/p&gt;
 </description>
-                <link>http://xpmozong.github.io/ios,oc/2014/04/12/oc-jicheng</link>
-                <guid>http://xpmozong.github.io/ios,oc/2014/04/12/oc-jicheng</guid>
+                <link>http://xpmozong.github.io/oc/2014/04/12/oc-jicheng</link>
+                <guid>http://xpmozong.github.io/oc/2014/04/12/oc-jicheng</guid>
                 <pubDate>2014-04-12T00:00:00+08:00</pubDate>
         </item>
 
@@ -981,8 +1145,8 @@ wife.delegate = husband;
 &lt;p&gt;在Person.m文件添加私有方法sayHello，内部调用。&lt;/p&gt;
 
 </description>
-                <link>http://xpmozong.github.io/ios,oc/2014/04/12/oc-extension</link>
-                <guid>http://xpmozong.github.io/ios,oc/2014/04/12/oc-extension</guid>
+                <link>http://xpmozong.github.io/oc/2014/04/12/oc-extension</link>
+                <guid>http://xpmozong.github.io/oc/2014/04/12/oc-extension</guid>
                 <pubDate>2014-04-12T00:00:00+08:00</pubDate>
         </item>
 
@@ -1055,8 +1219,8 @@ wife.delegate = husband;
 &lt;p&gt;Subclass子类才能调用，如果项目开发到尾声的时候，使用子类添加了方法，需要对已写代码做类型替换（将父类替换为子类。）&lt;/p&gt;
 
 </description>
-                <link>http://xpmozong.github.io/ios,oc/2014/04/12/oc-category</link>
-                <guid>http://xpmozong.github.io/ios,oc/2014/04/12/oc-category</guid>
+                <link>http://xpmozong.github.io/oc/2014/04/12/oc-category</link>
+                <guid>http://xpmozong.github.io/oc/2014/04/12/oc-category</guid>
                 <pubDate>2014-04-12T00:00:00+08:00</pubDate>
         </item>
 

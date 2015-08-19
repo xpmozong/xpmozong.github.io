@@ -2,7 +2,7 @@
 layout: post
 title: "iOS 正则表达式"
 description: "iOS 正则表达式"
-category: "iOS"
+category: iOS
 tags: [iOS]
 ---
 {% include JB/setup %}

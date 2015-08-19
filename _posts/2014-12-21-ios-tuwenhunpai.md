@@ -2,7 +2,7 @@
 layout: post
 title: "iOS 图文混排"
 description: "iOS 图文混排 M80AttributedLabel的一些修改"
-category: "iOS"
+category: iOS
 tags: [iOS]
 ---
 {% include JB/setup %}

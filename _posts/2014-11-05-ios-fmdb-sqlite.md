@@ -2,7 +2,7 @@
 layout: post
 title: "iOS FMDB Sqlite封装"
 description: "iOS FMDB Sqlite封装"
-category: "iOS"
+category: iOS
 tags: [iOS]
 ---
 {% include JB/setup %}

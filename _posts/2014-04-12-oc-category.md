@@ -2,8 +2,8 @@
 layout: post
 title: "OC category 类目的使用"
 description: "OC category 类目的使用"
-category: "IOS,OC"
-tags: [IOS,OC]
+category: OC
+tags: [iOS,OC]
 ---
 {% include JB/setup %}
 
