@@ -5,10 +5,90 @@
         <description>寞踪的技术博客 - 寞踪</description>
         <link>http://xpmozong.github.io</link>
         <link>http://xpmozong.github.io</link>
-        <lastBuildDate>2015-08-19T16:09:20+08:00</lastBuildDate>
-        <pubDate>2015-08-19T16:09:20+08:00</pubDate>
+        <lastBuildDate>2015-10-13T17:30:43+08:00</lastBuildDate>
+        <pubDate>2015-10-13T17:30:43+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>redis 集群</title>
+                <description>
+&lt;ul&gt;
+  &lt;li&gt;作者：&lt;a href=&quot;http://weibo.com/xpmozong&quot; target=&quot;blank&quot;&gt;寞踪&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;本文地址：http://xpmozong.github.io/redis/2015/08/28/redis-jiqun/&lt;/li&gt;
+  &lt;li&gt;转载请注明出处&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;介绍&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;redis 集群部署，针对两台以上服务器的部署，一个主服务器，多个从服务器。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;安装&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tar zxvf redis-2.8.12.tar.gz
+cd redis-2.8.12
+make
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;创建文件夹并且拷贝&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mkdir /usr/redis
+
+cp redis.conf /usr/redis
+cd src
+cp redis-server /usr/redis
+cp redis-cli /usr/redis
+cp redis-benchmark /usr/redis
+cp mkreleasehdr.sh /usr/redis
+cp redis-check-aof /usr/redis
+cp redis-check-dump /usr/redis
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;修改redis.conf文件 daemonize no 改为 yes # 是否后台运行&lt;/p&gt;
+
+&lt;p&gt;复制启动文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cp redis-2.8.12/utils/redis_init_script /etc/init.d/redis
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;修改某些路径后。加入chkconfig&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;chkconfig --add redis
+service redis start/stop #启动/关闭
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;修改 vim ~/.bash_profile&lt;/p&gt;
+
+&lt;p&gt;添加一行&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PATH=$PATH:/usr/redis
+source ~/.bash_profile #重启
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;就能启动 redis-cli 了&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;主从分配&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;主服务器开启192.168.1.2:6379端口&lt;/p&gt;
+
+&lt;p&gt;从服务器修改redis.conf配置文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;slave-read-only no
+slaveof 192.168.1.2 6379
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;PHP程序主从&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;具体的PHP如何主从调用，请看&lt;a href=&quot;https://github.com/xpmozong&quot; target=&quot;_blank&quot;&gt;wavephp&lt;/a&gt;框架&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;未来架构设想&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Redis多集群，多服务器，多从服务器部署，采用zookeeper架构&lt;/p&gt;
+</description>
+                <link>http://xpmozong.github.io/redis/2015/08/28/redis-jiqun</link>
+                <guid>http://xpmozong.github.io/redis/2015/08/28/redis-jiqun</guid>
+                <pubDate>2015-08-28T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>php opcache使用</title>
