@@ -1,15 +1,12 @@
 ---
 layout: post
 title: "mysql 小总结"
-description: "mysql 小总结"
+subtitle: ""
 category: "Mysql"
+author: "寞踪"
+header-img: "img/post-bg-2015.jpg"
 tags: [Mysql]
 ---
-{% include JB/setup %}
-
-*	<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
-*	本文地址：http://xpmozong.github.io/mysql/2013/11/28/mysql-summary/
-*	转载请注明出处
 
 1、两个关联表的字段的数据需相同，这么同步
 

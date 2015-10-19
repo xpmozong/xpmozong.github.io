@@ -1,15 +1,12 @@
 ---
 layout: post
 title: "iOS 图文混排"
-description: "iOS 图文混排 M80AttributedLabel的一些修改"
+subtitle: "iOS 图文混排 M80AttributedLabel的一些修改"
 category: iOS
+author: "寞踪"
+header-img: "img/post-bg-2015.jpg"
 tags: [iOS]
 ---
-{% include JB/setup %}
-
-*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
-*	本文地址：http://xpmozong.github.io/ios/2014/12/21/ios-tuwenhunpai/
-*	转载请注明出处
 
 1、M80AttributedLabel的URL、号码、邮箱的正则匹配不是很好，我做了一些修改。
 

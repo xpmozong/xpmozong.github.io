@@ -1,15 +1,12 @@
 ---
 layout: post
 title: "smarty 生成静态化html文件"
-description: "smarty 生成静态化html文件"
+subtitle: ""
 category: PHP
+author: "寞踪"
+header-img: "img/post-bg-2015.jpg"
 tags: [PHP,smarty]
 ---
-{% include JB/setup %}
-
-*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
-*	本文地址：http://xpmozong.github.io/php/2011/11/25/php-smarty/
-*	转载请注明出处
 
 静态化网页，是个基本技能。下面是smarty静态化。
 

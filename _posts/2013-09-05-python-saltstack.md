@@ -1,15 +1,12 @@
 ---
 layout: post
 title: "saltstack 学习小记"
-description: "saltstack 学习小记"
+subtitle: ""
 category: Python
+author: "寞踪"
+header-img: "img/post-bg-2015.jpg"
 tags: [Python,saltstack]
 ---
-{% include JB/setup %}
-
-*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
-*	本文地址：http://xpmozong.github.io/python/2013/09/05/python-saltstack/
-*	转载请注明出处
 
 saltstack的基本介绍
 

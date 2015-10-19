@@ -1,15 +1,12 @@
 ---
 layout: post
 title: "PHP按比例缩放图"
-description: "PHP按比例缩放图"
+subtitle: ""
 category: PHP
+author: "寞踪"
+header-img: "img/post-bg-2015.jpg"
 tags: [PHP]
 ---
-{% include JB/setup %}
-
-*   作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
-*   本文地址：http://xpmozong.github.io/php/2011/08/08/php-thumbnails/
-*   转载请注明出处
 
 upload.php文件内容
 

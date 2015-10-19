@@ -1,15 +1,12 @@
 ---
 layout: post
 title: "django1.0.4 blog Admin管理界面的激活方法"
-description: "django1.0.4 blog Admin管理界面的激活方法"
+subtitle: ""
 category: Python
+author: "寞踪"
+header-img: "img/post-bg-2015.jpg"
 tags: [Python]
 ---
-{% include JB/setup %}
-
-*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
-*	本文地址：http://xpmozong.github.io/python/2012/11/11/django-blog-admin/
-*	转载请注明出处
 
 先django-admin startproject mysite创建一个项目
 cd mysite

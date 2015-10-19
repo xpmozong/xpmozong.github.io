@@ -1,15 +1,12 @@
 ---
 layout: post
 title: "iOS 正则表达式"
-description: "iOS 正则表达式"
+subtitle: ""
 category: iOS
+author: "寞踪"
+header-img: "img/post-bg-2015.jpg"
 tags: [iOS]
 ---
-{% include JB/setup %}
-
-*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
-*	本文地址：http://xpmozong.github.io/ios/2014/06/21/ios-zhengze/
-*	转载请注明出处
 
 熟悉php的都知道preg_match_all是一个超级强大的正则表达式函数。在数据采集的世界里，有了她，几乎是所向披靡，神挡杀神，佛挡杀佛。
 

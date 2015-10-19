@@ -1,15 +1,12 @@
 ---
 layout: post
 title: "php opcache使用"
-description: "php opcache使用"
+subtitle: ""
 category: PHP
+author: "寞踪"
+header-img: "img/post-bg-2015.jpg"
 tags: [PHP]
 ---
-{% include JB/setup %}
-
-*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
-*	本文地址：http://xpmozong.github.io/php/2015/08/19/php-opcache/
-*	转载请注明出处
 
 **介绍**
 

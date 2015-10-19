@@ -1,15 +1,12 @@
 ---
 layout: post
 title: "php查找一个单词在一个文件中的第几行第几列"
-description: "php查找一个单词在一个文件中的第几行第几列"
+subtitle: ""
 category: PHP
+author: "寞踪"
+header-img: "img/post-bg-2015.jpg"
 tags: [PHP]
 ---
-{% include JB/setup %}
-
-*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
-*	本文地址：http://xpmozong.github.io/php/2012/01/17/php-search-word/
-*	转载请注明出处
 
 在写这个程序之前，先回忆相关的代码。
 

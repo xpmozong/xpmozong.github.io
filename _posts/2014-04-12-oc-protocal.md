@@ -1,15 +1,12 @@
 ---
 layout: post
 title: "OC protocal 的使用"
-description: "OC protocal 的使用"
+subtitle: ""
 category: OC
+author: "寞踪"
+header-img: "img/post-bg-2015.jpg"
 tags: [iOS,OC]
 ---
-{% include JB/setup %}
-
-*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
-*	本文地址：http://xpmozong.github.io/ios,oc/2014/04/12/oc-protocal/
-*	转载请注明出处
 
 Protocal又名协议，协议是一套标准（一堆方法的声明），只有.h文件。
 

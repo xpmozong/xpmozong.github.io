@@ -1,15 +1,12 @@
 ---
 layout: post
 title: "PHP之call_user_func_array用法"
-description: "PHP之call_user_func_array用法"
+subtitle: ""
 category: PHP
+author: "寞踪"
+header-img: "img/post-bg-2015.jpg"
 tags: [PHP]
 ---
-{% include JB/setup %}
-
-*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
-*	本文地址：http://xpmozong.github.io/php/2012/01/09/php-call_user_func_array/
-*	转载请注明出处
 
 直接上最简单的
 

@@ -1,15 +1,12 @@
 ---
 layout: post
 title: "10+ 字符串相关的 PHP 代码片段"
-description: "10+ 字符串相关的 PHP 代码片段"
+subtitle: ""
 category: PHP
+author: "寞踪"
+header-img: "img/post-bg-2015.jpg"
 tags: [PHP]
 ---
-{% include JB/setup %}
-
-*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
-*	本文地址：http://xpmozong.github.io/php/2011/09/23/php-string/
-*	转载请注明出处
 
 1、自动移除字符串中的 HTML 标记
 

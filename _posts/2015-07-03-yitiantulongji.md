@@ -1,15 +1,12 @@
 ---
 layout: post
 title: "倚天屠龙记读后感"
-description: "倚天屠龙记读后感"
+subtitle: ""
 category: book
-tags: [金庸]
+author: "寞踪"
+header-img: "img/post-bg-2015.jpg"
+tags: [Book]
 ---
-{% include JB/setup %}
-
-*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
-*	本文地址：http://xpmozong.github.io/book/2015/07/03/yitiantulongji/
-*	转载请注明出处
 
 看了1年多的金庸武侠小说，写些读后感，就从我看的第一部金庸小说倚天屠龙记说起。
 

@@ -1,15 +1,12 @@
 ---
 layout: post
 title: "OC extension 的使用"
-description: "OC extension 的使用"
+subtitle: ""
 category: OC
+author: "寞踪"
+header-img: "img/post-bg-2015.jpg"
 tags: [iOS,OC]
 ---
-{% include JB/setup %}
-
-*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
-*	本文地址：http://xpmozong.github.io/ios,oc/2014/04/12/oc-extension/
-*	转载请注明出处
 
 OC Extension 的主要作用是为类添加“私有”方法，外部不能调用。
 

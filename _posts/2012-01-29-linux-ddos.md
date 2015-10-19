@@ -1,15 +1,12 @@
 ---
 layout: post
 title: "实战DoS Deflate"
-description: "实战DoS Deflate"
+subtitle: ""
 category: Linux
+author: "寞踪"
+header-img: "img/post-bg-2015.jpg"
 tags: [Linux]
 ---
-{% include JB/setup %}
-
-*   作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
-*   本文地址：http://xpmozong.github.io/linux/2012/01/29/linux-ddos/
-*   转载请注明出处
 
 DDoS deflate是一款免费的用来防御和减轻DDoS攻击的脚本。它通过netstat监测跟踪创建大量网络连接的IP地址，在检测到某个结点超过预设的限 制时，该程序会通过APF或IPTABLES禁止或阻挡这些IP.</p>
 

@@ -1,15 +1,12 @@
 ---
 layout: post
 title: "linux 小总结"
-description: "linux 小总结"
+subtitle: ""
 category: "Linux"
+author: "寞踪"
+header-img: "img/post-bg-2015.jpg"
 tags: [Linux]
 ---
-{% include JB/setup %}
-
-*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
-*	本文地址：http://xpmozong.github.io/linux/2013/11/29/linux-summary/
-*	转载请注明出处
 
 1、初始安装
 

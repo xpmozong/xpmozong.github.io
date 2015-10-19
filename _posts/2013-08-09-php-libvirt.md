@@ -1,15 +1,12 @@
 ---
 layout: post
 title: "libvirt-php 学习小记"
-description: "libvirt-php 学习小记"
+subtitle: ""
 category: PHP
+author: "寞踪"
+header-img: "img/post-bg-2015.jpg"
 tags: [PHP,Libvirt]
 ---
-{% include JB/setup %}
-
-*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
-*	本文地址：http://xpmozong.github.io/php/2013/08/09/php-libvirt/
-*	转载请注明出处
 
 Libvirt 库是一种实现 Linux 虚拟化功能的 Linux® API，它支持各种虚拟机监控程序，包括 Xen 和 KVM，以及 QEMU 和用于其他操作系统的一些虚拟产品。
 
@@ -218,4 +215,4 @@ php有执行libvirt的权限，但是apache、nginx没有这个权限，所以�
 
 brctl show 查看网桥
 
-跟重要的是，要有VNC啊，推荐 <a href="http://kanaka.github.io/noVNC/" target="_blank">noVNC</a>
+跟重要的是，要有VNC啊，推荐 [noVNC](http://kanaka.github.io/noVNC/)

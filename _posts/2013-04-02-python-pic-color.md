@@ -1,15 +1,12 @@
 ---
 layout: post
 title: "python判断一张图片的主色调"
-description: "python判断一张图片的主色调"
+subtitle: ""
 category: Python
+author: "寞踪"
+header-img: "img/post-bg-2015.jpg"
 tags: [Python]
 ---
-{% include JB/setup %}
-
-*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
-*	本文地址：http://xpmozong.github.io/python/2013/04/02/python-pic-color/
-*	转载请注明出处
 
 python判断一张图片的主色调，多个颜色
 

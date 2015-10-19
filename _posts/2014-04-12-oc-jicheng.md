@@ -1,15 +1,12 @@
 ---
 layout: post
 title: "OC 继承"
-description: "OC 继承"
+subtitle: ""
 category: OC
+author: "寞踪"
+header-img: "img/post-bg-2015.jpg"
 tags: [iOS,OC]
 ---
-{% include JB/setup %}
-
-*	作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
-*	本文地址：http://xpmozong.github.io/ios,oc/2014/04/12/oc-jicheng/
-*	转载请注明出处
 
 OC中的继承是单向的，继承具有传递性，子类继承父类的特征和行为，子类扩展父类，更具体。
 

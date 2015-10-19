@@ -1,15 +1,12 @@
 ---
 layout: post
-title: "redis 浅见"
-description: "redis 浅见"
-category: "redis"
-tags: [redis]
+title: "Redis 浅见"
+subtitle: ""
+category: Redis
+author: "寞踪"
+header-img: "img/post-bg-2015.jpg"
+tags: [Redis]
 ---
-{% include JB/setup %}
-
-*   作者：<a href="http://weibo.com/xpmozong" target="blank">寞踪</a>
-*   本文地址：http://xpmozong.github.io/redis/2011/08/19/redis-humble-opinion/
-*   转载请注明出处
 
 以前只会安装redis，和使用string类型，这个星期，为了使自己更懂一点，所以看了很多关于redis的文章。所以写了这篇浅谈博客，有观点不准确的地方，可以纠正我。
 
@@ -131,10 +128,8 @@ rediska，使用rediska来代替phpredis模块。
 
 用法很简单，如下：
 
-    ---
     require 'Rediska.php';
     $rediska = new Rediska();
     $rediska ->connect('127.0.0.1',6379);
     $rediska ->set('test','hello world!');
     echo $rediska ->get('test');
-    ---
