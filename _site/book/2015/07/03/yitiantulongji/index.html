@@ -53,6 +53,15 @@
     <div class="col-2-3" id="post-container">
         <div class="wrap-col">
             <div class="post mcontent clearfix">
+                <h3 class="post-title">
+                    <a href="">
+                        
+                    </a>
+                </h3>
+                
+                <ul class="post-status">
+                    <li><i class="fa fa-clock-o"></i></li>
+                </ul>
                 <p>看了1年多的金庸武侠小说，写些读后感，就从我看的第一部金庸小说倚天屠龙记说起。</p>
 
 <p><strong>武林争端：</strong></p>
@@ -150,13 +159,59 @@
 
             </div>
             
-            <!-- 多说评论框 start -->
-                <div class="comment">
-                    <div class="ds-thread"
-                    data-thread-key="xpmozong/about"
-                    data-title="倚天屠龙记读后感"
-                    data-url="http://xpmozong.github.io/about/"></div>
+            <!-- 多说 Share start -->
+            <div class="ds-share"
+                style="text-align: right"
+                data-thread-key="/book/2015/07/03/yitiantulongji"
+                data-title="倚天屠龙记读后感"
+                data-url="http://xpmozong.github.io/book/2015/07/03/yitiantulongji/"
+                data-images="http://xpmozong.github.io/img/post-bg-2015.jpg"
+                data-content="看了1年多的金庸武侠小说，写些读后感，就从我看的第一部金庸小说倚天屠龙记说起。
+
+武林争端：
+
+武林至尊，宝刀屠龙，号令天下，莫敢不从，倚天不出，谁与争锋... | 寞踪的博客 | Ellen Blog " >
+                <div class="ds-share-inline">
+                  <ul  class="ds-share-icons-16">
+                    <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                    <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                    <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                    <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                  </ul>
+                  <div class="ds-share-icons-more">
+                  </div>
                 </div>
+            <hr>
+            </div>
+            <!-- 多说 Share end-->
+            
+            <div class="pager20">
+                <ul class="pagination clearfix">
+                    
+                    <li class="previous">
+                        <a href="/ios/2014/12/21/ios-tuwenhunpai/" data-toggle="tooltip" data-placement="top" title="iOS 图文混排">
+                            <i class="fa fa-arrow-circle-o-left"></i> Previous Post
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/php/2015/08/19/php-opcache/" data-toggle="tooltip" data-placement="top" title="php opcache使用">
+                            Next Post <i class="fa fa-arrow-circle-o-right"></i>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            <!-- 多说评论框 start -->
+            <div class="comment">
+                <div class="ds-thread"
+                    data-thread-key="/book/2015/07/03/yitiantulongji"
+                    data-title="倚天屠龙记读后感"
+                    data-url="http://xpmozong.github.io/book/2015/07/03/yitiantulongji/" >
+                </div>
+            </div>
             <!-- 多说评论框 end -->
 
             <!-- Duoshuo hacking -->
@@ -265,6 +320,10 @@
                         
                     
                         
+                            <a href="/tags/#Book" title="Book" rel="2">
+                                Book
+                            </a>
+                        
                     
                 </div>
                 
@@ -336,7 +395,7 @@
     
     $(function(){
         var href = location.href;
-        var localh = document.location.protocol+"xpmozong.github.io/";
+        var localh = document.location.protocol+"://xpmozong.github.io/";
         href = href.replace(localh,"");
         var hrearr = href.split('/');
         $(".sf-menu li").removeClass('current-menu-item');
@@ -382,4 +441,22 @@
 
 
 
+
+<!-- BT hacking -->
+<input id="baId" type="hidden" value="6dcc729d6a5d5c61d7c8835eb7418d54"  />
+
+<!-- Baidu Tongji -->
+<script>
+    // dynamic User hacking by Hux
+    var _baId = document.getElementById('baId').value;
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 

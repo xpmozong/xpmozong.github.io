@@ -53,6 +53,15 @@
     <div class="col-2-3" id="post-container">
         <div class="wrap-col">
             <div class="post mcontent clearfix">
+                <h3 class="post-title">
+                    <a href="">
+                        
+                    </a>
+                </h3>
+                
+                <ul class="post-status">
+                    <li><i class="fa fa-clock-o"></i></li>
+                </ul>
                 <p>一、准备工作</p>
 
 <p>1、安装ruby，windows下推荐安装<a href="http://rubyinstaller.org/downloads/" target="_blank">rubyinstaller</a></p>
@@ -150,13 +159,61 @@ git push -u origin master
 
             </div>
             
-            <!-- 多说评论框 start -->
-                <div class="comment">
-                    <div class="ds-thread"
-                    data-thread-key="xpmozong/about"
-                    data-title="利用github jekyll 创建 blog"
-                    data-url="http://xpmozong.github.io/about/"></div>
+            <!-- 多说 Share start -->
+            <div class="ds-share"
+                style="text-align: right"
+                data-thread-key="/ruby/2013/11/27/jekyll"
+                data-title="利用github jekyll 创建 blog"
+                data-url="http://xpmozong.github.io/ruby/2013/11/27/jekyll/"
+                data-images="http://xpmozong.github.io/img/post-bg-2015.jpg"
+                data-content="一、准备工作
+
+1、安装ruby，windows下推荐安装rubyinstaller
+
+2、windows安装DevKit
+
+命令行进入刚刚安装的目录，我... | 寞踪的博客 | Ellen Blog " >
+                <div class="ds-share-inline">
+                  <ul  class="ds-share-icons-16">
+                    <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                    <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                    <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                    <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                  </ul>
+                  <div class="ds-share-icons-more">
+                  </div>
                 </div>
+            <hr>
+            </div>
+            <!-- 多说 Share end-->
+            
+            <div class="pager20">
+                <ul class="pagination clearfix">
+                    
+                    <li class="previous">
+                        <a href="/python/2013/09/05/python-saltstack/" data-toggle="tooltip" data-placement="top" title="saltstack 学习小记">
+                            <i class="fa fa-arrow-circle-o-left"></i> Previous Post
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/mysql/2013/11/28/mysql-summary/" data-toggle="tooltip" data-placement="top" title="mysql 小总结">
+                            Next Post <i class="fa fa-arrow-circle-o-right"></i>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            <!-- 多说评论框 start -->
+            <div class="comment">
+                <div class="ds-thread"
+                    data-thread-key="/ruby/2013/11/27/jekyll"
+                    data-title="利用github jekyll 创建 blog"
+                    data-url="http://xpmozong.github.io/ruby/2013/11/27/jekyll/" >
+                </div>
+            </div>
             <!-- 多说评论框 end -->
 
             <!-- Duoshuo hacking -->
@@ -265,6 +322,10 @@ git push -u origin master
                         
                     
                         
+                            <a href="/tags/#Book" title="Book" rel="2">
+                                Book
+                            </a>
+                        
                     
                 </div>
                 
@@ -336,7 +397,7 @@ git push -u origin master
     
     $(function(){
         var href = location.href;
-        var localh = document.location.protocol+"xpmozong.github.io/";
+        var localh = document.location.protocol+"://xpmozong.github.io/";
         href = href.replace(localh,"");
         var hrearr = href.split('/');
         $(".sf-menu li").removeClass('current-menu-item');
@@ -382,4 +443,22 @@ git push -u origin master
 
 
 
+
+<!-- BT hacking -->
+<input id="baId" type="hidden" value="6dcc729d6a5d5c61d7c8835eb7418d54"  />
+
+<!-- Baidu Tongji -->
+<script>
+    // dynamic User hacking by Hux
+    var _baId = document.getElementById('baId').value;
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 

@@ -57,6 +57,40 @@
 <div class="post clearfix">
     <div class="post-margin clearfix">
         <h3 class="post-title">
+            <a href="/movie/2015/11/02/liehuozhuoxin/">
+                烈火灼心观后感
+            </a>
+        </h3>
+        
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>November 2, 2015</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        有的人天生就做不了坏人，有的人天生就是十恶不赦的坏人。
+
+本性不坏的人，一不小心做了错事，会内疚一生，会想办法补偿。
+
+烈火灼心从片头开始就是紧张灰色的基调，有个灭门惨案，三个逃犯逃到别的地方生存，还收养一个小女孩，一直都相安无事，阿道当出租车司机，辛小丰当协警，陈比觉当养鱼的，他们的养女叫尾巴。七年，竟然来了个头，还很碰巧的那个头调查过那个灭门惨案，更碰巧的是，那个头能力很强，责任心强，眼光敏锐。伊警官有次找小丰谈话，他说：“我很喜欢法律，只要不触碰到底线就没事，但是越过那到线，法律不容情，所以法律既人性又无情。”
+
+就是这么令人心情沉重的电影，突然来了那么两段，让我很想笑，又笑不出来。有次追两个台湾逃犯的过程中，那个拿斧子的哥们，是来搞笑的吧，自己来那么个一下，自己掉下去了，我对这个超级无语啊，这个要是在独木桥上上，那么个一下掉到小河里，我能笑个半死，但是却在几十层楼高的地方，那...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/movie/2015/11/02/liehuozhuoxin/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
             <a href="/redis/2015/08/28/redis-jiqun/">
                 Redis 集群
             </a>
@@ -474,64 +508,19 @@ Protocal 以 @protocal，以@end结束，例如：
     </ul>
 </div>
 
-<div class="post clearfix">
-    <div class="post-margin clearfix">
-        <h3 class="post-title">
-            <a href="/oc/2014/04/12/oc-property/">
-                OC property 属性介绍
-            </a>
-        </h3>
-        
-        <div class="post-subtitle">
-            
-        </div>
-        
-        <ul class="post-status">
-            <li><i class="fa fa-clock-o"></i>April 12, 2014</li>
-        </ul>
-    </div>   
-    <div class="post-margin">
-        @property (nonatomic, retain) NSString *subject;
-
-
-@propery属性有 atomic, nonatomic, assign, retain, copy, 作用和系统内部实现如下
-
-1、 atomic, nonatomic 原子性和非原子性。
-
-在原子性控制上，我们通常设置为nonatomic。
-
-程序开发过程中，setter、getter处处都在用，如果使用atomic，需要不断的对setter、getter加锁解锁以保证线程访问安全，会很占用系统资源，降低系统性能。
-
-通常设置为nonatomic，某些属性需要线程安全的时候，才定义为atomic。
-
-2、 assign 内部实现
-
-- (void)setSubject:(NSString *)subject
-{
-    _subject = subject;
-}
-- (NSSt...
-    </div>
-    <ul class="post-social">
-        <li>
-            <a href="/oc/2014/04/12/oc-property/" class="readmore">
-                Read More <i class="fa fa-arrow-circle-o-right"></i>
-            </a>
-        </li>
-    </ul>
-</div>
-
 <!-- End Post Item -->
 <!-- Start Pagination -->
 
-<ul class="pagination clearfix">
-    
-    
-    <li class="next">
-        <a href="/page2">Older Posts <i class="fa fa-arrow-circle-o-right"></i></a>
-    </li>
-    
-</ul>
+<div class="pager10">
+    <ul class="pagination clearfix">
+        
+        
+        <li class="next">
+            <a href="/page2">Older Posts <i class="fa fa-arrow-circle-o-right"></i></a>
+        </li>
+        
+    </ul>
+</div>
 
 <!-- End Pagination -->
         </div>
@@ -620,6 +609,10 @@ Protocal 以 @protocal，以@end结束，例如：
                         
                     
                         
+                            <a href="/tags/#Book" title="Book" rel="2">
+                                Book
+                            </a>
+                        
                     
                 </div>
                 
@@ -691,7 +684,7 @@ Protocal 以 @protocal，以@end结束，例如：
     
     $(function(){
         var href = location.href;
-        var localh = document.location.protocol+"xpmozong.github.io/";
+        var localh = document.location.protocol+"://xpmozong.github.io/";
         href = href.replace(localh,"");
         var hrearr = href.split('/');
         $(".sf-menu li").removeClass('current-menu-item');
@@ -737,4 +730,22 @@ Protocal 以 @protocal，以@end结束，例如：
 
 
 
+
+<!-- BT hacking -->
+<input id="baId" type="hidden" value="6dcc729d6a5d5c61d7c8835eb7418d54"  />
+
+<!-- Baidu Tongji -->
+<script>
+    // dynamic User hacking by Hux
+    var _baId = document.getElementById('baId').value;
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 

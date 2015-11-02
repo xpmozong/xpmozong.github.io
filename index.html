@@ -36,17 +36,19 @@ description: "free as wind"
 <!-- End Post Item -->
 <!-- Start Pagination -->
 {% if paginator.total_pages > 1 %}
-<ul class="pagination clearfix">
-    {% if paginator.previous_page %}
-    <li class="previous">
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"><i class="fa fa-arrow-circle-o-left"></i> Newer Posts</a>
-    </li>
-    {% endif %}
-    {% if paginator.next_page %}
-    <li class="next">
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts <i class="fa fa-arrow-circle-o-right"></i></a>
-    </li>
-    {% endif %}
-</ul>
+<div class="pager10">
+    <ul class="pagination clearfix">
+        {% if paginator.previous_page %}
+        <li class="previous">
+            <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"><i class="fa fa-arrow-circle-o-left"></i> Newer Posts</a>
+        </li>
+        {% endif %}
+        {% if paginator.next_page %}
+        <li class="next">
+            <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts <i class="fa fa-arrow-circle-o-right"></i></a>
+        </li>
+        {% endif %}
+    </ul>
+</div>
 {% endif %}
 <!-- End Pagination -->

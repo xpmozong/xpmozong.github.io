@@ -53,6 +53,15 @@
     <div class="col-2-3" id="post-container">
         <div class="wrap-col">
             <div class="post mcontent clearfix">
+                <h3 class="post-title">
+                    <a href="">
+                        
+                    </a>
+                </h3>
+                
+                <ul class="post-status">
+                    <li><i class="fa fa-clock-o"></i></li>
+                </ul>
                 <p>1.单击“开始”，指向“所有程序”、“Microsoft Visual Studio 2010”和“Visual Studio 工具”，然后单击“Visual Studio 2010 命令提示”。</p>
 
 <p>根据计算机上的 Windows 版本和系统安全配置，可能必须右击“Visual Studio 2008 命令提示”，然后单击“以管理员身份运行”，才能成功运行按下列步骤创建的应用程序。</p>
@@ -113,13 +122,55 @@ link b.obj a.obj
 
             </div>
             
-            <!-- 多说评论框 start -->
-                <div class="comment">
-                    <div class="ds-thread"
-                    data-thread-key="xpmozong/about"
-                    data-title="用Visual Studio 2010 命令提示 运行C程序"
-                    data-url="http://xpmozong.github.io/about/"></div>
+            <!-- 多说 Share start -->
+            <div class="ds-share"
+                style="text-align: right"
+                data-thread-key="/c/2011/10/06/c"
+                data-title="用Visual Studio 2010 命令提示 运行C程序"
+                data-url="http://xpmozong.github.io/c/2011/10/06/c/"
+                data-images="http://xpmozong.github.io/img/post-bg-2015.jpg"
+                data-content="1.单击“开始”，指向“所有程序”、“Microsoft Visual Studio 2010”和“Visual Studio 工具”，然后单击“Visu... | 寞踪的博客 | Ellen Blog " >
+                <div class="ds-share-inline">
+                  <ul  class="ds-share-icons-16">
+                    <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                    <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                    <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                    <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                  </ul>
+                  <div class="ds-share-icons-more">
+                  </div>
                 </div>
+            <hr>
+            </div>
+            <!-- 多说 Share end-->
+            
+            <div class="pager20">
+                <ul class="pagination clearfix">
+                    
+                    <li class="previous">
+                        <a href="/html/2011/09/26/htaceess-speed/" data-toggle="tooltip" data-placement="top" title="前端优化，利用.htaceess控制图片，js，css缓存时间提升加载速度">
+                            <i class="fa fa-arrow-circle-o-left"></i> Previous Post
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/php/2011/10/20/php-mem/" data-toggle="tooltip" data-placement="top" title="PHP:在循环内或外实例化类在占用内存上有很大的区别">
+                            Next Post <i class="fa fa-arrow-circle-o-right"></i>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            <!-- 多说评论框 start -->
+            <div class="comment">
+                <div class="ds-thread"
+                    data-thread-key="/c/2011/10/06/c"
+                    data-title="用Visual Studio 2010 命令提示 运行C程序"
+                    data-url="http://xpmozong.github.io/c/2011/10/06/c/" >
+                </div>
+            </div>
             <!-- 多说评论框 end -->
 
             <!-- Duoshuo hacking -->
@@ -228,6 +279,10 @@ link b.obj a.obj
                         
                     
                         
+                            <a href="/tags/#Book" title="Book" rel="2">
+                                Book
+                            </a>
+                        
                     
                 </div>
                 
@@ -299,7 +354,7 @@ link b.obj a.obj
     
     $(function(){
         var href = location.href;
-        var localh = document.location.protocol+"xpmozong.github.io/";
+        var localh = document.location.protocol+"://xpmozong.github.io/";
         href = href.replace(localh,"");
         var hrearr = href.split('/');
         $(".sf-menu li").removeClass('current-menu-item');
@@ -345,4 +400,22 @@ link b.obj a.obj
 
 
 
+
+<!-- BT hacking -->
+<input id="baId" type="hidden" value="6dcc729d6a5d5c61d7c8835eb7418d54"  />
+
+<!-- Baidu Tongji -->
+<script>
+    // dynamic User hacking by Hux
+    var _baId = document.getElementById('baId').value;
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 

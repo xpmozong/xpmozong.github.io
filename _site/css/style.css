@@ -284,6 +284,8 @@ a:hover{ color:#2980b9; }
 .mcontent{ padding: 15px;}
 
 /* Pagination */
+.pager10{ padding: 10px 0;}
+.pager20{ padding: 20px 0;}
 .pagination li{ margin-right:3px; text-transform:uppercase }
 .pagination li a{ background:#343434; color:#FFF; font-size:14px; padding:10px; padding-left:15px; padding-right:15px; font-weight:bold }
 .pagination li a:hover{ background:#2980b9; color:#FFFFFF }

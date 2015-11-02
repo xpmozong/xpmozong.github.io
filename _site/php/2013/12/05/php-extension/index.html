@@ -53,6 +53,15 @@
     <div class="col-2-3" id="post-container">
         <div class="wrap-col">
             <div class="post mcontent clearfix">
+                <h3 class="post-title">
+                    <a href="">
+                        
+                    </a>
+                </h3>
+                
+                <ul class="post-status">
+                    <li><i class="fa fa-clock-o"></i></li>
+                </ul>
                 <p>学习PHP扩展开发，是PHPer的必学课程。接着上一节课程，<a href="/php/2013/12/05/lnmp/" target="_blank">Linux + Nginx + Mysql + PHP 编译安装</a>。</p>
 
 <p>需求：比如开发一个叫做 hello_world 的扩展，扩展里就一个函数 hello_world_test()，输入一个字符串，函数返回：Your input string: xxxxx! 。</p>
@@ -160,13 +169,57 @@ echo hello_world_test('My first php extension! ');
 
             </div>
             
-            <!-- 多说评论框 start -->
-                <div class="comment">
-                    <div class="ds-thread"
-                    data-thread-key="xpmozong/about"
-                    data-title="PHP扩展开发 - 第一个扩展"
-                    data-url="http://xpmozong.github.io/about/"></div>
+            <!-- 多说 Share start -->
+            <div class="ds-share"
+                style="text-align: right"
+                data-thread-key="/php/2013/12/05/php-extension"
+                data-title="PHP扩展开发 - 第一个扩展"
+                data-url="http://xpmozong.github.io/php/2013/12/05/php-extension/"
+                data-images="http://xpmozong.github.io/img/post-bg-2015.jpg"
+                data-content="学习PHP扩展开发，是PHPer的必学课程。接着上一节课程，Linux + Nginx + Mysql + PHP 编译安装。
+
+需求：比如开发一个叫做 ... | 寞踪的博客 | Ellen Blog " >
+                <div class="ds-share-inline">
+                  <ul  class="ds-share-icons-16">
+                    <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                    <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                    <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                    <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                  </ul>
+                  <div class="ds-share-icons-more">
+                  </div>
                 </div>
+            <hr>
+            </div>
+            <!-- 多说 Share end-->
+            
+            <div class="pager20">
+                <ul class="pagination clearfix">
+                    
+                    <li class="previous">
+                        <a href="/php/2013/12/05/lnmp/" data-toggle="tooltip" data-placement="top" title="Linux + Nginx + Mysql + PHP 编译安装">
+                            <i class="fa fa-arrow-circle-o-left"></i> Previous Post
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/c/2014/03/20/c-zhizhen/" data-toggle="tooltip" data-placement="top" title="C语言指针">
+                            Next Post <i class="fa fa-arrow-circle-o-right"></i>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            <!-- 多说评论框 start -->
+            <div class="comment">
+                <div class="ds-thread"
+                    data-thread-key="/php/2013/12/05/php-extension"
+                    data-title="PHP扩展开发 - 第一个扩展"
+                    data-url="http://xpmozong.github.io/php/2013/12/05/php-extension/" >
+                </div>
+            </div>
             <!-- 多说评论框 end -->
 
             <!-- Duoshuo hacking -->
@@ -275,6 +328,10 @@ echo hello_world_test('My first php extension! ');
                         
                     
                         
+                            <a href="/tags/#Book" title="Book" rel="2">
+                                Book
+                            </a>
+                        
                     
                 </div>
                 
@@ -346,7 +403,7 @@ echo hello_world_test('My first php extension! ');
     
     $(function(){
         var href = location.href;
-        var localh = document.location.protocol+"xpmozong.github.io/";
+        var localh = document.location.protocol+"://xpmozong.github.io/";
         href = href.replace(localh,"");
         var hrearr = href.split('/');
         $(".sf-menu li").removeClass('current-menu-item');
@@ -392,4 +449,22 @@ echo hello_world_test('My first php extension! ');
 
 
 
+
+<!-- BT hacking -->
+<input id="baId" type="hidden" value="6dcc729d6a5d5c61d7c8835eb7418d54"  />
+
+<!-- Baidu Tongji -->
+<script>
+    // dynamic User hacking by Hux
+    var _baId = document.getElementById('baId').value;
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 

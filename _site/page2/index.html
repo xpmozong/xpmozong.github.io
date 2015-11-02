@@ -57,6 +57,53 @@
 <div class="post clearfix">
     <div class="post-margin clearfix">
         <h3 class="post-title">
+            <a href="/oc/2014/04/12/oc-property/">
+                OC property 属性介绍
+            </a>
+        </h3>
+        
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>April 12, 2014</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        @property (nonatomic, retain) NSString *subject;
+
+
+@propery属性有 atomic, nonatomic, assign, retain, copy, 作用和系统内部实现如下
+
+1、 atomic, nonatomic 原子性和非原子性。
+
+在原子性控制上，我们通常设置为nonatomic。
+
+程序开发过程中，setter、getter处处都在用，如果使用atomic，需要不断的对setter、getter加锁解锁以保证线程访问安全，会很占用系统资源，降低系统性能。
+
+通常设置为nonatomic，某些属性需要线程安全的时候，才定义为atomic。
+
+2、 assign 内部实现
+
+- (void)setSubject:(NSString *)subject
+{
+    _subject = subject;
+}
+- (NSSt...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/oc/2014/04/12/oc-property/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
             <a href="/oc/2014/04/12/oc-jicheng/">
                 OC 继承
             </a>
@@ -500,76 +547,23 @@ gem install rdiscount --platform=ruby
     </ul>
 </div>
 
-<div class="post clearfix">
-    <div class="post-margin clearfix">
-        <h3 class="post-title">
-            <a href="/python/2013/09/05/python-saltstack/">
-                saltstack 学习小记
-            </a>
-        </h3>
-        
-        <div class="post-subtitle">
-            
-        </div>
-        
-        <ul class="post-status">
-            <li><i class="fa fa-clock-o"></i>September 5, 2013</li>
-        </ul>
-    </div>   
-    <div class="post-margin">
-        saltstack的基本介绍
-
-salt是一个新的基础平台管理工具。很短的时间即可运行并使用起来, 扩展性足以支撑管理上万台服务器，数秒钟即可完成数据传递. 经常被描述为 Func加强版+Puppet精简版。
-
-salt的安装
-
-首先添加RPM源:
-
-rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm
-
-
-1、安装服务端
-
-yum install salt-master
-
-
-可以修改配置文件，vim /etc/salt/master 将auto_accept 改为 True，这样可以自动接收客户端
-
-file_roots:
-    base:
-        - /srv/salt
-
-
-这个是可以控制上传的路径
-
-启动服务端：
-
-/etc/init.d/salt-minio...
-    </div>
-    <ul class="post-social">
-        <li>
-            <a href="/python/2013/09/05/python-saltstack/" class="readmore">
-                Read More <i class="fa fa-arrow-circle-o-right"></i>
-            </a>
-        </li>
-    </ul>
-</div>
-
 <!-- End Post Item -->
 <!-- Start Pagination -->
 
-<ul class="pagination clearfix">
-    
-    <li class="previous">
-        <a href="/"><i class="fa fa-arrow-circle-o-left"></i> Newer Posts</a>
-    </li>
-    
-    
-    <li class="next">
-        <a href="/page3">Older Posts <i class="fa fa-arrow-circle-o-right"></i></a>
-    </li>
-    
-</ul>
+<div class="pager10">
+    <ul class="pagination clearfix">
+        
+        <li class="previous">
+            <a href="/"><i class="fa fa-arrow-circle-o-left"></i> Newer Posts</a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/page3">Older Posts <i class="fa fa-arrow-circle-o-right"></i></a>
+        </li>
+        
+    </ul>
+</div>
 
 <!-- End Pagination -->
         </div>
@@ -658,6 +652,10 @@ file_roots:
                         
                     
                         
+                            <a href="/tags/#Book" title="Book" rel="2">
+                                Book
+                            </a>
+                        
                     
                 </div>
                 
@@ -729,7 +727,7 @@ file_roots:
     
     $(function(){
         var href = location.href;
-        var localh = document.location.protocol+"xpmozong.github.io/";
+        var localh = document.location.protocol+"://xpmozong.github.io/";
         href = href.replace(localh,"");
         var hrearr = href.split('/');
         $(".sf-menu li").removeClass('current-menu-item');
@@ -775,4 +773,22 @@ file_roots:
 
 
 
+
+<!-- BT hacking -->
+<input id="baId" type="hidden" value="6dcc729d6a5d5c61d7c8835eb7418d54"  />
+
+<!-- Baidu Tongji -->
+<script>
+    // dynamic User hacking by Hux
+    var _baId = document.getElementById('baId').value;
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 

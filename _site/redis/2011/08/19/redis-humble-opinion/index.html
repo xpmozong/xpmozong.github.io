@@ -53,6 +53,15 @@
     <div class="col-2-3" id="post-container">
         <div class="wrap-col">
             <div class="post mcontent clearfix">
+                <h3 class="post-title">
+                    <a href="">
+                        
+                    </a>
+                </h3>
+                
+                <ul class="post-status">
+                    <li><i class="fa fa-clock-o"></i></li>
+                </ul>
                 <p>以前只会安装redis，和使用string类型，这个星期，为了使自己更懂一点，所以看了很多关于redis的文章。所以写了这篇浅谈博客，有观点不准确的地方，可以纠正我。</p>
 
 <p>在NoSql领域中，redis占据着重要位置。她小儿精悍，被比喻作AK-47。</p>
@@ -182,13 +191,55 @@ echo $rediska -&gt;get('test');
 
             </div>
             
-            <!-- 多说评论框 start -->
-                <div class="comment">
-                    <div class="ds-thread"
-                    data-thread-key="xpmozong/about"
-                    data-title="Redis 浅见"
-                    data-url="http://xpmozong.github.io/about/"></div>
+            <!-- 多说 Share start -->
+            <div class="ds-share"
+                style="text-align: right"
+                data-thread-key="/redis/2011/08/19/redis-humble-opinion"
+                data-title="Redis 浅见"
+                data-url="http://xpmozong.github.io/redis/2011/08/19/redis-humble-opinion/"
+                data-images="http://xpmozong.github.io/img/post-bg-2015.jpg"
+                data-content="以前只会安装redis，和使用string类型，这个星期，为了使自己更懂一点，所以看了很多关于redis的文章。所以写了这篇浅谈博客，有观点不准确的地方，... | 寞踪的博客 | Ellen Blog " >
+                <div class="ds-share-inline">
+                  <ul  class="ds-share-icons-16">
+                    <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                    <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                    <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                    <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                  </ul>
+                  <div class="ds-share-icons-more">
+                  </div>
                 </div>
+            <hr>
+            </div>
+            <!-- 多说 Share end-->
+            
+            <div class="pager20">
+                <ul class="pagination clearfix">
+                    
+                    <li class="previous">
+                        <a href="/php/2011/08/08/php-thumbnails/" data-toggle="tooltip" data-placement="top" title="PHP按比例缩放图">
+                            <i class="fa fa-arrow-circle-o-left"></i> Previous Post
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/html/2011/09/23/div-flash/" data-toggle="tooltip" data-placement="top" title="DIV层遇到FLASH不显示的问题">
+                            Next Post <i class="fa fa-arrow-circle-o-right"></i>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            <!-- 多说评论框 start -->
+            <div class="comment">
+                <div class="ds-thread"
+                    data-thread-key="/redis/2011/08/19/redis-humble-opinion"
+                    data-title="Redis 浅见"
+                    data-url="http://xpmozong.github.io/redis/2011/08/19/redis-humble-opinion/" >
+                </div>
+            </div>
             <!-- 多说评论框 end -->
 
             <!-- Duoshuo hacking -->
@@ -297,6 +348,10 @@ echo $rediska -&gt;get('test');
                         
                     
                         
+                            <a href="/tags/#Book" title="Book" rel="2">
+                                Book
+                            </a>
+                        
                     
                 </div>
                 
@@ -368,7 +423,7 @@ echo $rediska -&gt;get('test');
     
     $(function(){
         var href = location.href;
-        var localh = document.location.protocol+"xpmozong.github.io/";
+        var localh = document.location.protocol+"://xpmozong.github.io/";
         href = href.replace(localh,"");
         var hrearr = href.split('/');
         $(".sf-menu li").removeClass('current-menu-item');
@@ -414,4 +469,22 @@ echo $rediska -&gt;get('test');
 
 
 
+
+<!-- BT hacking -->
+<input id="baId" type="hidden" value="6dcc729d6a5d5c61d7c8835eb7418d54"  />
+
+<!-- Baidu Tongji -->
+<script>
+    // dynamic User hacking by Hux
+    var _baId = document.getElementById('baId').value;
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 

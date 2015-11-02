@@ -57,6 +57,50 @@
 <div class="post clearfix">
     <div class="post-margin clearfix">
         <h3 class="post-title">
+            <a href="/php/2012/01/06/php-mysql/">
+                PHP连接多个mysql数据库的类
+            </a>
+        </h3>
+        
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>January 6, 2012</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        mysql.php类
+
+/*
+ * 定义一个连接类,可以访问建立多个数据库连接对象
+ *
+ * author 寞踪 http://weibo.com/xpmozong
+ *
+ */
+class mysql{
+    var $dbhost;            //数据库地址
+    var $dbuser;            //数据库用户名
+    var $dbpasswd;          //数据库密码
+    var $dbpconnect = 0;    //数据库长连接
+    var $dbname;            //数据库名称
+    var $dbchart;           //数据库链接编码
+    var $dblink;            //数据库连接对象
+    var $sql;               //sql语句...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/php/2012/01/06/php-mysql/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
             <a href="/php/2011/11/25/php-smarty/">
                 smarty 生成静态化html文件
             </a>
@@ -473,14 +517,16 @@ for ($i=0; $i&lt;=2; $i++) {
 <!-- End Post Item -->
 <!-- Start Pagination -->
 
-<ul class="pagination clearfix">
-    
-    <li class="previous">
-        <a href="/page3"><i class="fa fa-arrow-circle-o-left"></i> Newer Posts</a>
-    </li>
-    
-    
-</ul>
+<div class="pager10">
+    <ul class="pagination clearfix">
+        
+        <li class="previous">
+            <a href="/page3"><i class="fa fa-arrow-circle-o-left"></i> Newer Posts</a>
+        </li>
+        
+        
+    </ul>
+</div>
 
 <!-- End Pagination -->
         </div>
@@ -569,6 +615,10 @@ for ($i=0; $i&lt;=2; $i++) {
                         
                     
                         
+                            <a href="/tags/#Book" title="Book" rel="2">
+                                Book
+                            </a>
+                        
                     
                 </div>
                 
@@ -640,7 +690,7 @@ for ($i=0; $i&lt;=2; $i++) {
     
     $(function(){
         var href = location.href;
-        var localh = document.location.protocol+"xpmozong.github.io/";
+        var localh = document.location.protocol+"://xpmozong.github.io/";
         href = href.replace(localh,"");
         var hrearr = href.split('/');
         $(".sf-menu li").removeClass('current-menu-item');
@@ -686,4 +736,22 @@ for ($i=0; $i&lt;=2; $i++) {
 
 
 
+
+<!-- BT hacking -->
+<input id="baId" type="hidden" value="6dcc729d6a5d5c61d7c8835eb7418d54"  />
+
+<!-- Baidu Tongji -->
+<script>
+    // dynamic User hacking by Hux
+    var _baId = document.getElementById('baId').value;
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 

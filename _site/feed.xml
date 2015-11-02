@@ -5,9 +5,40 @@
     <description>寞踪的技术博客，主攻PHP，iOS，Python，Linux，C。</description>
     <link>http://xpmozong.github.io/</link>
     <atom:link href="http://xpmozong.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 02 Nov 2015 16:46:40 +0800</pubDate>
-    <lastBuildDate>Mon, 02 Nov 2015 16:46:40 +0800</lastBuildDate>
+    <pubDate>Mon, 02 Nov 2015 17:06:07 +0800</pubDate>
+    <lastBuildDate>Mon, 02 Nov 2015 17:06:07 +0800</lastBuildDate>
     <generator>Jekyll v3.0.0</generator>
+    
+      <item>
+        <title>烈火灼心观后感</title>
+        <description>&lt;p&gt;有的人天生就做不了坏人，有的人天生就是十恶不赦的坏人。&lt;/p&gt;
+
+&lt;p&gt;本性不坏的人，一不小心做了错事，会内疚一生，会想办法补偿。&lt;/p&gt;
+
+&lt;p&gt;烈火灼心从片头开始就是紧张灰色的基调，有个灭门惨案，三个逃犯逃到别的地方生存，还收养一个小女孩，一直都相安无事，阿道当出租车司机，辛小丰当协警，陈比觉当养鱼的，他们的养女叫尾巴。七年，竟然来了个头，还很碰巧的那个头调查过那个灭门惨案，更碰巧的是，那个头能力很强，责任心强，眼光敏锐。伊警官有次找小丰谈话，他说：“我很喜欢法律，只要不触碰到底线就没事，但是越过那到线，法律不容情，所以法律既人性又无情。”&lt;/p&gt;
+
+&lt;p&gt;就是这么令人心情沉重的电影，突然来了那么两段，让我很想笑，又笑不出来。有次追两个台湾逃犯的过程中，那个拿斧子的哥们，是来搞笑的吧，自己来那么个一下，自己掉下去了，我对这个超级无语啊，这个要是在独木桥上上，那么个一下掉到小河里，我能笑个半死，但是却在几十层楼高的地方，那么个一下，此处省略号。。。。。。&lt;/p&gt;
+
+&lt;p&gt;影片最后，陈比觉大发牢骚，说自己智商163，阿道和小丰这两傻逼，但是见不到尾巴，没法活，最后来句：看来这智商163跟80的没区别嘛。然后跳崖了。。。。。。&lt;/p&gt;
+
+&lt;p&gt;同样色调沉重的，我还看过另外一部电影，麦俊龙和苍井空主演的《复仇者之死》，这部电影看的让我很绝望，不知道该说些什么，在一系列的报复下，结局也很悲惨。旁观者已麻木。&lt;/p&gt;
+
+&lt;p&gt;还有一部电影，也很沉重，《狗咬狗》，真的是狗咬狗啊，为了生存，拼死命啊。&lt;/p&gt;
+
+&lt;p&gt;人心很复杂，像美国跟伊拉克的战争，有很多大兵为了前线的战友，一次又一次的去战场。辛小丰为了尾巴当GAY，有的人可以为了别人做很多无法完成的事，有的人自私起来，又不顾后果，像那个杀人犯老大，从他描述的犯罪过程中，感受不到他一丝丝的忏悔。&lt;/p&gt;
+
+&lt;p&gt;人分为三类人，牧羊犬，羊，狼。充当牧羊犬角色的人，很少，像警察之类的，大部分是羊，少部分是狼。这个看个人选择，但是面对狼，要坚决抵抗。《美国狙击手》中，他的家庭教育，是要充当牧羊犬角色的人。美国好多电影，不管是涉及文化、政治、犯罪的，都表现出来，让大众评判。&lt;/p&gt;
+</description>
+        <pubDate>Mon, 02 Nov 2015 00:00:00 +0800</pubDate>
+        <link>http://xpmozong.github.io/movie/2015/11/02/liehuozhuoxin/</link>
+        <guid isPermaLink="true">http://xpmozong.github.io/movie/2015/11/02/liehuozhuoxin/</guid>
+        
+        <category>Book</category>
+        
+        
+        <category>movie</category>
+        
+      </item>
     
       <item>
         <title>Redis 集群</title>
@@ -1029,97 +1060,6 @@ wife.delegate = husband;
         <pubDate>Sat, 12 Apr 2014 00:00:00 +0800</pubDate>
         <link>http://xpmozong.github.io/oc/2014/04/12/oc-protocal/</link>
         <guid isPermaLink="true">http://xpmozong.github.io/oc/2014/04/12/oc-protocal/</guid>
-        
-        <category>iOS</category>
-        
-        <category>OC</category>
-        
-        
-        <category>OC</category>
-        
-      </item>
-    
-      <item>
-        <title>OC property 属性介绍</title>
-        <description>&lt;pre&gt;&lt;code&gt;@property (nonatomic, retain) NSString *subject;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;@propery属性有 atomic, nonatomic, assign, retain, copy, 作用和系统内部实现如下&lt;/p&gt;
-
-&lt;p&gt;1、 atomic, nonatomic 原子性和非原子性。&lt;/p&gt;
-
-&lt;p&gt;在原子性控制上，我们通常设置为nonatomic。&lt;/p&gt;
-
-&lt;p&gt;程序开发过程中，setter、getter处处都在用，如果使用atomic，需要不断的对setter、getter加锁解锁以保证线程访问安全，会很占用系统资源，降低系统性能。&lt;/p&gt;
-
-&lt;p&gt;通常设置为nonatomic，某些属性需要线程安全的时候，才定义为atomic。&lt;/p&gt;
-
-&lt;p&gt;2、 assign 内部实现&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;- (void)setSubject:(NSString *)subject
-{
-    _subject = subject;
-}
-- (NSString *)subject
-{
-    return _subject;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;3、 retain 内部实现&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;- (void)setSubject:(NSString *)subject
-{
-    if (_subject != subject) {
-        [_subject release];
-        _subject = [subject retain];
-    }
-}
-
-- (NSString *)subject
-{
-    return [[_subject retain] autorelease];
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;4、 copy 内部实现&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;- (void)setSubject:(NSString *)subject
-{
-    if (_subject != subject) {
-        [_subject release];
-        _subject = [subject copy];
-    }
-}
-
-- (NSString *)subject
-{
-    return [[_subject retain] autorelease];
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;总结：&lt;br /&gt;
-    基本数据类型等用assign，其他对象用retain或者copy，当用MRC时，需要在dealloc中release。&lt;/p&gt;
-
-&lt;p&gt;用self和不用self时，引用计数的区别&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    NSArray * array = [[NSArray alloc] initWithObjects:@&quot;Luke&quot;, @&quot;Leia&quot;, @&quot;Han&quot;, @&quot;Chewbacca&quot;, @&quot;Artoo&quot;, @&quot;Threepio&quot;, @&quot;Lando&quot;, nil];
-    self.pickerData= array;
-    [array release]; // 如果不加self.就会在这里把array直接完全释放，结果array就没法用了。
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;简述内存管理的原则.&lt;/p&gt;
-
-&lt;p&gt;答: 凡是你通过retain、alloc、copy等获得了所有权的对象，都必须在你不再使用它的时候，由你来release、autorelease等手段来释放对它的所有权。retain、alloc、copy的操作次数应该与release、autorelease操作的次数相等。可以在类的dealloc方法中释放你所占有的实例变量。对于便利构造器和访问器来说，你没有通过retain、alloc、copy获得对象的所有权，因此在这些情况下你无须对获得对象进行额外的释放操作。autorelease只不过意味着“预定延迟发送一条release”，当前引用计数并没有变。&lt;/p&gt;
-
-</description>
-        <pubDate>Sat, 12 Apr 2014 00:00:00 +0800</pubDate>
-        <link>http://xpmozong.github.io/oc/2014/04/12/oc-property/</link>
-        <guid isPermaLink="true">http://xpmozong.github.io/oc/2014/04/12/oc-property/</guid>
         
         <category>iOS</category>
         
