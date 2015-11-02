@@ -445,7 +445,6 @@ int *p = NULL;  // p 为变量名，NULL初始值，NULL恒等于0。
         // var localh = document.location.protocol+"//127.0.0.1:4000/";
         href = href.replace(localh,"");
         var hrearr = href.split('/');
-        alert(hrearr[0]);
         $(".sf-menu li").removeClass('current-menu-item');
         if (hrearr[0] == 'about') {
             $("#about").addClass('current-menu-item');

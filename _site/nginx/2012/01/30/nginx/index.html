@@ -279,7 +279,6 @@ www.s135.com 和 blog.s135.com 域名均指向 Nginx 所在的服务器... | 寞
         // var localh = document.location.protocol+"//127.0.0.1:4000/";
         href = href.replace(localh,"");
         var hrearr = href.split('/');
-        alert(hrearr[0]);
         $(".sf-menu li").removeClass('current-menu-item');
         if (hrearr[0] == 'about') {
             $("#about").addClass('current-menu-item');
