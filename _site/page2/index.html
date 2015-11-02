@@ -1,169 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!DOCTYPE html lang="en-US">
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="寞踪的技术博客，主攻PHP，iOS，Python，Linux，C。">
-    <meta name="keyword"  content="寞踪的博客">
-    <link rel="shortcut icon" href="img/favicon.ico">
-
-    <title>寞踪的博客 | Ellen Blog</title>
-
-    <link rel="canonical" href="http://xpmozong.github.io/page2/">
-
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/hux-blog.css">
-
-    <!-- Pygments Github CSS -->
-    <link rel="stylesheet" href="/css/syntax.css">
-
-    <!-- Custom Fonts -->
-    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
-    <!-- Hux change font-awesome CDN to qiniu -->
-    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-
-    <!-- Hux Delete, sad but pending in China
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
-    css'>
-    -->
-
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- ga & ba script hoook -->
-    <script></script>
-</head>
-
-
-<!-- hack iOS CSS :active style -->
-<body ontouchstart="">
-
-    <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">寞踪的博客</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <!-- Known Issue, found by Hux:
-            <nav>'s height woule be hold on by its content.
-            so, when navbar scale out, the <nav> will cover tags.
-            also mask any touch event of tags, unfortunately.
-        -->
-        <div id="huxblog_navbar">
-            <div class="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/about/">About</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/tags/">Tags</a>
-                    </li>
-                    
-                </ul>
-            </div>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
-<script>
-    // Drop Bootstarp low-performance Navbar
-    // Use customize navbar with high-quality material design animation
-    // in high-perf jank-free CSS3 implementation
-    var $body   = document.body;
-    var $toggle = document.querySelector('.navbar-toggle');
-    var $navbar = document.querySelector('#huxblog_navbar');
-    var $collapse = document.querySelector('.navbar-collapse');
-
-    $toggle.addEventListener('click', handleMagic)
-    function handleMagic(e){
-        if ($navbar.className.indexOf('in') > 0) {
-        // CLOSE
-            $navbar.className = " ";
-            // wait until animation end.
-            setTimeout(function(){
-                // prevent frequently toggle
-                if($navbar.className.indexOf('in') < 0) {
-                    $collapse.style.height = "0px"
-                }
-            },400)
-        }else{
-        // OPEN
-            $collapse.style.height = "auto"
-            $navbar.className += " in";
-        }
-    }
-</script>
-
-
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>寞踪的博客</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">free as wind</span>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="寞踪的技术博客，主攻PHP，iOS，Python，Linux，C。">
+<meta name="keyword"  content="寞踪的博客">
+<link rel="shortcut icon" href="img/favicon.ico">
+<title>寞踪的博客 | Ellen Blog</title>
+<link rel="canonical" href="http://xpmozong.github.io/page2/">
+<link rel="stylesheet" href="/css/syntax.css">
+<link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel='stylesheet' href="/css/style.css" type='text/css' media='all' />
+<link rel='stylesheet' href="/css/color/green.css" type='text/css' media='all' />
+<link href="/google-code-prettify/vibrant-ink.css" rel="stylesheet" type="text/css" media="all">
+<script src="/google-code-prettify/jquery.js"></script>
+<script src="/google-code-prettify/prettify.js"></script>
+<body class="home blog">
+    <!-- Start Header -->
+    <div class="container zerogrid clearfix">
+        <div class="col-full">
+            <div class="wrap-col">
+                <div id="header-nav-container" class="clearfix">
+                    <div class="h-logo">
+                        <a href="/">
+                            寞踪的博客
+                        </a>
+                    </div>
+                    <div class="h-menu">
+                        <!-- Navigation Menu -->     
+                        <ul class="sf-menu">
+                            <li id="home" class="menu-item current-menu-item">
+                                <a href="/">Home</a>
+                            </li>
+                            <li id="about" class="menu-item">
+                                <a href="/about/">About</a>
+                            </li>
+                            <li id="tags" class="menu-item">
+                                <a href="/tags/">Tags</a>
+                            </li>
+                        </ul> 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</header>
+<!-- Start Main Container -->
+<div class="container zerogrid clearfix">
+    <!-- Start Posts Container -->
+    <div class="col-2-3" id="post-container">
+        <div class="wrap-col">
+            <!-- Start Post Item -->
 
-<!-- Main Content -->
-<div class="container">
-	<div class="row">
-        
-
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    		<div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-    			
-<div class="post-preview">
-    <a href="/oc/2014/04/12/oc-jicheng/">
-        <h2 class="post-title">
-            OC 继承
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/oc/2014/04/12/oc-jicheng/">
+                OC 继承
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            OC中的继承是单向的，继承具有传递性，子类继承父类的特征和行为，子类扩展父类，更具体。
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>April 12, 2014</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        OC中的继承是单向的，继承具有传递性，子类继承父类的特征和行为，子类扩展父类，更具体。
 
 OC中的继承,即⼀个类继承另一个类。
 
@@ -184,27 +92,38 @@ OC中的继承,即⼀个类继承另一个类。
 
 OC中只允许单继承。
 
-没有...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on April 12, 2014
-    </p>
-</div>
-<hr>
+没有父类的类称为根类,OC中的根类是NSObject(祖宗)。 继承的内容:除了私有变量之外的所有实例变量和方法。
 
-<div class="post-preview">
-    <a href="/oc/2014/04/12/oc-extension/">
-        <h2 class="post-title">
-            OC extension 的使用
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+子类可以重写父类的方法。
+
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/oc/2014/04/12/oc-jicheng/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/oc/2014/04/12/oc-extension/">
+                OC extension 的使用
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            OC Extension 的主要作用是为类添加“私有”方法，外部不能调用。
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>April 12, 2014</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        OC Extension 的主要作用是为类添加“私有”方法，外部不能调用。
 
 Category 和 Extension 的区别：
 
@@ -222,27 +141,53 @@ Extension 把代码写到原有类的.m文件中
 
 Extension 用法如下：
 
-#import...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on April 12, 2014
-    </p>
-</div>
-<hr>
+#import "Person.h"
+@interface Person ()
+- (void)sayHello;
+@end
 
-<div class="post-preview">
-    <a href="/oc/2014/04/12/oc-category/">
-        <h2 class="post-title">
-            OC category 类目的使用
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+@implementation Person
+- (void)sayHello
+{
+    NSLog(@"Hello");
+}
+- (void)say
+{
+    NSLog(@"hi");
+    [self sayHello];
+}
+@end
+
+
+在Person.m文件添加私有方...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/oc/2014/04/12/oc-extension/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/oc/2014/04/12/oc-category/">
+                OC category 类目的使用
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            OC 有个很重要的特性，Category，类目，类目的主要作用是为 没有源代码的类添加方法。
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>April 12, 2014</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        OC 有个很重要的特性，Category，类目，类目的主要作用是为 没有源代码的类添加方法。
 
 通过Category添加的方法会成为原类的一部分，从而达到扩展一个类的功能。
 
@@ -250,27 +195,48 @@ Extension 用法如下：
 
 如下操作：
 
-新建文件，选择Objective-C category， 文件名He...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on April 12, 2014
-    </p>
-</div>
-<hr>
+新建文件，选择Objective-C category， 文件名Hello, Category on 选择 NSString。
 
-<div class="post-preview">
-    <a href="/c/2014/03/20/c-zhizhen/">
-        <h2 class="post-title">
-            C语言指针
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+自动生成 NSString+Hello.h 和 NSString+Hello.m 文件。
+
+在 NSString+Hello.h 文件写上
+
+@interface NSString (Hello)
+- (void)sayHello;
+@end
+
+
+在 NSString+Hello.m 文件写上
+
+@implementation NSSt...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/oc/2014/04/12/oc-category/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/c/2014/03/20/c-zhizhen/">
+                C语言指针
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            C语言指针
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>March 20, 2014</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        C语言指针
 
 一、指针变量定义
 
@@ -290,27 +256,51 @@ int *p = &amp;a;    // 指针取地址
 
 三、指针数组
 
-int arr[...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on March 20, 2014
-    </p>
-</div>
-<hr>
+int arr[3] = {1,3,8};
 
-<div class="post-preview">
-    <a href="/php/2013/12/05/php-extension/">
-        <h2 class="post-title">
-            PHP扩展开发 - 第一个扩展
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+
+在C语言中，数组是构造类型，系统会分配一段连续的空间来存储数组的全部数据。其中数组名代表数组首元素地址（第一个元素的内存地址）。
+
+arr 恒等于 &amp;arr[0]。
+
+int *p = arr; // 保存数组首地址  此时p与arr相同，均指向数组的首地址。
+
+
+p[1] = 3; 
+恒等于a[1]
+恒等于(p+1)
+恒等于(a+1)
+
+四、指针与字符串
+...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/c/2014/03/20/c-zhizhen/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/php/2013/12/05/php-extension/">
+                PHP扩展开发 - 第一个扩展
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            学习PHP扩展开发，是PHPer的必学课程。接着上一节课程，Linux + Nginx + Mysql + PHP 编译安装。
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>December 5, 2013</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        学习PHP扩展开发，是PHPer的必学课程。接着上一节课程，Linux + Nginx + Mysql + PHP 编译安装。
 
 需求：比如开发一个叫做 hello_world 的扩展，扩展里就一个函数 hello_world_test()，输入一个字符串，函数返回：Your input string: xxxxx! 。
 
@@ -318,27 +308,48 @@ int arr[...
 
 第一步、生成代码
 
-PHP为了扩展开...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on December 5, 2013
-    </p>
-</div>
-<hr>
+PHP为了扩展开发的方便，提供了一个类似代码生成器的工具ext_skel
 
-<div class="post-preview">
-    <a href="/php/2013/12/05/lnmp/">
-        <h2 class="post-title">
-            Linux + Nginx + Mysql + PHP 编译安装
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+cd /opt/php-5.3.16/ext/
+./ext_skel --extname=hello_world --proto=hello_world.skel
+cd hello_world/
+
+
+生成代码啦
+
+第二步，修改配置
+
+然后修改config.m4文件将10、11、12三行最前面的dnl删除掉，就是将
+
+dnl PHP_ARG...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/php/2013/12/05/php-extension/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/php/2013/12/05/lnmp/">
+                Linux + Nginx + Mysql + PHP 编译安装
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            首先准备安装包
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>December 5, 2013</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        首先准备安装包
 
 nginx-1.0.15.tar.gz
 php-5.3.16.tar.gz
@@ -346,72 +357,118 @@ libaio-0.3.93-4.i386.rpm
 MySQL-server-5.5.14-1.rhel5.x64.rpm
 MySQL-client-5.5.14-1.rhel5.x64.rpm
 MySQL-shared-5.5.14-1.rhel5.x64.rpm
-MySQL-devel-5.5.1...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on December 5, 2013
-    </p>
-</div>
-<hr>
+MySQL-devel-5.5.14-1.rhel5.x64.rpm
+libmcrypt-2.5.7.tar.gz
+mhash-0.9.9.9.tar.gz
+mcrypt-2.6.8.tar.gz
+pcre-8.33.tar.gz
 
-<div class="post-preview">
-    <a href="/linux/2013/11/29/linux-summary/">
-        <h2 class="post-title">
-            linux 小总结
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+
+先yum一些必要的
+
+yum -y install gcc-c++ openssl-devel libjpeg-devel libpng-devel libXpm-devel ImageMagick...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/php/2013/12/05/lnmp/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/linux/2013/11/29/linux-summary/">
+                linux 小总结
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            1、初始安装
-
-yum install make apr* autoconf automake gcc gcc-c++ openssl openssl-devel pcre-devel gd  kernel keyutils perl kernel-headers compat* mpfr cpp glibc libgomp libstdc++-devel ppl cloog-ppl key...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on November 29, 2013
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/mysql/2013/11/28/mysql-summary/">
-        <h2 class="post-title">
-            mysql 小总结
-        </h2>
-        
-        <h3 class="post-subtitle">
+        <div class="post-subtitle">
             
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>November 29, 2013</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        1、初始安装
+
+yum install make apr* autoconf automake gcc gcc-c++ openssl openssl-devel pcre-devel gd  kernel keyutils perl kernel-headers compat* mpfr cpp glibc libgomp libstdc++-devel ppl cloog-ppl keyutils-libs-devel libcom_err-devel libsepol-devel libselinux-devel krb5-devel zlib-devel libXpm* freetype libjpeg* libpng* ncurses* libtool* libxml2 libxml2-devel patch
+
+
+2、日志20行
+
+cat error.log | awk '...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/linux/2013/11/29/linux-summary/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/mysql/2013/11/28/mysql-summary/">
+                mysql 小总结
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            1、两个关联表的字段的数据需相同，这么同步
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>November 28, 2013</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        1、两个关联表的字段的数据需相同，这么同步
 
 UPDATE tb1 f left join tb2 m on f.uid=m.uid set f.images_ischeck = m.images_ischeck where f.images_ischeck != m.images_ischeck
-UPDATE server_message m left join server_messag...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on November 28, 2013
-    </p>
-</div>
-<hr>
+UPDATE server_message m left join server_message_schedule s on m.server_id=s.server_id set s.server_cost = m.server_cost
 
-<div class="post-preview">
-    <a href="/ruby/2013/11/27/jekyll/">
-        <h2 class="post-title">
-            利用github jekyll 创建 blog
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+
+2、给两个关联表的相关字段加索引
+
+CREATE INDEX idx_origin_id_id ON en_sentence_translated(origin_id,id)
+
+
+3、两个关联表，其中一个表示一对多的关系，用max、group by...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/mysql/2013/11/28/mysql-summary/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/ruby/2013/11/27/jekyll/">
+                利用github jekyll 创建 blog
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            一、准备工作
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>November 27, 2013</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        一、准备工作
 
 1、安装ruby，windows下推荐安装rubyinstaller
 
@@ -424,27 +481,43 @@ ruby dk.rb install
 gem install rdiscount --platform=ruby
 
 
-如果能安装rdiscount成功说明安装Dev...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on November 27, 2013
-    </p>
-</div>
-<hr>
+如果能安装rdiscount成功说明安装DevKit成功。
 
-<div class="post-preview">
-    <a href="/python/2013/09/05/python-saltstack/">
-        <h2 class="post-title">
-            saltstack 学习小记
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+3、安装jekyll
+
+打开D:\Devkit\msys.bat文件,执行 gem install jekyll 命令
+
+二、创建github账户，要邮箱验证通过才能有创建博客权限。
+
+1、windows下操作，下载windows github，并在github上创建项目，名字是USERNAME.github.io。打开windows github，下载刚创建的项目，然后进入目录。...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/ruby/2013/11/27/jekyll/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/python/2013/09/05/python-saltstack/">
+                saltstack 学习小记
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            saltstack的基本介绍
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>September 5, 2013</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        saltstack的基本介绍
 
 salt是一个新的基础平台管理工具。很短的时间即可运行并使用起来, 扩展性足以支撑管理上万台服务器，数秒钟即可完成数据传递. 经常被描述为 Func加强版+Puppet精简版。
 
@@ -452,253 +525,197 @@ salt的安装
 
 首先添加RPM源:
 
-rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8....
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on September 5, 2013
-    </p>
+rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm
+
+
+1、安装服务端
+
+yum install salt-master
+
+
+可以修改配置文件，vim /etc/salt/master 将auto_accept 改为 True，这样可以自动接收客户端
+
+file_roots:
+    base:
+        - /srv/salt
+
+
+这个是可以控制上传的路径
+
+启动服务端：
+
+/etc/init.d/salt-minio...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/python/2013/09/05/python-saltstack/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
 </div>
-<hr>
 
+<!-- End Post Item -->
+<!-- Start Pagination -->
 
-<!-- Pager -->
-
-<ul class="pager">
+<ul class="pagination clearfix">
     
     <li class="previous">
-        <a href="/">&larr; Newer Posts</a>
+        <a href="/"><i class="fa fa-arrow-circle-o-left"></i> Newer Posts</a>
     </li>
     
     
     <li class="next">
-        <a href="/page3">Older Posts &rarr;</a>
+        <a href="/page3">Older Posts <i class="fa fa-arrow-circle-o-right"></i></a>
     </li>
     
 </ul>
 
-
-    		</div>
-    <!-- Sidebar Container -->
-            <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
-                <!-- Featured Tags -->
-                
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                        
-                            
-                                <a href="/tags/#PHP" title="PHP" rel="13">
-                                    PHP
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#Redis" title="Redis" rel="2">
-                                    Redis
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#HTML" title="HTML" rel="2">
-                                    HTML
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#C" title="C" rel="2">
-                                    C
-                                </a>
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                                <a href="/tags/#Mysql" title="Mysql" rel="3">
-                                    Mysql
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#Linux" title="Linux" rel="3">
-                                    Linux
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#Nginx" title="Nginx" rel="3">
-                                    Nginx
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#Python" title="Python" rel="3">
-                                    Python
-                                </a>
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                                <a href="/tags/#iOS" title="iOS" rel="10">
-                                    iOS
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#OC" title="OC" rel="5">
-                                    OC
-                                </a>
-                            
-                        
-                            
-                        
-                    </div>
-                </section>
-                
-
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-                        
-                            <img src="/img/Ellen.jpg" />
-                        
-                        
-                            <p>一个喜欢折腾的程序媛</p>
-                        
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            
-                            
-                            
-                            <li>
-                                <a target="_blank" href="http://weibo.com/xpmozong">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                            
-                            
-                            <li>
-                                <a target="_blank" href="https://github.com/xpmozong">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                        </ul>
-                    </div>
-                </section>
-                <!-- Friends Blog -->
-                
-                <hr>
-                <h5>FRIENDS</h5>
-                <ul class="list-inline">
-                    
-                </ul>
-                
-    		</div>
-        
-	</div>
-</div>
-
-
-    <!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    
-                    
-
-                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
-                    
-                    
-                    <li>
-                        <a target="_blank" href="http://weibo.com/xpmozong">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    
-
-
-                    
-                    
-                    <li>
-                        <a target="_blank" href="https://github.com/xpmozong">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                </ul>
-                <p class="copyright text-muted">
-                    Copyright &copy; 寞踪的博客 2015
-                    <!-- <br>
-                    Theme by <a href="http://huangxuan.me">Hux</a> -->
-                </p>
-            </div>
+<!-- End Pagination -->
         </div>
     </div>
-</footer>
-
-<!-- jQuery -->
-<script src="/js/jquery.min.js "></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="/js/bootstrap.min.js "></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="/js/hux-blog.min.js "></script>
-
-
+    <!-- End Posts Container -->
+    <!-- Start Sidebar -->
+    <div class="col-1-3">
+        <div class="wrap-col">
+            <div class="widget-container">
+                <h6 class="widget-title"><a href="/tags/">Tags</a></h6>
+                
+                <div class="tagcloud">
+                    
+                        
+                            <a href="/tags/#PHP" title="PHP" rel="13">
+                                PHP
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#Redis" title="Redis" rel="2">
+                                Redis
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#HTML" title="HTML" rel="2">
+                                HTML
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#C" title="C" rel="2">
+                                C
+                            </a>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                            <a href="/tags/#Mysql" title="Mysql" rel="3">
+                                Mysql
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#Linux" title="Linux" rel="3">
+                                Linux
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#Nginx" title="Nginx" rel="3">
+                                Nginx
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#Python" title="Python" rel="3">
+                                Python
+                            </a>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                            <a href="/tags/#iOS" title="iOS" rel="10">
+                                iOS
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#OC" title="OC" rel="5">
+                                OC
+                            </a>
+                        
+                    
+                        
+                    
+                </div>
+                
+            </div>
+            <div class="widget-container">
+                <h6 class="widget-title"><a href="/about/">About Me</a></h6>
+                <ul class="widget-recent-posts">        
+                    <li>
+                        <div class="post-image">
+                            <div class="post-mask"></div>
+                            
+                            <img width="70" height="70" src="/img/Ellen.jpg" class="attachment-post-widget #" />
+                                   
+                        </div>
+                        
+                            <h6>极客程序媛</h6>
+                        
+                        <span>
+                            
+                            <a href="https://github.com/xpmozong" target="_blank">
+                                <i class="fa fa-github"></i>
+                            </a>
+                            
+                            
+                            <a target="_blank" href="http://weibo.com/xpmozong">
+                                <i class="fa fa-weibo"></i>
+                            </a>
+                            
+                        </span>
+                    </li>
+                </ul>
+                <!-- End Widget -->
+            </div>
+        </div>
+    </div>        
+    <!-- End Sidebar -->
+</div>
+<!-- End Main Container -->
+<p id="back-top"><a href="#top"></a></p>
+<!-- Start Footer -->
+<div class="spacing-30"></div>
+<div class="container zerogrid clearfix">
+    <div id="footer-container" class="wrap-col">
+        <p>Copyrigh &copy; 寞踪的博客 2010-2015</p>
+    </div>
+</div>
+<!-- End Footer -->
 <!-- async load function -->
-<script>
+<script type="text/javascript">
     function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
+        var d = document, t = 'script',
+        o = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        s.parentNode.insertBefore(o, s);
     }
-</script>
 
-<!-- Highlight.js -->
-<script>
-    async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
-        hljs.initHighlightingOnLoad();
-    })
     // only load tagcloud.js in tag.html
     if($('#tag_cloud').length !== 0){
         async("/js/jquery.tagcloud.js",function(){
@@ -709,67 +726,53 @@ rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8....
             $('#tag_cloud a').tagcloud();
         })
     }
+    
+    $(function(){
+        var href = location.href;
+        var localh = document.location.protocol+"xpmozong.github.io/";
+        href = href.replace(localh,"");
+        var hrearr = href.split('/');
+        $(".sf-menu li").removeClass('current-menu-item');
+        if (hrearr[0] == 'about') {
+            $("#about").addClass('current-menu-item');
+        }else if(hrearr[0] == 'tags'){
+            $("#tags").addClass('current-menu-item');
+        }else{
+            $("#home").addClass('current-menu-item');
+        }
+
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+
+        // hide #back-top first
+        $("#back-top").hide();
+
+        // fade in #back-top
+        $(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 400) {
+                    $('#back-top').fadeIn();
+                } else {
+                    $('#back-top').fadeOut();
+                }
+        });
+
+        // scroll body to 0px on click
+        $('#back-top a').click(function () {
+            $('body,html').animate({
+                scrollTop: 0
+                }, 800);
+            return false;
+            });
+        });
+
+    });
+
 </script>
-<link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
-
-<!--fastClick.js -->
-<script>
-    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
-        var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
-    })
-</script>
-
-
-
-<!-- GA hacking -->
-<input id="gaId" type="hidden" value="UA-49627206-1"  />
-<input id="gaDomain" type="hidden" value="xpmozong.duoshuo.com"  />
-
-<!-- Google Analytics -->
-<script>
-    // dynamic User hacking by Hux
-    var _gaId = document.getElementById('gaId').value;
-    var _gaDomain = document.getElementById('gaDomain').value;
-
-    // Originial
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', _gaId, _gaDomain);
-    ga('send', 'pageview');
-</script>
-
-
-
-
-<!-- BT hacking -->
-<input id="baId" type="hidden" value="c710085fbe32373a875b5965e80eda7f"  />
-
-<!-- Baidu Tongji -->
-<script>
-    // dynamic User hacking by Hux
-    var _baId = document.getElementById('baId').value;
-
-    // Originial
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?" + _baId;
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
-
-
-
-<!-- Image to hack wechat -->
-<img src="/img/icon_wechat.png" width="0" height="0" />
-<!-- Migrate from head to bottom, no longer block render and still work -->
-
 </body>
-
 </html>
+
+
+
+
+

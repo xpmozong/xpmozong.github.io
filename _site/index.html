@@ -1,169 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!DOCTYPE html lang="en-US">
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="寞踪的技术博客，主攻PHP，iOS，Python，Linux，C。">
-    <meta name="keyword"  content="寞踪的博客">
-    <link rel="shortcut icon" href="img/favicon.ico">
-
-    <title>寞踪的博客 | Ellen Blog</title>
-
-    <link rel="canonical" href="http://xpmozong.github.io/">
-
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/hux-blog.css">
-
-    <!-- Pygments Github CSS -->
-    <link rel="stylesheet" href="/css/syntax.css">
-
-    <!-- Custom Fonts -->
-    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
-    <!-- Hux change font-awesome CDN to qiniu -->
-    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-
-    <!-- Hux Delete, sad but pending in China
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
-    css'>
-    -->
-
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- ga & ba script hoook -->
-    <script></script>
-</head>
-
-
-<!-- hack iOS CSS :active style -->
-<body ontouchstart="">
-
-    <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">寞踪的博客</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <!-- Known Issue, found by Hux:
-            <nav>'s height woule be hold on by its content.
-            so, when navbar scale out, the <nav> will cover tags.
-            also mask any touch event of tags, unfortunately.
-        -->
-        <div id="huxblog_navbar">
-            <div class="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/about/">About</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/tags/">Tags</a>
-                    </li>
-                    
-                </ul>
-            </div>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
-<script>
-    // Drop Bootstarp low-performance Navbar
-    // Use customize navbar with high-quality material design animation
-    // in high-perf jank-free CSS3 implementation
-    var $body   = document.body;
-    var $toggle = document.querySelector('.navbar-toggle');
-    var $navbar = document.querySelector('#huxblog_navbar');
-    var $collapse = document.querySelector('.navbar-collapse');
-
-    $toggle.addEventListener('click', handleMagic)
-    function handleMagic(e){
-        if ($navbar.className.indexOf('in') > 0) {
-        // CLOSE
-            $navbar.className = " ";
-            // wait until animation end.
-            setTimeout(function(){
-                // prevent frequently toggle
-                if($navbar.className.indexOf('in') < 0) {
-                    $collapse.style.height = "0px"
-                }
-            },400)
-        }else{
-        // OPEN
-            $collapse.style.height = "auto"
-            $navbar.className += " in";
-        }
-    }
-</script>
-
-
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>寞踪的博客</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">free as wind</span>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="寞踪的技术博客，主攻PHP，iOS，Python，Linux，C。">
+<meta name="keyword"  content="寞踪的博客">
+<link rel="shortcut icon" href="img/favicon.ico">
+<title>寞踪的博客 | Ellen Blog</title>
+<link rel="canonical" href="http://xpmozong.github.io/">
+<link rel="stylesheet" href="/css/syntax.css">
+<link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel='stylesheet' href="/css/style.css" type='text/css' media='all' />
+<link rel='stylesheet' href="/css/color/green.css" type='text/css' media='all' />
+<link href="/google-code-prettify/vibrant-ink.css" rel="stylesheet" type="text/css" media="all">
+<script src="/google-code-prettify/jquery.js"></script>
+<script src="/google-code-prettify/prettify.js"></script>
+<body class="home blog">
+    <!-- Start Header -->
+    <div class="container zerogrid clearfix">
+        <div class="col-full">
+            <div class="wrap-col">
+                <div id="header-nav-container" class="clearfix">
+                    <div class="h-logo">
+                        <a href="/">
+                            寞踪的博客
+                        </a>
+                    </div>
+                    <div class="h-menu">
+                        <!-- Navigation Menu -->     
+                        <ul class="sf-menu">
+                            <li id="home" class="menu-item current-menu-item">
+                                <a href="/">Home</a>
+                            </li>
+                            <li id="about" class="menu-item">
+                                <a href="/about/">About</a>
+                            </li>
+                            <li id="tags" class="menu-item">
+                                <a href="/tags/">Tags</a>
+                            </li>
+                        </ul> 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</header>
+<!-- Start Main Container -->
+<div class="container zerogrid clearfix">
+    <!-- Start Posts Container -->
+    <div class="col-2-3" id="post-container">
+        <div class="wrap-col">
+            <!-- Start Post Item -->
 
-<!-- Main Content -->
-<div class="container">
-	<div class="row">
-        
-
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    		<div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-    			
-<div class="post-preview">
-    <a href="/redis/2015/08/28/redis-jiqun/">
-        <h2 class="post-title">
-            Redis 集群
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/redis/2015/08/28/redis-jiqun/">
+                Redis 集群
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            介绍
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>August 28, 2015</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        介绍
 
 redis 集群部署，针对两台以上服务器的部署，一个主服务器，多个从服务器。
 
@@ -181,27 +89,46 @@ mkdir /usr/redis
 cp redis.conf /usr/redis
 cd src
 cp redis-server /usr/redis
-cp redis-...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on August 28, 2015
-    </p>
-</div>
-<hr>
+cp redis-cli /usr/redis
+cp redis-benchmark /usr/redis
+cp mkreleasehdr.sh /usr/redis
+cp redis-check-aof /usr/redis
+cp redis-check-dump /usr/redis
 
-<div class="post-preview">
-    <a href="/php/2015/08/19/php-opcache/">
-        <h2 class="post-title">
-            php opcache使用
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+
+修改redis.conf文件 daemonize no 改为 yes # 是否后台运行
+
+复制启动文件
+
+cp redis-...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/redis/2015/08/28/redis-jiqun/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/php/2015/08/19/php-opcache/">
+                php opcache使用
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            介绍
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>August 19, 2015</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        介绍
 
 php opcache的缓存原理，主要是避免php重复编译，减少CPU和内存开销。
 
@@ -216,27 +143,43 @@ phpize
 make &amp;&amp; make install
 
 
-...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on August 19, 2015
-    </p>
-</div>
-<hr>
+配置
 
-<div class="post-preview">
-    <a href="/book/2015/07/03/yitiantulongji/">
-        <h2 class="post-title">
-            倚天屠龙记读后感
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+修改php.ini，在最后添加
+
+[Zend Opcache]
+zend_extension = "/usr/local/php-5.4.10/lib/php/extensions/no-debug-non-zts-20100525/opcache.so"
+opcache.force_restart_timeout=3600
+opcache.memory_consumption=1024
+...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/php/2015/08/19/php-opcache/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/book/2015/07/03/yitiantulongji/">
+                倚天屠龙记读后感
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            看了1年多的金庸武侠小说，写些读后感，就从我看的第一部金庸小说倚天屠龙记说起。
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>July 3, 2015</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        看了1年多的金庸武侠小说，写些读后感，就从我看的第一部金庸小说倚天屠龙记说起。
 
 武林争端：
 
@@ -245,52 +188,71 @@ make &amp;&amp; make install
 
 人物情感分析：
 
-殷素素是个漂亮，任性，聪明，对爱情不顾一...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on July 3, 2015
-    </p>
+殷素素是个漂亮，任性，聪明，对爱情不顾一切的人，她也不是特别坏，当她和殷野王设计从俞岱岩那夺到屠龙刀之后，殷野王将俞岱岩踢到江里就不管了，但是她却将俞岱岩救起来，重金让镖局的将人送到武当，但是俞岱岩被少林大力金刚指伤到残废。殷素素对张翠山一见钟情，她假扮张翠山，杀了少林很多人，就是为张翠山的三师哥报仇。所以殷素素是个矛盾的人，残忍又好心。张翠山虽然对殷素素那杀人不眨眼的手段不满，但见她对自己情深一片，不忍心看着她受伤不管。我觉得张翠山喜...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/book/2015/07/03/yitiantulongji/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
 </div>
-<hr>
 
-<div class="post-preview">
-    <a href="/ios/2014/12/21/ios-tuwenhunpai/">
-        <h2 class="post-title">
-            iOS 图文混排
-        </h2>
-        
-        <h3 class="post-subtitle">
-            iOS 图文混排 M80AttributedLabel的一些修改
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/ios/2014/12/21/ios-tuwenhunpai/">
+                iOS 图文混排
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            1、M80AttributedLabel的URL、号码、邮箱的正则匹配不是很好，我做了一些修改。
+        <div class="post-subtitle">
+            iOS 图文混排 M80AttributedLabel的一些修改
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>December 21, 2014</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        1、M80AttributedLabel的URL、号码、邮箱的正则匹配不是很好，我做了一些修改。
 
 #pragma mark - 正则匹配电话号码，网址链接，Email地址
 + (NSArray *)addRexArr:(NSString *)text
 {
-    NSString *parten = @"\\d{3}-\\d{8}|\\d{3}-\\d{7}|\\d{4}-\\d{8}|\...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on December 21, 2014
-    </p>
+    NSString *parten = @"\\d{3}-\\d{8}|\\d{3}-\\d{7}|\\d{4}-\\d{8}|\\d{4}-\\d{7}|1+[358]+\\d{9}|\\d{8}|\\d{7}";
+    NSArray *resultArray = [text componentsMatchedByRegex:parten];
+    NSMutableArray *phoneArray = [[NSMutableArray alloc] initWithArray:resultArray];
+    ...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/ios/2014/12/21/ios-tuwenhunpai/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
 </div>
-<hr>
 
-<div class="post-preview">
-    <a href="/ios/2014/11/05/ios-fmdb-sqlite/">
-        <h2 class="post-title">
-            iOS FMDB Sqlite封装
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/ios/2014/11/05/ios-fmdb-sqlite/">
+                iOS FMDB Sqlite封装
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            1、在使用FMDB的时候，总是出现崩溃的情况，报错信息总是提示某某表被锁住。为了解决这一问题，我做了封装。
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>November 5, 2014</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        1、在使用FMDB的时候，总是出现崩溃的情况，报错信息总是提示某某表被锁住。为了解决这一问题，我做了封装。
 
 DBConnect.h如下:
 
@@ -300,27 +262,45 @@ DBConnect.h如下:
 
 @interface DBConnect : NSObject
 
-@property (...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on November 5, 2014
-    </p>
-</div>
-<hr>
+@property (nonatomic, retain) FMDatabase *dataBase;  // 数据库类
+@property (nonatomic, retain) FMDatabaseQueue *dbQueue;
 
-<div class="post-preview">
-    <a href="/ios/2014/06/21/ios-zhengze/">
-        <h2 class="post-title">
-            iOS 正则表达式
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+/// 通过单例的方式
++ (DBConnect *)shareConnect;
+
+/// 打开数据库
+- (void)openDatabase;
+
+/// 判断是否存在表
+- (BOO...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/ios/2014/11/05/ios-fmdb-sqlite/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/ios/2014/06/21/ios-zhengze/">
+                iOS 正则表达式
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            熟悉php的都知道preg_match_all是一个超级强大的正则表达式函数。在数据采集的世界里，有了她，几乎是所向披靡，神挡杀神，佛挡杀佛。
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>June 21, 2014</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        熟悉php的都知道preg_match_all是一个超级强大的正则表达式函数。在数据采集的世界里，有了她，几乎是所向披靡，神挡杀神，佛挡杀佛。
 
 由于Object-C有没有类似preg_match_all的函数。 NSPredicate 不是很理想。而RegexKit很强大。
 
@@ -329,27 +309,41 @@ DBConnect.h如下:
 需要添加一个依懒库：libicucore.dylib
 
 具体用法，首先引入头文件：
-...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on June 21, 2014
-    </p>
-</div>
-<hr>
 
-<div class="post-preview">
-    <a href="/oc/2014/04/25/oc-danli/">
-        <h2 class="post-title">
-            IOS 单例设计模式
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+#import "RegexKitLite.h"
+
+ASIHTTPRequest *htmlRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:str]];
+[htmlRequest setRequestMethod:@"GET"];
+[htmlRequest setTimeOutSeconds:30];
+[htmlRequ...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/ios/2014/06/21/ios-zhengze/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/oc/2014/04/25/oc-danli/">
+                IOS 单例设计模式
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            IOS单例设计模式，多个页面共用数据。
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>April 25, 2014</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        IOS单例设计模式，多个页面共用数据。
 
 创建Singleton类，继承NSObject，Singleton.h的内容为：
 
@@ -360,27 +354,49 @@ DBConnect.h如下:
 @end
 
 
-Si...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on April 25, 2014
-    </p>
-</div>
-<hr>
+Singleton.m的内容为：
 
-<div class="post-preview">
-    <a href="/ios/2014/04/16/ios-target-action/">
-        <h2 class="post-title">
-            iOS target/action设计模式
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+@implementation Singleton
+static Singleton *s = nil;
++ (Singleton *)sharedSingleton
+{
+    if (s == nil) {
+        s = [[Singleton alloc] init];
+    }
+    return s;
+}
+@end
+
+
+注意：单例中的allo...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/oc/2014/04/25/oc-danli/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/ios/2014/04/16/ios-target-action/">
+                iOS target/action设计模式
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            iOS中，有一种target/action设计模式，可以使代码高聚合，低耦合。
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>April 16, 2014</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        iOS中，有一种target/action设计模式，可以使代码高聚合，低耦合。
 
 创建一个ActionView类
 
@@ -389,27 +405,43 @@ ActionView.h的文件内容为
 @interface ActionView : UIView
 @property (nonatomic, assign) id  target;
 @property (nonatomic, assign) SEL action;
-- (i...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on April 16, 2014
-    </p>
-</div>
-<hr>
+- (id)initWithFrame:(CGRect)frame target:(id)target action:(SEL)action;
+@end
 
-<div class="post-preview">
-    <a href="/oc/2014/04/12/oc-protocal/">
-        <h2 class="post-title">
-            OC protocal 的使用
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+
+ActionView.m的文件内容为
+
+- (id)initWithFrame:(CGRect)frame target:(id)target action:(SEL)action
+{
+    self = [super initWithFrame:...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/ios/2014/04/16/ios-target-action/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/oc/2014/04/12/oc-protocal/">
+                OC protocal 的使用
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            Protocal又名协议，协议是一套标准（一堆方法的声明），只有.h文件。
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>April 12, 2014</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        Protocal又名协议，协议是一套标准（一堆方法的声明），只有.h文件。
 
 接受协议的对象，实现协议中定义的方法。
 
@@ -419,27 +451,47 @@ Protocal 以 @protocal，以@end结束，例如：
 
 @protocol MarrayProtocol &lt;NSObject&gt;
 @required
-- (...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on April 12, 2014
-    </p>
-</div>
-<hr>
+- (void)makeMoney;
+@optional
+- (void)washcloth;
+@end
 
-<div class="post-preview">
-    <a href="/oc/2014/04/12/oc-property/">
-        <h2 class="post-title">
-            OC property 属性介绍
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+
+@required后的方法是必须实现的，@required可写可不写。
+
+@optional后方法是可选实现的，可实现，可不实现。
+
+协议定义好之后，需要有类去遵守这个协议，实现协议里的方法。
+
+遵守协议，即在.h文件的父类名后写上。实现协议里的方法即在.m文件中实现协议中的方法。相当于给这个类...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/oc/2014/04/12/oc-protocal/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/oc/2014/04/12/oc-property/">
+                OC property 属性介绍
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            @property (nonatomic, retain) NSString *subject;
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>April 12, 2014</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        @property (nonatomic, retain) NSString *subject;
 
 
 @propery属性有 atomic, nonatomic, assign, retain, copy, 作用和系统内部实现如下
@@ -448,249 +500,184 @@ Protocal 以 @protocal，以@end结束，例如：
 
 在原子性控制上，我们通常设置为nonatomic。
 
-程序开发过程中，setter、getter...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on April 12, 2014
-    </p>
+程序开发过程中，setter、getter处处都在用，如果使用atomic，需要不断的对setter、getter加锁解锁以保证线程访问安全，会很占用系统资源，降低系统性能。
+
+通常设置为nonatomic，某些属性需要线程安全的时候，才定义为atomic。
+
+2、 assign 内部实现
+
+- (void)setSubject:(NSString *)subject
+{
+    _subject = subject;
+}
+- (NSSt...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/oc/2014/04/12/oc-property/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
 </div>
-<hr>
 
+<!-- End Post Item -->
+<!-- Start Pagination -->
 
-<!-- Pager -->
-
-<ul class="pager">
+<ul class="pagination clearfix">
     
     
     <li class="next">
-        <a href="/page2">Older Posts &rarr;</a>
+        <a href="/page2">Older Posts <i class="fa fa-arrow-circle-o-right"></i></a>
     </li>
     
 </ul>
 
-
-    		</div>
-    <!-- Sidebar Container -->
-            <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
-                <!-- Featured Tags -->
-                
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                        
-                            
-                                <a href="/tags/#PHP" title="PHP" rel="13">
-                                    PHP
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#Redis" title="Redis" rel="2">
-                                    Redis
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#HTML" title="HTML" rel="2">
-                                    HTML
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#C" title="C" rel="2">
-                                    C
-                                </a>
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                                <a href="/tags/#Mysql" title="Mysql" rel="3">
-                                    Mysql
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#Linux" title="Linux" rel="3">
-                                    Linux
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#Nginx" title="Nginx" rel="3">
-                                    Nginx
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#Python" title="Python" rel="3">
-                                    Python
-                                </a>
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                                <a href="/tags/#iOS" title="iOS" rel="10">
-                                    iOS
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#OC" title="OC" rel="5">
-                                    OC
-                                </a>
-                            
-                        
-                            
-                        
-                    </div>
-                </section>
-                
-
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-                        
-                            <img src="/img/Ellen.jpg" />
-                        
-                        
-                            <p>一个喜欢折腾的程序媛</p>
-                        
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            
-                            
-                            
-                            <li>
-                                <a target="_blank" href="http://weibo.com/xpmozong">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                            
-                            
-                            <li>
-                                <a target="_blank" href="https://github.com/xpmozong">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                        </ul>
-                    </div>
-                </section>
-                <!-- Friends Blog -->
-                
-                <hr>
-                <h5>FRIENDS</h5>
-                <ul class="list-inline">
-                    
-                </ul>
-                
-    		</div>
-        
-	</div>
-</div>
-
-
-    <!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    
-                    
-
-                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
-                    
-                    
-                    <li>
-                        <a target="_blank" href="http://weibo.com/xpmozong">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    
-
-
-                    
-                    
-                    <li>
-                        <a target="_blank" href="https://github.com/xpmozong">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                </ul>
-                <p class="copyright text-muted">
-                    Copyright &copy; 寞踪的博客 2015
-                    <!-- <br>
-                    Theme by <a href="http://huangxuan.me">Hux</a> -->
-                </p>
-            </div>
+<!-- End Pagination -->
         </div>
     </div>
-</footer>
-
-<!-- jQuery -->
-<script src="/js/jquery.min.js "></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="/js/bootstrap.min.js "></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="/js/hux-blog.min.js "></script>
-
-
+    <!-- End Posts Container -->
+    <!-- Start Sidebar -->
+    <div class="col-1-3">
+        <div class="wrap-col">
+            <div class="widget-container">
+                <h6 class="widget-title"><a href="/tags/">Tags</a></h6>
+                
+                <div class="tagcloud">
+                    
+                        
+                            <a href="/tags/#PHP" title="PHP" rel="13">
+                                PHP
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#Redis" title="Redis" rel="2">
+                                Redis
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#HTML" title="HTML" rel="2">
+                                HTML
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#C" title="C" rel="2">
+                                C
+                            </a>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                            <a href="/tags/#Mysql" title="Mysql" rel="3">
+                                Mysql
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#Linux" title="Linux" rel="3">
+                                Linux
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#Nginx" title="Nginx" rel="3">
+                                Nginx
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#Python" title="Python" rel="3">
+                                Python
+                            </a>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                            <a href="/tags/#iOS" title="iOS" rel="10">
+                                iOS
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#OC" title="OC" rel="5">
+                                OC
+                            </a>
+                        
+                    
+                        
+                    
+                </div>
+                
+            </div>
+            <div class="widget-container">
+                <h6 class="widget-title"><a href="/about/">About Me</a></h6>
+                <ul class="widget-recent-posts">        
+                    <li>
+                        <div class="post-image">
+                            <div class="post-mask"></div>
+                            
+                            <img width="70" height="70" src="/img/Ellen.jpg" class="attachment-post-widget #" />
+                                   
+                        </div>
+                        
+                            <h6>极客程序媛</h6>
+                        
+                        <span>
+                            
+                            <a href="https://github.com/xpmozong" target="_blank">
+                                <i class="fa fa-github"></i>
+                            </a>
+                            
+                            
+                            <a target="_blank" href="http://weibo.com/xpmozong">
+                                <i class="fa fa-weibo"></i>
+                            </a>
+                            
+                        </span>
+                    </li>
+                </ul>
+                <!-- End Widget -->
+            </div>
+        </div>
+    </div>        
+    <!-- End Sidebar -->
+</div>
+<!-- End Main Container -->
+<p id="back-top"><a href="#top"></a></p>
+<!-- Start Footer -->
+<div class="spacing-30"></div>
+<div class="container zerogrid clearfix">
+    <div id="footer-container" class="wrap-col">
+        <p>Copyrigh &copy; 寞踪的博客 2010-2015</p>
+    </div>
+</div>
+<!-- End Footer -->
 <!-- async load function -->
-<script>
+<script type="text/javascript">
     function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
+        var d = document, t = 'script',
+        o = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        s.parentNode.insertBefore(o, s);
     }
-</script>
 
-<!-- Highlight.js -->
-<script>
-    async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
-        hljs.initHighlightingOnLoad();
-    })
     // only load tagcloud.js in tag.html
     if($('#tag_cloud').length !== 0){
         async("/js/jquery.tagcloud.js",function(){
@@ -701,67 +688,53 @@ Protocal 以 @protocal，以@end结束，例如：
             $('#tag_cloud a').tagcloud();
         })
     }
+    
+    $(function(){
+        var href = location.href;
+        var localh = document.location.protocol+"xpmozong.github.io/";
+        href = href.replace(localh,"");
+        var hrearr = href.split('/');
+        $(".sf-menu li").removeClass('current-menu-item');
+        if (hrearr[0] == 'about') {
+            $("#about").addClass('current-menu-item');
+        }else if(hrearr[0] == 'tags'){
+            $("#tags").addClass('current-menu-item');
+        }else{
+            $("#home").addClass('current-menu-item');
+        }
+
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+
+        // hide #back-top first
+        $("#back-top").hide();
+
+        // fade in #back-top
+        $(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 400) {
+                    $('#back-top').fadeIn();
+                } else {
+                    $('#back-top').fadeOut();
+                }
+        });
+
+        // scroll body to 0px on click
+        $('#back-top a').click(function () {
+            $('body,html').animate({
+                scrollTop: 0
+                }, 800);
+            return false;
+            });
+        });
+
+    });
+
 </script>
-<link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
-
-<!--fastClick.js -->
-<script>
-    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
-        var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
-    })
-</script>
-
-
-
-<!-- GA hacking -->
-<input id="gaId" type="hidden" value="UA-49627206-1"  />
-<input id="gaDomain" type="hidden" value="xpmozong.duoshuo.com"  />
-
-<!-- Google Analytics -->
-<script>
-    // dynamic User hacking by Hux
-    var _gaId = document.getElementById('gaId').value;
-    var _gaDomain = document.getElementById('gaDomain').value;
-
-    // Originial
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', _gaId, _gaDomain);
-    ga('send', 'pageview');
-</script>
-
-
-
-
-<!-- BT hacking -->
-<input id="baId" type="hidden" value="c710085fbe32373a875b5965e80eda7f"  />
-
-<!-- Baidu Tongji -->
-<script>
-    // dynamic User hacking by Hux
-    var _baId = document.getElementById('baId').value;
-
-    // Originial
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?" + _baId;
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
-
-
-
-<!-- Image to hack wechat -->
-<img src="/img/icon_wechat.png" width="0" height="0" />
-<!-- Migrate from head to bottom, no longer block render and still work -->
-
 </body>
-
 </html>
+
+
+
+
+

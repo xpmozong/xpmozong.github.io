@@ -5,9 +5,9 @@
     <description>寞踪的技术博客，主攻PHP，iOS，Python，Linux，C。</description>
     <link>http://xpmozong.github.io/</link>
     <atom:link href="http://xpmozong.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 19 Oct 2015 17:08:10 +0800</pubDate>
-    <lastBuildDate>Mon, 19 Oct 2015 17:08:10 +0800</lastBuildDate>
-    <generator>Jekyll v2.5.3</generator>
+    <pubDate>Mon, 02 Nov 2015 16:46:40 +0800</pubDate>
+    <lastBuildDate>Mon, 02 Nov 2015 16:46:40 +0800</lastBuildDate>
+    <generator>Jekyll v3.0.0</generator>
     
       <item>
         <title>Redis 集群</title>
@@ -84,7 +84,7 @@ slaveof 192.168.1.2 6379
         <category>Redis</category>
         
         
-        <category>redis</category>
+        <category>Redis</category>
         
       </item>
     
@@ -247,7 +247,7 @@ Percentage of the requests served within a certain time (ms)
         <category>PHP</category>
         
         
-        <category>php</category>
+        <category>PHP</category>
         
       </item>
     
@@ -496,7 +496,7 @@ for (NSTextCheckingResult *b in chunks) {
         <category>iOS</category>
         
         
-        <category>ios</category>
+        <category>iOS</category>
         
       </item>
     
@@ -609,7 +609,7 @@ static DBConnect *dBHandle;
 /// 判断是否存在表
 - (BOOL)isTableOK:(NSString *)tableName
 {
-    NSString *sql = [NSString stringWithFormat:@&quot;SELECT count(*) as 'count' FROM sqlite_master WHERE type ='table' and name = '%@'&quot;, tableName];
+    NSString *sql = [NSString stringWithFormat:@&quot;SELECT count(*) as &#39;count&#39; FROM sqlite_master WHERE type =&#39;table&#39; and name = &#39;%@&#39;&quot;, tableName];
     int count = [self getDBDataCount:sql];
     NSLog(@&quot;Table count===%d&quot;, count);
     if (count &amp;gt; 0) {
@@ -742,7 +742,7 @@ static DBConnect *dBHandle;
         <category>iOS</category>
         
         
-        <category>ios</category>
+        <category>iOS</category>
         
       </item>
     
@@ -786,7 +786,7 @@ ASIHTTPRequest *htmlRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithStrin
         <category>iOS</category>
         
         
-        <category>ios</category>
+        <category>iOS</category>
         
       </item>
     
@@ -837,7 +837,7 @@ static Singleton *s = nil;
         <category>iOS</category>
         
         
-        <category>oc</category>
+        <category>OC</category>
         
       </item>
     
@@ -918,7 +918,7 @@ actionView.backgroundColor = [UIColor blueColor];
         <category>iOS</category>
         
         
-        <category>ios</category>
+        <category>iOS</category>
         
       </item>
     
@@ -1035,7 +1035,7 @@ wife.delegate = husband;
         <category>OC</category>
         
         
-        <category>oc</category>
+        <category>OC</category>
         
       </item>
     
@@ -1126,7 +1126,7 @@ wife.delegate = husband;
         <category>OC</category>
         
         
-        <category>oc</category>
+        <category>OC</category>
         
       </item>
     

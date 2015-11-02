@@ -1,169 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!DOCTYPE html lang="en-US">
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="寞踪的技术博客，主攻PHP，iOS，Python，Linux，C。">
-    <meta name="keyword"  content="寞踪的博客">
-    <link rel="shortcut icon" href="img/favicon.ico">
-
-    <title>寞踪的博客 | Ellen Blog</title>
-
-    <link rel="canonical" href="http://xpmozong.github.io/page4/">
-
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/hux-blog.css">
-
-    <!-- Pygments Github CSS -->
-    <link rel="stylesheet" href="/css/syntax.css">
-
-    <!-- Custom Fonts -->
-    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
-    <!-- Hux change font-awesome CDN to qiniu -->
-    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-
-    <!-- Hux Delete, sad but pending in China
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
-    css'>
-    -->
-
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- ga & ba script hoook -->
-    <script></script>
-</head>
-
-
-<!-- hack iOS CSS :active style -->
-<body ontouchstart="">
-
-    <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">寞踪的博客</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <!-- Known Issue, found by Hux:
-            <nav>'s height woule be hold on by its content.
-            so, when navbar scale out, the <nav> will cover tags.
-            also mask any touch event of tags, unfortunately.
-        -->
-        <div id="huxblog_navbar">
-            <div class="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/about/">About</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/tags/">Tags</a>
-                    </li>
-                    
-                </ul>
-            </div>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
-<script>
-    // Drop Bootstarp low-performance Navbar
-    // Use customize navbar with high-quality material design animation
-    // in high-perf jank-free CSS3 implementation
-    var $body   = document.body;
-    var $toggle = document.querySelector('.navbar-toggle');
-    var $navbar = document.querySelector('#huxblog_navbar');
-    var $collapse = document.querySelector('.navbar-collapse');
-
-    $toggle.addEventListener('click', handleMagic)
-    function handleMagic(e){
-        if ($navbar.className.indexOf('in') > 0) {
-        // CLOSE
-            $navbar.className = " ";
-            // wait until animation end.
-            setTimeout(function(){
-                // prevent frequently toggle
-                if($navbar.className.indexOf('in') < 0) {
-                    $collapse.style.height = "0px"
-                }
-            },400)
-        }else{
-        // OPEN
-            $collapse.style.height = "auto"
-            $navbar.className += " in";
-        }
-    }
-</script>
-
-
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>寞踪的博客</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">free as wind</span>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="寞踪的技术博客，主攻PHP，iOS，Python，Linux，C。">
+<meta name="keyword"  content="寞踪的博客">
+<link rel="shortcut icon" href="img/favicon.ico">
+<title>寞踪的博客 | Ellen Blog</title>
+<link rel="canonical" href="http://xpmozong.github.io/page4/">
+<link rel="stylesheet" href="/css/syntax.css">
+<link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel='stylesheet' href="/css/style.css" type='text/css' media='all' />
+<link rel='stylesheet' href="/css/color/green.css" type='text/css' media='all' />
+<link href="/google-code-prettify/vibrant-ink.css" rel="stylesheet" type="text/css" media="all">
+<script src="/google-code-prettify/jquery.js"></script>
+<script src="/google-code-prettify/prettify.js"></script>
+<body class="home blog">
+    <!-- Start Header -->
+    <div class="container zerogrid clearfix">
+        <div class="col-full">
+            <div class="wrap-col">
+                <div id="header-nav-container" class="clearfix">
+                    <div class="h-logo">
+                        <a href="/">
+                            寞踪的博客
+                        </a>
+                    </div>
+                    <div class="h-menu">
+                        <!-- Navigation Menu -->     
+                        <ul class="sf-menu">
+                            <li id="home" class="menu-item current-menu-item">
+                                <a href="/">Home</a>
+                            </li>
+                            <li id="about" class="menu-item">
+                                <a href="/about/">About</a>
+                            </li>
+                            <li id="tags" class="menu-item">
+                                <a href="/tags/">Tags</a>
+                            </li>
+                        </ul> 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</header>
+<!-- Start Main Container -->
+<div class="container zerogrid clearfix">
+    <!-- Start Posts Container -->
+    <div class="col-2-3" id="post-container">
+        <div class="wrap-col">
+            <!-- Start Post Item -->
 
-<!-- Main Content -->
-<div class="container">
-	<div class="row">
-        
-
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    		<div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-    			
-<div class="post-preview">
-    <a href="/php/2011/11/25/php-smarty/">
-        <h2 class="post-title">
-            smarty 生成静态化html文件
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/php/2011/11/25/php-smarty/">
+                smarty 生成静态化html文件
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            静态化网页，是个基本技能。下面是smarty静态化。
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>November 25, 2011</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        静态化网页，是个基本技能。下面是smarty静态化。
 
 打开Smarty.class.php 文件
 
@@ -179,27 +87,45 @@
  */ 
 function mk_dir($dir, $mode = 0777) 
 { 
-    if...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on November 25, 2011
-    </p>
-</div>
-<hr>
+    if($dir == '') return true;
+    if (is_dir($dir) || @mkdir($dir,$mode)) return true; 
+    if (!$this-&gt;mk_dir(dirname($dir),$mode)) return false;
 
-<div class="post-preview">
-    <a href="/php/2011/10/20/php-xml/">
-        <h2 class="post-title">
-            PHP:XML与数组互相转换
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+    return @mkdir($dir,$mode); 
+} 
+
+/**
+ * 页面静态化
+ * 
+...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/php/2011/11/25/php-smarty/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/php/2011/10/20/php-xml/">
+                PHP:XML与数组互相转换
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            看代码
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>October 20, 2011</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        看代码
 
 /**
  * 把XML转化为数组
@@ -213,27 +139,40 @@ function xmlToArray($xml, $recursive = false )
         $array = $xml;
     }
 
-    $ne...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on October 20, 2011
-    </p>
+    $newArray = array ();
+    $array = (array) $array ;
+    foreach ($array as $key =&gt; $value ) {
+        $value = (array) $value ;
+        if (isset ($value [0])){
+            $newArray [$key] = trim($va...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/php/2011/10/20/php-xml/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
 </div>
-<hr>
 
-<div class="post-preview">
-    <a href="/php/2011/10/20/php-mem/">
-        <h2 class="post-title">
-            PHP:在循环内或外实例化类在占用内存上有很大的区别
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/php/2011/10/20/php-mem/">
+                PHP:在循环内或外实例化类在占用内存上有很大的区别
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            先来一个test1.php
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>October 20, 2011</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        先来一个test1.php
 
 class ABC{
     public $numBox = array();
@@ -241,51 +180,93 @@ class ABC{
         for($i = 1; $i &lt;= 600; $i++){
             $this-&gt;numBox[] = mt_rand(1,1000000);
         }
-        ec...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on October 20, 2011
-    </p>
-</div>
-<hr>
+        echo 'Now memory_get_usage: '.memory_get_usage().'&lt;br /&gt;';
+    }
+}
+$instance = new ABC();
+for($i = 0; $i&lt; 50; $i++){
+    $instance-&gt;ddd();
+}
 
-<div class="post-preview">
-    <a href="/c/2011/10/06/c/">
-        <h2 class="post-title">
-            用Visual Studio 2010 命令提示 运行C程序
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+
+这是test1.php的运行结果
+
+Now memory_get_usage: 422728
+...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/php/2011/10/20/php-mem/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/c/2011/10/06/c/">
+                用Visual Studio 2010 命令提示 运行C程序
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            1.单击“开始”，指向“所有程序”、“Microsoft Visual Studio 2010”和“Visual Studio 工具”，然后单击“Visual Studio 2010 命令提示”。
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>October 6, 2011</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        1.单击“开始”，指向“所有程序”、“Microsoft Visual Studio 2010”和“Visual Studio 工具”，然后单击“Visual Studio 2010 命令提示”。
 
 根据计算机上的 Windows 版本和系统安全配置，可能必须右击“Visual Studio 2008 命令提示”，然后单击“以管理员身份运行”，才能成功运行按下列步骤创建的应用程序。
 
-2.在...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on October 6, 2011
-    </p>
-</div>
-<hr>
+2.在命令提示符下，键入 notepad simple.c，并按 Enter。
 
-<div class="post-preview">
-    <a href="/html/2011/09/26/htaceess-speed/">
-        <h2 class="post-title">
-            前端优化，利用.htaceess控制图片，js，css缓存时间提升加载速度
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+在系统提示是否创建文件时，单击“是”。
+
+3.在记事本中，键入下列各行。
+
+#include &lt;stdio.h&gt;
+int main()
+{
+    printf("This is a native C program.\n");
+    return 0;
+}
+
+
+4.在“文件”菜单上，单击“保存”，以创建 C...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/c/2011/10/06/c/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/html/2011/09/26/htaceess-speed/">
+                前端优化，利用.htaceess控制图片，js，css缓存时间提升加载速度
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            前端优化，利用.htaceess控制图片，js，css缓存时间提升网页加载速度。
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>September 26, 2011</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        前端优化，利用.htaceess控制图片，js，css缓存时间提升网页加载速度。
 
 Add an Expires or a Cache-Control Header：
 
@@ -295,27 +276,40 @@ Add an Expires or a Cache-Control Header：
 
 &lt;IfModule mod_expires.c&gt;
     ExpiresActive On
-  ...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on September 26, 2011
-    </p>
+    ExpiresDefault A600
+    ExpiresByType image/x-icon A2592000
+    ExpiresByType application/x-javascript A2592000
+    ExpiresByType text/css A604800
+    ExpiresByType image/gif A2592000
+    ExpiresByT...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/html/2011/09/26/htaceess-speed/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
 </div>
-<hr>
 
-<div class="post-preview">
-    <a href="/php/2011/09/23/php-string/">
-        <h2 class="post-title">
-            10+ 字符串相关的 PHP 代码片段
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/php/2011/09/23/php-string/">
+                10+ 字符串相关的 PHP 代码片段
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            1、自动移除字符串中的 HTML 标记
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>September 23, 2011</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        1、自动移除字符串中的 HTML 标记
 
 在用户表单中，你可能希望移除所有不必要的 HTML 标记。使用 strip_tags() 函数可以简单地做到这一点：
 
@@ -324,75 +318,130 @@ $text = strip_tags($input, "");
 
 2、获取 $start 和 $end 之间的文本
 
-这是一种每个网站开发人员应该收纳在开发工具箱的功能：给定一个字符串，一个起始位置，一个结束为止，并返回包含在 $...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on September 23, 2011
-    </p>
-</div>
-<hr>
+这是一种每个网站开发人员应该收纳在开发工具箱的功能：给定一个字符串，一个起始位置，一个结束为止，并返回包含在 $start 和 $end 两者之间的文本。
 
-<div class="post-preview">
-    <a href="/html/2011/09/23/div-flash/">
-        <h2 class="post-title">
-            DIV层遇到FLASH不显示的问题
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+function GetBetween($content,$start,$end){
+    $r = explode($start, $content);
+    if (isset($r[1])){
+        $r = explode($end, $r[1]);
+        return $r[0];
+    }
+    return '...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/php/2011/09/23/php-string/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/html/2011/09/23/div-flash/">
+                DIV层遇到FLASH不显示的问题
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            经常遇到 Flash 插入到网页 Div 层后就不显示了。解决方法是将插入到网页中的 Flash 设置为透明 flash，将 wmode 赋值为 transparent，以下为旧式插入方式：
-
-&lt;object classid=clsid:D27CDB6E-AE6D-11cf-96B8-444553540000 codebase=http://download.macromedia.co...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on September 23, 2011
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/redis/2011/08/19/redis-humble-opinion/">
-        <h2 class="post-title">
-            Redis 浅见
-        </h2>
-        
-        <h3 class="post-subtitle">
+        <div class="post-subtitle">
             
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>September 23, 2011</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        经常遇到 Flash 插入到网页 Div 层后就不显示了。解决方法是将插入到网页中的 Flash 设置为透明 flash，将 wmode 赋值为 transparent，以下为旧式插入方式：
+
+&lt;object classid=clsid:D27CDB6E-AE6D-11cf-96B8-444553540000 codebase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0 width=550 height=400&gt;
+&lt;param name=movie value=test.swf&gt;
+&lt;param name=quality value=high&gt;
+&lt;param name=wmode value=transparent&gt...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/html/2011/09/23/div-flash/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/redis/2011/08/19/redis-humble-opinion/">
+                Redis 浅见
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            以前只会安装redis，和使用string类型，这个星期，为了使自己更懂一点，所以看了很多关于redis的文章。所以写了这篇浅谈博客，有观点不准确的地方，可以纠正我。
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>August 19, 2011</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        以前只会安装redis，和使用string类型，这个星期，为了使自己更懂一点，所以看了很多关于redis的文章。所以写了这篇浅谈博客，有观点不准确的地方，可以纠正我。
 
 在NoSql领域中，redis占据着重要位置。她小儿精悍，被比喻作AK-47。
 
 下面要讨论的是redis的数据类型，关于aof日志文件，以及rediska的使用。
 
-Redis的数据类型Strings, integers,...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on August 19, 2011
-    </p>
-</div>
-<hr>
+Redis的数据类型Strings, integers, lists, hashes, sets, sorted sets
 
-<div class="post-preview">
-    <a href="/php/2011/08/08/php-thumbnails/">
-        <h2 class="post-title">
-            PHP按比例缩放图
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+他们的用法如下：
+
+1、Strings
+
+&gt; set foo bar
+OK
+&gt;get foo
+"bar"
+
+2、integer
+
+&gt;set mykey "10"
+OK 
+&gt;incr mykey
+(integer) 11
+&gt;get mykey
+"11"
+&gt;decr mykey
+(integer)...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/redis/2011/08/19/redis-humble-opinion/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/php/2011/08/08/php-thumbnails/">
+                PHP按比例缩放图
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            upload.php文件内容
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>August 8, 2011</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        upload.php文件内容
 
 $uid = 3;
 $time = time();
@@ -405,249 +454,179 @@ $unuploaded = 0;
 $imgname = $uid.$time;
 //只允许三张图片上传
 for ($i=0; $i&lt;=2; $i++) {
-    //获取...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on August 8, 2011
-    </p>
+    //获取当前图片的信息
+    $is_file = $_FILES['imgfile']['name'][$i];
+    //如果当前图片不为空
+    if (!empty($is_file)) {
+        // 判断上传的图片的类型是不是jpg,gif,png,bmp中的一种，同时判断是否上传成功
+        $imgtypearr = array('image/jpeg','imag...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/php/2011/08/08/php-thumbnails/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
 </div>
-<hr>
 
+<!-- End Post Item -->
+<!-- Start Pagination -->
 
-<!-- Pager -->
-
-<ul class="pager">
+<ul class="pagination clearfix">
     
     <li class="previous">
-        <a href="/page3">&larr; Newer Posts</a>
+        <a href="/page3"><i class="fa fa-arrow-circle-o-left"></i> Newer Posts</a>
     </li>
     
     
 </ul>
 
-
-    		</div>
-    <!-- Sidebar Container -->
-            <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
-                <!-- Featured Tags -->
-                
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                        
-                            
-                                <a href="/tags/#PHP" title="PHP" rel="13">
-                                    PHP
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#Redis" title="Redis" rel="2">
-                                    Redis
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#HTML" title="HTML" rel="2">
-                                    HTML
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#C" title="C" rel="2">
-                                    C
-                                </a>
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                                <a href="/tags/#Mysql" title="Mysql" rel="3">
-                                    Mysql
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#Linux" title="Linux" rel="3">
-                                    Linux
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#Nginx" title="Nginx" rel="3">
-                                    Nginx
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#Python" title="Python" rel="3">
-                                    Python
-                                </a>
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                                <a href="/tags/#iOS" title="iOS" rel="10">
-                                    iOS
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#OC" title="OC" rel="5">
-                                    OC
-                                </a>
-                            
-                        
-                            
-                        
-                    </div>
-                </section>
-                
-
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-                        
-                            <img src="/img/Ellen.jpg" />
-                        
-                        
-                            <p>一个喜欢折腾的程序媛</p>
-                        
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            
-                            
-                            
-                            <li>
-                                <a target="_blank" href="http://weibo.com/xpmozong">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                            
-                            
-                            <li>
-                                <a target="_blank" href="https://github.com/xpmozong">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                        </ul>
-                    </div>
-                </section>
-                <!-- Friends Blog -->
-                
-                <hr>
-                <h5>FRIENDS</h5>
-                <ul class="list-inline">
-                    
-                </ul>
-                
-    		</div>
-        
-	</div>
-</div>
-
-
-    <!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    
-                    
-
-                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
-                    
-                    
-                    <li>
-                        <a target="_blank" href="http://weibo.com/xpmozong">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    
-
-
-                    
-                    
-                    <li>
-                        <a target="_blank" href="https://github.com/xpmozong">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                </ul>
-                <p class="copyright text-muted">
-                    Copyright &copy; 寞踪的博客 2015
-                    <!-- <br>
-                    Theme by <a href="http://huangxuan.me">Hux</a> -->
-                </p>
-            </div>
+<!-- End Pagination -->
         </div>
     </div>
-</footer>
-
-<!-- jQuery -->
-<script src="/js/jquery.min.js "></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="/js/bootstrap.min.js "></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="/js/hux-blog.min.js "></script>
-
-
+    <!-- End Posts Container -->
+    <!-- Start Sidebar -->
+    <div class="col-1-3">
+        <div class="wrap-col">
+            <div class="widget-container">
+                <h6 class="widget-title"><a href="/tags/">Tags</a></h6>
+                
+                <div class="tagcloud">
+                    
+                        
+                            <a href="/tags/#PHP" title="PHP" rel="13">
+                                PHP
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#Redis" title="Redis" rel="2">
+                                Redis
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#HTML" title="HTML" rel="2">
+                                HTML
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#C" title="C" rel="2">
+                                C
+                            </a>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                            <a href="/tags/#Mysql" title="Mysql" rel="3">
+                                Mysql
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#Linux" title="Linux" rel="3">
+                                Linux
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#Nginx" title="Nginx" rel="3">
+                                Nginx
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#Python" title="Python" rel="3">
+                                Python
+                            </a>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                            <a href="/tags/#iOS" title="iOS" rel="10">
+                                iOS
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#OC" title="OC" rel="5">
+                                OC
+                            </a>
+                        
+                    
+                        
+                    
+                </div>
+                
+            </div>
+            <div class="widget-container">
+                <h6 class="widget-title"><a href="/about/">About Me</a></h6>
+                <ul class="widget-recent-posts">        
+                    <li>
+                        <div class="post-image">
+                            <div class="post-mask"></div>
+                            
+                            <img width="70" height="70" src="/img/Ellen.jpg" class="attachment-post-widget #" />
+                                   
+                        </div>
+                        
+                            <h6>极客程序媛</h6>
+                        
+                        <span>
+                            
+                            <a href="https://github.com/xpmozong" target="_blank">
+                                <i class="fa fa-github"></i>
+                            </a>
+                            
+                            
+                            <a target="_blank" href="http://weibo.com/xpmozong">
+                                <i class="fa fa-weibo"></i>
+                            </a>
+                            
+                        </span>
+                    </li>
+                </ul>
+                <!-- End Widget -->
+            </div>
+        </div>
+    </div>        
+    <!-- End Sidebar -->
+</div>
+<!-- End Main Container -->
+<p id="back-top"><a href="#top"></a></p>
+<!-- Start Footer -->
+<div class="spacing-30"></div>
+<div class="container zerogrid clearfix">
+    <div id="footer-container" class="wrap-col">
+        <p>Copyrigh &copy; 寞踪的博客 2010-2015</p>
+    </div>
+</div>
+<!-- End Footer -->
 <!-- async load function -->
-<script>
+<script type="text/javascript">
     function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
+        var d = document, t = 'script',
+        o = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        s.parentNode.insertBefore(o, s);
     }
-</script>
 
-<!-- Highlight.js -->
-<script>
-    async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
-        hljs.initHighlightingOnLoad();
-    })
     // only load tagcloud.js in tag.html
     if($('#tag_cloud').length !== 0){
         async("/js/jquery.tagcloud.js",function(){
@@ -658,67 +637,53 @@ for ($i=0; $i&lt;=2; $i++) {
             $('#tag_cloud a').tagcloud();
         })
     }
+    
+    $(function(){
+        var href = location.href;
+        var localh = document.location.protocol+"xpmozong.github.io/";
+        href = href.replace(localh,"");
+        var hrearr = href.split('/');
+        $(".sf-menu li").removeClass('current-menu-item');
+        if (hrearr[0] == 'about') {
+            $("#about").addClass('current-menu-item');
+        }else if(hrearr[0] == 'tags'){
+            $("#tags").addClass('current-menu-item');
+        }else{
+            $("#home").addClass('current-menu-item');
+        }
+
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+
+        // hide #back-top first
+        $("#back-top").hide();
+
+        // fade in #back-top
+        $(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 400) {
+                    $('#back-top').fadeIn();
+                } else {
+                    $('#back-top').fadeOut();
+                }
+        });
+
+        // scroll body to 0px on click
+        $('#back-top a').click(function () {
+            $('body,html').animate({
+                scrollTop: 0
+                }, 800);
+            return false;
+            });
+        });
+
+    });
+
 </script>
-<link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
-
-<!--fastClick.js -->
-<script>
-    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
-        var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
-    })
-</script>
-
-
-
-<!-- GA hacking -->
-<input id="gaId" type="hidden" value="UA-49627206-1"  />
-<input id="gaDomain" type="hidden" value="xpmozong.duoshuo.com"  />
-
-<!-- Google Analytics -->
-<script>
-    // dynamic User hacking by Hux
-    var _gaId = document.getElementById('gaId').value;
-    var _gaDomain = document.getElementById('gaDomain').value;
-
-    // Originial
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', _gaId, _gaDomain);
-    ga('send', 'pageview');
-</script>
-
-
-
-
-<!-- BT hacking -->
-<input id="baId" type="hidden" value="c710085fbe32373a875b5965e80eda7f"  />
-
-<!-- Baidu Tongji -->
-<script>
-    // dynamic User hacking by Hux
-    var _baId = document.getElementById('baId').value;
-
-    // Originial
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?" + _baId;
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
-
-
-
-<!-- Image to hack wechat -->
-<img src="/img/icon_wechat.png" width="0" height="0" />
-<!-- Migrate from head to bottom, no longer block render and still work -->
-
 </body>
-
 </html>
+
+
+
+
+

@@ -1,0 +1,324 @@
+<!DOCTYPE html lang="en-US">
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="寞踪的技术博客，主攻PHP，iOS，Python，Linux，C。">
+<meta name="keyword"  content="寞踪的博客">
+<link rel="shortcut icon" href="img/favicon.ico">
+<title>PHP之call_user_func_array用法 - 寞踪的博客 | Ellen Blog</title>
+<link rel="canonical" href="http://xpmozong.github.io/php/2012/01/09/php-call-user-func-array/">
+<link rel="stylesheet" href="/css/syntax.css">
+<link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel='stylesheet' href="/css/style.css" type='text/css' media='all' />
+<link rel='stylesheet' href="/css/color/green.css" type='text/css' media='all' />
+<link href="/google-code-prettify/vibrant-ink.css" rel="stylesheet" type="text/css" media="all">
+<script src="/google-code-prettify/jquery.js"></script>
+<script src="/google-code-prettify/prettify.js"></script>
+<body class="home blog">
+    <!-- Start Header -->
+    <div class="container zerogrid clearfix">
+        <div class="col-full">
+            <div class="wrap-col">
+                <div id="header-nav-container" class="clearfix">
+                    <div class="h-logo">
+                        <a href="/">
+                            寞踪的博客
+                        </a>
+                    </div>
+                    <div class="h-menu">
+                        <!-- Navigation Menu -->     
+                        <ul class="sf-menu">
+                            <li id="home" class="menu-item current-menu-item">
+                                <a href="/">Home</a>
+                            </li>
+                            <li id="about" class="menu-item">
+                                <a href="/about/">About</a>
+                            </li>
+                            <li id="tags" class="menu-item">
+                                <a href="/tags/">Tags</a>
+                            </li>
+                        </ul> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Start Main Container -->
+<div class="container zerogrid clearfix">
+    <!-- Start Posts Container -->
+    <div class="col-2-3" id="post-container">
+        <div class="wrap-col">
+            <div class="post mcontent clearfix">
+                <p>直接上最简单的</p>
+
+<pre><code>header('Content-Type:text/html;charset=utf-8');
+class call_func{
+    function func0() {
+        echo 'func0';
+    }
+
+    function func1($a) {
+        echo $a;
+    }
+
+    function func2($a, $b) {
+        echo $a+$b;
+    }
+
+    function func3($a, $b, $c) {
+        echo $a+$b+$c;
+    }
+}
+
+function otest() {
+    $args = func_get_args();    
+    $num = func_num_args();
+    call_user_func_array(array('call_func','func'.$num), $args);
+}
+
+otest(1,1,1);
+</code></pre>
+
+<p>mixed call_user_func_array ( callback function, array param_arr ) 和 mixed call_user_func ( callback $function [, mixed $parameter [, mixed $… ]] ) 相似</p>
+
+<p>还可以这样实例化类的。</p>
+
+            </div>
+            
+            <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                    data-thread-key="xpmozong/about"
+                    data-title="PHP之call_user_func_array用法"
+                    data-url="http://xpmozong.github.io/about/"></div>
+                </div>
+            <!-- 多说评论框 end -->
+
+            <!-- Duoshuo hacking -->
+            <input id="dsUser" type="hidden" value="xpmozong"  />
+
+            <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+            <script type="text/javascript">
+                // dynamic User hacking by Hux
+                var _user = document.getElementById('dsUser').value;
+                // duoshuo comment query.
+                var duoshuoQuery = {short_name: _user };
+                (function() {
+                    var ds = document.createElement('script');
+                    ds.type = 'text/javascript';ds.async = true;
+                    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                    ds.charset = 'UTF-8';
+                    (document.getElementsByTagName('head')[0]
+                     || document.getElementsByTagName('body')[0]).appendChild(ds);
+                })();
+            </script>
+            <!-- 多说公共JS代码 end -->
+            
+        </div>
+    </div>
+    <!-- End Posts Container -->
+    <!-- Start Sidebar -->
+    <div class="col-1-3">
+        <div class="wrap-col">
+            <div class="widget-container">
+                <h6 class="widget-title"><a href="/tags/">Tags</a></h6>
+                
+                <div class="tagcloud">
+                    
+                        
+                            <a href="/tags/#PHP" title="PHP" rel="13">
+                                PHP
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#Redis" title="Redis" rel="2">
+                                Redis
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#HTML" title="HTML" rel="2">
+                                HTML
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#C" title="C" rel="2">
+                                C
+                            </a>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                            <a href="/tags/#Mysql" title="Mysql" rel="3">
+                                Mysql
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#Linux" title="Linux" rel="3">
+                                Linux
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#Nginx" title="Nginx" rel="3">
+                                Nginx
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#Python" title="Python" rel="3">
+                                Python
+                            </a>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                            <a href="/tags/#iOS" title="iOS" rel="10">
+                                iOS
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#OC" title="OC" rel="5">
+                                OC
+                            </a>
+                        
+                    
+                        
+                    
+                </div>
+                
+            </div>
+            <div class="widget-container">
+                <h6 class="widget-title"><a href="/about/">About Me</a></h6>
+                <ul class="widget-recent-posts">        
+                    <li>
+                        <div class="post-image">
+                            <div class="post-mask"></div>
+                            
+                            <img width="70" height="70" src="/img/Ellen.jpg" class="attachment-post-widget #" />
+                                   
+                        </div>
+                        
+                            <h6>极客程序媛</h6>
+                        
+                        <span>
+                            
+                            <a href="https://github.com/xpmozong" target="_blank">
+                                <i class="fa fa-github"></i>
+                            </a>
+                            
+                            
+                            <a target="_blank" href="http://weibo.com/xpmozong">
+                                <i class="fa fa-weibo"></i>
+                            </a>
+                            
+                        </span>
+                    </li>
+                </ul>
+                <!-- End Widget -->
+            </div>
+        </div>
+    </div>        
+    <!-- End Sidebar -->
+</div>
+<!-- End Main Container -->
+<p id="back-top"><a href="#top"></a></p>
+<!-- Start Footer -->
+<div class="spacing-30"></div>
+<div class="container zerogrid clearfix">
+    <div id="footer-container" class="wrap-col">
+        <p>Copyrigh &copy; 寞踪的博客 2010-2015</p>
+    </div>
+</div>
+<!-- End Footer -->
+<!-- async load function -->
+<script type="text/javascript">
+    function async(u, c) {
+        var d = document, t = 'script',
+        o = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        s.parentNode.insertBefore(o, s);
+    }
+
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+    
+    $(function(){
+        var href = location.href;
+        var localh = document.location.protocol+"xpmozong.github.io/";
+        href = href.replace(localh,"");
+        var hrearr = href.split('/');
+        $(".sf-menu li").removeClass('current-menu-item');
+        if (hrearr[0] == 'about') {
+            $("#about").addClass('current-menu-item');
+        }else if(hrearr[0] == 'tags'){
+            $("#tags").addClass('current-menu-item');
+        }else{
+            $("#home").addClass('current-menu-item');
+        }
+
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+
+        // hide #back-top first
+        $("#back-top").hide();
+
+        // fade in #back-top
+        $(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 400) {
+                    $('#back-top').fadeIn();
+                } else {
+                    $('#back-top').fadeOut();
+                }
+        });
+
+        // scroll body to 0px on click
+        $('#back-top a').click(function () {
+            $('body,html').animate({
+                scrollTop: 0
+                }, 800);
+            return false;
+            });
+        });
+
+    });
+
+</script>
+</body>
+</html>
+
+
+
+
+

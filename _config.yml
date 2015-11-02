@@ -8,26 +8,18 @@ keyword: "寞踪的博客"
 url: "http://xpmozong.github.io"
 baseurl: ""
 
-
-
 # SNS settings
 RSS: false
 weibo_username:     xpmozong
-#zhihu_username:     huxpro
 github_username:    xpmozong
-#twitter_username:  huxpro
-#facebook_username:  huxpro
-
-
 
 # Build settings
 highlighter: pygments
 permalink: pretty
+gems: [jekyll-paginate]
 paginate: 10
-exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
-anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
-
-
+paginate_path: "page:num"
+anchorjs: true
 
 # Markdown settings
 # replace redcarpet to kramdown,
@@ -37,37 +29,27 @@ markdown: kramdown
 kramdown:
   input: GFM                            # use Github Flavored Markdown !important
 
-
-
 # Duoshuo settings
 # to the old version user, please set your own DuoShuo account in `post.html`, `keynote.html` and `about.html`
 duoshuo_username: xpmozong
 duoshuo_share: true                     # set to false if you want to use Comment without Sharing
 # seeing the Share component is depend on Comment so we can NOT use share only.
 
-
-
 # Analytics settings
 # Baidu Analytics `head.html`
-ba_track_id: c710085fbe32373a875b5965e80eda7f
+ba_track_id: 6dcc729d6a5d5c61d7c8835eb7418d54
 # Google Analytics `footer.html`
-ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
-ga_domain: xpmozong.duoshuo.com
-
-
+# ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
+# ga_domain: xpmozong.duoshuo.com
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "一个喜欢折腾的程序媛"
+sidebar-about-description: "极客程序媛"
 sidebar-avatar: /img/Ellen.jpg     # use absolute URL.
-
-
 
 # Featured Tags
 featured-tags: true                     # whether or not using Feature-Tags
 featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
-
-
 
 # Friends
 friends: []

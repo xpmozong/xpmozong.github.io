@@ -1,169 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!DOCTYPE html lang="en-US">
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="寞踪的技术博客，主攻PHP，iOS，Python，Linux，C。">
-    <meta name="keyword"  content="寞踪的博客">
-    <link rel="shortcut icon" href="img/favicon.ico">
-
-    <title>寞踪的博客 | Ellen Blog</title>
-
-    <link rel="canonical" href="http://xpmozong.github.io/page3/">
-
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/hux-blog.css">
-
-    <!-- Pygments Github CSS -->
-    <link rel="stylesheet" href="/css/syntax.css">
-
-    <!-- Custom Fonts -->
-    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
-    <!-- Hux change font-awesome CDN to qiniu -->
-    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-
-    <!-- Hux Delete, sad but pending in China
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
-    css'>
-    -->
-
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- ga & ba script hoook -->
-    <script></script>
-</head>
-
-
-<!-- hack iOS CSS :active style -->
-<body ontouchstart="">
-
-    <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">寞踪的博客</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <!-- Known Issue, found by Hux:
-            <nav>'s height woule be hold on by its content.
-            so, when navbar scale out, the <nav> will cover tags.
-            also mask any touch event of tags, unfortunately.
-        -->
-        <div id="huxblog_navbar">
-            <div class="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/about/">About</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/tags/">Tags</a>
-                    </li>
-                    
-                </ul>
-            </div>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
-<script>
-    // Drop Bootstarp low-performance Navbar
-    // Use customize navbar with high-quality material design animation
-    // in high-perf jank-free CSS3 implementation
-    var $body   = document.body;
-    var $toggle = document.querySelector('.navbar-toggle');
-    var $navbar = document.querySelector('#huxblog_navbar');
-    var $collapse = document.querySelector('.navbar-collapse');
-
-    $toggle.addEventListener('click', handleMagic)
-    function handleMagic(e){
-        if ($navbar.className.indexOf('in') > 0) {
-        // CLOSE
-            $navbar.className = " ";
-            // wait until animation end.
-            setTimeout(function(){
-                // prevent frequently toggle
-                if($navbar.className.indexOf('in') < 0) {
-                    $collapse.style.height = "0px"
-                }
-            },400)
-        }else{
-        // OPEN
-            $collapse.style.height = "auto"
-            $navbar.className += " in";
-        }
-    }
-</script>
-
-
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>寞踪的博客</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">free as wind</span>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="寞踪的技术博客，主攻PHP，iOS，Python，Linux，C。">
+<meta name="keyword"  content="寞踪的博客">
+<link rel="shortcut icon" href="img/favicon.ico">
+<title>寞踪的博客 | Ellen Blog</title>
+<link rel="canonical" href="http://xpmozong.github.io/page3/">
+<link rel="stylesheet" href="/css/syntax.css">
+<link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel='stylesheet' href="/css/style.css" type='text/css' media='all' />
+<link rel='stylesheet' href="/css/color/green.css" type='text/css' media='all' />
+<link href="/google-code-prettify/vibrant-ink.css" rel="stylesheet" type="text/css" media="all">
+<script src="/google-code-prettify/jquery.js"></script>
+<script src="/google-code-prettify/prettify.js"></script>
+<body class="home blog">
+    <!-- Start Header -->
+    <div class="container zerogrid clearfix">
+        <div class="col-full">
+            <div class="wrap-col">
+                <div id="header-nav-container" class="clearfix">
+                    <div class="h-logo">
+                        <a href="/">
+                            寞踪的博客
+                        </a>
+                    </div>
+                    <div class="h-menu">
+                        <!-- Navigation Menu -->     
+                        <ul class="sf-menu">
+                            <li id="home" class="menu-item current-menu-item">
+                                <a href="/">Home</a>
+                            </li>
+                            <li id="about" class="menu-item">
+                                <a href="/about/">About</a>
+                            </li>
+                            <li id="tags" class="menu-item">
+                                <a href="/tags/">Tags</a>
+                            </li>
+                        </ul> 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</header>
+<!-- Start Main Container -->
+<div class="container zerogrid clearfix">
+    <!-- Start Posts Container -->
+    <div class="col-2-3" id="post-container">
+        <div class="wrap-col">
+            <!-- Start Post Item -->
 
-<!-- Main Content -->
-<div class="container">
-	<div class="row">
-        
-
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    		<div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-    			
-<div class="post-preview">
-    <a href="/php/2013/08/09/php-libvirt/">
-        <h2 class="post-title">
-            libvirt-php 学习小记
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/php/2013/08/09/php-libvirt/">
+                libvirt-php 学习小记
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            Libvirt 库是一种实现 Linux 虚拟化功能的 Linux® API，它支持各种虚拟机监控程序，包括 Xen 和 KVM，以及 QEMU 和用于其他操作系统的一些虚拟产品。
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>August 9, 2013</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        Libvirt 库是一种实现 Linux 虚拟化功能的 Linux® API，它支持各种虚拟机监控程序，包括 Xen 和 KVM，以及 QEMU 和用于其他操作系统的一些虚拟产品。
 
 一、安装libvirt环境
 
@@ -171,23 +79,35 @@
 
 (2)、升级
 
-yum -y ins...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on August 9, 2013
-    </p>
+yum -y install gcc gcc-c++
+yum install libxml2-devel gnutls-devel device-mapper-devel python-devel libnl-devel -y
+wget http://libvirt.org/sources/libvirt-1.1.1.tar.gz
+tar xzvf libvirt-0.9.4.tar.gz
+cd libvirt-0....
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/php/2013/08/09/php-libvirt/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
 </div>
-<hr>
 
-<div class="post-preview">
-    <a href="/php/2013/07/09/php-memcached/">
-        <h2 class="post-title">
-            Windows下安装配置PHP Memcached
-        </h2>
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/php/2013/07/09/php-memcached/">
+                Windows下安装配置PHP Memcached
+            </a>
+        </h3>
         
-        <div class="post-content-preview">
-            安装前准备：
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>July 9, 2013</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        安装前准备：
 
 
   
@@ -196,27 +116,45 @@ yum -y ins...
   
     php 所需的 PECL 扩展，即 php_memcache 扩展 http://windows.php.net/downloads/pecl/releases/memcache/2.2.7/
   
-...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪的博客 on July 9, 2013
-    </p>
-</div>
-<hr>
 
-<div class="post-preview">
-    <a href="/nginx/2013/05/10/crontab/">
-        <h2 class="post-title">
-            crontab 定时执行某个域名
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+
+win7 64 位
+
+php-5.3.4-x64 php_memcache.dll 下载
+
+Memcache-win64 下载：
+
+a. 下载最新版：http://blog.couchbase.com/memcached-windows-64-bit-pre-release-available
+
+b. 直接下载： http://s3.amazonaws.com/downloads.norths...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/php/2013/07/09/php-memcached/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/nginx/2013/05/10/crontab/">
+                crontab 定时执行某个域名
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            crontab 可以定时执行某个PHP文件，但是在实际项目中，我们用的是框架，因为不能破坏项目整体架构，所以不能定时执行某个PHP文件。
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>May 10, 2013</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        crontab 可以定时执行某个PHP文件，但是在实际项目中，我们用的是框架，因为不能破坏项目整体架构，所以不能定时执行某个PHP文件。
 
 OK，我们换个角度来考虑，crontab可以执行linux命令啊
 
@@ -232,27 +170,43 @@ OK，我们换个角度来考虑，crontab可以执行linux命令啊
 
 第5列星期0～6（0表示星期天）
 
-第6列要运行的...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on May 10, 2013
-    </p>
-</div>
-<hr>
+第6列要运行的命令
 
-<div class="post-preview">
-    <a href="/python/2013/04/02/python-pic-color/">
-        <h2 class="post-title">
-            python判断一张图片的主色调
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+例子：
+
+*/1 * * * *     curl  http://xxx.com/index.php/cron/send
+
+
+这样就是每分钟定时执行某个程序，不过这个最好不要公开，要做ip限制。
+
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/nginx/2013/05/10/crontab/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/python/2013/04/02/python-pic-color/">
+                python判断一张图片的主色调
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            python判断一张图片的主色调，多个颜色
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>April 2, 2013</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        python判断一张图片的主色调，多个颜色
 
 #!/usr/bin/env python
 #encoding:utf8
@@ -264,27 +218,41 @@ import optparse
 
 def get_dominant_color(image):
     """
-    Find a PIL image's dominant color, re...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on April 2, 2013
-    </p>
-</div>
-<hr>
+    Find a PIL image's dominant color, returning an (r, g, b) tuple.
+    """
 
-<div class="post-preview">
-    <a href="/python/2012/11/11/django-blog-admin/">
-        <h2 class="post-title">
-            django1.0.4 blog Admin管理界面的激活方法
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+    image = image.convert('RGBA')
+
+    # Shrink the image, so we don't spend too long analysing color
+    # frequencies. We're not interpolating so should be quick...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/python/2013/04/02/python-pic-color/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/python/2012/11/11/django-blog-admin/">
+                django1.0.4 blog Admin管理界面的激活方法
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            先django-admin startproject mysite创建一个项目
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>November 11, 2012</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        先django-admin startproject mysite创建一个项目
 cd mysite
 manage.py startapp blog  创建一个blog
 
@@ -293,73 +261,138 @@ manage.py startapp blog  创建一个blog
 DATABASE_ENGINE = 'mysql'
 DATABASE_NAME = 'djangodb'
 DATABASE_USER = 'root'
-DATABASE_PASSWO...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on November 11, 2012
-    </p>
-</div>
-<hr>
+DATABASE_PASSWORD = ''
+DATABASE_HOST = 'localhost'
+DATABASE_PORT = ''
 
-<div class="post-preview">
-    <a href="/nginx/2012/01/30/nginx/">
-        <h2 class="post-title">
-            Nginx实现HTTP负载均衡
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+
+2、建表
+
+命令行
+
+manage.py syncdb
+……..
+
+3、设置自动admin应用 settings.py
+
+在django.contrib.auth下添加django.contrib.admin,mysite.blog
+
+4、再次 命令行
+
+manage.py syncd...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/python/2012/11/11/django-blog-admin/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/nginx/2012/01/30/nginx/">
+                Nginx实现HTTP负载均衡
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            下面是配置nginx负载均衡的简单示例文件,主要作用是:
-
-www.s135.com 和 blog.s135.com 域名均指向 Nginx 所在的服务器IP。用户访问http://www.s135.com，将其负载均衡到192.168.1.2:80、92.168.1.3:80、192.168.1.4:80、192.168.1.5:80四台服务器。用户访问http://blog.s135.c...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on January 30, 2012
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/linux/2012/01/29/linux-ddos/">
-        <h2 class="post-title">
-            实战DoS Deflate
-        </h2>
-        
-        <h3 class="post-subtitle">
+        <div class="post-subtitle">
             
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>January 30, 2012</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        下面是配置nginx负载均衡的简单示例文件,主要作用是:
+
+www.s135.com 和 blog.s135.com 域名均指向 Nginx 所在的服务器IP。用户访问http://www.s135.com，将其负载均衡到192.168.1.2:80、92.168.1.3:80、192.168.1.4:80、192.168.1.5:80四台服务器。用户访问http://blog.s135.com，将其负载均衡到192.168.1.7服务器的8080、8081、8082端口。获取用户真实IP.
+
+user  www www;
+worker_processes 10;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+ 
+#pid      ...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/nginx/2012/01/30/nginx/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/linux/2012/01/29/linux-ddos/">
+                实战DoS Deflate
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            DDoS deflate是一款免费的用来防御和减轻DDoS攻击的脚本。它通过netstat监测跟踪创建大量网络连接的IP地址，在检测到某个结点超过预设的限 制时，该程序会通过APF或IPTABLES禁止或阻挡这些IP.&lt;/p&gt;
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>January 29, 2012</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        DDoS deflate是一款免费的用来防御和减轻DDoS攻击的脚本。它通过netstat监测跟踪创建大量网络连接的IP地址，在检测到某个结点超过预设的限 制时，该程序会通过APF或IPTABLES禁止或阻挡这些IP.&lt;/p&gt;
 
 DDoS deflate官方网站：http://deflate.medialayer.com/
 
-netstat -ntu | awk '{print ...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on January 29, 2012
-    </p>
-</div>
-<hr>
+netstat -ntu | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -n
 
-<div class="post-preview">
-    <a href="/php/2012/01/17/php-search-word/">
-        <h2 class="post-title">
-            php查找一个单词在一个文件中的第几行第几列
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+
+执行上面的命令后，
+
+1 Address
+1 servers)
+2 123.113.152.60
+4 59.151.36.148
+................................
+
+
+每个IP几个、十几个或几十个连接数都还算比较正常，如果像上面成百上千肯定就不正常了。
+
+好了，下面就安装...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/linux/2012/01/29/linux-ddos/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/php/2012/01/17/php-search-word/">
+                php查找一个单词在一个文件中的第几行第几列
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            在写这个程序之前，先回忆相关的代码。
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>January 17, 2012</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        在写这个程序之前，先回忆相关的代码。
 
 1、
 
@@ -372,27 +405,42 @@ echo $file_line_num;die;    //获得这个文件有多少行
 2、
 
 $txt = file('aa.txt');
-echo $txt[2];die;...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on January 17, 2012
-    </p>
-</div>
-<hr>
+echo $txt[2];die;   //输出第三行
 
-<div class="post-preview">
-    <a href="/php/2012/01/09/php-call_user_func_array/">
-        <h2 class="post-title">
-            PHP之call_user_func_array用法
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+
+3、有一个很大的日志文件，要读出最后100行，怎么办？
+
+$commandstr="tail -n 100 aa.txt&gt;online.txt"; //把server.log的最后100行重定向到online.txt中
+system($commandstr); //调用系统命令
+$file_handle = fopen("online.txt", "r+"); //...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/php/2012/01/17/php-search-word/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/php/2012/01/09/php-call-user-func-array/">
+                PHP之call_user_func_array用法
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            直接上最简单的
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>January 9, 2012</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        直接上最简单的
 
 header('Content-Type:text/html;charset=utf-8');
 class call_func{
@@ -404,27 +452,47 @@ class call_func{
         echo $a;
     }
 
-    function func2($a,...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on January 9, 2012
-    </p>
-</div>
-<hr>
+    function func2($a, $b) {
+        echo $a+$b;
+    }
 
-<div class="post-preview">
-    <a href="/php/2012/01/06/php-mysql/">
-        <h2 class="post-title">
-            PHP连接多个mysql数据库的类
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
+    function func3($a, $b, $c) {
+        echo $a+$b+$c;
+    }
+}
+
+function otest() {
+    $args = func_get_args();    
+    $num = func_num_args();
+    call_user_func_ar...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/php/2012/01/09/php-call-user-func-array/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="post clearfix">
+    <div class="post-margin clearfix">
+        <h3 class="post-title">
+            <a href="/php/2012/01/06/php-mysql/">
+                PHP连接多个mysql数据库的类
+            </a>
         </h3>
         
-        <div class="post-content-preview">
-            mysql.php类
+        <div class="post-subtitle">
+            
+        </div>
+        
+        <ul class="post-status">
+            <li><i class="fa fa-clock-o"></i>January 6, 2012</li>
+        </ul>
+    </div>   
+    <div class="post-margin">
+        mysql.php类
 
 /*
  * 定义一个连接类,可以访问建立多个数据库连接对象
@@ -435,253 +503,183 @@ class call_func{
 class mysql{
     var $dbhost;            //数据库地址
     var $dbuser;            //数据库用户名
-    var $dbpasswd;  ...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by 寞踪 on January 6, 2012
-    </p>
+    var $dbpasswd;          //数据库密码
+    var $dbpconnect = 0;    //数据库长连接
+    var $dbname;            //数据库名称
+    var $dbchart;           //数据库链接编码
+    var $dblink;            //数据库连接对象
+    var $sql;               //sql语句...
+    </div>
+    <ul class="post-social">
+        <li>
+            <a href="/php/2012/01/06/php-mysql/" class="readmore">
+                Read More <i class="fa fa-arrow-circle-o-right"></i>
+            </a>
+        </li>
+    </ul>
 </div>
-<hr>
 
+<!-- End Post Item -->
+<!-- Start Pagination -->
 
-<!-- Pager -->
-
-<ul class="pager">
+<ul class="pagination clearfix">
     
     <li class="previous">
-        <a href="/page2">&larr; Newer Posts</a>
+        <a href="/page2"><i class="fa fa-arrow-circle-o-left"></i> Newer Posts</a>
     </li>
     
     
     <li class="next">
-        <a href="/page4">Older Posts &rarr;</a>
+        <a href="/page4">Older Posts <i class="fa fa-arrow-circle-o-right"></i></a>
     </li>
     
 </ul>
 
-
-    		</div>
-    <!-- Sidebar Container -->
-            <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
-                <!-- Featured Tags -->
-                
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                        
-                            
-                                <a href="/tags/#PHP" title="PHP" rel="13">
-                                    PHP
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#Redis" title="Redis" rel="2">
-                                    Redis
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#HTML" title="HTML" rel="2">
-                                    HTML
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#C" title="C" rel="2">
-                                    C
-                                </a>
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                                <a href="/tags/#Mysql" title="Mysql" rel="3">
-                                    Mysql
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#Linux" title="Linux" rel="3">
-                                    Linux
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#Nginx" title="Nginx" rel="3">
-                                    Nginx
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#Python" title="Python" rel="3">
-                                    Python
-                                </a>
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                                <a href="/tags/#iOS" title="iOS" rel="10">
-                                    iOS
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#OC" title="OC" rel="5">
-                                    OC
-                                </a>
-                            
-                        
-                            
-                        
-                    </div>
-                </section>
-                
-
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-                        
-                            <img src="/img/Ellen.jpg" />
-                        
-                        
-                            <p>一个喜欢折腾的程序媛</p>
-                        
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            
-                            
-                            
-                            <li>
-                                <a target="_blank" href="http://weibo.com/xpmozong">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                            
-                            
-                            <li>
-                                <a target="_blank" href="https://github.com/xpmozong">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                        </ul>
-                    </div>
-                </section>
-                <!-- Friends Blog -->
-                
-                <hr>
-                <h5>FRIENDS</h5>
-                <ul class="list-inline">
-                    
-                </ul>
-                
-    		</div>
-        
-	</div>
-</div>
-
-
-    <!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    
-                    
-
-                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
-                    
-                    
-                    <li>
-                        <a target="_blank" href="http://weibo.com/xpmozong">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    
-
-
-                    
-                    
-                    <li>
-                        <a target="_blank" href="https://github.com/xpmozong">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                </ul>
-                <p class="copyright text-muted">
-                    Copyright &copy; 寞踪的博客 2015
-                    <!-- <br>
-                    Theme by <a href="http://huangxuan.me">Hux</a> -->
-                </p>
-            </div>
+<!-- End Pagination -->
         </div>
     </div>
-</footer>
-
-<!-- jQuery -->
-<script src="/js/jquery.min.js "></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="/js/bootstrap.min.js "></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="/js/hux-blog.min.js "></script>
-
-
+    <!-- End Posts Container -->
+    <!-- Start Sidebar -->
+    <div class="col-1-3">
+        <div class="wrap-col">
+            <div class="widget-container">
+                <h6 class="widget-title"><a href="/tags/">Tags</a></h6>
+                
+                <div class="tagcloud">
+                    
+                        
+                            <a href="/tags/#PHP" title="PHP" rel="13">
+                                PHP
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#Redis" title="Redis" rel="2">
+                                Redis
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#HTML" title="HTML" rel="2">
+                                HTML
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#C" title="C" rel="2">
+                                C
+                            </a>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                            <a href="/tags/#Mysql" title="Mysql" rel="3">
+                                Mysql
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#Linux" title="Linux" rel="3">
+                                Linux
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#Nginx" title="Nginx" rel="3">
+                                Nginx
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#Python" title="Python" rel="3">
+                                Python
+                            </a>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                            <a href="/tags/#iOS" title="iOS" rel="10">
+                                iOS
+                            </a>
+                        
+                    
+                        
+                            <a href="/tags/#OC" title="OC" rel="5">
+                                OC
+                            </a>
+                        
+                    
+                        
+                    
+                </div>
+                
+            </div>
+            <div class="widget-container">
+                <h6 class="widget-title"><a href="/about/">About Me</a></h6>
+                <ul class="widget-recent-posts">        
+                    <li>
+                        <div class="post-image">
+                            <div class="post-mask"></div>
+                            
+                            <img width="70" height="70" src="/img/Ellen.jpg" class="attachment-post-widget #" />
+                                   
+                        </div>
+                        
+                            <h6>极客程序媛</h6>
+                        
+                        <span>
+                            
+                            <a href="https://github.com/xpmozong" target="_blank">
+                                <i class="fa fa-github"></i>
+                            </a>
+                            
+                            
+                            <a target="_blank" href="http://weibo.com/xpmozong">
+                                <i class="fa fa-weibo"></i>
+                            </a>
+                            
+                        </span>
+                    </li>
+                </ul>
+                <!-- End Widget -->
+            </div>
+        </div>
+    </div>        
+    <!-- End Sidebar -->
+</div>
+<!-- End Main Container -->
+<p id="back-top"><a href="#top"></a></p>
+<!-- Start Footer -->
+<div class="spacing-30"></div>
+<div class="container zerogrid clearfix">
+    <div id="footer-container" class="wrap-col">
+        <p>Copyrigh &copy; 寞踪的博客 2010-2015</p>
+    </div>
+</div>
+<!-- End Footer -->
 <!-- async load function -->
-<script>
+<script type="text/javascript">
     function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
+        var d = document, t = 'script',
+        o = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        s.parentNode.insertBefore(o, s);
     }
-</script>
 
-<!-- Highlight.js -->
-<script>
-    async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
-        hljs.initHighlightingOnLoad();
-    })
     // only load tagcloud.js in tag.html
     if($('#tag_cloud').length !== 0){
         async("/js/jquery.tagcloud.js",function(){
@@ -692,67 +690,53 @@ class mysql{
             $('#tag_cloud a').tagcloud();
         })
     }
+    
+    $(function(){
+        var href = location.href;
+        var localh = document.location.protocol+"xpmozong.github.io/";
+        href = href.replace(localh,"");
+        var hrearr = href.split('/');
+        $(".sf-menu li").removeClass('current-menu-item');
+        if (hrearr[0] == 'about') {
+            $("#about").addClass('current-menu-item');
+        }else if(hrearr[0] == 'tags'){
+            $("#tags").addClass('current-menu-item');
+        }else{
+            $("#home").addClass('current-menu-item');
+        }
+
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+
+        // hide #back-top first
+        $("#back-top").hide();
+
+        // fade in #back-top
+        $(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 400) {
+                    $('#back-top').fadeIn();
+                } else {
+                    $('#back-top').fadeOut();
+                }
+        });
+
+        // scroll body to 0px on click
+        $('#back-top a').click(function () {
+            $('body,html').animate({
+                scrollTop: 0
+                }, 800);
+            return false;
+            });
+        });
+
+    });
+
 </script>
-<link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
-
-<!--fastClick.js -->
-<script>
-    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
-        var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
-    })
-</script>
-
-
-
-<!-- GA hacking -->
-<input id="gaId" type="hidden" value="UA-49627206-1"  />
-<input id="gaDomain" type="hidden" value="xpmozong.duoshuo.com"  />
-
-<!-- Google Analytics -->
-<script>
-    // dynamic User hacking by Hux
-    var _gaId = document.getElementById('gaId').value;
-    var _gaDomain = document.getElementById('gaDomain').value;
-
-    // Originial
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', _gaId, _gaDomain);
-    ga('send', 'pageview');
-</script>
-
-
-
-
-<!-- BT hacking -->
-<input id="baId" type="hidden" value="c710085fbe32373a875b5965e80eda7f"  />
-
-<!-- Baidu Tongji -->
-<script>
-    // dynamic User hacking by Hux
-    var _baId = document.getElementById('baId').value;
-
-    // Originial
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?" + _baId;
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
-
-
-
-<!-- Image to hack wechat -->
-<img src="/img/icon_wechat.png" width="0" height="0" />
-<!-- Migrate from head to bottom, no longer block render and still work -->
-
 </body>
-
 </html>
+
+
+
+
+
