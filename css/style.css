@@ -181,7 +181,7 @@ body{
 
 h1,h2,h3,h4,h5,h6{ font-family: 'Montserrat', sans-serif; text-transform:uppercase; font-weight:700; line-height:1.4em; color:#555555; }
 
-p{ font-size:16px; line-height:25px; color:#555555; }
+p{ font-size:16px; line-height:28px; color:#555555; }
 a{ color:#444444; text-decoration:none; }
 a:hover{ color:#2980b9; }
 
@@ -205,6 +205,7 @@ a:hover{ color:#2980b9; }
     position: fixed;
     right: 30px;
     text-align: center;
+    z-index: 9999;
 }
 #back-top a {
     display: block;
@@ -240,6 +241,8 @@ a:hover{ color:#2980b9; }
 #header-nav-container .h-menu{ float: right;}
 #header-nav-container .h-logo a{ font-size: 20px; color: #FFF;}
 
+.btitle{ font-weight: bold; color: #000; font-size: 18px; padding: 0 0 10px 0; margin-top:10px;}
+
 /* Posts */
 .post{
 	background:#FFFFFF;
@@ -248,7 +251,6 @@ a:hover{ color:#2980b9; }
 	}
 .post .post-margin{ padding: 2% 2%; line-height: 22px;}
 .post .post-title{ margin-bottom:5px; color:#666;}
-.post .post-margin .btitle{ font-weight: bold; color: #000; font-size: 18px; padding: 0 0 5px 0;}
 .post-status li{ float:left; margin-right:10px; font-size:14px; color:#AAAAAA; }
 .post-status li:last-child{ margin-right:0px; }
 .post-status a{ color:#999999; }
@@ -270,6 +272,7 @@ a:hover{ color:#2980b9; }
 .post .post-social li{ float:left; font-size:14px; }
 .post .post-social a{ background:#343434; color:#FFFFFF; padding:10px; padding-left:13px; padding-right:13px; display:inline-block }
 .post .post-social a:hover{ background:#2980b9; }
+.post-content{ margin-top: 20px;}
 
 /* Post Icon and Video */
 .post .featured-image{ width:100%; height:350px; }
@@ -346,7 +349,7 @@ a:hover{ color:#2980b9; }
 .widget-recent-posts .post-image .post-mask{ height:70px; width:70px; background:url(../images/post-avatar.png) no-repeat; position:absolute }
 /* Page */
 .page-conainer{ background:#FFFFFF; }
-.page-conainer .post-margin{ padding:50px; padding-bottom:30px; }
+.page-conainer .post-margin{ padding:40px; padding-bottom:30px; }
 .page-title{ margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid #EEEEEE; }
 
 /* Single */
