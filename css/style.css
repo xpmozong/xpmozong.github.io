@@ -106,7 +106,6 @@ pre {
 	color: #ffffff;
 	text-transform:uppercase;
 	font-weight:700;
-	font-family: 'Open Sans', sans-serif;
 	font-size:13px;
 }
 
@@ -176,10 +175,10 @@ pre {
 /*=====================style==========================*/
 body{
 	background:#f6f5f2;
-	font-family: 'Open Sans', sans-serif;
+	font-family:'宋体';
 }
 
-h1,h2,h3,h4,h5,h6{ font-family: 'Montserrat', sans-serif; text-transform:uppercase; font-weight:700; line-height:1.4em; color:#555555; }
+h1,h2,h3,h4,h5,h6{ text-transform:uppercase; font-weight:700; line-height:1.4em; color:#555555; }
 
 p{ font-size:16px; line-height:28px; color:#555555; }
 a{ color:#444444; text-decoration:none; }
