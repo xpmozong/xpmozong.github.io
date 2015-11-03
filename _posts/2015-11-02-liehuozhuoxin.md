@@ -5,7 +5,7 @@ subtitle: ""
 category: movie
 author: "寞踪"
 header-img: "img/post-bg-2015.jpg"
-tags: [Book]
+tags: [movie]
 ---
 
 有的人天生就做不了坏人，有的人天生就是十恶不赦的坏人。

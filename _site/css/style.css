@@ -180,8 +180,8 @@ body{
 
 h1,h2,h3,h4,h5,h6{ text-transform:uppercase; font-weight:700; line-height:1.4em; color:#555555; }
 
-p{ font-size:16px; line-height:28px; color:#555555; }
-a{ color:#444444; text-decoration:none; }
+p{ font-size:15px; line-height:28px; color:#555; }
+a{ color:#555; text-decoration:none; }
 a:hover{ color:#2980b9; }
 
 .clearfix:before,
@@ -240,7 +240,7 @@ a:hover{ color:#2980b9; }
 #header-nav-container .h-menu{ float: right;}
 #header-nav-container .h-logo a{ font-size: 20px; color: #FFF;}
 
-.btitle{ font-weight: bold; color: #000; font-size: 18px; padding: 0 0 10px 0; margin-top:10px;}
+.btitle{ font-weight: bold; color: #555; font-size: 16px; line-height: 30px;}
 
 /* Posts */
 .post{
@@ -248,8 +248,8 @@ a:hover{ color:#2980b9; }
 	margin-bottom:40px;
 	color:#666;
 	}
-.post .post-margin{ padding: 2% 2%; line-height: 22px;}
-.post .post-title{ margin-bottom:5px; color:#666;}
+.post .post-margin{ padding: 2% 2%; line-height: 22px; font-size: 15px;}
+.post .post-title{ margin-bottom:5px; color:#555;}
 .post-status li{ float:left; margin-right:10px; font-size:14px; color:#AAAAAA; }
 .post-status li:last-child{ margin-right:0px; }
 .post-status a{ color:#999999; }
