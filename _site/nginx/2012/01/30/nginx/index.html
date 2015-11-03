@@ -274,8 +274,7 @@ www.s135.com 和 blog.s135.com 域名均指向 Nginx 所在的服务器... | 寞
     
     $(function(){
         var href = location.href;
-        var localh = document.location.protocol+"//xpmozong.github.io/";
-        // var localh = document.location.protocol+"//127.0.0.1:4000/";
+        var localh = location.origin+"/";
         href = href.replace(localh,"");
         var hrearr = href.split('/');
         $(".sf-menu li").removeClass('current-menu-item');

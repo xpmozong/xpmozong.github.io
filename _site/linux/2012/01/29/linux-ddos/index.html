@@ -257,8 +257,7 @@ BAN_PERIOD=600    //禁用IP时间，默认600秒，可根据情况调整
     
     $(function(){
         var href = location.href;
-        var localh = document.location.protocol+"//xpmozong.github.io/";
-        // var localh = document.location.protocol+"//127.0.0.1:4000/";
+        var localh = location.origin+"/";
         href = href.replace(localh,"");
         var hrearr = href.split('/');
         $(".sf-menu li").removeClass('current-menu-item');
