@@ -289,11 +289,12 @@ a:hover{ color:#2980b9; }
 .pager10{ padding: 10px 0;}
 .pager20{ padding: 20px 0;}
 .pagination li{ margin-right:3px; text-transform:uppercase }
-.pagination li a{ background:#343434; color:#FFF; font-size:14px; padding:10px; padding-left:15px; padding-right:15px; font-weight:bold }
+.pagination li a{ background:#343434; color:#FFF; font-size:14px; padding:10px 16px; font-weight:bold }
 .pagination li a:hover{ background:#2980b9; color:#FFFFFF }
 .pagination li.current a{ background:#2980b9; color:#FFFFFF }
 .pagination .previous{ float: left;}
 .pagination .next{ float: right;}
+.pagination .next .fa{ display: inherit;}
 
 /* Related Posts in single page */
 .related-posts{ margin-bottom:30px; }
@@ -357,7 +358,7 @@ a:hover{ color:#2980b9; }
 .post-tags .fa-circle{ color:#f8f8f8; }
 .post-tags .fa-tags{ color:#DDDDDD; font-size:20px; }
 
-/* Next And Previous Post thumbnails */
+/* Next And site-previous Post thumbnails */
 #post-nav{ width:100%; position:fixed; top:50%; z-index:99999; }
 #post-nav a{ font-size:13px; color:#FFFFFF; line-height:1.2em; }
 
@@ -371,7 +372,7 @@ a:hover{ color:#2980b9; }
 	transition: all 0.5s ease-in-out;
 	}
 
-#post-nav .post-previous{
+#post-nav .post-site-previous{
 	background:#343434 url(../images/left-post.png) center right 10px no-repeat;
 	float:left;
 	padding-right:20px;
@@ -380,7 +381,7 @@ a:hover{ color:#2980b9; }
 	left:-210px;
 	opacity:0.2;
 	}
-#post-nav .post-previous:hover{ left:0px; background:#343434 url(../images/left-post.png) center left 5px no-repeat; padding-left:30px; opacity:1; }
+#post-nav .post-site-previous:hover{ left:0px; background:#343434 url(../images/left-post.png) center left 5px no-repeat; padding-left:30px; opacity:1; }
 
 #post-nav .post-next{
 	background:#343434 url(../images/right-post.png) center left 10px no-repeat;
@@ -546,7 +547,7 @@ hr {
 @media only screen and (max-width: 400px){
     #header-nav-container .h-logo,#header-nav-container .h-menu{ float: none; }
     #header-nav-container .h-menu{ margin-top: 10px; float: left; margin-left: 10px;}
-    .pagination .previous,.pagination .next{ float: none;}
+    .pagination .site-previous,.pagination .next{ float: none;}
     .pagination li{ margin-bottom: 10px;}
     .pagination li a{ display: block;}
 }
@@ -631,17 +632,6 @@ hr {
 .carousel-controls a:hover{ background:#2980b9; }
 
 .list_carousel:hover .carousel-controls a{ opacity:1; filter:Alpha(opacity=100); }
-
-.prev { float: left; }
-.next { float: right; }
-
-
-
-
-
-
-
-
 
 /* Widget Featured Carousel */
 .widget-carousel-item .post-icon{ width:45px; height:45px; position:relative; bottom:25px; margin:0 auto }
