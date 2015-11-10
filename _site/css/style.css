@@ -289,12 +289,11 @@ a:hover{ color:#2980b9; }
 .pager10{ padding: 10px 0;}
 .pager20{ padding: 20px 0;}
 .pagination li{ margin-right:3px; text-transform:uppercase }
-.pagination li a{ background:#343434; color:#FFF; font-size:14px; padding:10px 16px; font-weight:bold }
+.pagination li a{ background:#343434; color:#FFF; font-size:14px; padding:10px 16px; font-weight:bold;display: block; }
 .pagination li a:hover{ background:#2980b9; color:#FFFFFF }
 .pagination li.current a{ background:#2980b9; color:#FFFFFF }
 .pagination .previous{ float: left;}
 .pagination .next{ float: right;}
-.pagination .next .fa{ display: inherit;}
 
 /* Related Posts in single page */
 .related-posts{ margin-bottom:30px; }
