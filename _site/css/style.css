@@ -267,7 +267,7 @@ a:hover{ color:#2980b9; }
 .post .readmore i{ font-size:14px; margin-left:3px; }
 
 .post .post-social{ float:right; }
-.post .post-social li:first-child a{ padding-left:16px; padding-right:16px; }
+.post .post-social li:first-child a{ padding: 10px;}
 .post .post-social li{ float:left; font-size:14px; }
 .post .post-social a{ background:#343434; color:#FFFFFF; padding:10px; padding-left:13px; padding-right:13px; display:inline-block }
 .post .post-social a:hover{ background:#2980b9; }
@@ -289,7 +289,7 @@ a:hover{ color:#2980b9; }
 .pager10{ padding: 10px 0;}
 .pager20{ padding: 20px 0;}
 .pagination li{ margin-right:3px; text-transform:uppercase }
-.pagination li a{ background:#343434; color:#FFF; font-size:14px; padding:10px 16px; font-weight:bold;display: block; }
+.pagination li a{ background:#343434; color:#FFF; font-size:14px; padding:10px; font-weight:bold;display: block; }
 .pagination li a:hover{ background:#2980b9; color:#FFFFFF }
 .pagination li.current a{ background:#2980b9; color:#FFFFFF }
 .pagination .previous{ float: left;}
