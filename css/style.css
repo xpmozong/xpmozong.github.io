@@ -701,3 +701,7 @@ hr {
 
 .widget-prev { float: left; }
 .widget-next { float: right; }
+
+/*Next Page */
+.next a i.fa.fa-arrow-circle-o-right {padding-right: 16px;}
+.pagination li.next a {padding-right: 0px;}
