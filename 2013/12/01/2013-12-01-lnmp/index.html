@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Linux + Nginx + Mysql + PHP 编译安装 | 寞踪的技术博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="首先准备安装包 yum安装必要包 安装各个库  安装MySQL 安装PHP 安装NGINX ......">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux + Nginx + Mysql + PHP 编译安装">
+<meta property="og:url" content="http://xpmozong.github.io/2013/12/01/2013-12-01-lnmp/index.html">
+<meta property="og:site_name" content="寞踪的技术博客">
+<meta property="og:description" content="首先准备安装包 yum安装必要包 安装各个库  安装MySQL 安装PHP 安装NGINX ......">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2013-12-01T07:24:14.000Z">
+<meta property="article:modified_time" content="2020-10-15T02:48:57.835Z">
+<meta property="article:author" content="寞踪">
+<meta property="article:tag" content="PHP">
+<meta property="article:tag" content="Mysql">
+<meta property="article:tag" content="Nginx">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">寞踪的技术博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//baidu.com/s" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="wd" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://xpmozong.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2013-12-01-lnmp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/12/01/2013-12-01-lnmp/" class="article-date">
+  <time datetime="2013-12-01T07:24:14.000Z" itemprop="datePublished">2013-12-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux + Nginx + Mysql + PHP 编译安装
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="首先准备安装包"><a href="#首先准备安装包" class="headerlink" title="首先准备安装包"></a>首先准备安装包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">nginx-1.0.15.tar.gz</span><br><span class="line">php-5.3.16.tar.gz</span><br><span class="line">libaio-0.3.93-4.i386.rpm</span><br><span class="line">MySQL-server-5.5.14-1.rhel5.x64.rpm</span><br><span class="line">MySQL-client-5.5.14-1.rhel5.x64.rpm</span><br><span class="line">MySQL-shared-5.5.14-1.rhel5.x64.rpm</span><br><span class="line">MySQL-devel-5.5.14-1.rhel5.x64.rpm</span><br><span class="line">libmcrypt-2.5.7.tar.gz</span><br><span class="line">mhash-0.9.9.9.tar.gz</span><br><span class="line">mcrypt-2.6.8.tar.gz</span><br><span class="line">pcre-8.33.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h3 id="yum安装必要包"><a href="#yum安装必要包" class="headerlink" title="yum安装必要包"></a>yum安装必要包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc-c++ openssl-devel libjpeg-devel libpng-devel libXpm-devel ImageMagick ImageMagick-devel freetype freetype-devel curl-devel</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装各个库"><a href="#安装各个库" class="headerlink" title="安装各个库"></a>安装各个库</h3><p>依次是libmcrypt，mhash， mcrypt 和pcre</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf libmcrypt-2.5.8.tar.gz</span><br><span class="line"><span class="built_in">cd</span> libmcrypt-2.5.8/</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">/sbin/ldconfig</span><br><span class="line"><span class="built_in">cd</span> libltdl/</span><br><span class="line">./configure --enable-ltdl-install</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"><span class="built_in">cd</span> ../../</span><br><span class="line"></span><br><span class="line">tar zxvf mhash-0.9.9.9.tar.gz</span><br><span class="line"><span class="built_in">cd</span> mhash-0.9.9.9/</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"><span class="built_in">cd</span> ../</span><br><span class="line"> </span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/lib/libmcrypt.la /usr/lib/libmcrypt.la</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/lib/libmcrypt.so /usr/lib/libmcrypt.so</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/lib/libmcrypt.so.4 /usr/lib/libmcrypt.so.4</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/lib/libmcrypt.so.4.4.8 /usr/lib/libmcrypt.so.4.4.8</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/lib/libmhash.a /usr/lib/libmhash.a</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/lib/libmhash.la /usr/lib/libmhash.la</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/lib/libmhash.so /usr/lib/libmhash.so</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/lib/libmhash.so.2 /usr/lib/libmhash.so.2</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/lib/libmhash.so.2.0.1 /usr/lib/libmhash.so.2.0.1</span><br><span class="line"></span><br><span class="line">tar zxvf mcrypt-2.6.8.tar.gz</span><br><span class="line"><span class="built_in">cd</span> mcrypt-2.6.8/</span><br><span class="line">/sbin/ldconfig</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"><span class="built_in">cd</span> ../</span><br><span class="line"></span><br><span class="line">tar zxvf pcre-8.33.tar.gz</span><br><span class="line"><span class="built_in">cd</span> pcre-8.30</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"><span class="built_in">cd</span> ../</span><br></pre></td></tr></table></figure>
+
+<h3 id="一、安装MySQL"><a href="#一、安装MySQL" class="headerlink" title="一、安装MySQL"></a>一、安装MySQL</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh libaio-0.3.93-4.x64.rpm</span><br><span class="line">rpm -ivh MySQL-server-5.5.14-1.rhel5.x64.rpm</span><br><span class="line">rpm -ivh MySQL-client-5.5.14-1.rhel5.x64.rpm</span><br><span class="line">rpm -ivh MySQL-shared-5.5.14-1.rhel5.x64.rpm</span><br><span class="line">rpm -ivh MySQL-devel-5.5.14-1.rhel5.x64.rpm</span><br><span class="line"></span><br><span class="line">service mysql start</span><br><span class="line">//修改密码</span><br><span class="line">mysql_secure_installation</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、安装PHP"><a href="#二、安装PHP" class="headerlink" title="二、安装PHP"></a>二、安装PHP</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf php-5.3.16.tar.gz</span><br><span class="line"><span class="built_in">cd</span> php-5.3.16</span><br><span class="line">mkdir -p /usr/<span class="built_in">local</span>/php</span><br><span class="line">// 很多的模块</span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/php --with-config-file-path=/usr/<span class="built_in">local</span>/php/etc --with-mysql=/usr/bin/ --with-libdir=lib64 --with-mysqli=/usr/bin/mysql_config --with-iconv-dir=/usr/<span class="built_in">local</span> --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr --enable-xml --disable-rpath --enable-safe-mode --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --with-curl --with-curlwrappers --enable-mbregex --enable-fpm --enable-mbstring --with-mcrypt --with-gd --enable-gd-native-ttf --with-openssl --with-mhash --enable-pcntl --enable-sockets  --with-xmlrpc --enable-zip --enable-soap --with-pdo-mysql=/usr/bin/mysql --with-mysql-sock=/var/lib/mysql/mysql.sock</span><br><span class="line">// 简单的模块</span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/php --with-config-file-path=/usr/<span class="built_in">local</span>/php/etc --with-mysql=/usr/bin/ --with-libdir=lib64 --enable-xml --enable-zip --enable-fpm --enable-mbstring --with-gd --with-zlib --with-curl --with-pdo-mysql=/usr/bin/mysql --with-mysql-sock=/var/lib/mysql/mysql.sock</span><br><span class="line"></span><br><span class="line">// 如果有这个错误</span><br><span class="line">configure: error: Cannot find libmysqlclient under /usr.</span><br><span class="line">Note that the MySQL client library is not bundled anymore!</span><br><span class="line">// 就加上</span><br><span class="line">--with-libdir=lib64</span><br><span class="line"></span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line">cp php.ini-production /usr/<span class="built_in">local</span>/php/etc/php.ini</span><br><span class="line">cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm <span class="comment">#因为php5.3开始自带fpm，使用自带的管理脚本</span></span><br><span class="line">chmod +x /etc/init.d/php-fpm</span><br><span class="line">chkconfig php-fpm on <span class="comment">#设置开机自启动</span></span><br><span class="line">cp /usr/<span class="built_in">local</span>/php/etc/php-fpm.conf.default /usr/<span class="built_in">local</span>/php/etc/php-fpm.conf</span><br><span class="line"></span><br><span class="line">// 然后修改php-fpm.conf，将pid改成以下，并将user和group改成www</span><br><span class="line">pid = run/php-fpm.pid</span><br><span class="line">user = www</span><br><span class="line">group = www</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、安装NGINX"><a href="#三、安装NGINX" class="headerlink" title="三、安装NGINX"></a>三、安装NGINX</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">groupadd www</span><br><span class="line">useradd -s /sbin/nologin -g www www <span class="comment">#www用户不能login</span></span><br><span class="line">mkdir -p /home/www <span class="comment">#此路径是用于存放各域名的root路径</span></span><br><span class="line">chmod +w /home/www</span><br><span class="line">mkdir -p /home/wwwlogs</span><br><span class="line">chmod 755 /home/wwwlogs</span><br><span class="line">chown -R www:www /home/www</span><br><span class="line"></span><br><span class="line">tar zxvf nginx-1.0.15.tar.gz</span><br><span class="line"><span class="built_in">cd</span> nginx-1.0.15/</span><br><span class="line">./configure --user=www --group=www --prefix=/usr/<span class="built_in">local</span>/nginx --with-http_stub_status_module --with-http_ssl_module --with-http_gzip_static_module</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">mkdir /usr/<span class="built_in">local</span>/nginx/conf/vhosts/ <span class="comment">#用于配置各域名</span></span><br><span class="line"></span><br><span class="line">// 修改Nginx的配置文件</span><br><span class="line">mv /usr/<span class="built_in">local</span>/nginx/conf/nginx.conf /usr/<span class="built_in">local</span>/nginx/conf/nginx_bak.conf</span><br><span class="line">vi /usr/<span class="built_in">local</span>/nginx/conf/nginx.conf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">user  www;</span><br><span class="line">worker_processes  8;</span><br><span class="line"></span><br><span class="line"><span class="comment">#error_log  logs/error.log;</span></span><br><span class="line"><span class="comment">#error_log  logs/error.log  notice;</span></span><br><span class="line"><span class="comment">#error_log  logs/error.log  info;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#pid        logs/nginx.pid;</span></span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#log_format  main  &#x27;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#x27;</span></span><br><span class="line">    <span class="comment">#                  &#x27;$status $body_bytes_sent &quot;$http_referer&quot; &#x27;</span></span><br><span class="line">    <span class="comment">#                  &#x27;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#x27;;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#access_log  logs/access.log  main;</span></span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#keepalive_timeout  0;</span></span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  localhost;</span><br><span class="line">        index index.php index.html index.htm;</span><br><span class="line">        root D:/xampp/htdocs/enterprise;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># redirect server error pages to the static page /50x.html</span></span><br><span class="line">        error_page   500 502 503 504  /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line">             </span><br><span class="line">        location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$</span><br><span class="line">        &#123;</span><br><span class="line">            expires 30d;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location ~ .*\.(js|css)?$</span><br><span class="line">        &#123;</span><br><span class="line">            expires 24h;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$request_filename</span> !~* (\.xml|\.rar|\.html|\.htm|\.php|\.swf|\.css|\.js|\.gif|\.png|\.jpg|\.jpeg|robots\.txt|index\.php|\.jnlp|\.jar|\.eot|\.woff|\.ttf|\.svg)) &#123;</span><br><span class="line">            rewrite ^/(.*)$ /index.php/<span class="variable">$1</span> last;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location ~ .*\.php &#123;</span><br><span class="line">            fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">            fastcgi_param  SCRIPT_FILENAME  <span class="variable">$document_root</span><span class="variable">$fastcgi_script_name</span>;</span><br><span class="line">            fastcgi_index  index.php;</span><br><span class="line">            fastcgi_split_path_info ^(.+\.php)(.*)$;                                         </span><br><span class="line">            fastcgi_param   SCRIPT_FILENAME <span class="variable">$document_root</span><span class="variable">$fastcgi_script_name</span>;                 </span><br><span class="line">            fastcgi_param   PATH_INFO <span class="variable">$fastcgi_path_info</span>;                                       </span><br><span class="line">            fastcgi_param   PATH_TRANSLATED <span class="variable">$document_root</span><span class="variable">$fastcgi_path_info</span>;                   </span><br><span class="line">            include fastcgi_params;  </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="nginx启动脚本"><a href="#nginx启动脚本" class="headerlink" title="nginx启动脚本"></a>nginx启动脚本</h3><p>因为默认是没有nginx管理脚本的，在此先新建一个，运行vi /etc/init.d/nginx，输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># nginx - this script starts and stops the nginx daemin</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># chkconfig:   - 85 15 </span></span><br><span class="line"><span class="comment"># description:  Nginx is an HTTP(S) server, HTTP(S) reverse \</span></span><br><span class="line"><span class="comment">#               proxy and IMAP/POP3 proxy server</span></span><br><span class="line"><span class="comment"># processname: nginx</span></span><br><span class="line"><span class="comment"># config:      /usr/local/nginx/conf/nginx.conf</span></span><br><span class="line"><span class="comment"># pidfile:     /usr/local/nginx/logs/nginx.pid</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Source function library.</span></span><br><span class="line">. /etc/rc.d/init.d/<span class="built_in">functions</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Source networking configuration.</span></span><br><span class="line">. /etc/sysconfig/network</span><br><span class="line"></span><br><span class="line"><span class="comment"># Check that networking is up.</span></span><br><span class="line">[ <span class="string">&quot;<span class="variable">$NETWORKING</span>&quot;</span> = <span class="string">&quot;no&quot;</span> ] &amp;&amp; <span class="built_in">exit</span> 0</span><br><span class="line"></span><br><span class="line">nginx=<span class="string">&quot;/usr/local/nginx/sbin/nginx&quot;</span></span><br><span class="line">prog=$(basename <span class="variable">$nginx</span>)</span><br><span class="line"></span><br><span class="line">NGINX_CONF_FILE=<span class="string">&quot;/usr/local/nginx/conf/nginx.conf&quot;</span></span><br><span class="line"></span><br><span class="line">lockfile=/var/lock/subsys/nginx</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">start</span></span>() &#123;</span><br><span class="line">    [ -x <span class="variable">$nginx</span> ] || <span class="built_in">exit</span> 5</span><br><span class="line">    [ -f <span class="variable">$NGINX_CONF_FILE</span> ] || <span class="built_in">exit</span> 6</span><br><span class="line">    <span class="built_in">echo</span> -n $<span class="string">&quot;Starting <span class="variable">$prog</span>: &quot;</span></span><br><span class="line">    daemon <span class="variable">$nginx</span> -c <span class="variable">$NGINX_CONF_FILE</span></span><br><span class="line">    retval=$?</span><br><span class="line">    <span class="built_in">echo</span></span><br><span class="line">    [ <span class="variable">$retval</span> -eq 0 ] &amp;&amp; touch <span class="variable">$lockfile</span></span><br><span class="line">    <span class="built_in">return</span> <span class="variable">$retval</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">stop</span></span>() &#123;</span><br><span class="line">    <span class="built_in">echo</span> -n $<span class="string">&quot;Stopping <span class="variable">$prog</span>: &quot;</span></span><br><span class="line">    killproc <span class="variable">$prog</span> -QUIT</span><br><span class="line">    retval=$?</span><br><span class="line">    <span class="built_in">echo</span></span><br><span class="line">    [ <span class="variable">$retval</span> -eq 0 ] &amp;&amp; rm -f <span class="variable">$lockfile</span></span><br><span class="line">    <span class="built_in">return</span> <span class="variable">$retval</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">restart</span></span>() &#123;</span><br><span class="line">    configtest || <span class="built_in">return</span> $?</span><br><span class="line">    stop</span><br><span class="line">    start</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">reload</span></span>() &#123;</span><br><span class="line">    configtest || <span class="built_in">return</span> $?</span><br><span class="line">    <span class="built_in">echo</span> -n $<span class="string">&quot;Reloading <span class="variable">$prog</span>: &quot;</span></span><br><span class="line">    killproc <span class="variable">$nginx</span> -HUP</span><br><span class="line">    RETVAL=$?</span><br><span class="line">    <span class="built_in">echo</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">force_reload</span></span>() &#123;</span><br><span class="line">    restart</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">configtest</span></span>() &#123;</span><br><span class="line">  <span class="variable">$nginx</span> -t -c <span class="variable">$NGINX_CONF_FILE</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">rh_status</span></span>() &#123;</span><br><span class="line">    status <span class="variable">$prog</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">rh_status_q</span></span>() &#123;</span><br><span class="line">    rh_status &gt;/dev/null 2&gt;&amp;1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="string">&quot;<span class="variable">$1</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line">    start)</span><br><span class="line">        rh_status_q &amp;&amp; <span class="built_in">exit</span> 0</span><br><span class="line">        <span class="variable">$1</span></span><br><span class="line">        ;;</span><br><span class="line">    stop)</span><br><span class="line">        rh_status_q || <span class="built_in">exit</span> 0</span><br><span class="line">        <span class="variable">$1</span></span><br><span class="line">        ;;</span><br><span class="line">    restart|configtest)</span><br><span class="line">        <span class="variable">$1</span></span><br><span class="line">        ;;</span><br><span class="line">    reload)</span><br><span class="line">        rh_status_q || <span class="built_in">exit</span> 7</span><br><span class="line">        <span class="variable">$1</span></span><br><span class="line">        ;;</span><br><span class="line">    force-reload)</span><br><span class="line">        force_reload</span><br><span class="line">        ;;</span><br><span class="line">    status)</span><br><span class="line">        rh_status</span><br><span class="line">        ;;</span><br><span class="line">    condrestart|try-restart)</span><br><span class="line">        rh_status_q || <span class="built_in">exit</span> 0</span><br><span class="line">            ;;</span><br><span class="line">    *)</span><br><span class="line">        <span class="built_in">echo</span> $<span class="string">&quot;Usage: <span class="variable">$0</span> &#123;start|stop|status|restart|condrestart|try-restart|reload|force-reload|configtest&#125;&quot;</span></span><br><span class="line">        <span class="built_in">exit</span> 2</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="nginx设置自启动"><a href="#nginx设置自启动" class="headerlink" title="nginx设置自启动"></a>nginx设置自启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /etc/init.d/nginx</span><br><span class="line">chkconfig nginx on</span><br></pre></td></tr></table></figure>
+
+<h3 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h3><p>直接输入以下命令，会得到相应的结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">service nginx restart 重启nginx</span><br><span class="line">service mysql restart 重启mysql</span><br><span class="line">service php-fpm restart 重启php-fpm</span><br><span class="line">service php-fpm stop 停止php-fpm</span><br><span class="line">service php-fpm start 启动php-fpm</span><br></pre></td></tr></table></figure>
+
+<p>各站点的根目录是/home/www/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">php: /usr/<span class="built_in">local</span>/php/etc/</span><br><span class="line">nginx: /usr/<span class="built_in">local</span>/nginx/conf/</span><br><span class="line">find / -name <span class="string">&quot;my.ini&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>启动nginx的时候遇到 error while loading shared libraries: libpcre.so.1:</p>
+<p>答：增加以下软连接，注意，如果是64位系统，对应目录是/lib64</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cd /lib64</span></span><br><span class="line"><span class="built_in">cd</span> /lib</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/lib/libpcre.so.1 /lib64</span><br></pre></td></tr></table></figure>
+
+<p>Centos查看端口占用情况命令，比如查看80端口占用情况使用如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -i tcp:80</span><br></pre></td></tr></table></figure>
+
+<p>列出所有端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ntlp</span><br></pre></td></tr></table></figure>
+
+<p>查看进程</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep nginx</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xpmozong.github.io/2013/12/01/2013-12-01-lnmp/" data-id="ckga7znq80000osta5pce7tql" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/12/05/2013-12-05-php-extension/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          PHP扩展开发 - 第一个扩展
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/11/29/2013-11-29-linux-summary/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Linux 小总结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Libvirt/" rel="tag">Libvirt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memcached/" rel="tag">Memcached</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/" rel="tag">XML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/" rel="tag">jekyll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ruby/" rel="tag">ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/saltstack/" rel="tag">saltstack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/smarty/" rel="tag">smarty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/Libvirt/" style="font-size: 10px;">Libvirt</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/Memcached/" style="font-size: 10px;">Memcached</a> <a href="/tags/Mysql/" style="font-size: 16.67px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 16.67px;">Nginx</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/Python/" style="font-size: 13.33px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/XML/" style="font-size: 10px;">XML</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/ruby/" style="font-size: 10px;">ruby</a> <a href="/tags/saltstack/" style="font-size: 10px;">saltstack</a> <a href="/tags/smarty/" style="font-size: 10px;">smarty</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">January 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/09/">September 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/10/">October 2010</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/20/2018-07-20-http-https/">HTTP和HTTPS的区别，HTTPS加密方式</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/15/2017-06-15-php-zhixingliucheng/">PHP的执行流程</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/15/2017-05-15-php-yunxingjizhi/">PHP运行机制</a>
+          </li>
+        
+          <li>
+            <a href="/2015/08/28/2015-08-28-redis-jiqun/">Redis 集群</a>
+          </li>
+        
+          <li>
+            <a href="/2015/08/19/2015-08-19-php-opcache/">php opcache使用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 寞踪<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+  <div id="goback" onclick="window.scrollTo('0','0')"></div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

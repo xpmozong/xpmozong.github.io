@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>PHP运行机制 | 寞踪的技术博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="内核：PHP内核用来处理请求、文件流、错误处理等相关操作。Zend引擎：用以将源文件转换成机器语言，然后在虚拟机上运行它。扩展层：是一组函数、类库和流，PHP使用它们来执行一些特定的操作。比如，我们需要mysql扩展来连接MySQL数据库；当ZE执行程序时可能会需要连接若干扩展，这时ZE将控制权交给扩展，等处理完特定任务后再返还 ......">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP运行机制">
+<meta property="og:url" content="http://xpmozong.github.io/2017/05/15/2017-05-15-php-yunxingjizhi/index.html">
+<meta property="og:site_name" content="寞踪的技术博客">
+<meta property="og:description" content="内核：PHP内核用来处理请求、文件流、错误处理等相关操作。Zend引擎：用以将源文件转换成机器语言，然后在虚拟机上运行它。扩展层：是一组函数、类库和流，PHP使用它们来执行一些特定的操作。比如，我们需要mysql扩展来连接MySQL数据库；当ZE执行程序时可能会需要连接若干扩展，这时ZE将控制权交给扩展，等处理完特定任务后再返还 ......">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://xpmozong.github.io/2017/05/15/2017-05-15-php-yunxingjizhi/php_yunxingjizhi.png">
+<meta property="og:image" content="http://xpmozong.github.io/2017/05/15/2017-05-15-php-yunxingjizhi/hashtable.png">
+<meta property="article:published_time" content="2017-05-15T07:24:14.000Z">
+<meta property="article:modified_time" content="2020-10-15T02:55:17.240Z">
+<meta property="article:author" content="寞踪">
+<meta property="article:tag" content="PHP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://xpmozong.github.io/2017/05/15/2017-05-15-php-yunxingjizhi/php_yunxingjizhi.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">寞踪的技术博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//baidu.com/s" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="wd" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://xpmozong.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2017-05-15-php-yunxingjizhi" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/15/2017-05-15-php-yunxingjizhi/" class="article-date">
+  <time datetime="2017-05-15T07:24:14.000Z" itemprop="datePublished">2017-05-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PHP运行机制
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、PHP的三个模块"><a href="#一、PHP的三个模块" class="headerlink" title="一、PHP的三个模块"></a>一、PHP的三个模块</h3><p>内核：PHP内核用来处理请求、文件流、错误处理等相关操作。</p>
+<p>Zend引擎：用以将源文件转换成机器语言，然后在虚拟机上运行它。</p>
+<p>扩展层：是一组函数、类库和流，PHP使用它们来执行一些特定的操作。比如，我们需要mysql扩展来连接MySQL数据库；当ZE执行程序时可能会需要连接若干扩展，这时ZE将控制权交给扩展，等处理完特定任务后再返还。</p>
+<h3 id="二、PHP的核心架构"><a href="#二、PHP的核心架构" class="headerlink" title="二、PHP的核心架构"></a>二、PHP的核心架构</h3><p><img src="php_yunxingjizhi.png"></p>
+<p>Zend引擎：Zend整体用纯C实现，是PHP的内核部分，它将PHP代码翻译（词法、语法解析等一系列编译过程）为可执行opcode的处理并实现相应的处理方法、实现了基本的数据结构（如hashtable）、内存分配及管理、提供了相应的api方法供外部调用，是一切的核心，所有的外围功能均围绕Zend实现。</p>
+<p>Extensions：围绕着Zend引擎，extensions通过组件式的方式提供各种基础服务，我们常见的各种内置函数（如array系列）、标准库等都是通过extension来实现，用户也可以根据需要实现自己的extension以达到功能扩展、性能优化等目的。</p>
+<p>Sapi：Sapi全称是Server Application Programming Interface，也就是服务端应用编程接口，Sapi通过一系列钩子函数，使得PHP可以和外围交互数据，这是PHP非常优雅和成功的一个设计，通过sapi成功的将PHP本身和上层应用解耦隔离，PHP可以不再考虑如何针对不同应用进行兼容，而应用本身也可以针对自己的特点实现不同的处理方式。</p>
+<p>上层应用：这就是我们平时编写的PHP程序，通过不同的sapi方式得到各种各样的应用模式，如通过webserver实现web应用、在命令行下以脚本方式运行等等。</p>
+<h3 id="三、Sapi"><a href="#三、Sapi" class="headerlink" title="三、Sapi"></a>三、Sapi</h3><p>Sapi通过一系列的接口，使得外部应用可以和PHP交换数据并可以根据不同应用特点实现特定的处理方法。</p>
+<p>cli：命令行调用的应用模式。</p>
+<p>cgi、fastcgi、php-cgi、php-fpm之间的关系</p>
+<p>cgi：是 Web Server与Web Application之间数据交换的一种协议，但是每次请求，都需要fork一个进程，当有大并发请求时，会占用很多CPU和内存，造成服务器压力。</p>
+<p>fastcgi：同CGI，一种通信协议，与CGI的区别是，它是常驻型的，它可以一直执行着，只要激活后，不会每次都要花费时间去fork一次。</p>
+<p>php-cgi：是PHP（Web Application）对Web Server提供的cgi协议的接口程序。</p>
+<p>php-fpm：是PHP对Web Server提供的fastcgi协议的接口程序，就是支持解析php的一个fastcgi进程管理器/引擎，额外还提供了相对智能一些的任务管理。php-fpm.conf配置里有个max-children参数，它是配置php-cgi子进程数量，通常是 服务器内存/30M，就是该参数值。</p>
+<h3 id="四、核心数据结构-——-HashTable"><a href="#四、核心数据结构-——-HashTable" class="headerlink" title="四、核心数据结构 —— HashTable"></a>四、核心数据结构 —— HashTable</h3><p>HashTable是Zend的核心数据结构，在PHP里面几乎并用来实现所有常见功能，我们知道的PHP数组即是其典型应用，此外，在zend内部，如函数符号表、全局变量等也都是基于hash table来实现。</p>
+<p>PHP的hash table具有如下特点：</p>
+<p>支持典型的key-&gt;value查询</p>
+<p>可以当做数组使用</p>
+<p>添加、删除节点是O（1）复杂度</p>
+<p>key支持混合类型：同时存在关联数组合索引数组</p>
+<p>Value支持混合类型：array(“string”, 2332)</p>
+<p>支持线性遍历：如foreach</p>
+<p>Zend hash table实现了典型的hash表散列结构，同时通过附加一个双向链表，提供了正向、反向遍历数组的功能。其结构如下图：</p>
+<p><img src="hashtable.png"></p>
+<p>在hash table中既有key-&gt;value形式的散列结构，也有双向链表模式，使得它能够非常方便的支持快速查找和线性遍历。</p>
+<p>散列结构：Zend的散列结构是典型的hash表模型，通过链表的方式来解决冲突。需要注意的是zend的hash table是一个自增长的数据结构，当hash表数目满了之后，其本身会动态以2倍的方式扩容并重新元素位置。初始大小均为8。另外，在进行key-&gt;value快速查找时候，zend本身还做了一些优化，通过空间换时间的方式加快速度。比如在每个元素中都会用一个变量nKeyLength标识key的长度以作快速判定。</p>
+<p>双向链表：Zend hash table通过一个链表结构，实现了元素的线性遍历。理论上，做遍历使用单向链表就够了，之所以使用双向链表，主要目的是为了快速删除，避免遍历。<br>Zend hash table是一种复合型的结构，作为数组使用时，即支持常见的关联数组也能够作为顺序索引数字来使用，甚至允许2者的混合。<br>PHP关联数组：关联数组是典型的hash_table应用。一次查询过程经过如下几步（从代码可以看出，这是一个常见的hash查询过程并增加一些快速判定加速查找。）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">getKeyHashValue h;</span><br><span class="line">index = n &amp; nTableMask;</span><br><span class="line">Bucket *p = arBucket[index];</span><br><span class="line"><span class="keyword">while</span> (p) &#123;</span><br><span class="line">    <span class="keyword">if</span> ((p-&gt;h == h) &amp; (p-&gt;nKeyLength == nKeyLength)) &#123;</span><br><span class="line">        RETURN p-&gt;data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    p=p-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>PHP索引数组：索引数组就是我们常见的数组，通过下标访问。例如 $arr[0]，Zend HashTable内部进行了归一化处理，对于index类型key同样分配了hash值和nKeyLength(为0)。内部成员变量nNextFreeElement就是当前分配到的最大id，每次push后自动加一。正是这种归一化处理，PHP才能够实现关联和非关联的混合。由于push操作的特殊性，索引key在PHP数组中先后顺序并不是通过下标大小来决定，而是由push的先后决定。例如 $arr[1] = 2; $arr[2] = 3;对于double类型的key，Zend HashTable会将他当做索引key处理</p>
+<h3 id="五、PHP变量"><a href="#五、PHP变量" class="headerlink" title="五、PHP变量"></a>五、PHP变量</h3><p>PHP是一门弱类型语言，本身不严格区分变量的类型。PHP在变量申明的时候不需要指定类型。PHP在程序运行期间可能进行变量类型的隐示转换。和其他强类型语言一样，程序中也可以进行显示的类型转换。PHP变量可以分为简单类型(int、string、bool)、集合类型(array resource object)和常量(const)。以上所有的变量在底层都是同一种结构 zval。</p>
+<p>zval是zend中另一个非常重要的数据结构，用来标识并实现PHP变量，其数据结构如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">typedef union _zvalue_value &#123;</span><br><span class="line">    long lval; /* long value */</span><br><span class="line">    double dval; /* double value */</span><br><span class="line">    struct &#123;</span><br><span class="line">        char *val;</span><br><span class="line">        int len;</span><br><span class="line">    &#125; str; /* string value */</span><br><span class="line">    HashTable *ht; /* <span class="built_in">hash</span> table value */</span><br><span class="line">    zend_object_value obj;</span><br><span class="line">&#125; zvalue_value;</span><br><span class="line"></span><br><span class="line">struct _zval_struct &#123; /* Variable infomation */</span><br><span class="line">    zvalue_value value; /* value */</span><br><span class="line">    zend_uint refcount;</span><br><span class="line">    zend_uchar <span class="built_in">type</span>;  /* active <span class="built_in">type</span> */</span><br><span class="line">    zend_uchar is_ref;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">typedef struct _zval_struct zval;</span><br></pre></td></tr></table></figure>
+
+<p>zval主要由三部分组成：</p>
+<p>type：指定了变量所述的类型（整数、字符串、数组等）</p>
+<p>refcount&amp;is_ref：用来实现引用计数</p>
+<p>value：核心部分，存储了变量的实际数据</p>
+<p>zvalue是用来保存一个变量的实际数据。因为要存储多种类型，所以zvalue是一个union，也由此实现了弱类型。</p>
+<p>引用计数案例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span> = 1;     // refcount=1</span><br><span class="line"><span class="variable">$b</span> = <span class="variable">$a</span>;    // refcount=2</span><br><span class="line"><span class="variable">$b</span> += 5;</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;a=<span class="variable">$a</span>,b=<span class="variable">$b</span>&lt;br&gt;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$c</span> = 1;     // refcount=1</span><br><span class="line"><span class="variable">$d</span> = &amp;<span class="variable">$c</span>;   // refcount=2 &amp; is_ref=1</span><br><span class="line"><span class="variable">$d</span> += 5;</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;c=<span class="variable">$c</span>,d=<span class="variable">$d</span>&quot;</span>;die;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a=1,b=6</span><br><span class="line">c=6,d=6</span><br></pre></td></tr></table></figure>
+
+<p>如何使用资源：</p>
+<p>注册：对于一个自定义的数据类型，要想将它作为资源。首先需要进行注册，zend会为它分配全局唯一标示。</p>
+<p>获取一个资源变量：对于资源，zend维护了一个id-&gt;实际数据的hash_table。对于一个resource，在zval中只记录了它的id。fetch的时候通过id在hash_table中找到具体的值返回。</p>
+<p>资源销毁：资源的数据类型是多种多样的。Zend本身没有办法销毁它。因此需要用户在注册资源的时候提供销毁函数。当unset资源时，zend调用相应的函数完成析构。同时从全局资源表中删除它。</p>
+<p>资源可以长期驻留，不只是在所有引用它的变量超出作用域之后，甚至是在一个请求结束了并且新的请求产生之后。这些资源称为持久资源，因为它们贯通SAPI的整个生命周期持续存在，除非特意销毁。很多情况下，持久化资源可以在一定程度上提高性能。比如我们常见的mysql_pconnect ,持久化资源通过pemalloc分配内存，这样在请求结束的时候不会释放。</p>
+<p>对zend来说，对两者本身并不区分。</p>
+<p>PHP中的局部变量和全局变量是如何实现的？对于一个请求，任意时刻PHP都可以看到两个符号表(symbol_table和active_symbol_table)，其中前者用来维护全局变量。后者是一个指针，指向当前活动的变量符号表，当程序进入到某个函数中时，zend就会为它分配一个符号表x同时将active_symbol_table指向a。通过这样的方式实现全局、局部变量的区分。</p>
+<p>获取变量值：PHP的符号表是通过hash_table实现的，对于每个变量都分配唯一标识，获取的时候根据标识从表中找到相应zval返回。</p>
+<p>函数中使用全局变量：在函数中，我们可以通过显式申明global来使用全局变量。在active_symbol_table中创建symbol_table中同名变量的引用，如果symbol_table中没有同名变量则会先创建。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xpmozong.github.io/2017/05/15/2017-05-15-php-yunxingjizhi/" data-id="ckg9lhagn0018hkta6xj63q4o" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/06/15/2017-06-15-php-zhixingliucheng/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          PHP的执行流程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/08/28/2015-08-28-redis-jiqun/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Redis 集群</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Libvirt/" rel="tag">Libvirt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memcached/" rel="tag">Memcached</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/" rel="tag">XML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/" rel="tag">jekyll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ruby/" rel="tag">ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/saltstack/" rel="tag">saltstack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/smarty/" rel="tag">smarty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/Libvirt/" style="font-size: 10px;">Libvirt</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/Memcached/" style="font-size: 10px;">Memcached</a> <a href="/tags/Mysql/" style="font-size: 16.67px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 16.67px;">Nginx</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/Python/" style="font-size: 13.33px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/XML/" style="font-size: 10px;">XML</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/ruby/" style="font-size: 10px;">ruby</a> <a href="/tags/saltstack/" style="font-size: 10px;">saltstack</a> <a href="/tags/smarty/" style="font-size: 10px;">smarty</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">January 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/09/">September 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/10/">October 2010</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/20/2018-07-20-http-https/">HTTP和HTTPS的区别，HTTPS加密方式</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/15/2017-06-15-php-zhixingliucheng/">PHP的执行流程</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/15/2017-05-15-php-yunxingjizhi/">PHP运行机制</a>
+          </li>
+        
+          <li>
+            <a href="/2015/08/28/2015-08-28-redis-jiqun/">Redis 集群</a>
+          </li>
+        
+          <li>
+            <a href="/2015/08/19/2015-08-19-php-opcache/">php opcache使用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 寞踪<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+  <div id="goback" onclick="window.scrollTo('0','0')"></div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

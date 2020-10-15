@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>php查找一个单词在一个文件中的第几行第几列 | 寞踪的技术博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="获得这个文件有多少行 有一个很大的日志文件，要读出最后100行，怎么办？ ......">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php查找一个单词在一个文件中的第几行第几列">
+<meta property="og:url" content="http://xpmozong.github.io/2012/01/17/2012-01-17-php-search-word/index.html">
+<meta property="og:site_name" content="寞踪的技术博客">
+<meta property="og:description" content="获得这个文件有多少行 有一个很大的日志文件，要读出最后100行，怎么办？ ......">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2012-01-17T07:24:14.000Z">
+<meta property="article:modified_time" content="2020-10-15T02:58:10.835Z">
+<meta property="article:author" content="寞踪">
+<meta property="article:tag" content="PHP">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">寞踪的技术博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//baidu.com/s" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="wd" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://xpmozong.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2012-01-17-php-search-word" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/01/17/2012-01-17-php-search-word/" class="article-date">
+  <time datetime="2012-01-17T07:24:14.000Z" itemprop="datePublished">2012-01-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      php查找一个单词在一个文件中的第几行第几列
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="获得这个文件有多少行"><a href="#获得这个文件有多少行" class="headerlink" title="获得这个文件有多少行"></a>获得这个文件有多少行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$file</span> = <span class="string">&quot;aa.txt &quot;</span>; </span><br><span class="line"><span class="variable">$file_array</span> = file(<span class="variable">$file</span>); </span><br><span class="line"><span class="variable">$file_line_num</span> = count(<span class="variable">$file_array</span>); </span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$file_line_num</span>;die;    //获得这个文件有多少行</span><br></pre></td></tr></table></figure>
+
+<h3 id="有一个很大的日志文件，要读出最后100行，怎么办？"><a href="#有一个很大的日志文件，要读出最后100行，怎么办？" class="headerlink" title="有一个很大的日志文件，要读出最后100行，怎么办？"></a>有一个很大的日志文件，要读出最后100行，怎么办？</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$commandstr</span>=<span class="string">&quot;tail -n 100 aa.txt&gt;online.txt&quot;</span>; //把server.log的最后100行重定向到online.txt中</span><br><span class="line">system(<span class="variable">$commandstr</span>); //调用系统命令</span><br><span class="line"><span class="variable">$file_handle</span> = fopen(<span class="string">&quot;online.txt&quot;</span>, <span class="string">&quot;r+&quot;</span>); //以只读的方式打开online.txt文件</span><br><span class="line"><span class="keyword">while</span> (!feof(<span class="variable">$file_handle</span>)) &#123;</span><br><span class="line">    <span class="variable">$line</span> = fgets(<span class="variable">$file_handle</span>);</span><br><span class="line">    <span class="built_in">echo</span> nl2br(<span class="variable">$line</span>); //输出文件</span><br><span class="line">&#125;</span><br><span class="line">fclose(<span class="variable">$file_handle</span>); //关闭文件</span><br></pre></td></tr></table></figure>
+<p>注意，要把online.txt文件的属性设为777，还有上面程序只对linux系统下有效。</p>
+<h3 id="现在开始标题的程序吧"><a href="#现在开始标题的程序吧" class="headerlink" title="现在开始标题的程序吧"></a>现在开始标题的程序吧</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$file</span> = <span class="string">&#x27;./aa.txt&#x27;</span>;</span><br><span class="line"><span class="variable">$file_handle</span> = fopen(<span class="variable">$file</span>, <span class="string">&quot;r+&quot;</span>);</span><br><span class="line"><span class="variable">$count</span> = 0;</span><br><span class="line"><span class="keyword">while</span> (!feof(<span class="variable">$file_handle</span>)) &#123;</span><br><span class="line">    <span class="variable">$count</span>++;</span><br><span class="line">    <span class="variable">$line</span> = fgets(<span class="variable">$file_handle</span>);</span><br><span class="line">    <span class="keyword">if</span>(preg_match(<span class="string">&#x27;/heaven/&#x27;</span>, <span class="variable">$line</span>)) &#123;</span><br><span class="line">        <span class="variable">$strarr</span> = explode(<span class="string">&#x27; &#x27;</span>, <span class="variable">$line</span>);</span><br><span class="line">        foreach(<span class="variable">$strarr</span> as <span class="variable">$k</span> =&gt; <span class="variable">$v</span>) &#123;</span><br><span class="line">            <span class="variable">$v</span> = trim(<span class="variable">$v</span>, <span class="string">&#x27; &#x27;</span>);</span><br><span class="line">            <span class="keyword">if</span>(<span class="string">&#x27;heaven&#x27;</span> == <span class="variable">$v</span>) &#123;</span><br><span class="line">                <span class="built_in">echo</span> <span class="variable">$count</span>.<span class="string">&#x27;,&#x27;</span>.(<span class="variable">$k</span>+1).<span class="string">&quot;\n&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">fclose(<span class="variable">$file_handle</span>);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xpmozong.github.io/2012/01/17/2012-01-17-php-search-word/" data-id="ckg9lhag50008hkta8q99aog0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2012/01/30/2012-01-30-nginx/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Nginx实现HTTP负载均衡
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2012/01/09/2012-01-09-php-call_user_func_array/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">PHP之call_user_func_array用法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Libvirt/" rel="tag">Libvirt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memcached/" rel="tag">Memcached</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/" rel="tag">XML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/" rel="tag">jekyll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ruby/" rel="tag">ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/saltstack/" rel="tag">saltstack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/smarty/" rel="tag">smarty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/Libvirt/" style="font-size: 10px;">Libvirt</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/Memcached/" style="font-size: 10px;">Memcached</a> <a href="/tags/Mysql/" style="font-size: 16.67px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 16.67px;">Nginx</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/Python/" style="font-size: 13.33px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/XML/" style="font-size: 10px;">XML</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/ruby/" style="font-size: 10px;">ruby</a> <a href="/tags/saltstack/" style="font-size: 10px;">saltstack</a> <a href="/tags/smarty/" style="font-size: 10px;">smarty</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">January 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/09/">September 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/10/">October 2010</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/20/2018-07-20-http-https/">HTTP和HTTPS的区别，HTTPS加密方式</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/15/2017-06-15-php-zhixingliucheng/">PHP的执行流程</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/15/2017-05-15-php-yunxingjizhi/">PHP运行机制</a>
+          </li>
+        
+          <li>
+            <a href="/2015/08/28/2015-08-28-redis-jiqun/">Redis 集群</a>
+          </li>
+        
+          <li>
+            <a href="/2015/08/19/2015-08-19-php-opcache/">php opcache使用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 寞踪<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+  <div id="goback" onclick="window.scrollTo('0','0')"></div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>利用github jekyll 创建 blog | 寞踪的技术博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、准备工作 1、安装ruby windows安装  2、安装jekyll 二、创建github账户，要邮箱验证通过才能有创建博客权限。 ......">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用github jekyll 创建 blog">
+<meta property="og:url" content="http://xpmozong.github.io/2013/11/27/2013-11-27-jekyll/index.html">
+<meta property="og:site_name" content="寞踪的技术博客">
+<meta property="og:description" content="一、准备工作 1、安装ruby windows安装  2、安装jekyll 二、创建github账户，要邮箱验证通过才能有创建博客权限。 ......">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2013-11-27T07:24:14.000Z">
+<meta property="article:modified_time" content="2020-10-15T02:54:17.489Z">
+<meta property="article:author" content="寞踪">
+<meta property="article:tag" content="ruby">
+<meta property="article:tag" content="jekyll">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">寞踪的技术博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//baidu.com/s" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="wd" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://xpmozong.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2013-11-27-jekyll" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/11/27/2013-11-27-jekyll/" class="article-date">
+  <time datetime="2013-11-27T07:24:14.000Z" itemprop="datePublished">2013-11-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      利用github jekyll 创建 blog
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h2><h3 id="1、安装ruby"><a href="#1、安装ruby" class="headerlink" title="1、安装ruby"></a>1、安装ruby</h3><p>windows下推荐安装 <a target="_blank" rel="noopener" href="http://rubyinstaller.org/downloads/">rubyinstaller</a></p>
+<h3 id="windows安装"><a href="#windows安装" class="headerlink" title="windows安装"></a>windows安装</h3><p><a target="_blank" rel="noopener" href="http://rubyinstaller.org/downloads/">DevKit</a></p>
+<p>命令行进入刚刚安装的目录，我安装在这个目录：D:\DevKit,执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ruby dk.rb init</span><br><span class="line">ruby dk.rb install</span><br><span class="line">gem install rdiscount --platform=ruby</span><br></pre></td></tr></table></figure>
+
+<p>init之后，config.yml要配置下</p>
+<p>如果能安装rdiscount成功说明安装DevKit成功。</p>
+<h3 id="2、安装jekyll"><a href="#2、安装jekyll" class="headerlink" title="2、安装jekyll"></a>2、安装jekyll</h3><p>打开D:\Devkit\msys.bat文件,执行 gem install jekyll 命令</p>
+<h2 id="二、创建github账户，要邮箱验证通过才能有创建博客权限。"><a href="#二、创建github账户，要邮箱验证通过才能有创建博客权限。" class="headerlink" title="二、创建github账户，要邮箱验证通过才能有创建博客权限。"></a>二、创建github账户，要邮箱验证通过才能有创建博客权限。</h2><h3 id="1、windows下操作"><a href="#1、windows下操作" class="headerlink" title="1、windows下操作"></a>1、windows下操作</h3><p>下载windows github，并在github上创建项目，名字是USERNAME.github.io。打开windows github，下载刚创建的项目，然后进入目录。</p>
+<p>下载<a target="_blank" rel="noopener" href="https://github.com/plusjade/jekyll-bootstrap">jekyll-bootstrap</a></p>
+<p>解压后把.gitignore删掉，然后把文件夹里的内容，复制到自己的文件里。</p>
+<p>修改_config.yml文件，这一行改成自己的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">production_url : http://USERNAME.github.io</span><br><span class="line"><span class="comment"># 然后启动</span></span><br><span class="line">jekyll serve</span><br></pre></td></tr></table></figure>
+
+<p>本地运行 <a target="_blank" rel="noopener" href="http://127.0.0.1:4000/">http://127.0.0.1:4000/</a></p>
+<h3 id="2、linux下"><a href="#2、linux下" class="headerlink" title="2、linux下"></a>2、linux下</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install rubygems</span><br><span class="line">gem install rdiscount --platform=ruby</span><br><span class="line">gem install jekyll</span><br></pre></td></tr></table></figure>
+<p>先要在github上添加ssh key，<a target="_blank" rel="noopener" href="https://help.github.com/articles/generating-ssh-keys#platform-linux">https://help.github.com/articles/generating-ssh-keys#platform-linux</a></p>
+<p>先创建项目USERNAME.github.io，不要点生成README</p>
+<p>在命令下，创建USERNAME.github.io文件夹，并进入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">touch README.md</span><br><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m <span class="string">&quot;first commit&quot;</span></span><br><span class="line">git remote add origin https://github.com/USERNAME/USERNAME.github.io.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<p>剩下的同理windows</p>
+<h2 id="二、Jekyll使用"><a href="#二、Jekyll使用" class="headerlink" title="二、Jekyll使用"></a>二、Jekyll使用</h2><h3 id="1、创建第一篇博文"><a href="#1、创建第一篇博文" class="headerlink" title="1、创建第一篇博文"></a>1、创建第一篇博文</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rake post title=<span class="string">&quot;Hello World&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>默认情况下rake命令会在你的_posts目录下创建一个名为[年-月-日-post title.md]的文件，例如2012-05-04-Hello-World.md，名称中的空格会转换成“-”，时间为当前系统时间。当然这些都是可配置的。rake命令默认不会覆盖掉相同名称的文件。</p>
+<h3 id="2、创建第一个页面"><a href="#2、创建第一个页面" class="headerlink" title="2、创建第一个页面"></a>2、创建第一个页面</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 根目录下创建页面</span></span><br><span class="line">$ rake page name=<span class="string">&quot;about.md&quot;</span></span><br><span class="line"><span class="comment"># 自定义目录下创建页面</span></span><br><span class="line">$ rake page name=<span class="string">&quot;pages/about.md&quot;</span></span><br><span class="line"><span class="comment"># 创建类似./pages/about/index.html目录结构的页面</span></span><br><span class="line">$ rake page name=<span class="string">&quot;pages/about&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="三、域名绑定"><a href="#三、域名绑定" class="headerlink" title="三、域名绑定"></a>三、域名绑定</h2><p>这里有<a target="_blank" rel="noopener" href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">详细介绍</a></p>
+<h2 id="四、一点小补充-git-命令"><a href="#四、一点小补充-git-命令" class="headerlink" title="四、一点小补充 git 命令"></a>四、一点小补充 git 命令</h2><h3 id="1、推送"><a href="#1、推送" class="headerlink" title="1、推送"></a>1、推送</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&#x27;test&#x27;</span></span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、更新"><a href="#2、更新" class="headerlink" title="2、更新"></a>2、更新</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xpmozong.github.io/2013/11/27/2013-11-27-jekyll/" data-id="ckg9lhagd000phktae0oshf6c" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jekyll/" rel="tag">jekyll</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ruby/" rel="tag">ruby</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/11/28/2013-11-28-mysql-summary/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Mysql 小总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/09/05/2013-09-05-python-saltstack/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">saltstack 学习小记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Libvirt/" rel="tag">Libvirt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memcached/" rel="tag">Memcached</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/" rel="tag">XML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/" rel="tag">jekyll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ruby/" rel="tag">ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/saltstack/" rel="tag">saltstack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/smarty/" rel="tag">smarty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/Libvirt/" style="font-size: 10px;">Libvirt</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/Memcached/" style="font-size: 10px;">Memcached</a> <a href="/tags/Mysql/" style="font-size: 16.67px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 16.67px;">Nginx</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/Python/" style="font-size: 13.33px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/XML/" style="font-size: 10px;">XML</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/ruby/" style="font-size: 10px;">ruby</a> <a href="/tags/saltstack/" style="font-size: 10px;">saltstack</a> <a href="/tags/smarty/" style="font-size: 10px;">smarty</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">January 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/09/">September 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/10/">October 2010</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/20/2018-07-20-http-https/">HTTP和HTTPS的区别，HTTPS加密方式</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/15/2017-06-15-php-zhixingliucheng/">PHP的执行流程</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/15/2017-05-15-php-yunxingjizhi/">PHP运行机制</a>
+          </li>
+        
+          <li>
+            <a href="/2015/08/28/2015-08-28-redis-jiqun/">Redis 集群</a>
+          </li>
+        
+          <li>
+            <a href="/2015/08/19/2015-08-19-php-opcache/">php opcache使用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 寞踪<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+  <div id="goback" onclick="window.scrollTo('0','0')"></div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
