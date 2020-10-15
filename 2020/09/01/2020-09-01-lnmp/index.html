@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>CentOS 7.8 编译安装LNMP | 寞踪的技术博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="查看CentOS版本信息 yum安装必要包 Mysql安装 PHP 7.3安装 安装redis服务 Nginx安装 ......">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS 7.8 编译安装LNMP">
+<meta property="og:url" content="http://xpmozong.github.io/2020/09/01/2020-09-01-lnmp/index.html">
+<meta property="og:site_name" content="寞踪的技术博客">
+<meta property="og:description" content="查看CentOS版本信息 yum安装必要包 Mysql安装 PHP 7.3安装 安装redis服务 Nginx安装 ......">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://xpmozong.github.io/2020/09/01/2020-09-01-lnmp/image-20200921190613275.png">
+<meta property="og:image" content="http://xpmozong.github.io/2020/09/01/2020-09-01-lnmp/image-20200924200359467.png">
+<meta property="og:image" content="http://xpmozong.github.io/2020/09/01/2020-09-01-lnmp/image-20200925115205851.png">
+<meta property="og:image" content="http://xpmozong.github.io/2020/09/01/2020-09-01-lnmp/image-20200925103555518.png">
+<meta property="og:image" content="http://xpmozong.github.io/2020/09/01/2020-09-01-lnmp/image-20200925104215835.png">
+<meta property="og:image" content="http://xpmozong.github.io/2020/09/01/2020-09-01-lnmp/image-20200925153408391.png">
+<meta property="article:published_time" content="2020-09-01T07:24:14.000Z">
+<meta property="article:modified_time" content="2020-10-15T07:45:09.813Z">
+<meta property="article:author" content="寞踪">
+<meta property="article:tag" content="PHP">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="CentOS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://xpmozong.github.io/2020/09/01/2020-09-01-lnmp/image-20200921190613275.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">寞踪的技术博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//baidu.com/s" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="wd" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://xpmozong.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2020-09-01-lnmp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/01/2020-09-01-lnmp/" class="article-date">
+  <time datetime="2020-09-01T07:24:14.000Z" itemprop="datePublished">2020-09-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CentOS 7.8 编译安装LNMP
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="查看CentOS版本信息"><a href="#查看CentOS版本信息" class="headerlink" title="查看CentOS版本信息"></a>查看CentOS版本信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 ~]<span class="comment"># cat /etc/redhat-release </span></span><br><span class="line">CentOS Linux release 7.8.2003 (Core)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="yum安装必要包"><a href="#yum安装必要包" class="headerlink" title="yum安装必要包"></a>yum安装必要包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc gcc-c++</span><br><span class="line">yum -y install libxml2-devel</span><br><span class="line">yum -y install openssl-devel libjpeg-devel libpng-devel libXpm-devel ImageMagick ImageMagick-devel freetype freetype-devel curl-devel m4 zip unzip libxslt-devel*</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Mysql安装"><a href="#Mysql安装" class="headerlink" title="Mysql安装"></a>Mysql安装</h3><h5 id="1-通过yum安装"><a href="#1-通过yum安装" class="headerlink" title="1. 通过yum安装"></a>1. 通过yum安装</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm</span><br><span class="line">rpm -ivh mysql-community-release-el7-5.noarch.rpm</span><br><span class="line">yum -y install mysql-server</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-初始化密码"><a href="#2-初始化密码" class="headerlink" title="2. 初始化密码"></a>2. 初始化密码</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld.service</span><br><span class="line">systemctl status mysqld.service // mysql状态如下，红色标记为设置root密码</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20200921190613275.png"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p   // 输入自己设置的密码</span><br><span class="line">[root@test1 ~]<span class="comment"># mysql -u root -p</span></span><br><span class="line">Enter password: </span><br><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 925</span><br><span class="line">Server version: 5.6.49 MySQL Community Server (GPL)</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Type <span class="string">&#x27;help;&#x27;</span> or <span class="string">&#x27;\h&#x27;</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">&#x27;\c&#x27;</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
+
+<p>mysql安装目录在/var/lib/mysql</p>
+<h5 id="3-忘记密码"><a href="#3-忘记密码" class="headerlink" title="3. 忘记密码"></a>3. 忘记密码</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/my.cnf</span><br></pre></td></tr></table></figure>
+
+<p>在[mysqld]后添加skip-grant-tables</p>
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">datadir=/var/lib/mysql</span><br><span class="line">socket=/var/lib/mysql/mysql.sock</span><br><span class="line">skip-grant-tables</span><br></pre></td></tr></table></figure>
+
+<p>重启</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart mysqld.service</span><br><span class="line">mysql -u root -p</span><br><span class="line">mysql&gt; use user;</span><br><span class="line">mysql&gt; UPDATE user SET Password = password ( <span class="string">&#x27;new-password&#x27;</span> ) WHERE User = <span class="string">&#x27;root&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>再修改my.cnf文件，去掉skip-grant-tables，重启mysql就好啦！</p>
+<h3 id="PHP-7-3安装"><a href="#PHP-7-3安装" class="headerlink" title="PHP 7.3安装"></a>PHP 7.3安装</h3><h5 id="1-下载安装包并解压"><a href="#1-下载安装包并解压" class="headerlink" title="1. 下载安装包并解压"></a>1. 下载安装包并解压</h5><p>创建data目录，并进入data目录下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 ~]<span class="comment"># mkdir /data</span></span><br><span class="line">[root@test1 ~]<span class="comment"># cd /data/</span></span><br></pre></td></tr></table></figure>
+
+<p>下载php安装包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 ~]<span class="comment"># wget https://www.php.net/distributions/php-7.3.23.tar.gz</span></span><br></pre></td></tr></table></figure>
+
+<p>解压：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf php-7.3.22.tar.gz</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="2-进入安装包编译"><a href="#2-进入安装包编译" class="headerlink" title="2. 进入安装包编译"></a>2. 进入安装包编译</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> php-7.3.22</span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/php --with-zlib-dir --with-freetype-dir --enable-mbstring --with-libxml-dir=/usr --enable-soap --enable-calendar --with-curl --with-gd --disable-rpath --enable-inline-optimization --with-bz2 --with-zlib --enable-sockets --enable-sysvsem --enable-sysvshm --enable-pcntl --enable-mbregex --enable-exif --enable-bcmath --with-mhash --enable-zip --with-libzip --with-xsl --with-pcre-regex --with-pdo-mysql --with-mysqli --with-jpeg-dir=/usr --with-png-dir=/usr --with-openssl --with-fpm-user=www-data --with-fpm-group=www-data --with-libdir=/lib/x86_64-linux-gnu/ --enable-ftp --with-gettext --with-xmlrpc --enable-opcache --enable-fpm --with-iconv --with-xpm-dir=/usr</span><br><span class="line">// 成功后</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<p>configure报错error: Please reinstall the libzip distribution</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum remove libzip</span><br><span class="line">wget https://nih.at/libzip/libzip-1.2.0.tar.gz</span><br><span class="line">tar zxvf libzip-1.2.0.tar.gz</span><br><span class="line"><span class="built_in">cd</span> libzip-1.2.0</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>configure报错error: off_t undefined; check your library configuration</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ld.so.conf </span><br><span class="line"><span class="comment">#添加如下几行</span></span><br><span class="line">/usr/<span class="built_in">local</span>/lib64</span><br><span class="line">/usr/<span class="built_in">local</span>/lib</span><br><span class="line">/usr/lib</span><br><span class="line">/usr/lib64</span><br><span class="line">:x  <span class="comment">#保存退出</span></span><br><span class="line"></span><br><span class="line">ldconfig -v <span class="comment">#使之生效</span></span><br></pre></td></tr></table></figure>
+
+<p>configure报错，致命错误：zipconf.h：没有那个文件或目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/<span class="built_in">local</span>/lib/libzip/include/zipconf.h /usr/<span class="built_in">local</span>/include/zipconf.h</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="3-php配置"><a href="#3-php配置" class="headerlink" title="3. php配置"></a>3. php配置</h5><p>拷贝php.ini配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 还是在/data/php-7.3.22 目录下</span><br><span class="line">cp php.ini-production /usr/<span class="built_in">local</span>/php/lib/php.ini</span><br><span class="line">php -i | grep php.ini // 可以用这个命令查看php使用的ini的位置</span><br></pre></td></tr></table></figure>
+
+<p>编辑php.ini</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">short_open_tag=On</span><br><span class="line">date.timezone=Asia/Shanghai</span><br><span class="line">display_errors=On // 测试环境用，正式环境关闭</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="4-php环境变量"><a href="#4-php环境变量" class="headerlink" title="4. php环境变量"></a>4. php环境变量</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bash_profile</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20200924200359467.png"></p>
+<p>再重新加载</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 ~]<span class="comment"># source ~/.bash_profile </span></span><br><span class="line">[root@test1 ~]<span class="comment"># php -v</span></span><br><span class="line">PHP 7.3.22 (cli) (built: Sep 25 2020 17:54:53) ( NTS )</span><br><span class="line">Copyright (c) 1997-2018 The PHP Group</span><br><span class="line">Zend Engine v3.3.22, Copyright (c) 1998-2018 Zend Technologies</span><br></pre></td></tr></table></figure>
+
+<p>配置成功</p>
+<h5 id="5-php-fpm配置"><a href="#5-php-fpm配置" class="headerlink" title="5. php-fpm配置"></a>5. php-fpm配置</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/<span class="built_in">local</span>/php/etc/php-fpm.conf.default /usr/<span class="built_in">local</span>/php/etc/php-fpm.conf</span><br></pre></td></tr></table></figure>
+
+<p>进入到cd /usr/local/php/etc/ 目录下</p>
+<p>编辑 php-fpm.conf</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error_log = <span class="built_in">log</span>/php-fpm.log</span><br></pre></td></tr></table></figure>
+
+<p>打开记录日志</p>
+<p>进入到cd php-fpm.d</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp www.conf.default www.conf</span><br></pre></td></tr></table></figure>
+
+<p>编辑<a target="_blank" rel="noopener" href="http://www.conf/">www.conf</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user = nobody</span><br><span class="line">group = nobody</span><br></pre></td></tr></table></figure>
+
+<p>设置开机启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm <span class="comment">#因为php5.3开始自带fpm，使用自带的管理脚本</span></span><br><span class="line">chmod +x /etc/init.d/php-fpm</span><br><span class="line">chkconfig php-fpm on <span class="comment">#设置开机自启动</span></span><br><span class="line">/etc/init.d/php-fpm start <span class="comment">#启动php-fpm</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="6-安装redis服务"><a href="#6-安装redis服务" class="headerlink" title="6. 安装redis服务"></a>6. 安装redis服务</h5><p>首先安装redis</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum -y install tcl</span><br><span class="line">wget http://download.redis.io/releases/redis-4.0.9.tar.gz</span><br><span class="line">tar zxvf redis-4.0.9.tar.gz</span><br><span class="line"><span class="built_in">cd</span> redis-4.0.9</span><br><span class="line">make</span><br><span class="line">make <span class="built_in">test</span></span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>修改redis.conf配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vim /data/redis-4.0.9/redis.conf</span><br><span class="line">daemonize no</span><br><span class="line">// 改成</span><br><span class="line">daemonize yes</span><br><span class="line"></span><br><span class="line">requirepass foobared</span><br><span class="line">// 去掉注释，改成自己的密码</span><br><span class="line">requirepass 123456</span><br></pre></td></tr></table></figure>
+
+<p>配置redis服务管理脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/<span class="built_in">local</span>/redis/utils/redis_init_script /etc/init.d/redis</span><br><span class="line">vim /etc/init.d/redis</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20200925115205851.png"></p>
+<p>路径配置一下，注意：是6379.conf</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/redis start</span><br></pre></td></tr></table></figure>
+
+<p>测试是否开启成功</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 进入到src目录下</span><br><span class="line"><span class="built_in">cd</span> /data/redis-4.0.9/src</span><br><span class="line">./redis-cli -a <span class="string">&quot;123456&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20200925103555518.png"></p>
+<h5 id="7-安装redis扩展"><a href="#7-安装redis扩展" class="headerlink" title="7. 安装redis扩展"></a>7. 安装redis扩展</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">yum -y install autoconf</span><br><span class="line">wget https://pecl.php.net/get/redis-5.3.1.tgz</span><br><span class="line">tar zxvf redis-5.3.1.tgz</span><br><span class="line"><span class="built_in">cd</span> redis-5.3.1</span><br><span class="line">/usr/<span class="built_in">local</span>/php/bin/phpize</span><br><span class="line">./configure --with-php-config=/usr/<span class="built_in">local</span>/php/bin/php-config</span><br><span class="line">make</span><br><span class="line">make <span class="built_in">test</span></span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20200925104215835.png"></p>
+<p>提示这个，安装成功</p>
+<p>编辑php.ini文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extension=redis.so</span><br></pre></td></tr></table></figure>
+
+<p>重启php-fpm</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 ~]<span class="comment"># /etc/init.d/php-fpm restart</span></span><br><span class="line">[root@test1 ~]<span class="comment"># php -m | grep redis</span></span><br><span class="line">redis</span><br></pre></td></tr></table></figure>
+
+
+
+<p>测试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   // 连接本地的 Redis 服务</span><br><span class="line">   <span class="variable">$redis</span> = new Redis();</span><br><span class="line">   <span class="variable">$redis</span>-&gt;connect(<span class="string">&#x27;127.0.0.1&#x27;</span>, 6379);</span><br><span class="line">   <span class="variable">$redis</span>-&gt;auth(<span class="string">&#x27;111111&#x27;</span>);</span><br><span class="line">   // 查看服务是否运行</span><br><span class="line">   <span class="built_in">echo</span> <span class="string">&quot;Server is running: &quot;</span> . <span class="variable">$redis</span>-&gt;ping().<span class="string">&quot;\n&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 data]<span class="comment"># php redistest.php </span></span><br><span class="line">Server is running: 1</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="8-安装swoole扩展"><a href="#8-安装swoole扩展" class="headerlink" title="8. 安装swoole扩展"></a>8. 安装swoole扩展</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wget https://pecl.php.net/get/swoole-4.5.4.tgz</span><br><span class="line">tar zxvf swoole-4.5.4.tgz</span><br><span class="line"><span class="built_in">cd</span> swoole-4.5.4</span><br><span class="line">/usr/<span class="built_in">local</span>/php/bin/phpize</span><br><span class="line">./configure --with-php-config=/usr/<span class="built_in">local</span>/php/bin/php-config</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20200925153408391.png"></p>
+<p>编辑php.ini文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extension=swoole.so</span><br></pre></td></tr></table></figure>
+
+<p>重启php-fpm</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 ~]<span class="comment"># /etc/init.d/php-fpm restart</span></span><br><span class="line">[root@test1 ~]<span class="comment"># php -m | grep swoole</span></span><br><span class="line">swoole</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Nginx安装"><a href="#Nginx安装" class="headerlink" title="Nginx安装"></a>Nginx安装</h3><h5 id="1-openresty安装"><a href="#1-openresty安装" class="headerlink" title="1. openresty安装"></a>1. openresty安装</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget https://openresty.org/download/openresty-1.17.8.2.tar.gz</span><br><span class="line">tar zxvf openresty-1.17.8.2.tar.gz</span><br><span class="line"><span class="built_in">cd</span> openresty-1.17.8.2</span><br><span class="line">./configure</span><br><span class="line">gmake</span><br><span class="line">gmake install</span><br></pre></td></tr></table></figure>
+
+<p>openresty默认安装/usr/local</p>
+<h5 id="2-nginx配置"><a href="#2-nginx配置" class="headerlink" title="2. nginx配置"></a>2. nginx配置</h5><p>进入/usr/local/openresty/nginx/conf</p>
+<p>编辑nginx.conf</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 在http里添加</span><br><span class="line">http&#123;</span><br><span class="line">    include vhosts/*.conf;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>创建vhosts目录</p>
+<p>编辑vhosts/test.conf</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  192.168.0.105;</span><br><span class="line">        index index.php index.html index.htm;</span><br><span class="line">        root html;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># redirect server error pages to the static page /50x.html</span></span><br><span class="line">        error_page   500 502 503 504  /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$</span><br><span class="line">        &#123;</span><br><span class="line">            expires 30d;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location ~ .*\.(js|css)?$</span><br><span class="line">        &#123;</span><br><span class="line">            expires 24h;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$request_filename</span> !~* (\.xml|\.rar|\.html|\.htm|\.php|\.swf|\.css|\.js|\.gif|\.png|\.jpg|\.jpeg|robots\.txt|index\.php|\.jnlp|\.jar|\.eot|\.woff|\.ttf|\.svg)) &#123;</span><br><span class="line">            rewrite ^/(.*)$ /index.php/<span class="variable">$1</span> last;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location ~ .*\.php &#123;</span><br><span class="line">            fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">            fastcgi_index  index.php;</span><br><span class="line">            fastcgi_split_path_info ^(.+\.php)(.*)$;</span><br><span class="line">            fastcgi_param   SCRIPT_FILENAME <span class="variable">$document_root</span><span class="variable">$fastcgi_script_name</span>;</span><br><span class="line">            fastcgi_param   PATH_INFO <span class="variable">$fastcgi_path_info</span>;</span><br><span class="line">            fastcgi_param   PATH_TRANSLATED <span class="variable">$document_root</span><span class="variable">$fastcgi_path_info</span>;</span><br><span class="line">            include fastcgi_params;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="3-启动nginx"><a href="#3-启动nginx" class="headerlink" title="3. 启动nginx"></a>3. 启动nginx</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/openresty/nginx/sbin/nginx</span><br><span class="line">/usr/<span class="built_in">local</span>/openresty/nginx/sbin/nginx -s reload</span><br><span class="line">/usr/<span class="built_in">local</span>/openresty/nginx/sbin/nginx -s stop</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-测试"><a href="#4-测试" class="headerlink" title="4. 测试"></a>4. 测试</h5><p>进入/usr/local/openresty/nginx/html目录</p>
+<p>编辑index.php</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">phpinfo();</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器打开</p>
+<p><a target="_blank" rel="noopener" href="http://192.168.0.105/index.php">http://192.168.0.105/index.php</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xpmozong.github.io/2020/09/01/2020-09-01-lnmp/" data-id="ckgaht4e0000exotaawb06vd6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CentOS/" rel="tag">CentOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/09/25/2020-09-25-php-rebbitmq/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          PHP中使用RabbitMQ
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/10/01/2018-10-01-centos-fail2ban/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CentOS 7使用Fail2ban+firewalld来阻止恶意IP访问</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS/" rel="tag">CentOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Libvirt/" rel="tag">Libvirt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memcached/" rel="tag">Memcached</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/" rel="tag">XML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/" rel="tag">jekyll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rebbitmq/" rel="tag">rebbitmq</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ruby/" rel="tag">ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/saltstack/" rel="tag">saltstack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/smarty/" rel="tag">smarty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/CentOS/" style="font-size: 15px;">CentOS</a> <a href="/tags/Libvirt/" style="font-size: 10px;">Libvirt</a> <a href="/tags/Linux/" style="font-size: 17.5px;">Linux</a> <a href="/tags/Memcached/" style="font-size: 10px;">Memcached</a> <a href="/tags/Mysql/" style="font-size: 15px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 15px;">Nginx</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/XML/" style="font-size: 10px;">XML</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/rebbitmq/" style="font-size: 10px;">rebbitmq</a> <a href="/tags/ruby/" style="font-size: 10px;">ruby</a> <a href="/tags/saltstack/" style="font-size: 10px;">saltstack</a> <a href="/tags/smarty/" style="font-size: 10px;">smarty</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">January 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/09/">September 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/10/">October 2010</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/25/2020-09-25-php-rebbitmq/">PHP中使用RabbitMQ</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/01/2020-09-01-lnmp/">CentOS 7.8 编译安装LNMP</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/01/2018-10-01-centos-fail2ban/">CentOS 7使用Fail2ban+firewalld来阻止恶意IP访问</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/20/2018-07-20-http-https/">HTTP和HTTPS的区别，HTTPS加密方式</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/20/2018-06-20-hexo/">hexo使用</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/20/2018-01-20-centos7-port/">CenOS 7 开放80端口</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/15/2017-06-15-php-zhixingliucheng/">PHP的执行流程</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/15/2017-05-15-php-yunxingjizhi/">PHP运行机制</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/20/2016-01-20-php7/">PHP7新特性</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/01/2015-10-01-php-soap/">PHP使用SOAP</a>
+          </li>
+        
+          <li>
+            <a href="/2015/08/28/2015-08-28-redis-jiqun/">Redis 集群</a>
+          </li>
+        
+          <li>
+            <a href="/2015/08/19/2015-08-19-php-opcache/">php opcache使用</a>
+          </li>
+        
+          <li>
+            <a href="/2014/03/20/2014-03-20-c-zhizhen/">C语言指针</a>
+          </li>
+        
+          <li>
+            <a href="/2013/12/05/2013-12-05-php-extension/">PHP扩展开发 - 第一个扩展</a>
+          </li>
+        
+          <li>
+            <a href="/2013/12/01/2013-12-01-lnmp/">Linux + Nginx + Mysql + PHP 编译安装</a>
+          </li>
+        
+          <li>
+            <a href="/2013/11/29/2013-11-29-linux-summary/">Linux 小总结</a>
+          </li>
+        
+          <li>
+            <a href="/2013/11/28/2013-11-28-mysql-summary/">Mysql 小总结</a>
+          </li>
+        
+          <li>
+            <a href="/2013/11/27/2013-11-27-jekyll/">利用github jekyll 创建 blog</a>
+          </li>
+        
+          <li>
+            <a href="/2013/09/05/2013-09-05-python-saltstack/">saltstack 学习小记</a>
+          </li>
+        
+          <li>
+            <a href="/2013/08/09/2013-08-09-php-libvirt/">libvirt-php 学习小记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 寞踪<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+  <div id="goback" onclick="window.scrollTo('0','0')"></div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
