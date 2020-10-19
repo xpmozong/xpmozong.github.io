@@ -194,7 +194,7 @@ body {
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #999;
+  color: #666;
   margin-bottom: 1em;
   margin-left: 5px;
   line-height: 1em;
@@ -232,7 +232,7 @@ body {
 .article-entry h6,
 .widget h6 {
   font-size: 1em;
-  color: #999;
+  color: #666;
 }
 .article-entry hr,
 .widget hr {
@@ -390,19 +390,14 @@ body {
 .main-nav-link {
   float: left;
   color: #fff;
-  opacity: 0.6;
   text-decoration: none;
-  text-shadow: 0 1px rgba(0,0,0,0.2);
-  -webkit-transition: opacity 0.2s;
-  -moz-transition: opacity 0.2s;
-  -ms-transition: opacity 0.2s;
-  transition: opacity 0.2s;
   display: block;
   padding: 20px 15px;
+  font-size: 16px;
 }
 .nav-icon:hover,
 .main-nav-link:hover {
-  opacity: 1;
+  text-decoration: underline;
 }
 .nav-icon {
   font-family: FontAwesome;
@@ -651,7 +646,7 @@ a.article-title:hover {
   margin-left: 1em;
 }
 .article-entry .caption {
-  color: #999;
+  color: #666;
   display: block;
   font-size: 0.9em;
   margin-top: 0.5em;
@@ -684,7 +679,7 @@ a.article-title:hover {
   padding: 6px 15px;
   border-radius: 15px;
   background: #eee;
-  color: #999;
+  color: #666;
   text-shadow: 0 1px #fff;
   text-decoration: none;
 }
@@ -710,7 +705,7 @@ a.article-title:hover {
   clear: both;
 }
 .article-footer a {
-  color: #999;
+  color: #666;
   text-decoration: none;
 }
 .article-footer a:hover {
@@ -774,7 +769,7 @@ a.article-title:hover {
 .article-nav-link-wrap {
   text-decoration: none;
   text-shadow: 0 1px #fff;
-  color: #999;
+  color: #666;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -1017,7 +1012,7 @@ a.article-title:hover {
   margin-top: 1em;
 }
 .archive-article-date {
-  color: #999;
+  color: #666;
   text-decoration: none;
   font-size: 0.85em;
   line-height: 1em;
@@ -1032,7 +1027,7 @@ a.article-title:hover {
   border: 1px solid #ddd;
   border-radius: 3px;
   text-align: center;
-  color: #999;
+  color: #666;
   overflow: hidden;
 }
 #page-nav:before,
@@ -1050,11 +1045,11 @@ a.article-title:hover {
   height: 2ex;
 }
 #page-nav a {
-  color: #999;
+  color: #666;
   text-decoration: none;
 }
 #page-nav a:hover {
-  background: #999;
+  background: #666;
   color: #fff;
 }
 #page-nav .prev {
@@ -1082,7 +1077,7 @@ a.article-title:hover {
   background: #262a30;
   padding: 50px 0;
   border-top: 1px solid #ddd;
-  color: #999;
+  color: #666;
 }
 #footer a {
   color: #258fb8;
@@ -1298,7 +1293,7 @@ pre .javascript .function {
 @media screen and (max-width: 479px) {
   .mobile-nav-link {
     display: block;
-    color: #999;
+    color: #666;
     text-decoration: none;
     padding: 15px 20px;
     font-weight: bold;
@@ -1321,12 +1316,12 @@ pre .javascript .function {
 .widget {
   color: #777;
   text-shadow: 0 1px #fff;
-  background: #ddd;
-  -webkit-box-shadow: 0 -1px 4px #ccc inset;
-  box-shadow: 0 -1px 4px #ccc inset;
-  border: 1px solid #ccc;
-  padding: 15px;
+  background: #fff;
+  -webkit-box-shadow: 1px 2px 3px #ddd;
+  box-shadow: 1px 2px 3px #ddd;
+  border: 1px solid #ddd;
   border-radius: 3px;
+  padding: 15px;
 }
 .widget a {
   color: #258fb8;
@@ -1375,7 +1370,7 @@ pre .javascript .function {
 .tag-list-count,
 .archive-list-count {
   padding-left: 5px;
-  color: #999;
+  color: #666;
   font-size: 0.85em;
 }
 .category-list-count:before,
