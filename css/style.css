@@ -9,6 +9,31 @@ body:after {
 body:after {
   clear: both;
 }
+#toc {
+  float: right;
+  font-size: 0.8em;
+  color: #258fb8;
+  margin: 5px;
+  position: relative;
+  left: 20px;
+}
+#toc .toc {
+  background-color: #eee;
+  list-style: none;
+  padding: 10px;
+}
+#toc .toc-item,
+#toc .toc-link {
+  list-style: none;
+}
+#toc ol {
+  margin: 0;
+}
+@media screen and (max-width: 640px) {
+  #toc {
+    display: none;
+  }
+}
 html,
 body,
 div,
