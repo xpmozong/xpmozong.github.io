@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://xpmozong.github.io/2020/10/02/2020-10-02-vue-ui/image-20201022103544448.png">
 <meta property="og:image" content="http://xpmozong.github.io/2020/10/02/2020-10-02-vue-ui/image-20201022102906154.png">
 <meta property="article:published_time" content="2020-10-02T07:24:14.000Z">
-<meta property="article:modified_time" content="2020-10-22T10:21:58.845Z">
+<meta property="article:modified_time" content="2020-10-22T11:44:42.858Z">
 <meta property="article:author" content="寞踪">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="CentOS">
@@ -99,7 +99,12 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-      
+         <!--02-->
+          <div id="toc" class="toc-article">
+    <div class="toc-title">目录</div>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-text">创建项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E6%96%B0%E9%A1%B9%E7%9B%AE"><span class="toc-text">1. 创建新项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%A2%84%E8%AE%BE"><span class="toc-text">2. 预设</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%80%89%E6%8B%A9%E5%8A%9F%E8%83%BD"><span class="toc-text">3. 选择功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%85%8D%E7%BD%AE"><span class="toc-text">4. 配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E4%BF%9D%E5%AD%98%E9%A2%84%E8%AE%BE"><span class="toc-text">5. 保存预设</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6"><span class="toc-text">安装插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-cli-plugin-element"><span class="toc-text">vue-cli-plugin-element</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="toc-text">安装依赖</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#axios"><span class="toc-text">axios</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE"><span class="toc-text">运行项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#serve%E8%BF%90%E8%A1%8C"><span class="toc-text">serve运行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E6%8A%A5%E9%94%99"><span class="toc-text">一些报错</span></a></li></ol>
+</div>
+        
         <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; node -v</span><br><span class="line">v12.18.3</span><br><span class="line">&gt; npm -v</span><br><span class="line">6.14.6</span><br></pre></td></tr></table></figure>
 
 <p>Vue CLI3 需要 <a target="_blank" rel="noopener" href="https://nodejs.org/">Node.js</a> 8.9 或更高版本</p>
@@ -121,9 +126,11 @@
 <p>点击安装</p>
 <h2 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h2><h3 id="serve运行"><a href="#serve运行" class="headerlink" title="serve运行"></a>serve运行</h3><p>进入到cms目录下</p>
 <p><img src="image-20201021233559248.png"></p>
-<h2 id="一些报错"><a href="#一些报错" class="headerlink" title="一些报错"></a>一些报错</h2><h3 id="Error-Cannot-find-module-‘less’"><a href="#Error-Cannot-find-module-‘less’" class="headerlink" title="Error: Cannot find module ‘less’"></a>Error: Cannot find module ‘less’</h3><p><img src="image-20201022103458456.png"></p>
+<h2 id="一些报错"><a href="#一些报错" class="headerlink" title="一些报错"></a>一些报错</h2><p>Error: Cannot find module ‘less’</p>
+<p><img src="image-20201022103458456.png"></p>
 <p><img src="image-20201022103544448.png"></p>
-<h3 id="Newline-required-at-end-of-file-but-not-found-eol-last"><a href="#Newline-required-at-end-of-file-but-not-found-eol-last" class="headerlink" title="Newline required at end of file but not found eol-last"></a>Newline required at end of file but not found eol-last</h3><p><img src="image-20201022102906154.png"></p>
+<p>Newline required at end of file but not found eol-last</p>
+<p><img src="image-20201022102906154.png"></p>
 <p>这个错误竟然是Login.vue文件最后没有空一行</p>
 
       

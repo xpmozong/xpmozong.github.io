@@ -84,7 +84,12 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-      
+         <!--02-->
+          <div id="toc" class="toc-article">
+    <div class="toc-title">目录</div>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B"><span class="toc-text">变量类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E5%BC%82%E5%B8%B8"><span class="toc-text">错误异常</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP7%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-text">PHP7性能优化</span></a></li></ol>
+</div>
+        
         <h2 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h2><p>函数的参数和返回增加了类型限定，增加类型后，PHP JIT可以准确判断变量类型，生成最佳的机器指令。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="built_in">test</span>(int <span class="variable">$a</span>, string <span class="variable">$b</span>, array <span class="variable">$c</span>) : int &#123;</span><br><span class="line"></span><br><span class="line">// code</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 

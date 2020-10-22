@@ -87,7 +87,12 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-      
+         <!--02-->
+          <div id="toc" class="toc-article">
+    <div class="toc-title">目录</div>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81PHP%E7%9A%84%E4%B8%89%E4%B8%AA%E6%A8%A1%E5%9D%97"><span class="toc-text">一、PHP的三个模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81PHP%E7%9A%84%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%9E%84"><span class="toc-text">二、PHP的核心架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81Sapi"><span class="toc-text">三、Sapi</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%A0%B8%E5%BF%83%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E2%80%94%E2%80%94-HashTable"><span class="toc-text">四、核心数据结构 —— HashTable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81PHP%E5%8F%98%E9%87%8F"><span class="toc-text">五、PHP变量</span></a></li></ol>
+</div>
+        
         <h3 id="一、PHP的三个模块"><a href="#一、PHP的三个模块" class="headerlink" title="一、PHP的三个模块"></a>一、PHP的三个模块</h3><p>内核：PHP内核用来处理请求、文件流、错误处理等相关操作。</p>
 <p>Zend引擎：用以将源文件转换成机器语言，然后在虚拟机上运行它。</p>
 <p>扩展层：是一组函数、类库和流，PHP使用它们来执行一些特定的操作。比如，我们需要mysql扩展来连接MySQL数据库；当ZE执行程序时可能会需要连接若干扩展，这时ZE将控制权交给扩展，等处理完特定任务后再返还。</p>

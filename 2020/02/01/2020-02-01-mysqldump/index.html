@@ -85,7 +85,12 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-      
+         <!--02-->
+          <div id="toc" class="toc-article">
+    <div class="toc-title">目录</div>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E6%95%B4%E4%B8%AA%E5%BA%93"><span class="toc-text">导出整个库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E6%95%B4%E4%B8%AA%E5%BA%93%E7%9A%84%E8%A1%A8%E7%BB%93%E6%9E%84"><span class="toc-text">导出整个库的表结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E5%8D%95%E4%B8%AA%E8%A1%A8%E7%BB%93%E6%9E%84%E5%92%8C%E6%95%B0%E6%8D%AE"><span class="toc-text">导出单个表结构和数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E5%8D%95%E4%B8%AA%E8%A1%A8%E7%BB%93%E6%9E%84"><span class="toc-text">导出单个表结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA"><span class="toc-text">大数据导出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5"><span class="toc-text">大数据导入</span></a></li></ol>
+</div>
+        
         <h4 id="导出整个库"><a href="#导出整个库" class="headerlink" title="导出整个库"></a>导出整个库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@DB-01 data]<span class="comment"># mysqldump -h 127.0.0.1 -P 3001 -u root -p databasename &gt; /data/databasename.sql</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="导出整个库的表结构"><a href="#导出整个库的表结构" class="headerlink" title="导出整个库的表结构"></a>导出整个库的表结构</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@DB-01 data]<span class="comment"># mysqldump -h 127.0.0.1 -P 3001 -u root -p -d databasename &gt; /data/databasename.sql</span></span><br></pre></td></tr></table></figure>

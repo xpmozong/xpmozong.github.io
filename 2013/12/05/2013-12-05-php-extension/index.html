@@ -84,7 +84,12 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-      
+         <!--02-->
+          <div id="toc" class="toc-article">
+    <div class="toc-title">目录</div>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E6%B1%82"><span class="toc-text">需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%EF%BC%9A-php-5-3-16"><span class="toc-text">环境： php-5.3.16</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%E3%80%81%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81"><span class="toc-text">第一步、生成代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%8C%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE"><span class="toc-text">第二步，修改配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%8C%E5%AE%9E%E7%8E%B0%E5%8A%9F%E8%83%BD"><span class="toc-text">第三步，实现功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%8C%E7%BC%96%E8%AF%91%E6%89%A9%E5%B1%95"><span class="toc-text">第四步，编译扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%8C%E6%B7%BB%E5%8A%A0%E6%89%A9%E5%B1%95"><span class="toc-text">第五步，添加扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E6%AD%A5%EF%BC%8C%E6%A3%80%E6%9F%A5%E5%AE%89%E8%A3%85%E7%BB%93%E6%9E%9C"><span class="toc-text">第六步，检查安装结果</span></a></li></ol></li></ol>
+</div>
+        
         <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>比如开发一个叫做 hello_world 的扩展，扩展里就一个函数 hello_world_test()，输入一个字符串，函数返回：Your input string: xxxxx! 。</p>
 <h2 id="环境：-php-5-3-16"><a href="#环境：-php-5-3-16" class="headerlink" title="环境： php-5.3.16"></a>环境： php-5.3.16</h2><h3 id="第一步、生成代码"><a href="#第一步、生成代码" class="headerlink" title="第一步、生成代码"></a>第一步、生成代码</h3><p>PHP为了扩展开发的方便，提供了一个类似代码生成器的工具ext_skel</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt/php-5.3.16/ext/</span><br><span class="line">./ext_skel --extname=hello_world --proto=hello_world.skel</span><br><span class="line"><span class="built_in">cd</span> hello_world/</span><br></pre></td></tr></table></figure>

@@ -84,7 +84,12 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-      
+         <!--02-->
+          <div id="toc" class="toc-article">
+    <div class="toc-title">目录</div>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8"><span class="toc-text">启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B"><span class="toc-text">查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%95%8C%E9%9D%A2%E7%AE%A1%E7%90%86"><span class="toc-text">界面管理</span></a></li></ol>
+</div>
+        
         <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>php opcache的缓存原理，主要是避免php重复编译，减少CPU和内存开销。</p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>到<a target="_blank" rel="noopener" href="http://pecl.php.net/package/ZendOpcache%E4%B8%8B%E8%BD%BD">http://pecl.php.net/package/ZendOpcache下载</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf zendopcache-7.0.5.tgz</span><br><span class="line"><span class="built_in">cd</span> zendopcache-7.0.5</span><br><span class="line">phpize</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
