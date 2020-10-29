@@ -17,7 +17,7 @@
 <meta property="og:image" content="http://xpmozong.github.io/2017/05/15/2017-05-15-php-yunxingjizhi/php_yunxingjizhi.png">
 <meta property="og:image" content="http://xpmozong.github.io/2017/05/15/2017-05-15-php-yunxingjizhi/hashtable.png">
 <meta property="article:published_time" content="2017-05-15T07:24:14.000Z">
-<meta property="article:modified_time" content="2020-10-15T02:55:17.240Z">
+<meta property="article:modified_time" content="2020-10-29T09:48:13.041Z">
 <meta property="article:author" content="寞踪">
 <meta property="article:tag" content="PHP">
 <meta name="twitter:card" content="summary">
@@ -100,7 +100,7 @@
 <p>Zend引擎：Zend整体用纯C实现，是PHP的内核部分，它将PHP代码翻译（词法、语法解析等一系列编译过程）为可执行opcode的处理并实现相应的处理方法、实现了基本的数据结构（如hashtable）、内存分配及管理、提供了相应的api方法供外部调用，是一切的核心，所有的外围功能均围绕Zend实现。</p>
 <p>Extensions：围绕着Zend引擎，extensions通过组件式的方式提供各种基础服务，我们常见的各种内置函数（如array系列）、标准库等都是通过extension来实现，用户也可以根据需要实现自己的extension以达到功能扩展、性能优化等目的。</p>
 <p>Sapi：Sapi全称是Server Application Programming Interface，也就是服务端应用编程接口，Sapi通过一系列钩子函数，使得PHP可以和外围交互数据，这是PHP非常优雅和成功的一个设计，通过sapi成功的将PHP本身和上层应用解耦隔离，PHP可以不再考虑如何针对不同应用进行兼容，而应用本身也可以针对自己的特点实现不同的处理方式。</p>
-<p>上层应用：这就是我们平时编写的PHP程序，通过不同的sapi方式得到各种各样的应用模式，如通过webserver实现web应用、在命令行下以脚本方式运行等等。</p>
+<p>上层应用：通过调用不同的sapi方式得到各种各样的应用模式，apache、在命令行下以脚本方式运行等。</p>
 <h3 id="三、Sapi"><a href="#三、Sapi" class="headerlink" title="三、Sapi"></a>三、Sapi</h3><p>Sapi通过一系列的接口，使得外部应用可以和PHP交换数据并可以根据不同应用特点实现特定的处理方法。</p>
 <p>cli：命令行调用的应用模式。</p>
 <p>cgi、fastcgi、php-cgi、php-fpm之间的关系</p>
