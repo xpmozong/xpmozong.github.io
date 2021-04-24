@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://xpmozong.github.io/2020/09/01/2020-09-01-lnmp/image-20200925104215835.png">
 <meta property="og:image" content="http://xpmozong.github.io/2020/09/01/2020-09-01-lnmp/image-20200925153408391.png">
 <meta property="article:published_time" content="2020-09-01T07:24:14.000Z">
-<meta property="article:modified_time" content="2021-01-30T03:33:22.871Z">
+<meta property="article:modified_time" content="2021-04-24T13:15:46.138Z">
 <meta property="article:author" content="寞踪">
 <meta property="article:tag" content="PHP">
 <meta property="article:tag" content="Linux">
@@ -136,11 +136,18 @@
 
 
 
-<h5 id="2-进入安装包编译"><a href="#2-进入安装包编译" class="headerlink" title="2. 进入安装包编译"></a>2. 进入安装包编译</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> php-7.3.22</span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/php --with-curl --with-freetype --enable-gd --with-jpeg --with-gettext --with-iconv-dir=/usr/<span class="built_in">local</span> --with-kerberos --with-libdir=lib64 --with-libxml --with-mysqli --with-openssl --with-pdo-mysql --with-pdo-sqlite --with-pear --enable-sockets --with-mhash --with-ldap-sasl --with-xmlrpc --with-xsl --with-zlib --enable-fpm --enable-bcmath --enable-inline-optimization --enable-mbregex --enable-mbstring --enable-opcache --enable-pcntl --enable-shmop --enable-soap --enable-sockets --enable-sysvsem --enable-xml --with-zip --with-config-file-path=/usr/<span class="built_in">local</span>/php/etc -with-bz2 --enable-sysvsem </span><br><span class="line">// 成功后</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<h5 id="2-进入安装包编译"><a href="#2-进入安装包编译" class="headerlink" title="2. 进入安装包编译"></a>2. 进入安装包编译</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> php-7.3.22</span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/php --with-curl --with-freetype --enable-gd --with-jpeg --with-gettext --with-iconv --with-kerberos --with-libdir=lib64 --with-libxml --with-mysqli --with-openssl --with-pdo-mysql --with-pdo-sqlite --with-pear --enable-sockets --with-mhash --with-ldap-sasl --with-xmlrpc --with-xsl --with-zlib --enable-fpm --enable-bcmath --enable-inline-optimization --enable-mbregex --enable-mbstring --enable-opcache --enable-pcntl --enable-shmop --enable-soap --enable-sockets --enable-sysvsem --enable-xml --with-zip --with-config-file-path=/usr/<span class="built_in">local</span>/php/etc -with-bz2 --enable-sysvsem</span><br><span class="line">// 成功后</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
 
-<p>configure报错error: Please reinstall the libzip distribution</p>
+<p>编译安装PHP 7.4提示No package ‘libzip’ found或者(libzip &gt;= 0.11)，原因是libzip没有安装或者版本太低，解决方法如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#卸载老版本的libzip</span></span><br><span class="line">yum remove libzip</span><br><span class="line"><span class="comment">#下载安装libzip-1.2.0</span></span><br><span class="line">wget https://libzip.org/download/libzip-1.2.0.tar.gz</span><br><span class="line">tar -zxvf libzip-1.2.0.tar.gz</span><br><span class="line"><span class="built_in">cd</span> libzip-1.2.0</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
 
+<p>安装完成后，查看是否存在/usr/local/lib/pkgconfig目录,如果存在，执行如下命令来设置PKG_CONFIG_PATH：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PKG_CONFIG_PATH=<span class="string">&quot;/usr/local/lib/pkgconfig/&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果还是安装失败</p>
+<p>修改 Makefile</p>
+<p>EXTRA_LIBS = -lcrypt -lz ……</p>
+<p>最后面添加-liconv</p>
 <p>configure报错error: off_t undefined; check your library configuration</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ld.so.conf </span><br><span class="line"><span class="comment">#添加如下几行</span></span><br><span class="line">/usr/<span class="built_in">local</span>/lib64</span><br><span class="line">/usr/<span class="built_in">local</span>/lib</span><br><span class="line">/usr/lib</span><br><span class="line">/usr/lib64</span><br><span class="line">:x  <span class="comment">#保存退出</span></span><br><span class="line"></span><br><span class="line">ldconfig -v <span class="comment">#使之生效</span></span><br></pre></td></tr></table></figure>
 
@@ -150,7 +157,7 @@
 
 
 <h5 id="3-php配置"><a href="#3-php配置" class="headerlink" title="3. php配置"></a>3. php配置</h5><p>拷贝php.ini配置文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 还是在/data/php-7.3.22 目录下</span><br><span class="line">cp php.ini-production /usr/<span class="built_in">local</span>/php/lib/php.ini</span><br><span class="line">php -i | grep php.ini // 可以用这个命令查看php使用的ini的位置</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 还是在/data/php-7.3.22 目录下</span><br><span class="line">cp php.ini-production /usr/<span class="built_in">local</span>/php/etc/php.ini</span><br><span class="line">php -i | grep php.ini // 可以用这个命令查看php使用的ini的位置</span><br></pre></td></tr></table></figure>
 
 <p>编辑php.ini</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">short_open_tag=On</span><br><span class="line">date.timezone=Asia/Shanghai</span><br><span class="line">display_errors=On // 测试环境用，正式环境关闭</span><br></pre></td></tr></table></figure>
